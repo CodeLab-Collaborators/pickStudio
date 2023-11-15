@@ -64,13 +64,13 @@ const Auth = ({ onClose }: { onClose?: () => void }) => {
         )} */}
         {emailExists ? (
           <p className="text-center font-semibold text-base w-full">Log in</p>
-        ) : !email ? (
+        ) : email && !emailExists ? (
           <p className="text-center font-semibold text-base w-full">
-            Log in or sign up
+            Complete sign up
           </p>
         ) : (
           <p className="text-center font-semibold text-base w-full">
-            Complete sign up
+            Log in or sign up
           </p>
         )}
       </div>
@@ -94,14 +94,14 @@ const Auth = ({ onClose }: { onClose?: () => void }) => {
               </p>
             </div>
             {/* Social auth */}
-            <div className="w-full mt-8 flex flex-col gap-4">
-              <GlobalButton className="bg-white flex justify-center items-center gap-2 text-black border-gray-500 border ">
+            <div className="w-full mt-8 flex flex-col gap-4 ">
+              <GlobalButton className="flex justify-center items-center gap-2 text-black border-gray-500 border ">
                 <p className="text-xl">
                   <FcGoogle />
                 </p>
                 Continue with Google
               </GlobalButton>
-              <GlobalButton className="bg-white flex justify-center items-center gap-2 text-black border-gray-500 border ">
+              <GlobalButton className=" flex justify-center items-center gap-2 text-black border-gray-500 border ">
                 <p className="text-xl text-blue-800">
                   <ImFacebook2 />
                 </p>
