@@ -1,17 +1,22 @@
-// import {useState} from 'react'
+import { useState } from "react";
 import { IoIosMenu } from "react-icons/io";
 import { FaUserCircle } from "react-icons/fa";
+import { AuthDropDown } from ".";
 
 const AuthBar = () => {
+  const [showAuthNav, setShowAuthNav] = useState<boolean>(false);
+
   return (
-    <div className="flex items-center gap-2 max-md:hidden text-sm font-semibold">
-      <p className="px-4 py-3 ease-in transition-all cursor-pointer hover:bg-slate-50 rounded-full">
+    <div className="flex items-center gap-2 max-md:hidden text-sm tracking-wide">
+      <p className="px-4 font-medium  py-3 ease-in transition-all cursor-pointer hover:bg-[#F7F7F7] rounded-full">
         Upload your studio
       </p>
 
       <div
-        className="p-3 rounded-full shadow-md hover:shadow-lg ease-in transition-all border flex items-center justify-center gap-4 cursor-pointer"
-        //   onClick={showAuth}
+        className="p-3 rounded-full  hover:shadow-md ease-in transition-all border flex items-center justify-center gap-4 cursor-pointer"
+        onClick={() => {
+          setShowAuthNav(!showAuthNav);
+        }}
       >
         <div className="text-2xl">
           <IoIosMenu />
@@ -20,6 +25,12 @@ const AuthBar = () => {
           <FaUserCircle />
         </div>
       </div>
+
+      {showAuthNav ? (
+        <div className="absolute right-20 top-20 z-50">
+          <AuthDropDown />
+        </div>
+      ) : null}
     </div>
   );
 };

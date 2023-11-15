@@ -29,9 +29,7 @@ const Search = () => {
         </div>
       </div>
 
-      <>
-        {showSearch ? <SearchModal /> : <div className="fadeOut">{null}</div>}
-      </>
+      <>{showSearch ? <SearchModal /> : null}</>
     </div>
   );
 };
