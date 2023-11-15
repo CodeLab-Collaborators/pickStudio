@@ -1,4 +1,4 @@
-import { MdClose } from "react-icons/md";
+import { Auth } from "..";
 
 const AuthModal = ({ onClose }: { onClose: () => void }) => {
   return (
@@ -10,20 +10,10 @@ const AuthModal = ({ onClose }: { onClose: () => void }) => {
       <dialog
         open
         id="dialog"
-        className="fixed inset-1/4 bg-white p-6 rounded-lg z-10 w-1/3 h-[80%]"
+        className="fixed inset-1/4 rounded-xl overflow-hidden z-10 w-1/3 "
       >
-        {/* title */}
-        <div className="flex justify-between items-center border-b  pb-4">
-          <button onClick={onClose}>
-            <MdClose />
-          </button>
-          <p className=" text-lg ">Login or Signup</p>
-        </div>
-        <form method="dialog" className="">
-          <div className="mt-4">
-            <h2 className="text-xl font-medium">Welcome to Pickastudio</h2>
-          </div>
-        </form>
+        {/* auth form */}
+        <Auth onClose={onClose} />
       </dialog>
     </div>
   );
