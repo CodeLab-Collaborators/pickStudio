@@ -4,7 +4,7 @@ import "./style.css";
 
 const searchModal = () => {
   return (
-    <div className="fadeIn fixed inset-0 transition-all ease-in duration-300 bg-[#00000080] z-50">
+    <div className="fadeIn fixed inset-0 transition-all ease-in duration-50 bg-[#00000080] z-50">
       <div
         className=" w-full pt-3 pb-6 bg-white px-[5%] z-10 cursor-default flex-col gap-5"
         onClick={(e: any) => {
