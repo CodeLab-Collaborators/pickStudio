@@ -2,9 +2,11 @@ import { Application, NextFunction, Request, Response } from "express";
 import { status } from "./utils/statusEnums";
 import { HTTP, mainError } from "./error/mianError";
 import { handleError } from "./error/handleError";
+import auth from "./router/authRouter";
 
 export const mainApp = (app: Application) => {
   try {
+    app.use("/api/v1", auth);
     app.get("/", (req: Request, res: Response) => {
       try {
         return res.status(status.OK).json({

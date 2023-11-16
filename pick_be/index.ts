@@ -7,9 +7,10 @@ import cookieSession from "cookie-session";
 import passport from "passport";
 import "./utils/socialAuth";
 import jwt from "jsonwebtoken";
+import { mainApp } from "./mainApp";
 
 const app: Application = express();
-const port: number | string = process.env.PORT || 2244;
+const port: number | string = process.env.PORT || 3300;
 
 app.use(express.json());
 app.use(
@@ -53,6 +54,8 @@ app
   })
   .use(passport.initialize())
   .use(passport.session());
+
+mainApp(app);
 
 app.get(
   "/auth/google",
