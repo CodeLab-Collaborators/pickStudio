@@ -5,13 +5,13 @@ import { Footer } from "..";
 const Homelayout = () => {
   return (
     <div>
-      <Header />
+      <Header width="w-[90%]" />
       <Categories />
       <div className="w-[90%] m-auto mt-3">
         <Outlet />
       </div>
 
-      <Footer width="[90%]" sticky="static" />
+      <Footer width="[90%]" />
     </div>
   );
 };
