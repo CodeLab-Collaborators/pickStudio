@@ -11,7 +11,7 @@ const Homelayout = () => {
         <Outlet />
       </div>
 
-      <Footer width="[90%]" sticky="fixed" />
+      <Footer width="[90%]" sticky="static" />
     </div>
   );
 };
