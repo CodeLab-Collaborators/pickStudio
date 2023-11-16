@@ -5,7 +5,7 @@ import { FC } from "react";
 // import { Itemize } from ".";
 import { Link } from "react-router-dom";
 
-const ListDetails = ({ host, guests, bedrooms, beds, baths }: any) => {
+const ListDetails: FC = ({ host, guests, bedrooms, beds, baths }: any) => {
   return (
     <div className="flex flex-col md:w-[50vw]">
       <div className="border-b-[1px] border-b-slate-300 py-7  flex justify-between ">
