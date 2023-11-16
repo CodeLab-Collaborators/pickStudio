@@ -10,6 +10,10 @@ const GOOGLE_CLIENT_ID =
   "199704572461-mqftjmpvtc6k62t49ki4mshaocr0e6hf.apps.googleusercontent.com";
 const GOOGLE_CLIENT_SECRET = "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";
 
+// const GOOGLE_CLIENT_ID =
+//   "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";
+// const GOOGLE_CLIENT_SECRET = "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";
+
 passport.use(
   new GoogleStrategy(
     {
@@ -25,55 +29,28 @@ passport.use(
       callback: any
     ) {
       try {
-        if (profile.id_token) {
-          //   const data: any = decode(profile.id_token);
-          const data: any = "";
-          console.log(data);
-          if (data) {
-            const user = await authModel.findOne({
-              email: data.email,
-            });
+        console.log(profile);
+        console.log(profile.email);
 
-            if (user) {
-              return callback(null, user);
-            } else {
-              const newUser = await authModel.create({
-                data: {
-                  email: data.email,
-                  password: "",
-                  secretKey: "er45",
-                  token: "",
-                  verify: data.email_verified,
-                  //   studio: [],
-                },
-              });
+        let email = profile.email;
 
-              return callback(null, newUser);
-            }
-          } else {
-            console.log("check Token...");
-          }
+        const user = await authModel.findOne(email);
+
+        if (user !== null) {
+          return callback(null, user);
         } else {
-          const user = await authModel.findOne({
-            email: profile._json.email,
+          const newUser = await authModel.create({
+            email: profile.emails[0].value,
+            fullName: profile.displayName,
+            userName: profile.name.familyName,
+            avatar: profile.photos[0].value,
+            password: "",
+            verifyToken: "",
+            verify: true,
+            studio: [],
           });
 
-          if (user) {
-            return callback(null, user);
-          } else {
-            const newUser = await authModel.create({
-              data: {
-                email: profile._json.email,
-                password: "",
-                secretKey: "er45",
-                token: "",
-                verify: true,
-                // studio: [],
-              },
-            });
-
-            return callback(null, newUser);
-          }
+          return callback(null, newUser);
         }
       } catch (error) {
         console.log(error);

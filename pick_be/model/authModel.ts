@@ -22,10 +22,10 @@ const authModel = new Schema<iAuthData>(
     },
     fullName: {
       type: String,
-      unique: true,
     },
     email: {
       type: String,
+      unique: true,
     },
     password: {
       type: String,
