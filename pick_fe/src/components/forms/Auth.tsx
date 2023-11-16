@@ -51,17 +51,7 @@ const Auth = ({ onClose }: { onClose?: () => void }) => {
             <MdClose />
           </button>
         )}
-        {/* {emailExists ? (
-          <p className="text-base font-semibold">Log in</p>
-        ) : (
-          <>
-            {email !== null ? (
-              <p className="text-base font-semibold">Complete sign up</p>
-            ) : (
-              <p className="text-base font-semibold">Login or Sign up</p>
-            )}
-          </>
-        )} */}
+
         {emailExists ? (
           <p className="text-center font-semibold text-base w-full">Log in</p>
         ) : email && !emailExists ? (
