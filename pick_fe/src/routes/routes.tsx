@@ -23,4 +23,8 @@ export const appRoutes = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "*",
+    element: <>page not found</>,
+  },
 ]);
