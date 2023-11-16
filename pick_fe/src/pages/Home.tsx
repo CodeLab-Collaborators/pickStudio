@@ -22,7 +22,7 @@ const Home = () => {
   ];
 
   return (
-    <div className="w-full m-auto grid gap-10 place-items-center grid-cols-5 max-xl:grid-cols-4 max-lg:grid-cols-2 max-sm:grid-cols-1 max-sm:w-full">
+    <div className="w-full m-auto grid gap-6 place-items-center grid-cols-5 max-xl:grid-cols-4 max-lg:grid-cols-2 max-sm:grid-cols-1 max-sm:w-full">
       {dummyImage.map(() => (
         <ProductProps
           cover={dummyImage}
