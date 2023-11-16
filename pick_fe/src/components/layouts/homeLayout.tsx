@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { Categories, Header } from "../blocks";
+import { Footer } from "..";
 
 const Homelayout = () => {
   return (
@@ -10,7 +11,7 @@ const Homelayout = () => {
         <Outlet />
       </div>
 
-      {/* <Footer width="[90%]" sticky="fixed" /> */}
+      <Footer width="[90%]" sticky="fixed" />
     </div>
   );
 };
