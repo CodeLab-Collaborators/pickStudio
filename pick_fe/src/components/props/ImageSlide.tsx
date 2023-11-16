@@ -37,7 +37,7 @@ const ImageSLide: FC<imageData> = ({
       onMouseLeave={() => {
         setShow(false);
       }}
-      className="relative w-full h-[315px] rounded-2xl"
+      className="relative w-full h-[260px] rounded-2xl"
     >
       {/* wishlist */}
 

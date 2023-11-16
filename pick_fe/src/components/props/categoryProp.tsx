@@ -10,7 +10,9 @@ const CategoryProps = () => {
           <div className="text-2xl">
             <LuListMusic />
           </div>
-          <span className="capitalize whitespace-nowrap">music studios</span>
+          <span className="capitalize whitespace-nowrap font-medium">
+            music studios
+          </span>
         </div>
       </Link>
     </div>
