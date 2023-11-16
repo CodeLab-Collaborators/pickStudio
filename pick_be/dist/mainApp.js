@@ -1,11 +1,16 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.mainApp = void 0;
 const statusEnums_1 = require("./utils/statusEnums");
 const mianError_1 = require("./error/mianError");
 const handleError_1 = require("./error/handleError");
+const authRouter_1 = __importDefault(require("./router/authRouter"));
 const mainApp = (app) => {
     try {
+        app.use("/api/v1", authRouter_1.default);
         app.get("/", (req, res) => {
             try {
                 return res.status(statusEnums_1.status.OK).json({

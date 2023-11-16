@@ -32,7 +32,6 @@ passport_1.default.use(new GoogleStrategy({
             console.log(profile.email);
             let email = profile.email;
             const user = yield authModel_1.default.findOne(email);
-            console.log("get user: ", user);
             if (user !== null) {
                 return callback(null, user);
             }
