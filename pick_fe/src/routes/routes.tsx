@@ -1,8 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import { lazy, Suspense } from "react";
-import { HomeLayout } from "../components";
+import { HomeLayout, ProductLayout } from "../components";
 
 const Home = lazy(() => import("../pages/Home"));
+const SingleList = lazy(() => import("../pages/SingleList"));
 
 export const appRoutes = createBrowserRouter([
   {
@@ -20,6 +21,16 @@ export const appRoutes = createBrowserRouter([
             <Home />
           </Suspense>
         ),
+      },
+    ],
+  },
+  {
+    path: "/products",
+    element: <ProductLayout />,
+    children: [
+      {
+        index: true,
+        element: <SingleList />,
       },
     ],
   },
