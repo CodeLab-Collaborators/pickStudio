@@ -2,7 +2,14 @@ import img1 from "../assets/jpg/Menstylica.jpeg";
 import img2 from "../assets/jpg/suit.jpeg";
 import img3 from "../assets/jpg/SHOES.jpeg";
 import img4 from "../assets/jpg/INSTASHOP.jpeg";
-import { ListDetails, ProductImage, Title } from "../components/blocks";
+import {
+  Ad,
+  BookSpace,
+  ListDetails,
+  Offers,
+  ProductImage,
+  Title,
+} from "../components/blocks";
 
 const SingleList = () => {
   const dummyImage = [img1, img3, img4, img2];
@@ -26,7 +33,8 @@ const SingleList = () => {
         />
         <ProductImage />
         <div className="w-full relative h-[fit-content] mt-4 flex gap-6">
-          <div className="flex flex-col shadow-md">
+          <div className="flex flex-col ">
+            <Ad />
             <ListDetails
               host="BeCordial"
               guests={7}
@@ -34,10 +42,10 @@ const SingleList = () => {
               beds={6}
               baths={2}
             />
-            {/* <Offers /> */}
+            <Offers />
           </div>
           <div className="flex-1 hidden h-[fit-content] mt-8 sticky top-24 md:flex">
-            {/* <Reservation /> */}
+            <BookSpace />
           </div>
         </div>
         <div className="py-20">{/* <Reviews /> */}</div>

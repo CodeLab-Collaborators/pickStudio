@@ -26,7 +26,7 @@ const Header = () => {
         </div>
 
         <div className="flex items-center ">
-          <div className="hover:bg-purple-500 px-4 transition-all duration-300 hover:text-white hover:cursor-pointer py-2 rounded-full ">
+          <div className="hover:bg-[var(--primary)] px-4 transition-all duration-300 hover:text-white hover:cursor-pointer py-2 rounded-full ">
             Add your Studio
           </div>
 

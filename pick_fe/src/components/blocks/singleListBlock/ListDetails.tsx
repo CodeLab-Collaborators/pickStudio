@@ -2,41 +2,57 @@
 import { FaTags } from "react-icons/fa";
 import img1 from "../../../assets/jpg/suit.jpeg";
 import { FC } from "react";
-// import { Itemize } from ".";
-import { Link } from "react-router-dom";
 
-const ListDetails: FC = ({ host, guests, bedrooms, beds, baths }: any) => {
+import { Link } from "react-router-dom";
+import { Itemize } from ".";
+
+export type listDetails = {
+  host: string;
+  guests: number;
+  bedrooms: number;
+  beds: number;
+  baths: number;
+};
+
+const ListDetails: FC<listDetails> = ({
+  host,
+  guests,
+  bedrooms,
+  beds,
+  baths,
+}) => {
   return (
     <div className="flex flex-col md:w-[50vw]">
-      <div className="border-b-[1px] border-b-slate-300 py-7  flex justify-between ">
+      <div className="border-b-[1px] border-b-slate-300 py-7  flex gap-8 flex-col ">
         <div className="w-[80%] text-2xl font-[500]">
           <div>Entire home not hosted by {host}</div>
           <div className="text-[17px] font-normal mt-1">
             {guests} guests . {bedrooms} bedrooms . {beds} beds . {baths} baths
           </div>
         </div>
-        <Link to="/user">
+        <Link to="/user" className="flex items-center gap-3">
           <div className="w-12 h-12 rounded-[50%]">
             <img className="w-full h-full rounded-[50%]" src={img1} />
           </div>
+          <p>Studio name</p>
         </Link>
       </div>
       <div className="border-b-[1px] border-b-slate-300 py-7 flex flex-col gap-6">
-        {/* <Itemize
+        <Itemize
           icon={<FaTags />}
-          title="Dedicated workspace"
+          title="Free wifi"
           content=" A common area with wifi that’s well-suited for working."
-        /> */}
-        {/* <Itemize
+        />
+        <Itemize
           icon={<FaTags />}
-          title="Self check-in"
+          title="Dedicated parking space"
           content="You can check in with the doorman."
-        /> */}
-        {/* <Itemize
+        />
+        <Itemize
           icon={<FaTags />}
           title="Free cancellation for 48 hours."
           content=""
-        /> */}
+        />
       </div>
       <div className="border-b-[1px] border-b-slate-300 py-7 gap-4 flex flex-col">
         <div className="overflow-ellipsis">
