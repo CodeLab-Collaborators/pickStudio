@@ -5,7 +5,7 @@ import { Footer } from "..";
 const Homelayout = () => {
   return (
     <div>
-      <Header width="w-[90%]" />
+      <Header width="w-[90%]" position="sticky" />
       <Categories />
       <div className="w-[90%] m-auto mt-3">
         <Outlet />

@@ -7,3 +7,4 @@ export { default as Itemize } from "./Itemize";
 export { default as Offers } from "./Offers";
 export { default as SingleOffer } from "./SingleOffer";
 export { default as BookSpace } from "./BookSpace";
+export { default as ProductHeader } from "./productHeader";
