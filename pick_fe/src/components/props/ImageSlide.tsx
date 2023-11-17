@@ -42,7 +42,7 @@ const ImageSLide: FC<imageData> = ({
       {/* wishlist */}
 
       <div
-        className="absolute cursor-pointer text-white shadow-md hover:text-purple-700 text-2xl top-3 right-3 transition-all ease-in duration-200"
+        className="absolute cursor-pointer text-[#000000ad] shadow-md hover:text-[var(--primary)] text-2xl top-3 right-3 transition-all ease-in duration-200"
         onClick={() => {
           wishlistFunc;
         }}

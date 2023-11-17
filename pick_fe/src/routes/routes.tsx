@@ -25,12 +25,16 @@ export const appRoutes = createBrowserRouter([
     ],
   },
   {
-    path: "/products",
+    path: "products",
     element: <ProductLayout />,
     children: [
       {
         index: true,
-        element: <SingleList />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <SingleList />
+          </Suspense>
+        ),
       },
     ],
   },
