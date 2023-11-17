@@ -1,9 +1,12 @@
+import { NavLink } from "react-router-dom";
 import logo from "../../assets/logo.png";
 
 const Logo = () => {
   return (
     <div>
-      <img src={logo} alt="Pickastudio" className="object-contain" />
+      <NavLink to="/">
+        <img src={logo} alt="Pickastudio" className="object-contain" />
+      </NavLink>
     </div>
   );
 };
