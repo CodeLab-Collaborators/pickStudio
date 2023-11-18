@@ -11,8 +11,8 @@ const GOOGLE_CLIENT_ID =
 const GOOGLE_CLIENT_SECRET = "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";
 
 // const GOOGLE_CLIENT_ID =
-//   "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";
-// const GOOGLE_CLIENT_SECRET = "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";
+//   "199704572461-g84htr0if8p5ej23l2ukvsgtq2rh288g.apps.googleusercontent.com";
+// const GOOGLE_CLIENT_SECRET = "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";
 
 passport.use(
   new GoogleStrategy(
