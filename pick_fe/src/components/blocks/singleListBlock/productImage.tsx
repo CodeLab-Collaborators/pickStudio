@@ -3,12 +3,20 @@ import img2 from "../../../assets/jpg/suit.jpeg";
 import img3 from "../../../assets/jpg/SHOES.jpeg";
 import img4 from "../../../assets/jpg/INSTASHOP.jpeg";
 import { GlobalButton } from "../..";
+import { useState } from "react";
+import { GalleryModal } from "../../modals";
 
 const ProductImage = () => {
+const [showGallery, setShowGallery] = useState<boolean>(false)
+
+const toggleGallery = ()=>{
+  setShowGallery(!showGallery)
+}
+
   const dummyImage = [img1, img3, img4, img2];
 
   return (
-    <div className="w-full hidden relative md:grid h-[430px] rounded-3xl grid-cols-4 grid-rows-2 gap-2">
+    <div className="w-full hidden relative md:grid h-[500px] rounded-3xl grid-cols-4 grid-rows-2 gap-2">
       <div className=" rounded-tl-2xl rounded-bl-2xl col-span-2 row-span-2">
         <img
           src={dummyImage[3]}
@@ -18,7 +26,8 @@ const ProductImage = () => {
       <div className="">
         <img
           src={dummyImage[1]}
-          className="w-full h-full object-cover object-top"
+          className="w-full h-full object-cover cursor-pointer object-top"
+          onClick={toggleGallery}
         />
       </div>
       <div className=" rounded-tr-2xl">
@@ -41,12 +50,15 @@ const ProductImage = () => {
       </div>
       <div className="absolute bottom-3 right-5  ">
         <GlobalButton
-          style={{ backgroundColor: "#fff" }}
-          className="py-[6px] text-[#000000d1] text-sm border border-[#000000c0]"
+          style={{ backgroundColor: "#fff", color: "black" }}
+          className="py-[6px] text-sm border border-[#000000c0]"
+          onClick={toggleGallery}
         >
           Show all photos
         </GlobalButton>
       </div>
+
+      {showGallery ? <GalleryModal onClose={toggleGallery}/> : null }
     </div>
   );
 };
