@@ -20,7 +20,7 @@ const ProductLayout = () => {
   }, []);
 
   return (
-    <div className="h-full">
+    <div className="h-full bg-white">
       <Header width="w-[90%]" position="static" />
       <div className="h-full ease-in transition-all">
         {showHeader && <ProductHeader />}
