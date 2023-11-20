@@ -12,7 +12,7 @@ const GlobalInput: React.FC<GlobalInputProps> = ({
 
   // Default Tailwind CSS classes for the input
   const inputClasses =
-    "peer h-10 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm";
+    "peer h-10 w-full border-none  bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm";
 
   // Combine the default classes with the provided className
   const containerClassList = className
@@ -27,7 +27,7 @@ const GlobalInput: React.FC<GlobalInputProps> = ({
         className={inputClasses}
         {...props}
       />
-      <span className="absolute start-3 top-3 -translate-y-1/2 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-3 peer-focus:text-xs">
+      <span className="absolute start-3 top-3 -translate-y-1/2 text-xs font-normal text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-3 peer-focus:text-xs">
         {props.placeholder}
       </span>
     </label>

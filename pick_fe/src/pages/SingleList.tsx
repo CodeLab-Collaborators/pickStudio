@@ -12,6 +12,8 @@ import {
 } from "../components/blocks";
 
 const SingleList = () => {
+document.title = "page name - Pickastudio"
+
   const dummyImage = [img1, img3, img4, img2];
 
   return (
