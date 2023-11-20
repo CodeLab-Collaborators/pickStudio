@@ -74,13 +74,13 @@ const Auth = ({ onClose }: { onClose?: () => void }) => {
                 <p className="text-xl">
                   <FcGoogle />
                 </p>
-                Continue with Google
+                <div className="text-black">Continue with Google</div>
               </GlobalButton>
               <GlobalButton className=" flex justify-center items-center gap-2 text-[#000000e8] border-gray-500 border ">
                 <p className="text-xl text-blue-800">
                   <ImFacebook2 />
                 </p>
-                Continue with Facebook
+                <div className="text-black">Continue with Facebook</div>
               </GlobalButton>
             </div>
           </>

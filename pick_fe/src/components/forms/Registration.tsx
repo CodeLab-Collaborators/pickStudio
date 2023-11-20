@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { GlobalButton } from "..";
+import { createAccount } from "../../api/authAPI";
 import GlobalInput from "../props/GlobalInput";
 
 const Registration = ({
@@ -9,10 +11,18 @@ const Registration = ({
   onClose?: () => void;
 }) => {
   const handleRegister = () => {
-    // Handle registration logic using the email
-    console.log(`Registering user with email: ${email}`);
+    createAccount({
+      email,
+      password,
+      lastName,
+      firstName,
+    });
     onClose!(); // Close the Auth component
   };
+
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [password, setPassword] = useState("");
 
   return (
     <>
@@ -22,7 +32,10 @@ const Registration = ({
           <GlobalInput
             type="text"
             placeholder="First Name"
-
+            value={firstName}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+              setFirstName(e.target.value);
+            }}
             // onChange={handleEmailChange}
           />
 
@@ -30,6 +43,10 @@ const Registration = ({
             type="text"
             placeholder="Last Name"
             // onChange={handleEmailChange}
+            value={lastName}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+              setLastName(e.target.value);
+            }}
             className="mt-1"
           />
           <p className="text-xs py-2  font-light">
@@ -48,6 +65,10 @@ const Registration = ({
           <GlobalInput
             type="password"
             placeholder="password"
+            value={password}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+              setPassword(e.target.value);
+            }}
             // onChange={handleEmailChange}
             className="mt-1"
           />

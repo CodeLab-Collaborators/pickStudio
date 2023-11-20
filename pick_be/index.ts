@@ -1,4 +1,4 @@
-import express, { Application, NextFunction, Response } from "express";
+import express, { Application, NextFunction, Request, Response } from "express";
 import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
@@ -6,7 +6,6 @@ import { dbConfig } from "./utils/dbConfig";
 import cookieSession from "cookie-session";
 import passport from "passport";
 import "./utils/socialAuth";
-import jwt from "jsonwebtoken";
 import { mainApp } from "./mainApp";
 
 const app: Application = express();
@@ -57,27 +56,10 @@ app
 
 mainApp(app);
 
-app.get(
-  "/auth/google",
-  passport.authenticate("google", { scope: ["profile", "email"] })
-);
-
-app.get(
-  "/auth/google/callback",
-  passport.authenticate("google", { failureRedirect: "/login" }),
-  function (req, res) {
-    // Successful authentication, redirect home.
-    // res.redirect("/");
-    const user: any = req.user;
-
-    const token = jwt.sign({ id: user.id, email: user.email }, "secret");
-
-    res.status(200).json({
-      message: "Well done...!",
-      data: token,
-    });
-  }
-);
+// app.get(
+//   "/api/auth/google/",
+//   passport.authenticate("google", { scope: ["profile", "email"] })
+// );
 
 app.listen(port, () => {
   console.clear();

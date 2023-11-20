@@ -3,10 +3,35 @@ import { status } from "./utils/statusEnums";
 import { HTTP, mainError } from "./error/mianError";
 import { handleError } from "./error/handleError";
 import auth from "./router/authRouter";
+import jwt from "jsonwebtoken";
+import passport from "passport";
 
 export const mainApp = (app: Application) => {
   try {
     app.use("/api/v1", auth);
+
+    app.get(
+      "/auth/google/",
+      passport.authenticate("google", { scope: ["profile", "email"] })
+    );
+
+    app.get(
+      "/auth/google/callback",
+      passport.authenticate("google", { failureRedirect: "/login" }),
+      function (req, res) {
+        // Successful authentication, redirect home.
+        // res.redirect("/");
+        const user: any = req.user;
+
+        const token = jwt.sign({ id: user.id, email: user.email }, "secret");
+
+        res.status(200).json({
+          message: "Well done...!",
+          data: token,
+        });
+      }
+    );
+
     app.get("/", (req: Request, res: Response) => {
       try {
         return res.status(status.OK).json({
