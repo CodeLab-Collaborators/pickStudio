@@ -65,7 +65,6 @@ const Verification: React.FC<VerificationCodeInputProps> = () => {
                 key={index}
                 type="text"
                 min={1}
-                data-index={index}
                 placeholder="0"
                 value={verificationCode[`code${index + 1}`]}
                 className="w-12 h-12 rounded-lg bg-white border focus:border-[var(--primary)] outline-none text-center text-2xl"
