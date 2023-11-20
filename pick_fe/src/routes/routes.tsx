@@ -4,6 +4,7 @@ import { HomeLayout, ProductLayout } from "../components";
 
 const Home = lazy(() => import("../pages/Home"));
 const SingleList = lazy(() => import("../pages/SingleList"));
+const Registration = lazy(() => import("../pages/Registration"));
 
 export const appRoutes = createBrowserRouter([
   {
@@ -21,6 +22,18 @@ export const appRoutes = createBrowserRouter([
             <Home />
           </Suspense>
         ),
+      },
+      {
+        path: "register",
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <Registration />
+          </Suspense>
+        ),
+      },
+      {
+        path: "login",
+        element: <>Signin page</>,
       },
     ],
   },

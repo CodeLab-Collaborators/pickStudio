@@ -1,17 +1,12 @@
 import { useState } from "react";
-import { MdClose } from "react-icons/md";
-import { IoChevronBackSharp } from "react-icons/io5";
 import { GlobalButton } from "..";
 import { FcGoogle } from "react-icons/fc";
 import { ImFacebook2 } from "react-icons/im";
 import Registration from "./Registration";
 import PasswordInput from "./Password";
 import Login from "./Login";
-import { useNavigate } from "react-router-dom";
 
 const Auth = ({ onClose }: { onClose?: () => void }) => {
-  const navigate = useNavigate();
-
   const [email, setEmail] = useState<string>("");
   const [emailExists, setEmailExists] = useState<boolean | null>(null);
 
@@ -40,18 +35,8 @@ const Auth = ({ onClose }: { onClose?: () => void }) => {
   };
 
   return (
-    <div className="w-full h-full bg-white p-6 ">
+    <div className="w-full flex flex-col  h-full  p-6 ">
       <div className="flex border-b pb-2">
-        {emailExists ? (
-          <button onClick={() => navigate(-1)}>
-            <IoChevronBackSharp />
-          </button>
-        ) : (
-          <button onClick={onClose}>
-            <MdClose />
-          </button>
-        )}
-
         {emailExists ? (
           <p className="text-center font-semibold text-base w-full">Log in</p>
         ) : email && !emailExists ? (
@@ -85,13 +70,13 @@ const Auth = ({ onClose }: { onClose?: () => void }) => {
             </div>
             {/* Social auth */}
             <div className="w-full mt-8 flex flex-col gap-4 ">
-              <GlobalButton className="flex justify-center items-center gap-2 text-black border-gray-500 border ">
+              <GlobalButton className="flex justify-center items-center gap-2 text-[#000000e8] border-gray-500 border ">
                 <p className="text-xl">
                   <FcGoogle />
                 </p>
                 Continue with Google
               </GlobalButton>
-              <GlobalButton className=" flex justify-center items-center gap-2 text-black border-gray-500 border ">
+              <GlobalButton className=" flex justify-center items-center gap-2 text-[#000000e8] border-gray-500 border ">
                 <p className="text-xl text-blue-800">
                   <ImFacebook2 />
                 </p>
