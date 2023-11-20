@@ -37,12 +37,12 @@ const ImageSLide: FC<imageData> = ({
       onMouseLeave={() => {
         setShow(false);
       }}
-      className="relative w-full h-[260px] rounded-2xl"
+      className="relative w-full h-[285px] rounded-2xl"
     >
       {/* wishlist */}
 
       <div
-        className="absolute cursor-pointer text-[#000000ad] shadow-md hover:text-[var(--primary)] text-2xl top-3 right-3 transition-all ease-in duration-200"
+        className="absolute cursor-pointer text-[#000000ad] shadow-md hover:text-[var(--primary)] text-2xl top-3 right-3 transition-all ease-in duration-75"
         onClick={() => {
           wishlistFunc;
         }}

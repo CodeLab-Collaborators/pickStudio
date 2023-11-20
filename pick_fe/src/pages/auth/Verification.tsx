@@ -20,9 +20,9 @@ const Verification: React.FC<VerificationCodeInputProps> = () => {
 
   const inputFocus = (e: React.KeyboardEvent<HTMLInputElement>) => {
     const elements = fieldsRef.current?.children as HTMLCollectionOf<HTMLInputElement>;
-    const dataIndex= +e?.currentTarget?.getAttribute("data-index") || 0;
+    const dataIndex= +e?.currentTarget?.getAttribute("data-index")! || 0;
 
-    // const dataIndex = +e?.currentTarget?.getAttribute("data-index")
+
   
     if (elements && e.currentTarget && (e.key === "Delete" || e.key === "Backspace") && dataIndex > 0) {
         elements[dataIndex - 1]?.focus();
@@ -55,7 +55,9 @@ const Verification: React.FC<VerificationCodeInputProps> = () => {
           <p className="text-sm font-normal">
             We emailed you a six-digit code to <strong>name@company.com</strong> <br /> <p className="py-1">Enter the code below to confirm your email address.</p>
           </p>
-       <form action="">
+
+{/* form */}
+       <form >
        <div ref={fieldsRef} className="w-full justify-center my-6 flex items-center gap-x-2">
             {[0, 1, 2, 3,4,5].map((index) => (
               <input
