@@ -8,6 +8,8 @@ import Registration from "./Registration";
 import PasswordInput from "./Password";
 import Login from "./Login";
 import { useNavigate } from "react-router-dom";
+import { signWithGoogle } from "../../api/authAPI";
+import axios from "axios";
 
 const Auth = ({ onClose }: { onClose?: () => void }) => {
   const navigate = useNavigate();
@@ -38,6 +40,8 @@ const Auth = ({ onClose }: { onClose?: () => void }) => {
       return <Registration email={email} onClose={onClose} />;
     }
   };
+
+  const URLSocial: string = "https://pick-be.onrender.com/auth/google";
 
   return (
     <div className="w-full h-full bg-white p-6 ">
@@ -89,7 +93,18 @@ const Auth = ({ onClose }: { onClose?: () => void }) => {
                 <p className="text-xl">
                   <FcGoogle />
                 </p>
-                <div className="text-black">Continue with Google</div>
+                <div
+                  className="text-black"
+                  onClick={() => {
+                    // window.open(
+                    //   "https://pick-be.onrender.com/api/v1/auth/google",
+                    //   "_self"
+                    // );
+                    signWithGoogle();
+                  }}
+                >
+                  Continue with Google
+                </div>
               </GlobalButton>
               <GlobalButton className=" flex justify-center items-center gap-2 text-black border-gray-500 border ">
                 <p className="text-xl text-blue-800">
