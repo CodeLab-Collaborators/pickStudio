@@ -6,10 +6,10 @@ interface VerificationCodeInputProps {
 }
 
 const Verification: React.FC<VerificationCodeInputProps> = () => {
-  document.title = "verify your account - Pickastudio";
+  document.title = "Verify your account - Pickastudio";
 
   const fieldsRef = useRef<HTMLDivElement>(null);
-  const [verificationCode, setVerificationCode] = useState({
+  const [verificationCode, setVerificationCode] = useState<any>({
     code1: "",
     code2: "",
     code3: "",
@@ -20,23 +20,20 @@ const Verification: React.FC<VerificationCodeInputProps> = () => {
 
   const inputFocus = (e: React.KeyboardEvent<HTMLInputElement>) => {
     const elements = fieldsRef.current?.children as HTMLCollectionOf<HTMLInputElement>;
-    const dataIndex = +e.currentTarget?.getAttribute("data-index") || 0;
+    const dataIndex= +e?.currentTarget?.getAttribute("data-index") || 0;
+
+    // const dataIndex = +e?.currentTarget?.getAttribute("data-index")
   
     if (elements && e.currentTarget && (e.key === "Delete" || e.key === "Backspace") && dataIndex > 0) {
-        const prevElement = elements[dataIndex - 1];
-        if (prevElement) {
-          prevElement.focus();
-        }
+        elements[dataIndex - 1]?.focus();
       } else if (elements && e.currentTarget && dataIndex < elements.length - 1 && e.currentTarget.value.trim() && e.key.length === 1) {
-        const nextElement = elements[dataIndex + 1];
-        if (nextElement) {
-          nextElement.focus();
-        }
+        elements[dataIndex + 1]?.focus();
       }
     };
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>, codeNumber: keyof typeof verificationCode) => {
     const value = e.target.value;
-    setVerificationCode((prevCode) => ({ ...prevCode, [codeNumber]: value.slice(-1) }));
+    setVerificationCode((prevCode:any) => ({ ...prevCode, [codeNumber]: value.slice(-1) }));
   };
 
   const handleSubmit = (e:any) => {
