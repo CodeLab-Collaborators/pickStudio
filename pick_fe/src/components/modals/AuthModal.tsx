@@ -1,4 +1,4 @@
-import { Auth } from "..";
+
 
 const AuthModal = ({ onClose }: { onClose: () => void }) => {
   return (
@@ -13,7 +13,7 @@ const AuthModal = ({ onClose }: { onClose: () => void }) => {
         className="fixed inset-1/4 rounded-xl overflow-hidden z-10 w-1/3 "
       >
         {/* auth form */}
-        <Auth onClose={onClose} />
+        {/* <Auth onClose={onClose} /> */}
       </dialog>
     </div>
   );

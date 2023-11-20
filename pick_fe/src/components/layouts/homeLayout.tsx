@@ -6,12 +6,12 @@ import { useLocation } from "react-router-dom";
 const Homelayout = () => {
   const location = useLocation();
 
-  // if (location.pathname.includes("register"))
+  // if (location.pathname.includes("verification"))
   return (
-    <div>
+    <div className="bg-white min-h-screen h-full">
       <Header width="w-[90%]" position="sticky" />
       {location.pathname.includes("register") ||
-      location.pathname.includes("login") ? null : (
+      location.pathname.includes("login") ||   location.pathname.includes("verification")  ? null : (
         <Categories />
       )}
       <div className="w-[90%] m-auto mt-3">
