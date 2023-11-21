@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import { HomeLayout, ProductLayout } from "../components";
+import PrivateRoute from "./privateRoute";
 
 
 const Home = lazy(() => import("../pages/Home"));
@@ -22,7 +23,9 @@ export const appRoutes = createBrowserRouter([
         index: true,
         element: (
           <Suspense fallback={<div>Loading...</div>}>
+            {/* <PrivateRoute> */}
             <Home />
+            {/* </PrivateRoute> */}
           </Suspense>
         ),
       },
