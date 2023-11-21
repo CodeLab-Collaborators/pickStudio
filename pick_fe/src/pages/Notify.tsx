@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+// import { useState } from "react";
 import { IoIosNotifications } from "react-icons/io";
 
 const Notify = () => {
-  const [state, setState]: any = useState<Array<{}>>([]);
+  // const [state, setState]: any = useState<Array<{}>>([]);
 
   const readState = JSON.parse(localStorage.getItem("notice")!);
 

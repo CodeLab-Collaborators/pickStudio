@@ -1,14 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import { HomeLayout, ProductLayout } from "../components";
-import PrivateRoute from "./privateRoute";
-
+// import PrivateRoute from "./privateRoute";
 
 const Home = lazy(() => import("../pages/Home"));
 const SingleList = lazy(() => import("../pages/SingleList"));
 const Registration = lazy(() => import("../pages/auth/Registration"));
 const Login = lazy(() => import("../pages/auth/Login"));
-const Verification = lazy(() => import("../pages/auth/Verification"));
+// const Verification = lazy(() => import("../pages/auth/Verification"));
 
 export const appRoutes = createBrowserRouter([
   {
@@ -49,7 +48,7 @@ export const appRoutes = createBrowserRouter([
         path: "verification",
         element: (
           <Suspense fallback={<div>Loading...</div>}>
-            <Verification/>
+            {/* <Verification/> */}
           </Suspense>
         ),
       },
