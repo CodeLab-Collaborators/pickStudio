@@ -10,6 +10,7 @@ const Registration = lazy(() => import("../pages/auth/Registration"));
 const Login = lazy(() => import("../pages/auth/Login"));
 const Verification = lazy(() => import("../pages/auth/Verification"));
 const Profile = lazy(() => import("../pages/Profile"));
+const Category = lazy(() => import("../pages/Categories"));
 
 export const appRoutes = createBrowserRouter([
   {
@@ -66,7 +67,7 @@ export const appRoutes = createBrowserRouter([
         path: "category",
         element: (
           <Suspense fallback={<div>Loading...</div>}>
-            <>cat</>
+            <Category/>
           </Suspense>
         ),
       },
