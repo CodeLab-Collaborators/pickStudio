@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { AiFillStar } from "react-icons/ai";
-import { Reviewers } from ".";
 import { GlobalButton } from "../..";
 import { FunctionComponent } from "react";
+import { UserReviews } from "..";
 
 const Reviews:FunctionComponent = () => {
   const [visibleReviews, setVisibleReviews] = useState(6); // Number of reviews to initially display
@@ -27,7 +27,8 @@ const Reviews:FunctionComponent = () => {
       </div>
       <div className="grid grid-cols-3 max-md:grid-cols-1 max-lg:grid-cols-2 gap-8 mt-5 ">
         {[...Array(visibleReviews)].map((_, index) => (
-          <Reviewers key={index} />
+   
+          <UserReviews key={index} />
         ))}
       </div>
       {visibleReviews < totalReviews && (
