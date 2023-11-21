@@ -9,6 +9,7 @@ const SingleList = lazy(() => import("../pages/SingleList"));
 const Registration = lazy(() => import("../pages/auth/Registration"));
 const Login = lazy(() => import("../pages/auth/Login"));
 const Verification = lazy(() => import("../pages/auth/Verification"));
+const Profile = lazy(() => import("../pages/Profile"));
 
 export const appRoutes = createBrowserRouter([
   {
@@ -57,7 +58,7 @@ export const appRoutes = createBrowserRouter([
         path: "user",
         element: (
           <Suspense fallback={<div>Loading...</div>}>
-            <>user</>
+            <Profile/>
           </Suspense>
         ),
       },
