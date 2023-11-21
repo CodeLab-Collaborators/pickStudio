@@ -19,7 +19,7 @@ const Offers = () => {
         />
         <SingleOffer icon={<AiFillStar />} text="Smoke alarm" slashed />
       </div>
-      <GlobalButton className="border-black mt-4 text-[#000] font-[600] w-full py-3 rounded-md border-[1px]">
+      <GlobalButton className="border-black mt-4 text-[black] font-[600] w-full py-3 rounded-md border-[1px]">
         Show all 38 amenities
       </GlobalButton>
     </div>

@@ -43,10 +43,18 @@ export const appRoutes = createBrowserRouter([
         ),
       },
       {
-        path: "verification",
+        path: "verification/:id",
         element: (
           <Suspense fallback={<div>Loading...</div>}>
             <Verification/>
+          </Suspense>
+        ),
+      },
+      {
+        path: "user",
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <>user</>
           </Suspense>
         ),
       },

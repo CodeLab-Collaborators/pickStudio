@@ -24,18 +24,22 @@ const Home = () => {
   return (
     <div className="w-full m-auto grid gap-6 place-items-center grid-cols-5 max-xl:grid-cols-4 max-lg:grid-cols-2 max-sm:grid-cols-1 max-sm:w-full">
       {dummyImage.map(() => (
-        <ProductProps
-          cover={dummyImage}
-          authorCover={profile}
-          authorName="Eloy"
-          place="Sao Paulo, Brazil"
-          rating={4.84}
-          amount={33}
-          date="Jul 29 - Aug 3"
-          route="/products"
-          userRoute="/user"
-          wishlistFunc={() => {}}
-        />
+      //  <div>
+         <ProductProps
+      
+      cover={dummyImage}
+      authorCover={profile}
+      authorName="Eloy"
+      place="Landmark Event Center"
+      rating={4.84}
+      amount={33}
+      date="Jul 29 - Aug 3"
+      route="/products"
+      userRoute="/user"
+      wishlistFunc={() => {}}
+     
+    />
+      //  </div>
       ))}
     </div>
   );

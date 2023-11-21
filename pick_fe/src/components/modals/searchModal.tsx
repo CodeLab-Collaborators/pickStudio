@@ -4,7 +4,7 @@ import "./style.css";
 
 const searchModal = () => {
   return (
-    <div className="fadeIn fixed inset-0 transition-all ease-in duration-50 bg-[#00000080] z-50">
+    <div className="fadeIn fixed inset-0 transition-all cursor-default ease-in duration-50 bg-[#00000080] z-50">
       <div
         className=" w-full pt-3 pb-6 bg-white px-[5%] z-10 cursor-default flex-col gap-5"
         onClick={(e: any) => {
@@ -20,9 +20,10 @@ const searchModal = () => {
 
           {/* serach by */}
           <div className="flex gap-8 ease-in transition-all text-[15px] ">
-            <p className="border-b-2 pb-1 border-black">Country</p>
-            <p>Capacity</p>
-            <p>Experience</p>
+            <p className="border-b-2 pb-1 font-medium border-black max-md:text-sm">country</p>
+            <p className="border-b-2 pb-1 font-medium  max-md:text-sm">capacity</p>
+            <p className="border-b-2 pb-1 font-medium  max-md:text-sm">experience</p>
+           
           </div>
 
           {/* auth */}
@@ -39,13 +40,13 @@ const searchModal = () => {
               type="search"
               placeholder="search for a studio"
               id=""
-              className="flex-1 h-full bg-transparent outline-none border-0"
+              className="flex-1 max-md:text-normal h-full bg-transparent outline-none border-0"
             />
 
             <button
               type="submit"
               style={{ background: "var(--gradient)" }}
-              className="px-4 py-3 transition-all ease-in hover:shadow-md text-white rounded-full flex items-center gap-2"
+              className="px-4 py-3 max-md:py-1 max-md:px-2 font-medium transition-all ease-in hover:shadow-md text-white rounded-full flex items-center gap-2"
             >
               <BiSearch /> Search
             </button>
