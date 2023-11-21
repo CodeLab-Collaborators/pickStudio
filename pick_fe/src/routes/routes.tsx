@@ -7,7 +7,9 @@ const Home = lazy(() => import("../pages/Home"));
 const SingleList = lazy(() => import("../pages/SingleList"));
 const Registration = lazy(() => import("../pages/auth/Registration"));
 const Login = lazy(() => import("../pages/auth/Login"));
-// const Verification = lazy(() => import("../pages/auth/Verification"));
+const Verification = lazy(() => import("../pages/auth/Verification"));
+const Profile = lazy(() => import("../pages/Profile"));
+const Category = lazy(() => import("../pages/Categories"));
 
 export const appRoutes = createBrowserRouter([
   {
@@ -45,10 +47,26 @@ export const appRoutes = createBrowserRouter([
         ),
       },
       {
-        path: "verification",
+        path: "verification/:id",
         element: (
           <Suspense fallback={<div>Loading...</div>}>
             {/* <Verification/> */}
+          </Suspense>
+        ),
+      },
+      {
+        path: "user",
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <Profile />
+          </Suspense>
+        ),
+      },
+      {
+        path: "category",
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <Category />
           </Suspense>
         ),
       },

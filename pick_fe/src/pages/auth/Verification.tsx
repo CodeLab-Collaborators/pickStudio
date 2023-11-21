@@ -1,11 +1,8 @@
 import React, { useRef, useState, ChangeEvent } from "react";
 import { GlobalButton } from "../../components";
 
-interface VerificationCodeInputProps {
-  onSubmit: (code: string) => void;
-}
 
-const Verification: React.FC<VerificationCodeInputProps> = () => {
+const Verification: React.FC = () => {
   document.title = "Verify your account - Pickastudio";
 
   const fieldsRef = useRef<HTMLDivElement>(null);

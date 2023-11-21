@@ -9,3 +9,6 @@ export { default as SingleOffer } from "./SingleOffer";
 export { default as BookSpace } from "./BookSpace";
 export { default as ProductHeader } from "./productHeader";
 export { default as GalleryImages } from "./GalleryImages";
+export { default as Reviews } from "./Reviews";
+export { default as Reviewers } from "./reviewers";
+export { default as Thingstoknow } from "./Thingstoknow";

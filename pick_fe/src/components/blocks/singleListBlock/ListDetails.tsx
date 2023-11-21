@@ -24,17 +24,17 @@ const ListDetails: FC<listDetails> = ({
   return (
     <div className="flex flex-col md:w-[50vw]">
       <div className="border-b-[1px] border-b-slate-300 py-7  flex gap-8 flex-col ">
-        <div className="w-[80%] text-2xl font-[500]">
+        <div className="w-[80%] text-2xl font-semibold">
           <div>Entire home not hosted by {host}</div>
           <div className="text-[17px] font-normal mt-1">
             {guests} guests . {bedrooms} bedrooms . {beds} beds . {baths} baths
           </div>
         </div>
-        <Link to="/user" className="flex items-center gap-3">
+        <Link to="/user" className="flex text-black items-center gap-3">
           <div className="w-12 h-12 rounded-[50%]">
             <img className="w-full h-full rounded-[50%]" src={img1} />
           </div>
-          <p>Studio name</p>
+          <p className="font-semibold">Studio name</p>
         </Link>
       </div>
       <div className="border-b-[1px] border-b-slate-300 py-7 flex flex-col gap-6">

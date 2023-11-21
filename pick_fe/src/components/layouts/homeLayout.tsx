@@ -11,7 +11,7 @@ const Homelayout = () => {
     <div className="bg-white min-h-screen h-full">
       <Header width="w-[90%]" position="sticky" />
       {location.pathname.includes("register") ||
-      location.pathname.includes("login") ||   location.pathname.includes("verification")  ? null : (
+      location.pathname.includes("login") ||   location.pathname.includes("verification") || location.pathname.includes("user")  ? null : (
         <Categories />
       )}
       <div className="w-[90%] m-auto mt-3">
