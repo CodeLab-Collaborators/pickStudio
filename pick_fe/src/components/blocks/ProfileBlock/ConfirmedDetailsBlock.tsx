@@ -36,7 +36,7 @@ const ConfirmedDetailsBlock = () => {
 
         {/* report profile */}
       </div>
-      <div className="flex items-center mt-3 gap-2 text-[20px]">
+      <div className="flex items-center mt-5 gap-2 text-[20px]">
         <div>
           <AiFillFlag />
         </div>
