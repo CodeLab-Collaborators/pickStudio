@@ -19,7 +19,7 @@ const Categories = () => {
       id="hide-scrollbar"
       className={`${
         shadow ? "h-[80px]" : "h-[98px]"
-      } w-full sticky top-[76px] bg-white  ${
+      } w-full sticky top-[95px] max-md:top-[85px] bg-white  ${
         shadow ? "shadow-md" : null
       } transition-all ease-in-out duration-200 z-20 
       }`}
