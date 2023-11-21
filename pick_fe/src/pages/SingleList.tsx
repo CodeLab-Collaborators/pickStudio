@@ -21,6 +21,7 @@ document.title = "page name - Pickastudio"
       <div className="flex overflow-x-scroll no-scrollbar">
         {dummyImage.map((el: any) => (
           <img
+          // key={id}
             src={el}
             className="w-full h-[300px] md:hidden object-top bg-black"
           />
