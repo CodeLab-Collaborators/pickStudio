@@ -8,6 +8,8 @@ import {
   ListDetails,
   Offers,
   ProductImage,
+  Reviews,
+  Thingstoknow,
   Title,
 } from "../components/blocks";
 
@@ -51,7 +53,12 @@ document.title = "page name - Pickastudio"
             <BookSpace />
           </div>
         </div>
-        <div className="py-20">{/* <Reviews /> */}</div>
+        <div className="py-20 px-16 max-md:px-0 max-lg:px-5">
+          <Reviews />
+          </div>
+          <div >
+          <Thingstoknow />
+        </div>
       </div>
     </div>
   );
