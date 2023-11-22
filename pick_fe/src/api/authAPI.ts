@@ -13,15 +13,18 @@ export const signWithGoogle = async () => {
 };
 
 export const createAccount = async (data: any) => {
-  return await axios.post(`${URL}/create-user`, data).then((res) => {
-    return res.data;
-  });
+  try {
+    return await axios.post(`${URL}/create-user`, data).then((res) => {
+      return res;
+    });
+  } catch (error) {
+    return error;
+  }
 };
 
 export const getSigninAccount = async () => {
   try {
     return await axios.get(`${URLSocialDetail}`).then((res) => {
-      console.log("show me: ", res);
       return res.data;
     });
   } catch (error: any) {
@@ -29,16 +32,26 @@ export const getSigninAccount = async () => {
   }
 };
 
-export const verifyAccount = async (userID: any) => {
-  return await axios.post(`${URL}/verify-user/${userID}`).then((res) => {
-    return res.data;
-  });
+export const verifyAccount = async (data: any) => {
+  try {
+    return await axios
+      .post(`https://pick-be.onrender.com/api/v1/verify-user`, { code: data })
+      .then((res) => {
+        return res.data;
+      });
+  } catch (error) {
+    return error;
+  }
 };
 
 export const signinAccount = async (data: any) => {
-  return await axios.post(`${URL}/sign-user/`, data).then((res) => {
-    return res.data;
-  });
+  try {
+    return await axios.post(`${URL}/sign-user`, data).then((res) => {
+      return res.data;
+    });
+  } catch (error) {
+    return error;
+  }
 };
 
 export const allAccount = async () => {

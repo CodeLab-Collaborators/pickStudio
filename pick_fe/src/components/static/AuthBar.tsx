@@ -1,10 +1,10 @@
-import { useState } from "react";
 import { IoIosMenu } from "react-icons/io";
 import { FaUserCircle } from "react-icons/fa";
 import { AuthDropDown } from ".";
+import { useToggleValue } from "../../global/globalState";
 
 const AuthBar = () => {
-  const [showAuthNav, setShowAuthNav] = useState<boolean>(false);
+  const [showAuthNav, setShowAuthNav] = useToggleValue();
 
   return (
     <div className="flex items-center gap-2 max-md:hidden text-sm tracking-wide">
