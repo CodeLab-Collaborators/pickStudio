@@ -1,8 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import { HomeLayout, ProductLayout } from "../components";
-import PrivateRoute from "./privateRoute";
-
+// import PrivateRoute from "./privateRoute";
 
 const Home = lazy(() => import("../pages/Home"));
 const SingleList = lazy(() => import("../pages/SingleList"));
@@ -48,10 +47,10 @@ export const appRoutes = createBrowserRouter([
         ),
       },
       {
-        path: "verification/:id",
+        path: "verification/",
         element: (
           <Suspense fallback={<div>Loading...</div>}>
-            <Verification/>
+            <Verification />
           </Suspense>
         ),
       },
@@ -59,7 +58,7 @@ export const appRoutes = createBrowserRouter([
         path: "user",
         element: (
           <Suspense fallback={<div>Loading...</div>}>
-            <Profile/>
+            <Profile />
           </Suspense>
         ),
       },
@@ -67,7 +66,7 @@ export const appRoutes = createBrowserRouter([
         path: "category",
         element: (
           <Suspense fallback={<div>Loading...</div>}>
-            <Category/>
+            <Category />
           </Suspense>
         ),
       },

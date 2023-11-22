@@ -3,6 +3,7 @@ import { atomWithStorage } from "jotai/utils";
 
 const signUser = atomWithStorage("mainUser", "" || null);
 const myEmail = atomWithStorage("myEmail", "");
+const myToggle = atomWithStorage("myEmail", false);
 const enc = atomWithStorage("enc", "");
 
 export const useUser = () => {
@@ -11,6 +12,10 @@ export const useUser = () => {
 
 export const useEmailValue = () => {
   return useAtom(myEmail);
+};
+
+export const useToggleValue = () => {
+  return useAtom(myToggle);
 };
 
 export const useEnc = () => {

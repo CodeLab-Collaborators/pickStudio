@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { FaGreaterThan } from "react-icons/fa6";
 import pix from "../assets/pix.jpg";
-import Notify from "./Notify";
 
 import pix1 from "../assets/1.jpg";
 import pix2 from "../assets/2.jpg";
@@ -17,7 +16,7 @@ const Component = () => {
   const dotRef4: React.MutableRefObject<any> = useRef();
   const dotRef5: React.MutableRefObject<any> = useRef();
 
-  const [state, setState] = useState<number>(1);
+  // const [state, setState] = useState<number>(1);
   const [count, setCount] = useState<number>(1);
 
   let images = [pix, pix1, pix2, pix3, pix4, pix5];

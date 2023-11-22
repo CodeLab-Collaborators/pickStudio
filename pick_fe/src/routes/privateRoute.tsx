@@ -1,4 +1,3 @@
-import axios from "axios";
 import { FC, PropsWithChildren, useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { getSigninAccount } from "../api/authAPI";
@@ -7,8 +6,10 @@ import { getSigninAccount } from "../api/authAPI";
 
 const PrivateRoute: FC<PropsWithChildren> = ({ children }) => {
   const [user, setUser] = useState("");
+
   useEffect(() => {
     getSigninAccount().then((res) => {
+      setUser(res);
       console.log("read: ", res);
     });
   }, []);
