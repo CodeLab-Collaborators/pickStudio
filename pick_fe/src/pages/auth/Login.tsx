@@ -7,10 +7,11 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ScaleLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
+import { useUser } from "../../global/globalState";
 
 const Login = () => {
   document.title = "Login - Pickastudio";
-
+  const [user, setUser] = useUser();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [show, setShow] = useState<boolean>(false);
@@ -27,7 +28,8 @@ const Login = () => {
     const data = { email, password };
     setShow(true);
     signinAccount(data)
-      .then(() => {
+      .then((res: any) => {
+        setUser(res.data);
         toast("welcome");
         setShow(false);
       })
