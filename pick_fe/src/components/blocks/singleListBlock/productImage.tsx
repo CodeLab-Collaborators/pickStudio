@@ -20,32 +20,36 @@ const toggleGallery = ()=>{
       <div className=" rounded-tl-2xl rounded-bl-2xl col-span-2 row-span-2">
         <img
           src={dummyImage[3]}
-          className="w-full   rounded-tl-2xl rounded-bl-2xl h-full object-cover object-top"
+          onClick={toggleGallery}
+          className="w-full  cursor-pointer rounded-tl-2xl rounded-bl-2xl h-full object-cover object-top"
         />
       </div>
       <div className="">
         <img
           src={dummyImage[1]}
-          className="w-full h-full object-cover cursor-pointer object-top"
+          className="w-full  h-full object-cover cursor-pointer object-top"
           onClick={toggleGallery}
         />
       </div>
       <div className=" rounded-tr-2xl">
         <img
           src={dummyImage[2]}
-          className="w-full rounded-tr-2xl h-full object-cover object-top"
+          onClick={toggleGallery}
+          className="w-full cursor-pointer rounded-tr-2xl h-full object-cover object-top"
         />
       </div>
       <div className=" ">
         <img
           src={dummyImage[4]}
-          className="w-full h-full object-cover object-top"
+          onClick={toggleGallery}
+          className="w-full cursor-pointer h-full object-cover object-top"
         />
       </div>
       <div className="hover:bg-[#000] rounded-br-2xl">
         <img
           src={dummyImage[0]}
-          className="w-full  rounded-br-2xl h-full object-cover object-top"
+          onClick={toggleGallery}
+          className="w-full cursor-pointer rounded-br-2xl h-full object-cover object-top"
         />
       </div>
       <div className="absolute bottom-3 right-5  ">

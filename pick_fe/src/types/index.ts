@@ -3,6 +3,7 @@ import {
   ButtonHTMLAttributes,
   CSSProperties,
   InputHTMLAttributes,
+  ReactElement
 } from "react";
 
 export type HeaderData = {
@@ -65,3 +66,12 @@ export type titleData = {
   reviews: string;
   place: string;
 };
+
+export type StudioListButtonProps = {
+  title: string;
+  description: string;
+  buttonText: string;
+  buttonPath: string;
+  icon: ReactElement;
+  iconColor: string;
+}
