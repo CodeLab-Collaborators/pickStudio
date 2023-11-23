@@ -1,14 +1,14 @@
 import  { FC } from 'react'
 
 const Overview:FC = () => {
-document.title= "Create your listing - Pickastudio"
+document.title= "Create your studio - Pickastudio"
 
   return (
     <div className='w-full h-full flex justify-center items-center'>
       <div className='w-[80%] h-full max-md:w-[90%] gap-10 grid grid-cols-2 max-md:flex max-md:flex-col max-md:gap-5'>
        {/* title */}
         <div className='flex place-items-center justify-center '>
-          <h1 className=' max-md:text-[1.78rem] max-lg:text-[2.2rem] max-md:leading-tight leading-[4rem] text-[3.5rem] max-w-[514px]'>It’s easy to get started on Pickastudio</h1>
+          <h1 className='font-normal max-md:text-[1.78rem] max-lg:text-[2.2rem] max-md:leading-tight leading-[4rem] text-[3.29rem] max-w-[514px]'>It’s easy to get started on Pickastudio</h1>
         </div>
 
         {/* steps indicator */}

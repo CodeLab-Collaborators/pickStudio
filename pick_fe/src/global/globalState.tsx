@@ -1,4 +1,4 @@
-import { useAtom } from "jotai";
+import { atom,useAtom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
 
 const signUser = atomWithStorage("mainUser", "" || null);
@@ -26,3 +26,5 @@ export const useToggleValue = () => {
 export const useEnc = () => {
   return useAtom(enc);
 };
+
+

@@ -13,6 +13,7 @@ const Profile = lazy(() => import("../pages/Profile"));
 const Category = lazy(() => import("../pages/Categories"));
 const StudioHome = lazy(() => import("../pages/studio/dashboard/Home"));
 const Overview = lazy(() => import("../pages/studio/uploadStudio/Overview"));
+const AboutStudio = lazy(() => import("../pages/studio/uploadStudio/AboutStudio"));
 
 export const appRoutes = createBrowserRouter([
   {
@@ -119,7 +120,7 @@ children:[
 {
   path:"about-your-studio",
   element: <Suspense fallback={<div>Loading...</div>}>
-    <>About</>
+    <AboutStudio/>
   </Suspense>
 }
 ]
