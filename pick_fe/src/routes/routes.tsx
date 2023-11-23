@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import { lazy, Suspense } from "react";
-import { HomeLayout, ProductLayout } from "../components";
+import { HomeLayout, ProductLayout, StudioLayout } from "../components";
 // import PrivateRoute from "./privateRoute";
 
 const Home = lazy(() => import("../pages/Home"));
@@ -10,6 +10,7 @@ const Login = lazy(() => import("../pages/auth/Login"));
 const Verification = lazy(() => import("../pages/auth/Verification"));
 const Profile = lazy(() => import("../pages/Profile"));
 const Category = lazy(() => import("../pages/Categories"));
+const StudioHome = lazy(() => import("../pages/studio/Home"));
 
 export const appRoutes = createBrowserRouter([
   {
@@ -86,6 +87,21 @@ export const appRoutes = createBrowserRouter([
       },
     ],
   },
+  {
+    path:"/studio",
+    element:    <Suspense fallback={<div>Loading...</div>}>
+      <StudioLayout/>
+    </Suspense>,
+    children:[
+      {
+        index: true,
+        element:  <Suspense fallback={<div>Loading...</div>}>
+        <StudioHome />
+      </Suspense>
+      }
+    ]
+  },
+  
   {
     path: "*",
     element: <>page not found</>,
