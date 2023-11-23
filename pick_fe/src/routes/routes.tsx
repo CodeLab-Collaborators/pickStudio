@@ -1,6 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
 import { lazy, Suspense } from "react";
-import { HomeLayout, ProductLayout, StudioLayout, UploadStudioLayout } from "../components";
+import {
+  HomeLayout,
+  ProductLayout,
+  StudioLayout,
+  UploadStudioLayout,
+} from "../components";
+import PrivateRoute from "./privateRoute";
 
 // import PrivateRoute from "./privateRoute";
 
@@ -13,7 +19,9 @@ const Profile = lazy(() => import("../pages/Profile"));
 const Category = lazy(() => import("../pages/Categories"));
 const StudioHome = lazy(() => import("../pages/studio/dashboard/Home"));
 const Overview = lazy(() => import("../pages/studio/uploadStudio/Overview"));
-const AboutStudio = lazy(() => import("../pages/studio/uploadStudio/AboutStudio"));
+const AboutStudio = lazy(
+  () => import("../pages/studio/uploadStudio/AboutStudio")
+);
 
 export const appRoutes = createBrowserRouter([
   {
@@ -28,9 +36,9 @@ export const appRoutes = createBrowserRouter([
         index: true,
         element: (
           <Suspense fallback={<div>Loading...</div>}>
-            {/* <PrivateRoute> */}
+            <PrivateRoute>
               <Home />
-            {/* </PrivateRoute> */}
+            </PrivateRoute>
           </Suspense>
         ),
       },
@@ -91,41 +99,51 @@ export const appRoutes = createBrowserRouter([
     ],
   },
   {
-    path:"/studio",
-    element:    <Suspense fallback={<div>Loading...</div>}>
-      <StudioLayout/>
-    </Suspense>,
-    children:[
+    path: "/studio",
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <StudioLayout />
+      </Suspense>
+    ),
+    children: [
       {
         index: true,
-        element:  <Suspense fallback={<div>Loading...</div>}>
-        <StudioHome />
-      </Suspense>
-      }
-    ]
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <StudioHome />
+          </Suspense>
+        ),
+      },
+    ],
   },
 
   {
-path:"/upload-studio",
-element:    <Suspense fallback={<div>Loading...</div>}>
-<UploadStudioLayout/>
-</Suspense>,
-children:[
-{
-  index: true,
-  element:  <Suspense fallback={<div>Loading...</div>}>
-  <Overview />
-</Suspense>
-},
-{
-  path:"about-your-studio",
-  element: <Suspense fallback={<div>Loading...</div>}>
-    <AboutStudio/>
-  </Suspense>
-}
-]
+    path: "/upload-studio",
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <UploadStudioLayout />
+      </Suspense>
+    ),
+    children: [
+      {
+        index: true,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <Overview />
+          </Suspense>
+        ),
+      },
+      {
+        path: "about-your-studio",
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <AboutStudio />
+          </Suspense>
+        ),
+      },
+    ],
   },
-  
+
   {
     path: "*",
     element: <>page not found</>,
