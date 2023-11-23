@@ -7,6 +7,30 @@ const Setting: FC = () => {
   document.title = "(Studio name) profile setting - Pickastudio";
   const { data } = userHooks();
 
+  const pathData = [
+    {
+      icon: <RiPagesLine size={35} />,
+      title: "Personal Info",
+      detail: " Provide personal details and how we can reach you.",
+      url: "/",
+      size: 35,
+    },
+    {
+      icon: <RiPagesLine size={35} />,
+      title: "Professional Info",
+      detail: " Provide personal details and how we can reach you.",
+      url: "/",
+      size: 35,
+    },
+    {
+      icon: <RiPagesLine size={35} />,
+      title: "Personal Info",
+      detail: " Provide personal details and how we can reach you.",
+      url: "/",
+      size: 35,
+    },
+  ];
+
   return (
     <div>
       <div className="w-full m-auto py-8 my-4 flex gap-24 max-lg:block max-md:pt-1">
@@ -30,14 +54,18 @@ const Setting: FC = () => {
 
       {/* profile Account Detail Card */}
 
-      <div>
-        <div>
-          <div>
-            <RiPagesLine />
-          </div>
-          <div>Personal Info</div>
-          <div>Provide personal details and how we can reach you.</div>
-        </div>
+      <div className="my-6 flex flex-wrap ">
+        {pathData.map((props: any, i: number) => (
+          <Link to={`${props.url}`} key={i} className="text-black">
+            <div className="w-[300px] border rounded-md p-3  m-2 min-h-[150px] text-black shadow-md flex flex-col hover:shadow-lg">
+              <div className="flex-1">{props.icon}</div>
+              <div className="font-[400] mb-1">{props.title}</div>
+              <div className="text-[12px] leading-4 font-[300]">
+                {props.detail}
+              </div>
+            </div>
+          </Link>
+        ))}
       </div>
     </div>
   );
