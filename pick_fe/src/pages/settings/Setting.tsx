@@ -2,6 +2,7 @@ import { FC } from "react";
 import { userHooks } from "../../hooks/userHooks";
 import { Link } from "react-router-dom";
 import { RiPagesLine } from "react-icons/ri";
+import { HiMiniBuildingOffice2 } from "react-icons/hi2";
 
 const Setting: FC = () => {
   document.title = "(Studio name) profile setting - Pickastudio";
@@ -16,7 +17,7 @@ const Setting: FC = () => {
       size: 35,
     },
     {
-      icon: <RiPagesLine size={35} />,
+      icon: <HiMiniBuildingOffice2 size={35} />,
       title: "Professional Info",
       detail: " Provide personal details and how we can reach you.",
       url: "/",
