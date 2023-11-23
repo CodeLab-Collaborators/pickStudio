@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import { lazy, Suspense } from "react";
-import { HomeLayout, ProductLayout, StudioLayout } from "../components";
+import { HomeLayout, ProductLayout, StudioLayout, UploadStudioLayout } from "../components";
+
 // import PrivateRoute from "./privateRoute";
 
 const Home = lazy(() => import("../pages/Home"));
@@ -10,7 +11,8 @@ const Login = lazy(() => import("../pages/auth/Login"));
 const Verification = lazy(() => import("../pages/auth/Verification"));
 const Profile = lazy(() => import("../pages/Profile"));
 const Category = lazy(() => import("../pages/Categories"));
-const StudioHome = lazy(() => import("../pages/studio/Home"));
+const StudioHome = lazy(() => import("../pages/studio/dashboard/Home"));
+const Overview = lazy(() => import("../pages/studio/uploadStudio/Overview"));
 
 export const appRoutes = createBrowserRouter([
   {
@@ -100,6 +102,27 @@ export const appRoutes = createBrowserRouter([
       </Suspense>
       }
     ]
+  },
+
+  {
+path:"/upload-studio",
+element:    <Suspense fallback={<div>Loading...</div>}>
+<UploadStudioLayout/>
+</Suspense>,
+children:[
+{
+  index: true,
+  element:  <Suspense fallback={<div>Loading...</div>}>
+  <Overview />
+</Suspense>
+},
+{
+  path:"about-your-studio",
+  element: <Suspense fallback={<div>Loading...</div>}>
+    <>About</>
+  </Suspense>
+}
+]
   },
   
   {

@@ -1,5 +1,5 @@
 
-import { WelcomeBlock } from '../../components/blocks'
+import { WelcomeBlock } from '../../../components/blocks'
 
 const Home = () => {
     document.title = "Studio Dashboard - Pickastudio"

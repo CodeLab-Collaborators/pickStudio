@@ -13,7 +13,7 @@ const WelcomeBlock = () => {
     {/* create listing */}
 <div className="mt-10 grid gap-5 grid-cols-4 max-lg:grid-cols-2 max-md:grid-cols-1">
 {/* listing button */}
-<StudioListButton title="Create a listing" description="required to start getting booked" buttonText="Get started" iconColor="text-[var(--primary)]" icon={<CgDanger/>} buttonPath=""/>
+<StudioListButton title="Create a listing" description="required to start getting booked" buttonText="Get started" iconColor="text-[var(--primary)]" icon={<CgDanger/>} buttonPath="/upload-studio"/>
 
 </div>
 </div>

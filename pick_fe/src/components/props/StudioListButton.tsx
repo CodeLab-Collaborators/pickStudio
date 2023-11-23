@@ -20,8 +20,9 @@ const StudioListButton: FC<StudioListButtonProps> = ({
         <div>
           <h2 className="font-semibold">{title}</h2>
           <p className="text-sm text-[var(--primary)] font-normal">{description}</p>
-          <NavLink to={buttonPath} className="font-semibold underline cursor-pointer mt-4">
-            {buttonText}
+          <NavLink to={buttonPath} >
+            <p className="font-semibold underline cursor-pointer mt-4">     {buttonText}</p>
+        
           </NavLink>
         </div>
 
