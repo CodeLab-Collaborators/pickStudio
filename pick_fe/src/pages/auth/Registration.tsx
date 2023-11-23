@@ -4,7 +4,6 @@ import { GlobalButton, SocialLogin } from "../../components";
 import { useForm } from "react-hook-form";
 import { createAccount } from "../../api/authAPI";
 import { useNavigate } from "react-router-dom";
-import toasted from "react-hot-toast";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEmailValue } from "../../global/globalState";

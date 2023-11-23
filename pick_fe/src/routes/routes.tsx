@@ -28,7 +28,7 @@ export const appRoutes = createBrowserRouter([
         element: (
           <Suspense fallback={<div>Loading...</div>}>
             {/* <PrivateRoute> */}
-            <Home />
+              <Home />
             {/* </PrivateRoute> */}
           </Suspense>
         ),

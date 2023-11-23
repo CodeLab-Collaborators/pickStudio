@@ -1,10 +1,14 @@
 import { IoIosMenu } from "react-icons/io";
 import { FaUserCircle } from "react-icons/fa";
 import { AuthDropDown } from ".";
-import { useToggleValue } from "../../global/globalState";
+import { useSignUserData, useToggleValue } from "../../global/globalState";
+import { userHooks } from "../../hooks/userHooks";
 
 const AuthBar = () => {
   const [showAuthNav, setShowAuthNav] = useToggleValue();
+  const [userData]: any | {} = useSignUserData();
+
+  const { data, isLoading } = userHooks(userData?.id);
 
   return (
     <div className="flex items-center gap-2 max-md:hidden text-sm tracking-wide">
@@ -22,7 +26,17 @@ const AuthBar = () => {
           <IoIosMenu />
         </div>
         <div className="text-2xl">
-          <FaUserCircle />
+          {data?.avatar ? (
+            data?.avatar
+          ) : (
+            <div
+              className="text-[15px] rounded-full flex justify-center items-center font-bold w-[25px] h-[25px] text-white "
+              style={{ background: "var(--gradient)" }}
+            >
+              {data?.firstName?.charAt(0)}
+            </div>
+          )}
+          {/* <FaUserCircle /> */}
         </div>
       </div>
 

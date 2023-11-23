@@ -1,22 +1,23 @@
 import { FC, PropsWithChildren, useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { getSigninAccount } from "../api/authAPI";
-
-// ("http://localhost:3300/api/v1/sign-in/success")
+import { jwtDecode } from "jwt-decode";
+import { useSignUserData, useUser } from "../global/globalState";
 
 const PrivateRoute: FC<PropsWithChildren> = ({ children }) => {
-  const [user, setUser] = useState("");
-
+  const [user] = useUser();
+  const [userData, setUserData] = useSignUserData();
+  const getToken = JSON.parse(localStorage.getItem("mainUser")!);
   useEffect(() => {
-    getSigninAccount().then((res) => {
-      setUser(res);
-      console.log("read: ", res);
-    });
+    if (user) {
+      const token = jwtDecode(getToken);
+      setUserData(token);
+    }
   }, []);
 
-  //   console.log("Reading Now: ", user);
-
-  return <div>{!user ? <Navigate to="/" /> : <>{children}</>}</div>;
+  return (
+    <div>{getToken !== null ? <>{children}</> : <Navigate to="/login" />}</div>
+  );
 };
 
 export default PrivateRoute;
