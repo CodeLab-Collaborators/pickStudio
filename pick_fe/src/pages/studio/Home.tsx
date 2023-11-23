@@ -1,8 +1,13 @@
-import React from 'react'
+
+import { WelcomeBlock } from '../../components/blocks'
 
 const Home = () => {
+    document.title = "Studio Dashboard - Pickastudio"
+
   return (
-    <div>Home</div>
+    <div>
+        <WelcomeBlock/>
+    </div>
   )
 }
 
