@@ -2,6 +2,7 @@ import { AiFillFlag } from "react-icons/ai";
 import { FaCheck } from "react-icons/fa6";
 import { userHooks } from "../../../hooks/userHooks";
 import { FcCancel } from "react-icons/fc";
+import { Link } from "react-router-dom";
 
 const ConfirmedDetailsBlock = () => {
   const { data } = userHooks();
@@ -48,9 +49,11 @@ const ConfirmedDetailsBlock = () => {
         <div>
           <AiFillFlag />
         </div>
-        <div className="font-semibold text-base underline">
-          Update your profile
-        </div>
+        <Link to="/setting" style={{ textDecoration: "none", color: "black" }}>
+          <div className="font-semibold text-base underline">
+            Update your profile
+          </div>
+        </Link>
       </div>
     </div>
   );

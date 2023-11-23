@@ -29,9 +29,14 @@ const UserPostBlock = () => {
         </div>
 
         {/* show more reviews button */}
-      <div className="w-[200px] ">
-      <GlobalButton style={{color: "black"}}  className="border border-black">Show Review</GlobalButton>
-      </div>
+        <div className="w-[200px] ">
+          <GlobalButton
+            style={{ color: "black" }}
+            className="border border-black"
+          >
+            Show Review
+          </GlobalButton>
+        </div>
         <hr />
       </div>
 
@@ -52,7 +57,7 @@ const UserPostBlock = () => {
             date="Jul 29 - Aug 3"
             route="/products"
             userRoute="/user"
-            wishlistFunc={()=>{}}
+            wishlistFunc={() => {}}
           />
         </div>
       </div>

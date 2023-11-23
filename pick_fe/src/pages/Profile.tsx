@@ -1,8 +1,8 @@
 import { FC } from "react";
 import { UserBlock, UserPostBlock } from "../components/blocks";
 
-const Profile:FC = () => {
-document.title = "(Studio name) profile - Pickastudio"
+const Profile: FC = () => {
+  document.title = "(Studio name) profile - Pickastudio";
 
   return (
     <div>

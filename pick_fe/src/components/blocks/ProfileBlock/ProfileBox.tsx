@@ -30,7 +30,9 @@ const ProfileBox = () => {
         <div className=" font-bold text-[30px]">
           {data?.firstName} {data?.lastName}
         </div>
-        <p className=" font-semibold ">category: (event center)</p>
+        <p className=" font-semibold ">
+          Profession: ({data?.profession ? data?.profession : "Artist"})
+        </p>
       </div>
     </div>
   );
