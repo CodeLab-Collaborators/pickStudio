@@ -12,7 +12,7 @@ document.title = "Review and publish your listing - Pickastudio"
                 <h1 className='font-semibold text-5xl max-lg:text-4xl'>Review your listing</h1>
                 <p className='mt-7 text-[1.125rem] max-md:text-[1rem] leading-6 text-[#717171] font-normal'>Here's what we'll show to users. Make sure everything looks good.</p>
             </div>
-            <div className='grid grid-cols-2 mt-16 max-lg:grid-cols-1 gap-4'>
+            <div className='grid grid-cols-2 mt-16 max-lg:mt-10 max-lg:grid-cols-1 gap-24 max-lg:gap-12'>
                 <div className='bg-white p-5 shadow-2xl h-[400px] rounded-2xl w-[358px] max-md:w-[100%] '>
                     {/* image */}
                     <div className='w-full relative h-[85%] overflow-hidden rounded-md'>
@@ -34,7 +34,15 @@ document.title = "Review and publish your listing - Pickastudio"
                   </div>
                     </div>
                 </div>
-                <p>hdfhjd</p>
+
+
+                {/* What's next */}
+               <div className='flex flex-col justify-center'>
+               <h1 className='text-2xl font-semibold'>What's next?</h1>
+               <div>
+                <h2 className='text-3xl font-normal mt-4'>Hit the publish button</h2>
+               </div>
+               </div>
                
             </div>
         </div>
