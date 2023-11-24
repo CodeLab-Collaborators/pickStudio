@@ -9,27 +9,20 @@ const StudioFeatures = () => {
     'Production and editing facilities',
     'Flexible space layout',
     'Proper lighting',
-    'Acoustic treatment',
     'HVAC systems',
     'Comfortable seating',
     'Workstations or desks',
     'Waiting areas or lounge spaces',
     'Technical support',
     'Rental services',
-    'Event planning services',
-    'Access control',
     'Surveillance or security systems',
     'High-speed internet access',
     'Digital platform integration',
     'Power outlets',
-    'Plumbing facilities',
     'Storage spaces',
     'Accessibility features',
     'Aesthetic considerations',
     'Meeting rooms or collaborative spaces',
-    'Networking opportunities',
-    'Workshops or training sessions',
-    'Community events',
   ];
 
   // Handle feature selection
@@ -54,8 +47,8 @@ const StudioFeatures = () => {
           <button
             key={feature}
             className={`${
-              selectedFeatures.includes(feature) ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black'
-            } p-2 m-2 rounded`}
+              selectedFeatures.includes(feature) ? 'bg-[var(--primary)] text-white ' : 'bg-gray-200 text-black'
+            } p-2 m-2 rounded font-normal`}
             onClick={() => handleFeatureClick(feature)}
           >
             {feature}
@@ -63,14 +56,16 @@ const StudioFeatures = () => {
         ))}
       </div>
 
-      <div>
+{/* to see the user selected features */}
+
+      {/* <div>
         <h2>Selected Features:</h2>
         <ul>
           {selectedFeatures.map((selectedFeature) => (
             <li key={selectedFeature}>{selectedFeature}</li>
           ))}
         </ul>
-      </div>
+      </div> */}
     </div>
   );
 };

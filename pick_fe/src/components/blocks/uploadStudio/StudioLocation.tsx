@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import { FC, useState } from 'react';
 import GlobalInput from '../../props/GlobalInput';
 
 const StudioLocation: FC = () => {

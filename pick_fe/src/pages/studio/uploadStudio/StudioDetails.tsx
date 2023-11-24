@@ -1,5 +1,5 @@
 import {FC} from 'react'
-import { UploadStudioStep } from '../../../components/blocks/uploadStudio'
+import { StudioFeatures, UploadStudioStep } from '../../../components/blocks/uploadStudio'
 
 const StudioDetails:FC = () => {
     document.title = "Step 2: More details about your studio - Pickastudio"
@@ -15,6 +15,7 @@ const StudioDetails:FC = () => {
     
     {/* second box */}
             <div className="">
+                <StudioFeatures/>
                 {/* <StudioCategory/>
                 <StudioLocation/>
               <StudioSize/> */}
