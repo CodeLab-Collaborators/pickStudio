@@ -21,6 +21,15 @@ const StudioPicturesUpload = () => {
     // Update state with new pictures
     setUploadedPictures((prevPictures) => [...prevPictures, ...newPictures]);
 
+    // Save the updated pictures in local storage
+    const storedData = localStorage.getItem('uploadStudioData');
+    const existingData = storedData ? JSON.parse(storedData) : {};
+    
+    localStorage.setItem('uploadStudioData', JSON.stringify({
+      ...existingData,
+      studioPictures: [...existingData.studioPictures || [], ...newPictures.map((pic:any) => URL.createObjectURL(pic))],
+    }));
+
     // Reset the file input to allow multiple uploads
     setFileInputKey(Date.now());
   };
@@ -73,10 +82,10 @@ const StudioPicturesUpload = () => {
       <div>
         <div className='grid grid-cols-2 gap-4'>
           {uploadedPictures.length > 0 &&
-            uploadedPictures.map((picture, index) => (
+            uploadedPictures.map((pic, index) => (
               <div key={index} className={`${index === 0 ? 'col-span-2' : ''} bg-slate-50 flex justify-center items-center flex-col mt-3 relative`}>
                 <img
-                  src={URL.createObjectURL(picture)}
+                  src={URL.createObjectURL(pic)}
                   alt={`Uploaded ${index + 1}`}
                   className='max-w-full h-[250px] max-md:h-[150px]'
                 />
