@@ -61,7 +61,7 @@ export const RenderButtonCheck = () => {
       );
     }else if (location.pathname.includes('finish-listing')) {
       return (
-        <NavLink to="#">
+        <NavLink to="review-listing">
           <GlobalButton
             // disabled={isNextButtonDisabled}
             // className={`${
@@ -73,6 +73,21 @@ export const RenderButtonCheck = () => {
             Review Listing
           </GlobalButton>
         </NavLink>
+      );
+    }else if (location.pathname.includes('review-listing')) {
+      return (
+        
+          <GlobalButton
+            // disabled={isNextButtonDisabled}
+            // className={`${
+            //   isNextButtonDisabled ? 'opacity-50 cursor-not-allowed' : 'bg-red-600  transition-all ease-in'
+            // }`}
+            // style={{background: `${!isNextButtonDisabled ? "var(--gradient)" : "var(--primary)"}`}}
+            style={{background: "var(--gradient)"}} className="font-semibold "
+          >
+            Publish Now
+          </GlobalButton>
+       
       );
     }
   };
