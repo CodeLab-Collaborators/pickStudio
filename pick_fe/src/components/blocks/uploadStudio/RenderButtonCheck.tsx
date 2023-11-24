@@ -46,7 +46,7 @@ export const RenderButtonCheck = () => {
       );
     }else if (location.pathname.includes('studio-details')) {
       return (
-        <NavLink to="#">
+        <NavLink to="finish-listing">
           <GlobalButton
             // disabled={isNextButtonDisabled}
             // className={`${
@@ -56,6 +56,21 @@ export const RenderButtonCheck = () => {
             style={{background: "var(--gradient)"}} className="font-semibold "
           >
             Next
+          </GlobalButton>
+        </NavLink>
+      );
+    }else if (location.pathname.includes('finish-listing')) {
+      return (
+        <NavLink to="#">
+          <GlobalButton
+            // disabled={isNextButtonDisabled}
+            // className={`${
+            //   isNextButtonDisabled ? 'opacity-50 cursor-not-allowed' : 'bg-red-600  transition-all ease-in'
+            // }`}
+            // style={{background: `${!isNextButtonDisabled ? "var(--gradient)" : "var(--primary)"}`}}
+            style={{background: "var(--gradient)"}} className="font-semibold "
+          >
+            Review Listing
           </GlobalButton>
         </NavLink>
       );

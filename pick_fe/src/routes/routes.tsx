@@ -24,6 +24,7 @@ const Overview = lazy(() => import("../pages/studio/uploadStudio/Overview"));
 const Setting = lazy(() => import("../pages/settings/Setting"));
 const AboutStudio = lazy(() => import("../pages/studio/uploadStudio/AboutStudio"));
 const StudioDetails = lazy(() => import("../pages/studio/uploadStudio/StudioDetails"));
+const FinishListing = lazy(() => import("../pages/studio/uploadStudio/FinishListing"));
 
 export const appRoutes = createBrowserRouter([
   {
@@ -177,6 +178,12 @@ children:[
   path:"studio-details",
   element: <Suspense fallback={<div>Loading...</div>}>
     <StudioDetails/>
+  </Suspense>
+},
+{
+  path:"finish-listing",
+  element: <Suspense fallback={<div>Loading...</div>}>
+    <FinishListing/>
   </Suspense>
 }
 ]
