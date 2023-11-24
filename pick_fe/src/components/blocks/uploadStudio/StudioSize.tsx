@@ -2,29 +2,37 @@ import  { FC, useState } from 'react';
 import GlobalInput from '../../props/GlobalInput';
 
 const StudioSize: FC = () => {
-  const [numberOfGuests, setNumberOfGuests] = useState(() => {
-    // Retrieve stored data from localStorage on component mount
+
+
+
+
+
+  const getStoredData = () => {
     const storedData = localStorage.getItem('uploadStudioData');
-    return storedData ? JSON.parse(storedData).numberOfGuests || '' : '';
-  });
+    return storedData ? JSON.parse(storedData).numberOfGuests : '';
+  };
 
-  const handleGuestsChange = (e: any) => {
-    const updatedGuests = e.target.value;
+  const [numberOfGuests, setNumberOfGuests] = useState(getStoredData);
+
+  const handleAddressChange = (e: any) => {
+     const updatedGuests = e.target.value;
     setNumberOfGuests(updatedGuests);
-  };
 
-  const handleSubmit = () => {
-    console.log('Submitting number of guests:', numberOfGuests);
-
-    // Save the updated number of guests in localStorage
-    localStorage.setItem(
-      'uploadStudioData',
-      JSON.stringify({
-        ...JSON.parse(localStorage.getItem('uploadStudioData')!) || {},
+    console.log('Submitting number of guest:', numberOfGuests);
+  
+    // Retrieve existing data from localStorage
+    const existingData = JSON.parse(localStorage.getItem('uploadStudioData')!) || {};
+  
+    // Update the studio address with the new value
+    const updatedData = {
+      ...existingData,
         numberOfGuests: numberOfGuests,
-      })
-    );
+    };
+  
+    // Save the updated data in localStorage
+    localStorage.setItem('uploadStudioData', JSON.stringify(updatedData));
   };
+
 
   return (
     <div>
@@ -33,11 +41,11 @@ const StudioSize: FC = () => {
       <div className='mt-4'>
         <GlobalInput
           type='number'
-          max={6}
+          maxLength={9}
           placeholder='Number of guests'
           value={numberOfGuests}
-          onChange={handleGuestsChange}
-          onBlur={handleSubmit}
+          onChange={handleAddressChange}
+
         />
       </div>
     </div>

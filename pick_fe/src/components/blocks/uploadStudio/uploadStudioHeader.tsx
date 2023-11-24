@@ -3,7 +3,7 @@ import { GlobalButton, Logo } from "../.."
 
 const uploadStudioHeader = () => {
   return (
-    <div className="w-[90%] py-2  m-auto flex items-center justify-between">
+    <div className="w-[90%] bg-white m-auto h-[8vh] z-40 sticky top-0 flex items-center justify-between">
         {/* logo */}
         <div className="w-[90px] max-md:hidden">
             <Logo/>

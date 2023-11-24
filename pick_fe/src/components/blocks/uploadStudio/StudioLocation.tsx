@@ -9,12 +9,10 @@ const StudioLocation: FC = () => {
 
   const [studioAddress, setStudioAddress] = useState(getStoredData);
 
-  const handleAddressChange = (event: any) => {
-    const updatedAddress = event.target.value;
+  const handleAddressChange = (e: any) => {
+    const updatedAddress = e.target.value;
     setStudioAddress(updatedAddress);
-  };
 
-  const handleSubmit = () => {
     console.log('Submitting studio address:', studioAddress);
   
     // Retrieve existing data from localStorage
@@ -30,6 +28,8 @@ const StudioLocation: FC = () => {
     localStorage.setItem('uploadStudioData', JSON.stringify(updatedData));
   };
 
+
+
   return (
     <div>
       <h1 className='mt-7 font-semibold text-2xl max-md:text-lg'>Where's your studio located?</h1>
@@ -40,8 +40,8 @@ const StudioLocation: FC = () => {
           placeholder="Address"
           value={studioAddress}
           onChange={handleAddressChange}
-          onBlur={handleSubmit}
           required
+          maxLength={60}
         />
       </div>
     </div>
