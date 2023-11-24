@@ -1,7 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const StudioFeatures = () => {
   const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
+  const [uploadStudioData, setUploadStudioData] = useState(() => {
+    const storedData = localStorage.getItem('uploadStudioData');
+    return storedData ? JSON.parse(storedData) : {};
+  });
 
   // List of studio features
   const studioFeatures = [
@@ -25,6 +29,16 @@ const StudioFeatures = () => {
     'Meeting rooms or collaborative spaces',
   ];
 
+
+
+  // Update uploadStudioData state when localStorage changes
+  useEffect(() => {
+    const storedData = localStorage.getItem('uploadStudioData');
+    if (storedData) {
+      setUploadStudioData(JSON.parse(storedData));
+    }
+  }, []);
+
   // Handle feature selection
   const handleFeatureClick = (feature:string) => {
     const isSelected = selectedFeatures.includes(feature);
@@ -36,7 +50,18 @@ const StudioFeatures = () => {
     } else {
       setSelectedFeatures((prevSelectedFeatures) => [...prevSelectedFeatures, feature]);
     }
+
+    // Update uploadStudioData with the selected features
+    setUploadStudioData((prevData:string[]) => ({
+      ...prevData,
+      studioFeatures: selectedFeatures,
+    }));
   };
+
+  // Save uploadStudioData to localStorage when it changes
+  useEffect(() => {
+    localStorage.setItem('uploadStudioData', JSON.stringify(uploadStudioData));
+  }, [uploadStudioData]);
 
   return (
     <div>
