@@ -13,7 +13,7 @@ const Setting: FC = () => {
       icon: <RiPagesLine size={35} />,
       title: "Personal Info",
       detail: " Provide personal details and how we can reach you.",
-      url: "/personal-setting",
+      url: "/personal-setting/my-personal-info",
       size: 35,
     },
     {

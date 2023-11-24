@@ -3,10 +3,12 @@ import { LiaGreaterThanSolid } from "react-icons/lia";
 import { FaUnlockKeyhole } from "react-icons/fa6";
 import { MdVisibility } from "react-icons/md";
 import { MdHealthAndSafety } from "react-icons/md";
+import { Outlet } from "react-router-dom";
 
 const PersonalSetting: FC = () => {
   document.title =
     "(Studio name) person account profile setting  - Pickastudio";
+  let name: any = location.pathname;
 
   const pathData = [
     {
@@ -37,28 +39,20 @@ const PersonalSetting: FC = () => {
   return (
     <div>
       <div className="flex items-center">
-        Account <LiaGreaterThanSolid size={13} className="mx-4 " /> Personal
-        Info
-      </div>
-      <div className="mt-5 font-[500] text-[30px] ">Personal info</div>
-
-      <div className="grid grid-cols-6  ">
-        <div className="grid col-span-3 pr-8 ">
-          <div className="flex w-full justify-between h-[100px] relative ">
-            {" "}
-            <div>
-              <div>Legal Name</div>
-              <div>Peter Oti</div>
-            </div>
-            <div className="text-[12px] underline font-[500] ">Change</div>
-          </div>
-          <div className="absolute left-16 top-60 bg-green-400 h-[200px] w-[45%] ">
-            yy
-          </div>
+        Account <LiaGreaterThanSolid size={13} className="mx-4 " />{" "}
+        <div className="capitalize">
+          {name.split("/")[2].replaceAll("-", " ")}
         </div>
+      </div>
+      <div className="mt-5 font-[500] text-[30px] mb-10 capitalize">
+        {name.split("/")[2].replaceAll("-", " ")}
+      </div>
+
+      <div className="w-full sm:grid sm:grid-cols-6 min-h-[65vh]  ">
+        <Outlet />
 
         <div
-          className="border ml-2 rounded-md"
+          className="border ml-2 rounded-md hidden sm:block"
           style={{
             gridColumn: "5/7",
           }}
@@ -86,3 +80,19 @@ const PersonalSetting: FC = () => {
 };
 
 export default PersonalSetting;
+
+{
+  /* absolute left-16 top-60  */
+}
+{
+  /* <p
+className="w-[80%] h-screen absolute z-10 bg-fuchsia-400 blur-sm "
+style={{
+  background: "rgba( 255, 255, 255, 0.25 )",
+  backdropFilter: " blur( 4px )",
+  // border: "1px solid rgba( 255, 255, 255, 0.18 )",
+}}
+>
+{" "}
+</p> */
+}

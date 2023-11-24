@@ -7,6 +7,7 @@ import {
   UploadStudioLayout,
 } from "../components";
 import PrivateRoute from "./privateRoute";
+import PersonalInfoScreen from "../pages/settings/PersonalInfoScreen";
 
 // import PrivateRoute from "./privateRoute";
 
@@ -99,6 +100,17 @@ export const appRoutes = createBrowserRouter([
             <PersonalSetting />
           </Suspense>
         ),
+        children: [
+          {
+            index: true,
+            path: "my-personal-info",
+            element: (
+              <Suspense fallback={<div>Loading...</div>}>
+                <PersonalInfoScreen />
+              </Suspense>
+            ),
+          },
+        ],
       },
 
       {
