@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { UploadStudioStep } from '../../../components/blocks/uploadStudio'
+import { StudioPrice, UploadStudioStep } from '../../../components/blocks/uploadStudio'
 
 const FinishListing:FC = () => {
     document.title = "Step 3: Finish your listing - Pickastudio"
@@ -11,14 +11,13 @@ const FinishListing:FC = () => {
         <UploadStudioStep
         stepNumber={3}
         title="Finish up and publish"
-        description="Finally, we can get this over with 😮‍💨. Set your price. Answer a few quick questions and publish (Voila) 😊."
+        description="Finally, we can get this over with 😮‍💨. Just set your price and review your listing. (Voila) 😊."
         />
   
   {/* second box */}
           <div className="">
-              {/* <StudioCategory/>
-              <StudioLocation/>
-            <StudioSize/> */}
+            <StudioPrice/>
+        
           </div>
                 </div>
       </div>
