@@ -29,6 +29,7 @@ const Login = () => {
     setShow(true);
     signinAccount(data)
       .then((res: any) => {
+        console.log(res);
         setUser(res.data);
         toast("welcome");
         setShow(false);

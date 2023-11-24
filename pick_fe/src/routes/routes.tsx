@@ -1,11 +1,19 @@
 import { createBrowserRouter } from "react-router-dom";
 import { lazy, Suspense } from "react";
-import { HomeLayout, ProductLayout, StudioLayout, UploadStudioLayout } from "../components";
+import {
+  HomeLayout,
+  ProductLayout,
+  StudioLayout,
+  UploadStudioLayout,
+} from "../components";
+import PrivateRoute from "./privateRoute";
+import PersonalInfoScreen from "../pages/settings/PersonalInfoScreen";
 
 // import PrivateRoute from "./privateRoute";
 
 const Home = lazy(() => import("../pages/Home"));
 const SingleList = lazy(() => import("../pages/SingleList"));
+const PersonalSetting = lazy(() => import("../pages/settings/PersonalSetting"));
 const Registration = lazy(() => import("../pages/auth/Registration"));
 const Login = lazy(() => import("../pages/auth/Login"));
 const Verification = lazy(() => import("../pages/auth/Verification"));
@@ -13,6 +21,7 @@ const Profile = lazy(() => import("../pages/Profile"));
 const Category = lazy(() => import("../pages/Categories"));
 const StudioHome = lazy(() => import("../pages/studio/dashboard/Home"));
 const Overview = lazy(() => import("../pages/studio/uploadStudio/Overview"));
+const Setting = lazy(() => import("../pages/settings/Setting"));
 const AboutStudio = lazy(() => import("../pages/studio/uploadStudio/AboutStudio"));
 const StudioDetails = lazy(() => import("../pages/studio/uploadStudio/StudioDetails"));
 
@@ -29,9 +38,9 @@ export const appRoutes = createBrowserRouter([
         index: true,
         element: (
           <Suspense fallback={<div>Loading...</div>}>
-            {/* <PrivateRoute> */}
+            <PrivateRoute>
               <Home />
-            {/* </PrivateRoute> */}
+            </PrivateRoute>
           </Suspense>
         ),
       },
@@ -52,7 +61,15 @@ export const appRoutes = createBrowserRouter([
         ),
       },
       {
-        path: "verification/",
+        path: "verification",
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <Verification />
+          </Suspense>
+        ),
+      },
+      {
+        path: ":token/sign-in",
         element: (
           <Suspense fallback={<div>Loading...</div>}>
             <Verification />
@@ -67,6 +84,34 @@ export const appRoutes = createBrowserRouter([
           </Suspense>
         ),
       },
+      {
+        path: "setting",
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <Setting />
+          </Suspense>
+        ),
+      },
+      {
+        path: "personal-setting",
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <PersonalSetting />
+          </Suspense>
+        ),
+        children: [
+          {
+            index: true,
+            path: "my-personal-info",
+            element: (
+              <Suspense fallback={<div>Loading...</div>}>
+                <PersonalInfoScreen />
+              </Suspense>
+            ),
+          },
+        ],
+      },
+
       {
         path: "category",
         element: (
@@ -92,18 +137,22 @@ export const appRoutes = createBrowserRouter([
     ],
   },
   {
-    path:"/studio",
-    element:    <Suspense fallback={<div>Loading...</div>}>
-      <StudioLayout/>
-    </Suspense>,
-    children:[
+    path: "/studio",
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <StudioLayout />
+      </Suspense>
+    ),
+    children: [
       {
         index: true,
-        element:  <Suspense fallback={<div>Loading...</div>}>
-        <StudioHome />
-      </Suspense>
-      }
-    ]
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <StudioHome />
+          </Suspense>
+        ),
+      },
+    ],
   },
 
   {
@@ -132,7 +181,7 @@ children:[
 }
 ]
   },
-  
+
   {
     path: "*",
     element: <>page not found</>,

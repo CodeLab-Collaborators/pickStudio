@@ -1,11 +1,15 @@
 import useSWR from "swr";
 import { getOneUser } from "../api/userAPI";
+import { useEffect } from "react";
+import { JwtPayload, jwtDecode } from "jwt-decode";
 
-const URL: string = "https://pick-be.onrender.com/api/v1";
+export const userHooks = () => {
+  const user = JSON.parse(localStorage.getItem("mainUser")!);
+  const tokenID: JwtPayload | any = jwtDecode(user);
+  useEffect(() => {}, []);
 
-export const userHooks = (userID: string) => {
-  const { data, isLoading } = useSWR(`${userID}`, (userID) =>
-    getOneUser(userID)
+  const { data, isLoading } = useSWR(`${tokenID.id}`, () =>
+    getOneUser(tokenID.id)
   );
   return { data, isLoading };
 };

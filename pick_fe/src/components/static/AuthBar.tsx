@@ -7,8 +7,9 @@ import { userHooks } from "../../hooks/userHooks";
 const AuthBar = () => {
   const [showAuthNav, setShowAuthNav] = useToggleValue();
   const [userData]: any | {} = useSignUserData();
+  const mainUser = JSON.parse(localStorage.getItem("mainUser")!);
 
-  const { data, isLoading } = userHooks(userData?.id);
+  const { data } = userHooks();
 
   return (
     <div className="flex items-center gap-2 max-md:hidden text-sm tracking-wide">
@@ -25,19 +26,23 @@ const AuthBar = () => {
         <div className="text-2xl">
           <IoIosMenu />
         </div>
-        <div className="text-2xl">
-          {data?.avatar ? (
-            data?.avatar
-          ) : (
-            <div
-              className="text-[15px] rounded-full flex justify-center items-center font-bold w-[25px] h-[25px] text-white "
-              style={{ background: "var(--gradient)" }}
-            >
-              {data?.firstName?.charAt(0)}
-            </div>
-          )}
-          {/* <FaUserCircle /> */}
-        </div>
+        {mainUser ? (
+          <div className="text-2xl">
+            {data?.avatar ? (
+              data?.avatar
+            ) : (
+              <div
+                className="text-[15px] rounded-full flex justify-center items-center font-bold w-[25px] h-[25px] text-white "
+                style={{ background: "var(--gradient)" }}
+              >
+                {data?.firstName?.charAt(0)}
+              </div>
+            )}
+            {/*  */}
+          </div>
+        ) : (
+          <FaUserCircle size={25} />
+        )}
       </div>
 
       {showAuthNav ? (
