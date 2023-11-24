@@ -22,9 +22,8 @@ const Category = lazy(() => import("../pages/Categories"));
 const StudioHome = lazy(() => import("../pages/studio/dashboard/Home"));
 const Overview = lazy(() => import("../pages/studio/uploadStudio/Overview"));
 const Setting = lazy(() => import("../pages/settings/Setting"));
-const AboutStudio = lazy(
-  () => import("../pages/studio/uploadStudio/AboutStudio")
-);
+const AboutStudio = lazy(() => import("../pages/studio/uploadStudio/AboutStudio"));
+const StudioDetails = lazy(() => import("../pages/studio/uploadStudio/StudioDetails"));
 
 export const appRoutes = createBrowserRouter([
   {
@@ -157,30 +156,30 @@ export const appRoutes = createBrowserRouter([
   },
 
   {
-    path: "/upload-studio",
-    element: (
-      <Suspense fallback={<div>Loading...</div>}>
-        <UploadStudioLayout />
-      </Suspense>
-    ),
-    children: [
-      {
-        index: true,
-        element: (
-          <Suspense fallback={<div>Loading...</div>}>
-            <Overview />
-          </Suspense>
-        ),
-      },
-      {
-        path: "about-your-studio",
-        element: (
-          <Suspense fallback={<div>Loading...</div>}>
-            <AboutStudio />
-          </Suspense>
-        ),
-      },
-    ],
+path:"/upload-studio",
+element:    <Suspense fallback={<div>Loading...</div>}>
+<UploadStudioLayout/>
+</Suspense>,
+children:[
+{
+  index: true,
+  element:  <Suspense fallback={<div>Loading...</div>}>
+  <Overview />
+</Suspense>
+},
+{
+  path:"about-your-studio",
+  element: <Suspense fallback={<div>Loading...</div>}>
+    <AboutStudio/>
+  </Suspense>
+},
+{
+  path:"studio-details",
+  element: <Suspense fallback={<div>Loading...</div>}>
+    <StudioDetails/>
+  </Suspense>
+}
+]
   },
 
   {

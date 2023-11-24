@@ -1,40 +1,30 @@
-import { GlobalButton } from "../.."
-import { NavLink, useLocation } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
+import { RenderButtonCheck } from "./RenderButtonCheck"
+
+
 
 
 const uploadStudioFooter = () => {
-const location = useLocation()
-const navigate = useNavigate()
 
-const RenderButton = ()=>{
-    if (location.pathname === "/upload-studio"){
-        return    <NavLink to="about-your-studio">
-            <GlobalButton style={{background: "var(--gradient)"}} className="font-semibold ">
-        Get started
-    </GlobalButton>
-        </NavLink>
-    }else if (location.pathname.includes("about-your-studio")){
-        return <NavLink to="">
-            <GlobalButton style={{background: "var(--gradient)"}} className="font-semibold ">
-        Next
-    </GlobalButton>
-        </NavLink>
-    }
-}
+const navigate = useNavigate()
 
 
 
   return (
-    <div className='w-full py-2  flex items-center justify-between border-t-4'>
-        <div className="w-[90%] m-auto flex justify-between">
+    <div className='w-full py-2  flex items-center justify-between flex-col '>
+        <div className="grid grid-cols-3 gap-2 w-full py-2">
+        <progress value={100} className="w-full h-[6px]" />
+        <progress value={100} className="w-full h-[6px]"/>
+        <progress value={100} className="w-full h-[6px]"/>
+        </div>
+        <div className="w-[90%] m-auto flex justify-between max-md:justify-normal max-md:flex-wrap">
         <div className="max-md:w-full flex place-items-center">
-            <button className="font-semibold underline hover:scale-[1.11] transition-all ease-in" onClick={()=>{
+            <button className=" max-md:w-full py-2 font-semibold underline hover:scale-[1.11] transition-all ease-in" onClick={()=>{
                 navigate(-1)
             }}>back</button>
         </div>
             <div className="max-md:w-full">
-                {RenderButton()}
+                {RenderButtonCheck()}
             </div>
         </div>
     </div>
