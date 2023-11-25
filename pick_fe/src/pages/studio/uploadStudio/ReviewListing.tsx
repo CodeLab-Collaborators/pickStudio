@@ -1,8 +1,11 @@
-import  { FC } from 'react'
+import  { FC, useState } from 'react'
 import mm from "../../../assets/jpg/Menstylica.jpeg"
+import { ReviewModal } from '../../../components/modals'
 
 const ReviewListing:FC = () => {
 document.title = "Review and publish your listing - Pickastudio"
+
+const [showModal, setShowModal] = useState(false)
 
 const uploadData = localStorage.getItem("uploadStudioData")
 
@@ -16,8 +19,8 @@ console.log("this is uploadData", uploadData)
                 <h1 className='font-semibold text-5xl max-lg:text-4xl'>Review your listing</h1>
                 <p className='mt-6 text-[1.125rem] max-md:text-[1rem] leading-6 text-[#717171] font-normal'>Here's what we'll show to users. Make sure everything looks good.</p>
             </div>
-            <div className='grid grid-cols-2 mt-14 max-lg:mt-10 max-lg:grid-cols-1 gap-24 max-lg:gap-12'>
-                <div className='bg-white p-5 shadow-2xl h-[400px] rounded-2xl w-[358px] max-md:w-[100%] '>
+            <div className='grid grid-cols-2 mt-14 max-lg:mt-10 max-lg:grid-cols-1 gap-20 max-lg:gap-12'>
+                <div className='bg-white cursor-pointer p-5 shadow-2xl h-[400px] rounded-2xl w-[358px] max-md:w-[100%] ' onClick={()=>{setShowModal(!showModal)}}>
                     {/* image */}
                     <div className='w-full relative h-[85%] overflow-hidden rounded-md'>
                         <img src={mm} alt=""  className="object-cover"/>
@@ -49,6 +52,7 @@ console.log("this is uploadData", uploadData)
                </div>
                
             </div>
+            {showModal &&      <ReviewModal onClose={()=>{setShowModal(!showModal)}} />}
         </div>
     </div>
   )
