@@ -24,6 +24,7 @@ export const RenderButtonCheck = () => {
   
     if (location.pathname === '/upload-studio') {
       return (
+        // start page
         <NavLink to="about-your-studio">
              <GlobalButton style={{background: "var(--gradient)"}} className="font-semibold ">
         Get started
@@ -32,6 +33,7 @@ export const RenderButtonCheck = () => {
       );
     } else if (location.pathname.includes('about-your-studio')) {
       return (
+        // about studio page
         <NavLink to="studio-details">
           <GlobalButton
             disabled={isNextButtonDisabled}
@@ -46,6 +48,7 @@ export const RenderButtonCheck = () => {
       );
     }else if (location.pathname.includes('studio-details')) {
       return (
+        // studio details
         <NavLink to="finish-listing">
           <GlobalButton
             // disabled={isNextButtonDisabled}
@@ -61,14 +64,17 @@ export const RenderButtonCheck = () => {
       );
     }else if (location.pathname.includes('finish-listing')) {
       return (
+        // Add pricing page
         <NavLink to="review-listing">
           <GlobalButton
-            // disabled={isNextButtonDisabled}
+                      // disabled={isNextButtonDisabled}
             // className={`${
             //   isNextButtonDisabled ? 'opacity-50 cursor-not-allowed' : 'bg-red-600  transition-all ease-in'
             // }`}
             // style={{background: `${!isNextButtonDisabled ? "var(--gradient)" : "var(--primary)"}`}}
+
             style={{background: "var(--gradient)"}} className="font-semibold "
+            onClick={()=>{}}
           >
             Review Listing
           </GlobalButton>
@@ -76,13 +82,10 @@ export const RenderButtonCheck = () => {
       );
     }else if (location.pathname.includes('review-listing')) {
       return (
+        // publish listing page
         
           <GlobalButton
-            // disabled={isNextButtonDisabled}
-            // className={`${
-            //   isNextButtonDisabled ? 'opacity-50 cursor-not-allowed' : 'bg-red-600  transition-all ease-in'
-            // }`}
-            // style={{background: `${!isNextButtonDisabled ? "var(--gradient)" : "var(--primary)"}`}}
+
             style={{background: "var(--gradient)"}} className="font-semibold "
           >
             Publish Now
