@@ -9,18 +9,16 @@ export const RenderButtonCheck = () => {
       return storedData ? JSON.parse(storedData) : {};
     });
   
-    // Update uploadStudioData state when localStorage changes
+    // // Update uploadStudioData state when localStorage changes
     useEffect(() => {
       const storedData = localStorage.getItem('uploadStudioData');
       if (storedData) {
         setUploadStudioData(JSON.parse(storedData));
       }
     }, []);
-  
-    const isNextButtonDisabled =
-      !uploadStudioData.userSelectedCategory ||
-      !uploadStudioData.studioAddress ||
-      !uploadStudioData.numberOfGuests;
+ 
+
+    const firstStepButtonDisabled = uploadStudioData?.studioAddress || uploadStudioData?.userSelectedCategory || uploadStudioData?.numberOfGuests
   
     if (location.pathname === '/upload-studio') {
       return (
@@ -34,13 +32,13 @@ export const RenderButtonCheck = () => {
     } else if (location.pathname.includes('about-your-studio')) {
       return (
         // about studio page
-        <NavLink to="studio-details">
+        <NavLink to={!firstStepButtonDisabled ? "" : "studio-details"}>
           <GlobalButton
-            disabled={isNextButtonDisabled}
+            disabled={!firstStepButtonDisabled}
             className={`${
-              isNextButtonDisabled ? 'opacity-50 cursor-not-allowed' : 'bg-red-600  transition-all ease-in'
+              !firstStepButtonDisabled ? 'opacity-50 cursor-not-allowed' : 'bg-red-600  transition-all ease-in'
             }`}
-            style={{background: `${!isNextButtonDisabled ? "var(--gradient)" : "var(--primary)"}`}}
+            style={{background: `${!firstStepButtonDisabled ? "var(--gradient)" : "var(--primary)"}`}}
           >
             Next
           </GlobalButton>
@@ -51,11 +49,11 @@ export const RenderButtonCheck = () => {
         // studio details
         <NavLink to="finish-listing">
           <GlobalButton
-            // disabled={isNextButtonDisabled}
+            // disabled={firstStepButtonDisabled}
             // className={`${
-            //   isNextButtonDisabled ? 'opacity-50 cursor-not-allowed' : 'bg-red-600  transition-all ease-in'
+            //   firstStepButtonDisabled ? 'opacity-50 cursor-not-allowed' : 'bg-red-600  transition-all ease-in'
             // }`}
-            // style={{background: `${!isNextButtonDisabled ? "var(--gradient)" : "var(--primary)"}`}}
+            // style={{background: `${!firstStepButtonDisabled ? "var(--gradient)" : "var(--primary)"}`}}
             style={{background: "var(--gradient)"}} className="font-semibold "
           >
             Next
@@ -67,11 +65,11 @@ export const RenderButtonCheck = () => {
         // Add pricing page
         <NavLink to="review-listing">
           <GlobalButton
-                      // disabled={isNextButtonDisabled}
+                      // disabled={firstStepButtonDisabled}
             // className={`${
-            //   isNextButtonDisabled ? 'opacity-50 cursor-not-allowed' : 'bg-red-600  transition-all ease-in'
+            //   firstStepButtonDisabled ? 'opacity-50 cursor-not-allowed' : 'bg-red-600  transition-all ease-in'
             // }`}
-            // style={{background: `${!isNextButtonDisabled ? "var(--gradient)" : "var(--primary)"}`}}
+            // style={{background: `${!firstStepButtonDisabled ? "var(--gradient)" : "var(--primary)"}`}}
 
             style={{background: "var(--gradient)"}} className="font-semibold "
             onClick={()=>{}}
