@@ -1,16 +1,15 @@
 import { IoIosMenu } from "react-icons/io";
 import { FaUserCircle } from "react-icons/fa";
 import { AuthDropDown } from ".";
-import { useSignUserData, useToggleValue } from "../../global/globalState";
+import { useToggleValue } from "../../global/globalState";
 import { userHooks } from "../../hooks/userHooks";
 
 const AuthBar = () => {
   const [showAuthNav, setShowAuthNav] = useToggleValue();
-  const [userData]: any | {} = useSignUserData();
+  // const [userData]: any | {} = useSignUserData();
   const mainUser = JSON.parse(localStorage.getItem("mainUser")!);
 
   const { data } = userHooks();
-
   return (
     <div className="flex items-center gap-2 max-md:hidden text-sm tracking-wide">
       <p className="px-4 font-medium  py-3 ease-in transition-all cursor-pointer hover:bg-[#F7F7F7] rounded-full">

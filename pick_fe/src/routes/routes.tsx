@@ -8,6 +8,7 @@ import {
 } from "../components";
 import PrivateRoute from "./privateRoute";
 import PersonalInfoScreen from "../pages/settings/PersonalInfoScreen";
+import ProfressionInfoScreen from "../pages/settings/PrefessionalInfoScreen";
 
 // import PrivateRoute from "./privateRoute";
 
@@ -22,10 +23,18 @@ const Category = lazy(() => import("../pages/Categories"));
 const StudioHome = lazy(() => import("../pages/studio/dashboard/Home"));
 const Overview = lazy(() => import("../pages/studio/uploadStudio/Overview"));
 const Setting = lazy(() => import("../pages/settings/Setting"));
-const AboutStudio = lazy(() => import("../pages/studio/uploadStudio/AboutStudio"));
-const StudioDetails = lazy(() => import("../pages/studio/uploadStudio/StudioDetails"));
-const FinishListing = lazy(() => import("../pages/studio/uploadStudio/FinishListing"));
-const ReviewListing = lazy(() => import("../pages/studio/uploadStudio/ReviewListing"));
+const AboutStudio = lazy(
+  () => import("../pages/studio/uploadStudio/AboutStudio")
+);
+const StudioDetails = lazy(
+  () => import("../pages/studio/uploadStudio/StudioDetails")
+);
+const FinishListing = lazy(
+  () => import("../pages/studio/uploadStudio/FinishListing")
+);
+const ReviewListing = lazy(
+  () => import("../pages/studio/uploadStudio/ReviewListing")
+);
 
 export const appRoutes = createBrowserRouter([
   {
@@ -40,9 +49,9 @@ export const appRoutes = createBrowserRouter([
         index: true,
         element: (
           <Suspense fallback={<div>Loading...</div>}>
-            <PrivateRoute>
-              <Home />
-            </PrivateRoute>
+            {/* <PrivateRoute> */}
+            <Home />
+            {/* </PrivateRoute> */}
           </Suspense>
         ),
       },
@@ -111,6 +120,15 @@ export const appRoutes = createBrowserRouter([
               </Suspense>
             ),
           },
+          {
+            index: true,
+            path: "my-prefessional-info",
+            element: (
+              <Suspense fallback={<div>Loading...</div>}>
+                <ProfressionInfoScreen />
+              </Suspense>
+            ),
+          },
         ],
       },
 
@@ -158,42 +176,54 @@ export const appRoutes = createBrowserRouter([
   },
 
   {
-path:"/upload-studio",
-element:    <Suspense fallback={<div>Loading...</div>}>
-<UploadStudioLayout/>
-</Suspense>,
-children:[
-{
-  index: true,
-  element:  <Suspense fallback={<div>Loading...</div>}>
-  <Overview />
-</Suspense>
-},
-{
-  path:"about-your-studio",
-  element: <Suspense fallback={<div>Loading...</div>}>
-    <AboutStudio/>
-  </Suspense>
-},
-{
-  path:"studio-details",
-  element: <Suspense fallback={<div>Loading...</div>}>
-    <StudioDetails/>
-  </Suspense>
-},
-{
-  path:"finish-listing",
-  element: <Suspense fallback={<div>Loading...</div>}>
-    <FinishListing/>
-  </Suspense>
-},
-{
-  path:"review-listing",
-  element: <Suspense fallback={<div>Loading...</div>}>
-    <ReviewListing/>
-  </Suspense>
-}
-]
+    path: "/upload-studio",
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <UploadStudioLayout />
+      </Suspense>
+    ),
+    children: [
+      {
+        index: true,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <Overview />
+          </Suspense>
+        ),
+      },
+      {
+        path: "about-your-studio",
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <AboutStudio />
+          </Suspense>
+        ),
+      },
+      {
+        path: "studio-details",
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <StudioDetails />
+          </Suspense>
+        ),
+      },
+      {
+        path: "finish-listing",
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <FinishListing />
+          </Suspense>
+        ),
+      },
+      {
+        path: "review-listing",
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <ReviewListing />
+          </Suspense>
+        ),
+      },
+    ],
   },
 
   {

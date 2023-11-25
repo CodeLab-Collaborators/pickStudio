@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import GlobalInput from "../../components/props/GlobalInput";
 import { GlobalButton } from "../../components";
 import { userHooks } from "../../hooks/userHooks";
@@ -22,7 +22,7 @@ const PersonalInfoScreen = () => {
     setToggle2(!toggle2);
   };
   return (
-    <div className="grid col-span-3 pr-0 h-[100px]">
+    <div className=" grid col-span-3 pr-0 h-[100px] ">
       {/* forms */}
       <div>
         <div className="flex w-full justify-between h-[100px] relative ">
@@ -42,7 +42,7 @@ const PersonalInfoScreen = () => {
         </div>
         {toggle && (
           <div
-            className="absolute left:0 sm:left-16 top-[16.5rem]  h-[200px] w-[90%] sm:w-[45%]  bg-fuchsia-500 py-4 z-10 "
+            className="absolute left:0 sm:left-16 top-[19.5rem] h-[200px] w-[90%] sm:w-[45%]  bg-fuchsia-500 py-4 z-10 "
             style={{
               background: "rgba(255, 255, 255, 0.25)",
               backdropFilter: " blur( 4px )",
@@ -71,6 +71,7 @@ const PersonalInfoScreen = () => {
           </div>
         )}
       </div>
+
       {/* forms */}
       <div>
         <div className="flex w-full justify-between h-[100px] relative ">
@@ -100,6 +101,7 @@ const PersonalInfoScreen = () => {
         </div>
       </div>
 
+      {/* forms */}
       <div>
         <div className="flex w-full justify-between h-[100px] relative mt-10 ">
           {" "}
@@ -111,7 +113,7 @@ const PersonalInfoScreen = () => {
             </div>
             <div>
               <div className="font-[400] mt-3">
-                {toggle1 ? (
+                {toggle2 ? (
                   <div>{data?.phone}</div>
                 ) : (
                   <div>

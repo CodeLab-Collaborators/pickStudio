@@ -20,7 +20,7 @@ const Setting: FC = () => {
       icon: <HiMiniBuildingOffice2 size={35} />,
       title: "Professional Info",
       detail: " Provide personal details and how we can reach you.",
-      url: "/",
+      url: "/personal-setting/my-prefessional-info",
       size: 35,
     },
     {
@@ -33,11 +33,11 @@ const Setting: FC = () => {
   ];
 
   return (
-    <div>
+    <div className=" min-h-[82vh]">
       <div className="w-full m-auto py-8 my-4 flex gap-24 max-lg:block max-md:pt-1">
         {/* profile Account Detail */}
         <div>
-          <div className="font-bold text-[50px]  ">Account</div>
+          <div className="font-bold text-[50px]  ">Account </div>
           <div className="text-[13px]">
             <strong className="font-[600]">
               {data?.firstName} {data?.lastName}
@@ -68,6 +68,8 @@ const Setting: FC = () => {
           </Link>
         ))}
       </div>
+
+      <div className="flex-1 " />
     </div>
   );
 };
