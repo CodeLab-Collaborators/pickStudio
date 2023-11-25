@@ -1,57 +1,36 @@
-import  { FC, useState } from 'react';
-import GlobalInput from '../../props/GlobalInput';
+import { FC, useState } from "react";
+import GlobalInput from "../../props/GlobalInput";
+import { useFormSteps1 } from "../../../global/globalState";
 
 const StudioSize: FC = () => {
+  const [formStep1, setFormStep1]: any = useFormSteps1();
 
-
-
-
-
-  const getStoredData = () => {
-    const storedData = localStorage.getItem('uploadStudioData');
-    return storedData ? JSON.parse(storedData).numberOfGuests : '';
-
-
-  };
-
-  const [numberOfGuests, setNumberOfGuests] = useState(getStoredData);
-
-  const handleAddressChange = (e: any) => {
-     const updatedGuests = e.target.value;
-    setNumberOfGuests(updatedGuests);
-
-    console.log('Submitting number of guest:', numberOfGuests);
-  
-    // Retrieve existing data from localStorage
-    const existingData = JSON.parse(localStorage.getItem('uploadStudioData')!) || {};
-  
-    // Update the studio address with the new value
-    const updatedData = {
-      ...existingData,
-        numberOfGuests: numberOfGuests,
-    };
-  
-    // Save the updated data in localStorage
-    localStorage.setItem('uploadStudioData', JSON.stringify(updatedData));
-
-  
-  };
-
-
-
+  const [numberOfGuests, setNumberOfGuests] = useState(
+    formStep1.numberOfGuests
+  );
 
   return (
     <div>
-      <h1 className='mt-7 font-semibold text-2xl max-md:text-lg'>Number of guests the studio can contain?</h1>
+      <h1 className="mt-7 font-semibold text-2xl max-md:text-lg">
+        Number of guests the studio can contain?
+      </h1>
 
-      <div className='mt-4'>
+      <div className="mt-4">
         <GlobalInput
-          type='text'
-          placeholder='Number of guests'
+          type="text"
+          placeholder="Number of guests"
           value={numberOfGuests}
-          onChange={handleAddressChange}
-          inputMode='numeric'
+          // onChange={handleAddressChange}
+          onChange={(e: any) => {
+            setNumberOfGuests(e.target.value);
 
+            let dataForm = {
+              ...formStep1,
+              numberOfGuests: e.target.value,
+            };
+            setFormStep1(dataForm);
+          }}
+          inputMode="numeric"
         />
       </div>
     </div>

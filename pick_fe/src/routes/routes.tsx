@@ -7,10 +7,15 @@ import {
   UploadStudioLayout,
 } from "../components";
 import PrivateRoute from "./privateRoute";
-import PersonalInfoScreen from "../pages/settings/PersonalInfoScreen";
-import ProfressionInfoScreen from "../pages/settings/PrefessionalInfoScreen";
 
 // import PrivateRoute from "./privateRoute";
+
+const PersonalInfoScreen = lazy(
+  () => import("../pages/settings/PersonalInfoScreen")
+);
+const ProfressionInfoScreen = lazy(
+  () => import("../pages/settings/PrefessionalInfoScreen")
+);
 
 const Home = lazy(() => import("../pages/Home"));
 const SingleList = lazy(() => import("../pages/SingleList"));
