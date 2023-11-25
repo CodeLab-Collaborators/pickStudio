@@ -4,15 +4,19 @@ import mm from "../../../assets/jpg/Menstylica.jpeg"
 const ReviewListing:FC = () => {
 document.title = "Review and publish your listing - Pickastudio"
 
+const uploadData = localStorage.getItem("uploadStudioData")
+
+console.log("this is uploadData", uploadData)
+
   return (
     <div>
         <div className='w-[50%] max-lg:w-[70%] max-md:w-[90%] m-auto  h-full flex flex-col justify-center items-start'>
             {/* title */}
             <div >
                 <h1 className='font-semibold text-5xl max-lg:text-4xl'>Review your listing</h1>
-                <p className='mt-7 text-[1.125rem] max-md:text-[1rem] leading-6 text-[#717171] font-normal'>Here's what we'll show to users. Make sure everything looks good.</p>
+                <p className='mt-6 text-[1.125rem] max-md:text-[1rem] leading-6 text-[#717171] font-normal'>Here's what we'll show to users. Make sure everything looks good.</p>
             </div>
-            <div className='grid grid-cols-2 mt-16 max-lg:mt-10 max-lg:grid-cols-1 gap-24 max-lg:gap-12'>
+            <div className='grid grid-cols-2 mt-14 max-lg:mt-10 max-lg:grid-cols-1 gap-24 max-lg:gap-12'>
                 <div className='bg-white p-5 shadow-2xl h-[400px] rounded-2xl w-[358px] max-md:w-[100%] '>
                     {/* image */}
                     <div className='w-full relative h-[85%] overflow-hidden rounded-md'>
@@ -26,11 +30,11 @@ document.title = "Review and publish your listing - Pickastudio"
 
                     {/* price */}
                   <div className='flex justify-between items-center'>
-                  <div className='flex gap-3'>
+                  <div className='flex gap-2'>
                    <h4 className='line-through text-[#717171]'>₦2000</h4>
                    <h4 className='font-semibold flex items-center gap-1'>₦6000 <p className='text-xs'>/hour</p></h4>
                    </div>
-                   <p className='px-3 py-1 bg-orange-200 rounded-xl text-xs font-semibold '>20%</p>
+                   <p className='px-3 py-1 bg-orange-200 rounded-xl text-xs font-semibold '>-20% </p>
                   </div>
                     </div>
                 </div>

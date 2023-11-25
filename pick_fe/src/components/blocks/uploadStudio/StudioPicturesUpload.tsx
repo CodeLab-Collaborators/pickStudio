@@ -11,7 +11,7 @@ const StudioPicturesUpload = () => {
 
     // Ensure at least 5 pictures are selected
     if (files.length < 5) {
-      alert('Please upload at least 5 pictures.');
+      alert('Please upload at least 5 pictures of your studio.');
       return;
     }
 

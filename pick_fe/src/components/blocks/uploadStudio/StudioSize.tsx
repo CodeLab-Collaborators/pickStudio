@@ -10,6 +10,8 @@ const StudioSize: FC = () => {
   const getStoredData = () => {
     const storedData = localStorage.getItem('uploadStudioData');
     return storedData ? JSON.parse(storedData).numberOfGuests : '';
+
+
   };
 
   const [numberOfGuests, setNumberOfGuests] = useState(getStoredData);
@@ -31,7 +33,11 @@ const StudioSize: FC = () => {
   
     // Save the updated data in localStorage
     localStorage.setItem('uploadStudioData', JSON.stringify(updatedData));
+
+  
   };
+
+
 
 
   return (
@@ -40,11 +46,11 @@ const StudioSize: FC = () => {
 
       <div className='mt-4'>
         <GlobalInput
-          type='number'
-          maxLength={9}
+          type='text'
           placeholder='Number of guests'
           value={numberOfGuests}
           onChange={handleAddressChange}
+          inputMode='numeric'
 
         />
       </div>

@@ -75,3 +75,10 @@ export type StudioListButtonProps = {
   icon: ReactElement;
   iconColor: string;
 }
+
+
+export interface ProgressBarProps {
+  value: number;
+  backgroundColor?: string;
+  barColor?: string;
+}

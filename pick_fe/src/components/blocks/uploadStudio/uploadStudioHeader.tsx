@@ -10,7 +10,7 @@ const uploadStudioHeader = () => {
         </div>
 
         {/* button */}
-        <GlobalButton style={{color: "black", borderRadius:"999px", padding: "7px 30px"}} children="exit" onClick={()=>{}} className="rounded-full border "/>
+        <GlobalButton style={{color: "black", borderRadius:"999px", padding: "5px 15px"}} children="save & exit" onClick={()=>{}} className="rounded-full border "/>
     </div>
   )
 }
