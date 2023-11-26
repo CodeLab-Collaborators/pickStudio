@@ -93,7 +93,7 @@ export const appRoutes = createBrowserRouter([
         ),
       },
       {
-        path: "user",
+        path: "user/:userID",
         element: (
           <Suspense fallback={<div>Loading...</div>}>
             <Profile />
@@ -148,7 +148,7 @@ export const appRoutes = createBrowserRouter([
     ],
   },
   {
-    path: "products",
+    path: "products/:productID",
     element: <ProductLayout />,
     children: [
       {

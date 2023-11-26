@@ -1,7 +1,7 @@
 import useSWR from "swr";
-import { getAllStudio } from "../api/studioAPI";
+import { getAllStudio, getSingleStudio } from "../api/studioAPI";
 
-const studioHooks = () => {
+export const studioHooks = () => {
   const { data: allStudio, isLoading } = useSWR(
     `view-all-studio`,
     getAllStudio
@@ -10,4 +10,10 @@ const studioHooks = () => {
   return { allStudio, isLoading };
 };
 
-export default studioHooks;
+export const singleStudioHooks = (accountID: string) => {
+  const { data: singleStudio } = useSWR(`view-single-studio/${accountID}`, () =>
+    getSingleStudio(accountID)
+  );
+
+  return { singleStudio };
+};

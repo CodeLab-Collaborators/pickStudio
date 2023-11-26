@@ -4,7 +4,7 @@ import img2 from "../assets/jpg/suit.jpeg";
 import img3 from "../assets/jpg/SHOES.jpeg";
 import img4 from "../assets/jpg/INSTASHOP.jpeg";
 import profile from "../assets/jpg/profile.jpeg";
-import studioHooks from "../hooks/studioHooks";
+import { studioHooks } from "../hooks/studioHooks";
 import moment from "moment";
 const Home = () => {
   const dummyImage = [
@@ -37,8 +37,8 @@ const Home = () => {
           rating={props.studioRate}
           amount={props.studioPrice}
           date={`${moment(props.createdAt).fromNow()}`}
-          route="/products"
-          userRoute="/user"
+          route={`/products/${props._id}`}
+          userRoute={`/user/${props.accountHolderID}`}
           wishlistFunc={() => {}}
         />
       ))}

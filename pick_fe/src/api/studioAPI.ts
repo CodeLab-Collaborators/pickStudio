@@ -31,3 +31,15 @@ export const getAllStudio = async () => {
     return error;
   }
 };
+
+export const getSingleStudio = async (accountID: string) => {
+  try {
+    return await axios
+      .get(`${URL}/view-studio/${accountID}/`)
+      .then((res: any | {}) => {
+        return res.data.data;
+      });
+  } catch (error) {
+    return error;
+  }
+};

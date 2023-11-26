@@ -12,11 +12,15 @@ import {
   Thingstoknow,
   Title,
 } from "../components/blocks";
+import { singleStudioHooks } from "../hooks/studioHooks";
+import { useParams } from "react-router-dom";
 
 const SingleList = () => {
+  const { productID } = useParams();
   document.title = "page name - Pickastudio";
-
   const dummyImage = [img1, img3, img4, img2];
+
+  const { singleStudio } = singleStudioHooks(productID!);
 
   return (
     <div className="w-full flex-col flex items-center pt-3 ">
@@ -31,10 +35,10 @@ const SingleList = () => {
       </div>
       <div className="w-11/12 pt-5 md:w-full ">
         <Title
-          name="LANDMARK EVENT CENTRE"
-          rating="4.86"
-          reviews="112"
-          place="Lekki"
+          name={singleStudio.studioName}
+          rating={singleStudio?.studioRate}
+          reviews="0"
+          place={singleStudio?.studioAddress}
         />
         <ProductImage />
         <div className="w-full relative h-[fit-content] mt-4 flex gap-6">
