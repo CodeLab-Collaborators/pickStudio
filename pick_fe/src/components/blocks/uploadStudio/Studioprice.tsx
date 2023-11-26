@@ -1,11 +1,15 @@
 import { useState, useEffect } from "react";
-import { useFormSteps } from "../../../global/globalState";
+import { useFormSteps3 } from "../../../global/globalState";
 
 const StudioPrice = () => {
-  const [formStep, setFormStep] = useFormSteps();
-  const [includeDiscount, setIncludeDiscount] = useState(false);
-  const [discountPercent, setDiscountPercent] = useState("");
-  const [studioPrice, setStudioPrice] = useState<string>("");
+  const [formStep3, setFormStep3]: any = useFormSteps3();
+  const [includeDiscount, setIncludeDiscount] = useState(
+    formStep3.includeDiscount
+  );
+  const [discountPercent, setDiscountPercent] = useState(
+    formStep3.discountPercent
+  );
+  const [studioPrice, setStudioPrice] = useState<string>(formStep3.studioPrice);
   const [uploadStudioData, setUploadStudioData] = useState<any>({});
 
   useEffect(() => {
@@ -30,28 +34,47 @@ const StudioPrice = () => {
   }, [studioPrice, includeDiscount, discountPercent]);
 
   useEffect(() => {
-    let reviewData = {
-      ...formStep,
-      studioPrice,
-      includeDiscount,
-      discountPercent,
-    };
-    setFormStep(reviewData);
     // console.log();
   }, []);
 
+  console.log(includeDiscount);
+
   const handleCheckboxChange = () => {
     setIncludeDiscount(!includeDiscount);
+
+    let reviewData = {
+      ...formStep3,
+      studioPrice,
+      includeDiscount: includeDiscount,
+      discountPercent,
+    };
+    setFormStep3(reviewData);
   };
 
   const handleDiscountPercentChange = (event: any) => {
     setDiscountPercent(event.target.value);
+
+    let reviewData = {
+      ...formStep3,
+      studioPrice,
+      includeDiscount,
+      discountPercent: event.target.value,
+    };
+    setFormStep3(reviewData);
   };
 
   const handleStudioPriceChange = (event: any) => {
     setStudioPrice(event.target.value);
-  };
 
+    let reviewData = {
+      ...formStep3,
+      studioPrice: event.target.value,
+      includeDiscount,
+      discountPercent,
+    };
+    setFormStep3(reviewData);
+  };
+  console.log(formStep3.studioPrice);
   return (
     <div>
       <div>
@@ -69,7 +92,7 @@ const StudioPrice = () => {
               inputMode="numeric"
               min="0"
               max="100"
-              value={studioPrice}
+              value={formStep3.studioPrice}
               onChange={handleStudioPriceChange}
               className="w-[60%] outline-none font-bold bg-white p-2 rounded-md mt-1 placeholder:font-bold placeholder:text-gray-700"
               placeholder="20000"
@@ -82,7 +105,7 @@ const StudioPrice = () => {
         <div className="flex items-center ps-4 border border-gray-200 rounded ">
           <input
             id="bordered-checkbox"
-            checked={includeDiscount}
+            checked={formStep3.includeDiscount}
             onChange={handleCheckboxChange}
             type="checkbox"
             className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-100 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
@@ -106,7 +129,7 @@ const StudioPrice = () => {
                 inputMode="numeric"
                 min="0"
                 max="100"
-                value={discountPercent}
+                value={formStep3.discountPercent}
                 onChange={handleDiscountPercentChange}
                 className="w-[22%] p-2 bg-white rounded-md mt-1 font-semibold placeholder:text-gray-600 placeholder:font-semibold"
                 placeholder="90"

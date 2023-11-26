@@ -14,6 +14,7 @@ const ProductProps: FC<cardData> = ({
   place,
   route,
   userRoute,
+  props,
   wishlistFunc,
 }) => {
   return (
@@ -21,6 +22,7 @@ const ProductProps: FC<cardData> = ({
       {/*product picture */}
 
       <ImageSlide
+        props={props}
         cover={cover}
         authorCover={authorCover}
         route={route}
@@ -30,6 +32,7 @@ const ProductProps: FC<cardData> = ({
       {/* product Text */}
       <Link to={route}>
         <ProductFeaturedText
+          props={props}
           authorName={authorName}
           place={place}
           rating={rating}

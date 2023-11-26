@@ -42,7 +42,7 @@ const StudioLocation: FC = () => {
         <GlobalInput
           type="text"
           placeholder="Address"
-          value={studioAddress}
+          value={formStep1.studioAddress}
           // onChange={handleAddressChange}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             setStudioAddress(e.target.value);

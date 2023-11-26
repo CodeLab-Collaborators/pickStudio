@@ -1,13 +1,13 @@
 import { FC, useState, useEffect } from "react";
 import GlobalInput from "../../props/GlobalInput";
-import { useFormSteps1 } from "../../../global/globalState";
+import { useFormSteps2 } from "../../../global/globalState";
 
 const StudioTitle: FC = () => {
-  const [formStep1, setFormStep1]: any = useFormSteps1();
+  const [formStep2, setFormStep2]: any = useFormSteps2();
 
-  const [studioName, setStudioName] = useState<string>(formStep1.studioName);
+  const [studioName, setStudioName] = useState<string>(formStep2.studioName);
   const [studioDescription, setStudioDescription] = useState<string>(
-    formStep1.studioDescription
+    formStep2.studioDescription
   );
 
   return (
@@ -22,16 +22,16 @@ const StudioTitle: FC = () => {
         placeholder="Studio name"
         type="text"
         maxLength={50}
-        value={formStep1.studioName}
+        value={formStep2.studioName}
         // onChange={handleStudioNameChange}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           setStudioName(e.target.value);
 
           let dataForm = {
-            ...formStep1,
+            ...formStep2,
             studioName: e.target.value,
           };
-          setFormStep1(dataForm);
+          setFormStep2(dataForm);
         }}
       />
       <p className="text-xs font-semibold mt-1 text-red-500">
@@ -55,17 +55,17 @@ const StudioTitle: FC = () => {
           // value={studioDescription}
           // onChange={handleStudioDescriptionChange}
 
-          value={formStep1.studioDescription}
+          value={formStep2.studioDescription}
           // onChange={handleStudioNameChange}
 
           onChange={(e: any) => {
             setStudioDescription(e.target.value);
 
             let dataForm = {
-              ...formStep1,
+              ...formStep2,
               studioDescription: e.target.value,
             };
-            setFormStep1(dataForm);
+            setFormStep2(dataForm);
           }}
         ></textarea>
         <p className="text-xs font-semibold mt-1 text-red-500">

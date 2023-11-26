@@ -19,7 +19,7 @@ const StudioSize: FC = () => {
         <GlobalInput
           type="text"
           placeholder="Number of guests"
-          value={numberOfGuests}
+          value={formStep1.numberOfGuests}
           // onChange={handleAddressChange}
           onChange={(e: any) => {
             setNumberOfGuests(e.target.value);

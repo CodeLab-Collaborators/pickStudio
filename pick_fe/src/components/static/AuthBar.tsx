@@ -3,6 +3,7 @@ import { FaUserCircle } from "react-icons/fa";
 import { AuthDropDown } from ".";
 import { useToggleValue } from "../../global/globalState";
 import { userHooks } from "../../hooks/userHooks";
+import { Link } from "react-router-dom";
 
 const AuthBar = () => {
   const [showAuthNav, setShowAuthNav] = useToggleValue();
@@ -12,9 +13,11 @@ const AuthBar = () => {
   const { data } = userHooks();
   return (
     <div className="flex items-center gap-2 max-md:hidden text-sm tracking-wide">
-      <p className="px-4 font-medium  py-3 ease-in transition-all cursor-pointer hover:bg-[#F7F7F7] rounded-full">
-        Upload your studio
-      </p>
+      <Link to="/upload-studio" className="text-black hover:text-black">
+        <p className="px-4 font-medium  py-3 ease-in transition-all cursor-pointer hover:bg-[#F7F7F7] rounded-full">
+          Upload your studio
+        </p>
+      </Link>
 
       <div
         className="p-3 rounded-full  hover:shadow-md ease-in transition-all border flex items-center justify-center gap-4 cursor-pointer"

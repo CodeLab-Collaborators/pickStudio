@@ -14,7 +14,7 @@ import {
 } from "../components/blocks";
 
 const SingleList = () => {
-document.title = "page name - Pickastudio"
+  document.title = "page name - Pickastudio";
 
   const dummyImage = [img1, img3, img4, img2];
 
@@ -23,7 +23,7 @@ document.title = "page name - Pickastudio"
       <div className="flex overflow-x-scroll no-scrollbar">
         {dummyImage.map((el: any) => (
           <img
-          // key={id}
+            // key={id}
             src={el}
             className="w-full h-[300px] md:hidden object-top bg-black"
           />
@@ -55,8 +55,8 @@ document.title = "page name - Pickastudio"
         </div>
         <div className="py-20 px-16 max-md:px-0 max-lg:px-5">
           <Reviews />
-          </div>
-          <div >
+        </div>
+        <div>
           <Thingstoknow />
         </div>
       </div>

@@ -3,7 +3,7 @@ import {
   ButtonHTMLAttributes,
   CSSProperties,
   InputHTMLAttributes,
-  ReactElement
+  ReactElement,
 } from "react";
 
 export type HeaderData = {
@@ -37,6 +37,7 @@ export type textData = {
   rating: number;
   amount: number;
   date: string;
+  props: any;
 };
 
 export type imageData = {
@@ -45,10 +46,12 @@ export type imageData = {
   route: any;
   userRoute: string;
   wishlistFunc: any;
+  props: any;
 };
 
 export type cardData = {
   cover: any;
+  props: any;
   authorCover: any;
   authorName: string;
   place: string;
@@ -74,8 +77,7 @@ export type StudioListButtonProps = {
   buttonPath: string;
   icon: ReactElement;
   iconColor: string;
-}
-
+};
 
 export interface ProgressBarProps {
   value: number;

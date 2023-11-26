@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
+import { useFormSteps2 } from "../../../global/globalState";
 
 const StudioFeatures = () => {
+  const [formStep2, setFormStep2]: any = useFormSteps2();
   const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
   const [uploadStudioData, setUploadStudioData] = useState(() => {
     const storedData = localStorage.getItem("uploadStudioData");
@@ -53,14 +55,18 @@ const StudioFeatures = () => {
         ...prevSelectedFeatures,
         feature,
       ]);
+
+      return selectedFeatures;
     }
 
     // Update uploadStudioData with the selected features
-    setUploadStudioData((prevData: string[]) => ({
-      ...prevData,
-      studioFeatures: selectedFeatures,
-    }));
+    // setUploadStudioData((prevData: string[]) => ({
+    //   ...prevData,
+    //   studioFeatures: selectedFeatures,
+    // }));
   };
+
+  console.log(selectedFeatures);
 
   // Save uploadStudioData to localStorage when it changes
   useEffect(() => {
@@ -82,7 +88,16 @@ const StudioFeatures = () => {
                 ? "bg-[var(--primary)] text-white "
                 : "bg-gray-200 text-black"
             } p-2 m-2 rounded font-normal`}
-            onClick={() => handleFeatureClick(feature)}
+            onClick={() => {
+              handleFeatureClick(feature)!;
+              // setSelectedFeatures(selectedFeatures);
+
+              let dataForm = {
+                ...formStep2,
+                studioFeatures: selectedFeatures,
+              };
+              setFormStep2(dataForm);
+            }}
           >
             {feature}
           </button>

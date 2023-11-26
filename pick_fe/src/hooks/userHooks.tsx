@@ -12,9 +12,18 @@ export const userHooks = () => {
       let tokenID: any = jwtDecode(user);
       setState(tokenID.id);
     }
-  }, []);
+  }, [state]);
 
+  console.log(state);
   const { data, isLoading } = useSWR(`${state}`, () => getOneUser(state));
 
   return { data, isLoading };
+};
+
+export const useSingleUser = (userID: string) => {
+  const { data: singleUser } = useSWR(`view-one-user/${userID}`, () =>
+    getOneUser(userID)
+  );
+
+  return { singleUser };
 };

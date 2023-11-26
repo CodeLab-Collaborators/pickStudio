@@ -6,6 +6,7 @@ import {
 } from "react-icons/md";
 import { imageData } from "../../types";
 import { Link } from "react-router-dom";
+import { useSingleUser } from "../../hooks/userHooks";
 
 const ImageSLide: FC<imageData> = ({
   authorCover,
@@ -13,7 +14,9 @@ const ImageSLide: FC<imageData> = ({
   route,
   userRoute,
   wishlistFunc,
+  props,
 }) => {
+  const { singleUser } = useSingleUser(props.accountHolderID);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [show, setShow] = useState(false);
 
@@ -81,10 +84,19 @@ const ImageSLide: FC<imageData> = ({
       {/* link to individual author page */}
       <Link to={userRoute}>
         <div className="absolute w-14 h-14 bottom-3 left-3">
-          <img
-            className="w-full h-full object-cover object-top shadow-2xl rounded-full  "
-            src={authorCover}
-          />
+          {singleUser?.avatar ? (
+            <img
+              className="w-full h-full object-cover object-top shadow-2xl rounded-full  "
+              src={singleUser?.avatar}
+            />
+          ) : (
+            <div
+              className="w-full h-full object-cover object-top shadow-2xl rounded-full flex justify-center items-center text-white text-[20px] shadow-sm "
+              style={{ background: "var(--gradient)" }}
+            >
+              {singleUser?.firstName.charAt(0)}
+            </div>
+          )}
         </div>
       </Link>
     </div>
