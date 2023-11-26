@@ -6,7 +6,7 @@ import { FC } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Itemize } from ".";
 import { singleStudioHooks } from "../../../hooks/studioHooks";
-import { getOneUser } from "../../../api/userAPI";
+
 import { useSingleUser } from "../../../hooks/userHooks";
 
 export type listDetails = {
@@ -17,17 +17,11 @@ export type listDetails = {
   baths: number;
 };
 
-const ListDetails: FC<listDetails> = ({
-  host,
-  guests,
-  bedrooms,
-  beds,
-  baths,
-}) => {
+const ListDetails: FC<listDetails> = ({ guests, bedrooms, beds, baths }) => {
   const { productID } = useParams();
 
   const { singleStudio } = singleStudioHooks(productID!);
-  const { singleUser } = useSingleUser(singleStudio.accountHolderID!);
+  const { singleUser } = useSingleUser(singleStudio?.accountHolderID!);
 
   return (
     <div className="flex flex-col md:w-[50vw]">
@@ -36,7 +30,7 @@ const ListDetails: FC<listDetails> = ({
           <div className="flex">
             Entire studio space hosted by{" "}
             <p className="ml-1 font-bold text-[30px]">
-              "{singleUser.firstName} {singleUser.lastName}"
+              "{singleUser?.firstName} {singleUser?.lastName}"
             </p>
           </div>
           <div className="text-[17px] font-normal mt-1">
@@ -45,18 +39,18 @@ const ListDetails: FC<listDetails> = ({
         </div>
         <Link to="/user" className="flex text-black items-center gap-3">
           <div className="w-12 h-12 rounded-[50%]">
-            {singleUser.avatar ? (
+            {singleUser?.avatar ? (
               <img className="w-full h-full rounded-[50%]" src={img1} />
             ) : (
               <div
                 className="w-full h-full rounded-[50%] flex justify-center items-center text-white text-[25px] shadow-md "
                 style={{ background: "var(--gradient)" }}
               >
-                {singleUser?.firstName.charAt(0)}
+                {singleUser?.firstName?.charAt(0)}
               </div>
             )}
           </div>
-          <p className="font-semibold">{singleStudio.studioName}</p>
+          <p className="font-semibold">{singleStudio?.studioName}</p>
         </Link>
       </div>
       <div className="border-b-[1px] border-b-slate-300 py-7 flex flex-col gap-6">
@@ -78,8 +72,8 @@ const ListDetails: FC<listDetails> = ({
       </div>
       <div className="border-b-[1px] border-b-slate-300 py-7 gap-4 flex flex-col">
         <div className="overflow-ellipsis">
-          {singleStudio.studioDescription
-            ? singleStudio.studioDescription
+          {singleStudio?.studioDescription
+            ? singleStudio?.studioDescription
             : "no despcription yet"}
         </div>
         <div className="underline font-[600] cursor-pointer">

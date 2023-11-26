@@ -1,17 +1,24 @@
 import { AiFillStar } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { GlobalButton } from "../..";
+import { singleStudioHooks } from "../../../hooks/studioHooks";
 
 const BookSpace = () => {
+  const { productID } = useParams();
+  const { singleStudio } = singleStudioHooks(productID!);
+
   return (
     <div className="w-full h-[fit-content] p-6 rounded-lg border-[1px] shadow-md shadow-slate-200 border-slate-300 flex flex-col gap-6">
       <div className="flex flex-col gap-2">
         <div className="font-[600] text-lg">
-          N104 <span className="text-base font-thin"> night</span>
+          ₦{singleStudio?.studioPrice}{" "}
+          <span className="text-base font-thin"> Hour</span>
         </div>
         <div className="flex items-center gap-1 font-[600]">
-          <AiFillStar /> 4.85 .{" "}
-          <span className="font-thin text-sm text-slate-800">292 reviews</span>
+          <AiFillStar /> {singleStudio?.studioRate} &middot;{" "}
+          <span className="font-thin text-sm text-slate-800">
+            {singleStudio?.studioReview?.length} reviews
+          </span>
         </div>
       </div>
       <div className="flex flex-col gap-3">
@@ -29,7 +36,7 @@ const BookSpace = () => {
       </div>
       <div className="pt-5 border-t-[1px] font-[600] border-t-slate-200 flex justify-between ">
         <div>Total before taxes</div>
-        <div>N607</div>
+        <div>₦{singleStudio?.studioPrice + 105} </div>
       </div>{" "}
       <hr />
       {/* tip */}

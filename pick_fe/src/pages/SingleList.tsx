@@ -14,6 +14,7 @@ import {
 } from "../components/blocks";
 import { singleStudioHooks } from "../hooks/studioHooks";
 import { useParams } from "react-router-dom";
+import { studioReviewHooks } from "../hooks/reviewHooks";
 
 const SingleList = () => {
   const { productID } = useParams();
@@ -21,6 +22,7 @@ const SingleList = () => {
   const dummyImage = [img1, img3, img4, img2];
 
   const { singleStudio } = singleStudioHooks(productID!);
+  const { studioReview } = studioReviewHooks(productID!);
 
   return (
     <div className="w-full flex-col flex items-center pt-3 ">
@@ -35,9 +37,9 @@ const SingleList = () => {
       </div>
       <div className="w-11/12 pt-5 md:w-full ">
         <Title
-          name={singleStudio.studioName}
+          name={singleStudio?.studioName}
           rating={singleStudio?.studioRate}
-          reviews="0"
+          reviews={`${studioReview?.studioReview?.length}`}
           place={singleStudio?.studioAddress}
         />
         <ProductImage />
