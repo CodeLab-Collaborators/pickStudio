@@ -128,10 +128,10 @@ const StudioPrice = () => {
                 type="string"
                 inputMode="numeric"
                 min="0"
-                max="100"
+                maxLength={2}
                 value={formStep3.discountPercent}
                 onChange={handleDiscountPercentChange}
-                className="w-[22%] p-2 bg-white rounded-md mt-1 font-semibold placeholder:text-gray-600 placeholder:font-semibold"
+                className="w-[25%] outline-none p-2 bg-white rounded-md mt-1 font-semibold placeholder:text-gray-600 placeholder:font-semibold"
                 placeholder="90"
               />
               <span className="ml-2 text-gray-800 font-bold">%</span>
