@@ -75,7 +75,6 @@ export const RenderButtonCheck = () => {
       // studio details
       <NavLink to="finish-listing">
         <GlobalButton
-          disabled={firstStepButtonDisabled}
           style={{ background: "var(--gradient)" }}
           className="font-semibold z-100 "
           onClick={() => {
