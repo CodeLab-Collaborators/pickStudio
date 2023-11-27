@@ -60,7 +60,7 @@ const Registration = () => {
         </div>
         <div className="w-full h-full  p-6 ">
           <form onSubmit={onHandleSubmit}>
-            {/* Simplified registration form */}
+            {/*  registration form */}
             <div className="mt-4">
               <GlobalInput
                 type="text"
