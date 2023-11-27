@@ -4,33 +4,36 @@ import { useFormSteps1 } from "../../../global/globalState";
 
 const StudioLocation: FC = () => {
   const [formStep1, setFormStep1]: any = useFormSteps1();
+
   const getStoredData = () => {
     const storedData = localStorage.getItem("uploadStudioData");
     return storedData ? JSON.parse(storedData).studioAddress : "";
   };
 
-  // const [studioAddress, setStudioAddress] = useState(getStoredData);
-  const [studioAddress, setStudioAddress] = useState(formStep1.studioAddress);
+  const [studioAddress, setStudioAddress] = useState(getStoredData);
+  console.log(studioAddress);
 
-  const handleAddressChange = (e: any) => {
-    const updatedAddress = e.target.value;
-    setStudioAddress(updatedAddress);
+  // const [studioAddress, setStudioAddress] = useState(formStep1.studioAddress);
 
-    console.log("Submitting studio address:", studioAddress);
+  // const handleAddressChange = (e: any) => {
+  //   const updatedAddress = e.target.value;
+  //   setStudioAddress(updatedAddress);
 
-    // Retrieve existing data from localStorage
-    const existingData =
-      JSON.parse(localStorage.getItem("uploadStudioData")!) || {};
+  //   console.log("Submitting studio address:", studioAddress);
 
-    // Update the studio address with the new value
-    const updatedData = {
-      ...existingData,
-      studioAddress: studioAddress,
-    };
+  //   // Retrieve existing data from localStorage
+  //   const existingData =
+  //     JSON.parse(localStorage.getItem("uploadStudioData")!) || {};
 
-    // Save the updated data in localStorage
-    localStorage.setItem("uploadStudioData", JSON.stringify(updatedData));
-  };
+  //   // Update the studio address with the new value
+  //   const updatedData = {
+  //     ...existingData,
+  //     studioAddress: studioAddress,
+  //   };
+
+  //   // Save the updated data in localStorage
+  //   localStorage.setItem("uploadStudioData", JSON.stringify(updatedData));
+  // };
 
   return (
     <div>

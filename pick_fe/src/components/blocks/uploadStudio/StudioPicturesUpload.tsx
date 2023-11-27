@@ -6,9 +6,11 @@ import { useFormSteps2 } from "../../../global/globalState";
 const StudioPicturesUpload = () => {
   const [formStep2, setFormStep2] = useFormSteps2();
   const [uploadedPictures, setUploadedPictures] = useState<any[]>([]);
-  const [uploadedPicturesViews, setUploadedPicturesViews] = useState<any[]>([]);
+
+  // const [uploadedPicturesViews, setUploadedPicturesViews] = useState<any[]>([]);
+
   const [fileInputKey, setFileInputKey] = useState(Date.now()); // Key to reset file input
-  let images: Array<string> = [];
+
   let studioImages: Array<any> = [];
 
   const handleFileChange = (e: any) => {

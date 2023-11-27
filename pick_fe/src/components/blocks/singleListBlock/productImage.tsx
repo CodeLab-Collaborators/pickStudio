@@ -4,11 +4,6 @@ import { GalleryModal } from "../../modals";
 import { singleStudioHooks } from "../../../hooks/studioHooks";
 import { useParams } from "react-router-dom";
 
-import img1 from "../../../assets/jpg/INSTASHOP.jpeg";
-import img2 from "../../../assets/jpg/Menstylica.jpeg";
-import img3 from "../../../assets/jpg/profile.jpeg";
-import img4 from "../../../assets/1.jpg";
-
 const ProductImage = () => {
   const { productID } = useParams();
   const [showGallery, setShowGallery] = useState<boolean>(false);

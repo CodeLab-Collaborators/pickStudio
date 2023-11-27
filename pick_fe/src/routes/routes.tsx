@@ -6,7 +6,7 @@ import {
   StudioLayout,
   UploadStudioLayout,
 } from "../components";
-import PrivateRoute from "./privateRoute";
+// import PrivateRoute from "./privateRoute";
 
 // import PrivateRoute from "./privateRoute";
 

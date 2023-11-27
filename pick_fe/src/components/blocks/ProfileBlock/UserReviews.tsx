@@ -4,7 +4,7 @@ import { useSingleUser } from "../../../hooks/userHooks";
 import moment from "moment";
 
 interface iProps {
-  props: any;
+  props?: any;
 }
 
 const UserReviews: FC<iProps> = ({ props }) => {

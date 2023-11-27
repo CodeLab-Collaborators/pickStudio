@@ -21,7 +21,7 @@ const Login = () => {
   const togglePassword = () => {
     setShowPassword(!showPassword);
   };
-
+  console.log(user);
   const { handleSubmit } = useForm();
 
   const onHandleSubmit = handleSubmit(() => {

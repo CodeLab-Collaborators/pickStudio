@@ -11,7 +11,7 @@ const ReviewListing: FC = () => {
 
   const [showModal, setShowModal] = useState(false);
 
-  const uploadData = localStorage.getItem("uploadStudioData");
+  // const uploadData = localStorage.getItem("uploadStudioData");
 
   console.log("this is uploadData", form2?.studioImages);
 

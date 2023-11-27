@@ -1,12 +1,13 @@
-import { FC, PropsWithChildren, useEffect, useState } from "react";
+import { FC, PropsWithChildren, useEffect } from "react";
 import { Navigate } from "react-router-dom";
-import { getSigninAccount } from "../api/authAPI";
 import { jwtDecode } from "jwt-decode";
 import { useSignUserData, useUser } from "../global/globalState";
 
 const PrivateRoute: FC<PropsWithChildren> = ({ children }) => {
   const [user] = useUser();
   const [userData, setUserData] = useSignUserData();
+
+  console.log(userData);
   const getToken = JSON.parse(localStorage.getItem("mainUser")!);
   useEffect(() => {
     if (user) {

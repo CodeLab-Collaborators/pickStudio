@@ -1,4 +1,4 @@
-import { FC, useState, useEffect } from "react";
+import { FC, useState } from "react";
 import GlobalInput from "../../props/GlobalInput";
 import { useFormSteps2 } from "../../../global/globalState";
 
@@ -9,6 +9,9 @@ const StudioTitle: FC = () => {
   const [studioDescription, setStudioDescription] = useState<string>(
     formStep2.studioDescription
   );
+
+  console.log(studioDescription);
+  console.log(studioName);
 
   return (
     <div className="">

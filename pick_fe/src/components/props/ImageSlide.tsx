@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 import { useSingleUser } from "../../hooks/userHooks";
 
 const ImageSLide: FC<imageData> = ({
-  authorCover,
   cover,
   route,
   userRoute,
@@ -91,7 +90,7 @@ const ImageSLide: FC<imageData> = ({
             />
           ) : (
             <div
-              className="w-full h-full object-cover object-top shadow-2xl rounded-full flex justify-center items-center text-white text-[20px] shadow-sm "
+              className="w-full h-full object-cover object-top shadow-2xl rounded-full flex justify-center items-center text-white text-[20px]  "
               style={{ background: "var(--gradient)" }}
             >
               {singleUser?.firstName.charAt(0)}

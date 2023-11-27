@@ -1,11 +1,6 @@
 import { FC } from "react";
 import { IoMdClose } from "react-icons/io";
-import mm from "../../assets/jpg/INSTASHOP.jpeg";
-import {
-  useFormSteps1,
-  useFormSteps2,
-  useFormSteps3,
-} from "../../global/globalState";
+import { useFormSteps1, useFormSteps2 } from "../../global/globalState";
 import { userHooks } from "../../hooks/userHooks";
 
 interface ReviewModalProps {
@@ -16,7 +11,6 @@ const ReviewModal: FC<ReviewModalProps> = ({ onClose }) => {
   const { data } = userHooks();
   const [form1]: any = useFormSteps1();
   const [form2]: any = useFormSteps2();
-  const [form3]: any = useFormSteps3();
 
   console.log("images::: ", form2.studioImages[0]);
 

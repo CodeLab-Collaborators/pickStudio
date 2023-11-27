@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import { useFormSteps1 } from "../../../global/globalState";
 
 const StudioCategory: FC = () => {
@@ -9,6 +9,7 @@ const StudioCategory: FC = () => {
     return storedData ? JSON.parse(storedData) : {};
   });
 
+  console.log(formStep1);
   // Sample list of studio categories
   const studioCategories = [
     "Film Production",

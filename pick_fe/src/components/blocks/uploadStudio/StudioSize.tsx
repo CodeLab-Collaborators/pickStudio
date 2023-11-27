@@ -9,6 +9,8 @@ const StudioSize: FC = () => {
     formStep1.numberOfGuests
   );
 
+  console.log(numberOfGuests);
+
   return (
     <div>
       <h1 className="mt-7 font-semibold text-2xl max-md:text-lg">

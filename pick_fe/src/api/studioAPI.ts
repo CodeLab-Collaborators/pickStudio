@@ -21,9 +21,6 @@ export const createAStudio = async (userID: string, data: any) => {
 
 export const getAllStudio = async () => {
   try {
-    const config: any = {
-      "Content-Type": "multipart/form-data",
-    };
     return await axios.get(`${URL}/view-all-studio/`).then((res: any | {}) => {
       return res.data.data;
     });

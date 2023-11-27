@@ -1,4 +1,3 @@
-import { FC } from "react";
 import { Link } from "react-router-dom";
 import {
   useSignUserData,
@@ -11,6 +10,8 @@ const AuthDropDown = () => {
 
   const [user, setUser] = useUser();
   const [userData, setUserData] = useSignUserData();
+
+  console.log(showAuthNav, userData);
 
   return (
     <>

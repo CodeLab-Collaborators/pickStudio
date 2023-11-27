@@ -37,7 +37,7 @@ export type textData = {
   rating: number;
   amount: number;
   date: string;
-  props: any;
+  props?: any;
 };
 
 export type imageData = {
@@ -46,12 +46,12 @@ export type imageData = {
   route: any;
   userRoute: string;
   wishlistFunc: any;
-  props: any;
+  props?: any;
 };
 
 export type cardData = {
   cover: any;
-  props: any;
+  props?: any;
   authorCover: any;
   authorName: string;
   place: string;

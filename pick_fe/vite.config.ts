@@ -36,4 +36,14 @@ export default defineConfig({
       },
     }),
   ],
+
+  build: {
+    // ignore warnings
+    rollupOptions: {
+      onwarn: (warning, warn) => {
+        if (warning.code === "UNUSED_EXTERNAL_IMPORT") return;
+        warn(warning);
+      },
+    },
+  },
 });
