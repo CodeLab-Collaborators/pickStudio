@@ -79,10 +79,6 @@ export const RenderButtonCheck = () => {
           className="font-semibold z-100 "
           onClick={() => {
             // setFormStep(uploadStudioData);
-            console.log(
-              "pushing",
-              JSON.parse(localStorage.getItem("formSteps")!)
-            );
           }}
         >
           Next
@@ -104,7 +100,6 @@ export const RenderButtonCheck = () => {
           className="font-semibold "
           onClick={() => {
             // console.log(uploadStudioData);
-            console.log("finisted: ", formStep);
           }}
         >
           Review Listing
@@ -140,7 +135,6 @@ export const RenderButtonCheck = () => {
             localStorage.removeItem("formSteps3");
             navigate("/");
           });
-          console.log(data._id);
 
           // console.log("confirm: ", step2.studioImages[0] instanceof File);
 

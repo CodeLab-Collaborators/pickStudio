@@ -23,9 +23,9 @@ const UserPostBlock = () => {
         </h1>
         {/* user reviews */}
         <div className="w-full grid grid-cols-2 gap-5 max-md:grid-cols-1 py-2">
-          <UserReviews />
-          <UserReviews />
-          <UserReviews />
+          {/* <UserReviews /> */}
+          {/* <UserReviews />
+          <UserReviews /> */}
         </div>
 
         {/* show more reviews button */}

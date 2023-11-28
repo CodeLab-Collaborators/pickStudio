@@ -37,8 +37,6 @@ const StudioPrice = () => {
     // console.log();
   }, []);
 
-  console.log(includeDiscount);
-
   const handleCheckboxChange = () => {
     setIncludeDiscount(!includeDiscount);
 
@@ -74,7 +72,6 @@ const StudioPrice = () => {
     };
     setFormStep3(reviewData);
   };
-  console.log(formStep3.studioPrice);
   return (
     <div>
       <div>

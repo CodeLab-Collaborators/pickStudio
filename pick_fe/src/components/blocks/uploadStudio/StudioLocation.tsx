@@ -11,7 +11,6 @@ const StudioLocation: FC = () => {
   };
 
   const [studioAddress, setStudioAddress] = useState(getStoredData);
-  console.log(studioAddress);
 
   // const [studioAddress, setStudioAddress] = useState(formStep1.studioAddress);
 

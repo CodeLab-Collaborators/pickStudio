@@ -13,8 +13,6 @@ const ReviewListing: FC = () => {
 
   // const uploadData = localStorage.getItem("uploadStudioData");
 
-  console.log("this is uploadData", form2?.studioImages);
-
   return (
     <div>
       <div className="w-[50%] max-lg:w-[70%] max-md:w-[90%] m-auto  h-full flex flex-col justify-center items-start">

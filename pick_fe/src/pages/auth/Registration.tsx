@@ -22,8 +22,6 @@ const Registration = () => {
   const [mail, setMail] = useEmailValue();
   const [toggle, setToggle] = useState<boolean>(false);
 
-  console.log(mail, toggle);
-
   const togglePassword = () => {
     setShowPassword(!showPassword);
   };

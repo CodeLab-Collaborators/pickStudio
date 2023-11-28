@@ -4,14 +4,14 @@ import {
   useToggleValue,
   useUser,
 } from "../../global/globalState";
+import { userHooks } from "../../hooks/userHooks";
 
 const AuthDropDown = () => {
+  const { data } = userHooks();
   const [showAuthNav, setShowAuthNav] = useToggleValue();
 
   const [user, setUser] = useUser();
   const [userData, setUserData] = useSignUserData();
-
-  console.log(showAuthNav, userData);
 
   return (
     <>
@@ -43,7 +43,7 @@ const AuthDropDown = () => {
         </div>
       ) : (
         <div className="w-[250px] relative bg-white text-[15px] flex flex-col gap-2 rounded-xl shadow-lg">
-          <Link to="/user">
+          <Link to={`/user/${data._id}`}>
             <p
               className="hover:bg-[#f7f7f7] text-black ease-in transition-all cursor-pointer px-6 py-2 mt-6"
               onClick={() => {

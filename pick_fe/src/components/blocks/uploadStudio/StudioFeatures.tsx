@@ -66,8 +66,6 @@ const StudioFeatures = () => {
     // }));
   };
 
-  console.log(selectedFeatures);
-
   // Save uploadStudioData to localStorage when it changes
   useEffect(() => {
     localStorage.setItem("uploadStudioData", JSON.stringify(uploadStudioData));

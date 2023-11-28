@@ -10,9 +10,6 @@ const StudioTitle: FC = () => {
     formStep2.studioDescription
   );
 
-  console.log(studioDescription);
-  console.log(studioName);
-
   return (
     <div className="">
       <h1 className="font-semibold text-2xl max-md:text-lg">

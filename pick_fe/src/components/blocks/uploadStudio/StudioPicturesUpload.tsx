@@ -15,7 +15,6 @@ const StudioPicturesUpload = () => {
 
   const handleFileChange = (e: any) => {
     const files = e.target.files;
-    console.log(files);
     // Ensure at least 5 pictures are selected
     if (files.length < 0) {
       alert("Please upload at least 5 pictures of your studio.");
@@ -25,10 +24,7 @@ const StudioPicturesUpload = () => {
         let save = URL.createObjectURL(files[i]);
         // setUploadedPicturesViews([...uploadedPicturesViews, files[i]]);
         // images.push(save);
-        console.log(files[i]);
         studioImages.push(save);
-
-        console.log("got it: ", studioImages);
 
         // localStorage.setItem("studioImages", JSON.stringify(...studioImages));
 
@@ -46,7 +42,6 @@ const StudioPicturesUpload = () => {
 
     // Update state with new pictures
     setUploadedPictures((prevPictures) => [...prevPictures, ...newPictures]);
-    console.log(" hmmm: ", uploadedPictures);
     // Save the updated pictures in local storage
     const storedData = localStorage.getItem("uploadStudioData");
     const existingData = storedData ? JSON.parse(storedData) : {};

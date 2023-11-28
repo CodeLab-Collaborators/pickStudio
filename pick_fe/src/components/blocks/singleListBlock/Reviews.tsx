@@ -11,8 +11,6 @@ const Reviews: FunctionComponent = () => {
 
   const { studioReview } = studioReviewHooks(productID!);
 
-  console.log(studioReview);
-
   const [visibleReviews, setVisibleReviews] = useState(6); // Number of reviews to initially display
   const totalReviews = 9; // Total number of reviews
 

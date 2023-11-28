@@ -15,7 +15,7 @@ const ImageSLide: FC<imageData> = ({
   wishlistFunc,
   props,
 }) => {
-  const { singleUser } = useSingleUser(props.accountHolderID);
+  const { singleUser } = useSingleUser(props?.accountHolderID);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [show, setShow] = useState(false);
 
@@ -93,7 +93,7 @@ const ImageSLide: FC<imageData> = ({
               className="w-full h-full object-cover object-top shadow-2xl rounded-full flex justify-center items-center text-white text-[20px]  "
               style={{ background: "var(--gradient)" }}
             >
-              {singleUser?.firstName.charAt(0)}
+              {singleUser?.firstName?.charAt(0)}
             </div>
           )}
         </div>

@@ -9,7 +9,6 @@ const StudioCategory: FC = () => {
     return storedData ? JSON.parse(storedData) : {};
   });
 
-  console.log(formStep1);
   // Sample list of studio categories
   const studioCategories = [
     "Film Production",
@@ -52,7 +51,6 @@ const StudioCategory: FC = () => {
             key={category}
             onClick={() => {
               handleCategorySelect(category);
-              console.log("show me: ", handleCategorySelect(category));
             }}
             style={{
               margin: "5px",

@@ -8,8 +8,6 @@ import {
 import { useFormSteps } from "../../../global/globalState";
 
 const StudioDetails: FC = () => {
-  const [formStep] = useFormSteps();
-  console.log("reading: ", formStep);
   document.title = "Step 2: More details about your studio - Pickastudio";
   return (
     <div className="w-full h-full flex justify-center items-center">

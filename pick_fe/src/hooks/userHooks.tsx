@@ -14,7 +14,6 @@ export const userHooks = () => {
     }
   }, [state]);
 
-  console.log(state);
   const { data, isLoading } = useSWR(`${state}`, () => getOneUser(state));
 
   return { data, isLoading };
