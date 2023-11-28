@@ -73,6 +73,21 @@ export const RenderButtonCheck = () => {
   } else if (location.pathname.includes("studio-details")) {
     return (
       // studio details
+      <NavLink to="upload-studio-images">
+        <GlobalButton
+          style={{ background: "var(--gradient)" }}
+          className="font-semibold z-100 "
+          onClick={() => {
+            // setFormStep(uploadStudioData);
+          }}
+        >
+          Next
+        </GlobalButton>
+      </NavLink>
+    );
+  } else if (location.pathname.includes("upload-studio-images")) {
+    return (
+      // studio details
       <NavLink to="finish-listing">
         <GlobalButton
           style={{ background: "var(--gradient)" }}
