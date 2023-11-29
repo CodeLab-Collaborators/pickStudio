@@ -6,6 +6,7 @@ import img4 from "../assets/jpg/INSTASHOP.jpeg";
 import profile from "../assets/jpg/profile.jpeg";
 import { studioHooks } from "../hooks/studioHooks";
 import moment from "moment";
+import DoorDashFavorite from "../components/props/Loader";
 const Home = () => {
   const dummyImage = [
     img1,
@@ -22,10 +23,11 @@ const Home = () => {
     img2,
   ];
 
-  const { allStudio } = studioHooks();
+  const { allStudio, isLoading } = studioHooks();
 
   return (
     <div className="w-full m-auto grid gap-6 place-items-center grid-cols-5 max-xl:grid-cols-4 max-lg:grid-cols-2 max-sm:grid-cols-1 max-sm:w-full">
+      {isLoading && Array.from({ length: 5 }, () => <DoorDashFavorite />)}
       {allStudio?.map((props: any, i: number) => (
         <ProductProps
           props={props}

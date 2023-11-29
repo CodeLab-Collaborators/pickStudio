@@ -1,7 +1,13 @@
 import { FC, useState } from "react";
 import mm from "../../../assets/jpg/Menstylica.jpeg";
 import { ReviewModal } from "../../../components/modals";
-import { useFormSteps2, useFormSteps3 } from "../../../global/globalState";
+import {
+  useFormSteps2,
+  useFormSteps3,
+  useImagesStudio,
+} from "../../../global/globalState";
+import { RenderButtonCheck } from "../../../components/blocks/uploadStudio/RenderButtonCheck";
+import { useSelector } from "react-redux";
 
 const ReviewListing: FC = () => {
   document.title = "Review and publish your listing - Pickastudio";
@@ -12,7 +18,24 @@ const ReviewListing: FC = () => {
   const [showModal, setShowModal] = useState(false);
 
   // const uploadData = localStorage.getItem("uploadStudioData");
+  const [images, setImage] = useState(mm);
+  const [imageStudio, setImageStudio]: any = useState([]);
+  let myImage: any = [];
+  const [readImage, setReadImage] = useImagesStudio();
 
+  const uploadImage = (e: any) => {
+    const detail = useSelector((state: any) => state.images);
+
+    console.log(detail);
+    let file = e.target.files;
+
+    setImageStudio(Object.values(file));
+    setReadImage(Object.entries(file));
+  };
+
+  localStorage.setItem("images", JSON.stringify(imageStudio));
+
+  //
   return (
     <div>
       <div className="w-[50%] max-lg:w-[70%] max-md:w-[90%] m-auto  h-full flex flex-col justify-center items-start">
@@ -25,7 +48,21 @@ const ReviewListing: FC = () => {
             Here's what we'll show to users. Make sure everything looks good.
           </p>
         </div>
-        <div className="grid grid-cols-2 mt-14 max-lg:mt-10 max-lg:grid-cols-1 gap-20 max-lg:gap-12">
+        <div className="grid grid-cols-2 mt-14 max-lg:mt-10 max-lg:grid-cols-1 gap-20 max-lg:gap-12 relative">
+          <input
+            className="hidden"
+            onChange={uploadImage}
+            type="file"
+            multiple
+            id="image"
+          />
+
+          <label
+            className="absolute top-8 left-[7.8rem] px-3 py-2 font-semibold text-sm rounded-md bg-white shadow-lg z-10 text-[#850635] "
+            htmlFor="image"
+          >
+            upload images
+          </label>
           <div
             className="bg-white cursor-pointer p-5 shadow-2xl h-[400px] rounded-2xl w-[358px] max-md:w-[100%] "
             onClick={() => {
@@ -35,7 +72,7 @@ const ReviewListing: FC = () => {
             {/* image */}
             <div className="w-full relative h-[85%] overflow-hidden rounded-md">
               <img src={mm} alt="" className="object-cover" />
-              <button className="absolute top-3 left-3 px-3 py-1 font-semibold text-sm rounded-lg bg-white shadow-md">
+              <button className="absolute top-3 left-3 px-3 py-2 font-semibold text-sm rounded-md bg-white shadow-md">
                 preview
               </button>
             </div>

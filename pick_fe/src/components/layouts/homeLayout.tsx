@@ -16,7 +16,7 @@ const Homelayout = () => {
       location.pathname.includes("setting") ? null : (
         <Categories />
       )}
-      <div className="w-[90%] m-auto mt-3">
+      <div className="w-[90%] min-h-[76vh] m-auto mt-3">
         <Outlet />
       </div>
 

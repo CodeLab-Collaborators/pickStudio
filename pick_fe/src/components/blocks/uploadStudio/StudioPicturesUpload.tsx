@@ -2,8 +2,14 @@ import { useState } from "react";
 import { AiOutlineCloudUpload } from "react-icons/ai";
 import { TiDeleteOutline } from "react-icons/ti";
 import { useFormSteps2 } from "../../../global/globalState";
+import { useDispatch } from "react-redux";
+import { addImages } from "../../../global/reduxState";
+import { useRecoilState } from "recoil";
+import { imageState } from "../../../global/recoil";
 
 const StudioPicturesUpload = () => {
+  const dispatch = useDispatch();
+  const [state, setState] = useRecoilState(imageState);
   const [formStep2, setFormStep2] = useFormSteps2();
   const [uploadedPictures, setUploadedPictures] = useState<any[]>([]);
 
@@ -16,6 +22,10 @@ const StudioPicturesUpload = () => {
   const handleFileChange = (e: any) => {
     const files = e.target.files;
     // Ensure at least 5 pictures are selected
+
+    // dispatch(addImages(Object.entries(files)));
+    setState(addImages(Object.entries(files)));
+
     if (files.length < 0) {
       alert("Please upload at least 5 pictures of your studio.");
       return;

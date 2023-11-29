@@ -7,11 +7,10 @@ const myEmail = atomWithStorage("myEmail", "");
 const myToggle = atomWithStorage("myEmail", false);
 const enc = atomWithStorage("enc", "");
 
-const formSteps = atomWithStorage("formSteps", {} || null);
-
 const formSteps1 = atomWithStorage("formSteps1", {} || null);
 const formSteps2 = atomWithStorage("formSteps2", {} || null);
 const formSteps3 = atomWithStorage("formSteps3", {} || null);
+const imagesForStudio = atomWithStorage("imagesForStudio", {} || null);
 
 export const useUser = () => {
   return useAtom(signUser);
@@ -19,6 +18,10 @@ export const useUser = () => {
 
 export const useSignUserData = () => {
   return useAtom(signUserData);
+};
+
+export const useImagesStudio = () => {
+  return useAtom(imagesForStudio);
 };
 
 export const useEmailValue = () => {
@@ -31,10 +34,6 @@ export const useToggleValue = () => {
 
 export const useEnc = () => {
   return useAtom(enc);
-};
-
-export const useFormSteps = () => {
-  return useAtom(formSteps);
 };
 
 export const useFormSteps1 = () => {

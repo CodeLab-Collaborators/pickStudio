@@ -1,18 +1,49 @@
 import { GlobalButton } from "../..";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { GalleryModal } from "../../modals";
 import { singleStudioHooks } from "../../../hooks/studioHooks";
 import { useParams } from "react-router-dom";
+import { addStudioImages } from "../../../api/studioAPI";
+import { userHooks } from "../../../hooks/userHooks";
 
 const ProductImage = () => {
   const { productID } = useParams();
+  const { data } = userHooks();
   const [showGallery, setShowGallery] = useState<boolean>(false);
+  const [imagesData, setImagesData]: any = useState<Array<any>>([]);
   const { singleStudio } = singleStudioHooks(productID!);
+
+  const formData = new FormData();
+
+  let [upload, setUpload] = useState(false);
+  let [uploadImage, setUploadImage]: any = useState([]);
+
   const toggleGallery = () => {
     setShowGallery(!showGallery);
   };
 
   const dummyImage = singleStudio?.studioImages;
+
+  const uploadImages = async (e: any) => {
+    let file = e.target.files;
+    setImagesData(Object.entries(file));
+    let image: any = [];
+
+    console.log(file);
+
+    for (let i = 0; i < file.length; i++) {
+      setUploadImage([...uploadImage, file[i]]);
+
+      image.push(file[i]);
+
+      console.log(i);
+      if (file.length) {
+        setUpload(true);
+      }
+    }
+    console.log(image);
+    formData.append("avatar", image);
+  };
 
   return (
     <div className="w-full hidden relative md:grid h-[500px] rounded-3xl grid-cols-4 grid-rows-2 gap-2">
@@ -72,15 +103,47 @@ const ProductImage = () => {
         />
       </div>
 
-      <div className="absolute bottom-3 right-5  ">
-        <GlobalButton
-          style={{ backgroundColor: "#fff", color: "black" }}
-          className="py-[6px] text-sm border border-[#000000c0]"
-          onClick={toggleGallery}
-        >
-          Add More Images
-        </GlobalButton>
-      </div>
+      {upload ? (
+        <div className="absolute bottom-3 right-5  ">
+          {/* <input
+            className="hidden"
+            type="file"
+            multiple
+            id="images"
+            onChange={uploadImages}
+          /> */}
+          <label
+            htmlFor="images"
+            style={{ backgroundColor: "#fff", color: "black" }}
+            className="py-[6px] text-sm border border-[#000000c0] rounded-md px-2 font-[400] "
+            onClick={() => {
+              addStudioImages(data._id, productID!, formData).then((res) => {
+                setUpload(false);
+                console.log("done", res);
+              });
+            }}
+          >
+            upload Images
+          </label>
+        </div>
+      ) : (
+        <div className="absolute bottom-3 right-5  ">
+          <input
+            className="hidden"
+            type="file"
+            multiple
+            id="images"
+            onChange={uploadImages}
+          />
+          <label
+            htmlFor="images"
+            style={{ backgroundColor: "#fff", color: "black" }}
+            className="py-[6px] text-sm border border-[#000000c0] rounded-md px-2 font-[400] "
+          >
+            Add More Images
+          </label>
+        </div>
+      )}
 
       {showGallery ? <GalleryModal onClose={toggleGallery} /> : null}
     </div>

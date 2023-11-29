@@ -6,6 +6,7 @@ import {
   StudioLayout,
   UploadStudioLayout,
 } from "../components";
+import DoorDashFavorite from "../components/props/Loader";
 // import PrivateRoute from "./privateRoute";
 
 // import PrivateRoute from "./privateRoute";
@@ -53,7 +54,15 @@ export const appRoutes = createBrowserRouter([
       {
         index: true,
         element: (
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense
+            fallback={
+              <div className="flex">
+                {Array.from({ length: 5 }, () => (
+                  <DoorDashFavorite />
+                ))}
+              </div>
+            }
+          >
             {/* <PrivateRoute> */}
             <Home />
             {/* </PrivateRoute> */}

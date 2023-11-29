@@ -40,3 +40,26 @@ export const getSingleStudio = async (accountID: string) => {
     return error;
   }
 };
+// add-studio-image/:accountID/
+export const addStudioImages = async (
+  accountID: string,
+  studioID: string,
+  data: any
+) => {
+  try {
+    const config: any = {
+      "Content-Type": "multipart/form-data",
+    };
+    return await axios
+      .post(
+        `https://pick-be.onrender.com/api/v1/add-studio-image/65637974594fcb0c59187cb2/65637fd2594fcb0c59187cf9`,
+        data,
+        config
+      )
+      .then((res: any | {}) => {
+        return res.data.data;
+      });
+  } catch (error) {
+    return error;
+  }
+};

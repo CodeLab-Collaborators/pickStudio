@@ -5,7 +5,6 @@ import {
   StudioTitle,
   UploadStudioStep,
 } from "../../../components/blocks/uploadStudio";
-import { useFormSteps } from "../../../global/globalState";
 
 const StudioDetails: FC = () => {
   document.title = "Step 2: More details about your studio - Pickastudio";

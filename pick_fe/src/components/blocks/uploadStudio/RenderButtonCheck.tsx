@@ -1,20 +1,21 @@
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { GlobalButton } from "../..";
-import { useFormSteps } from "../../../global/globalState";
+// import { useFormSteps, useImagesStudio } from "../../../global/globalState";
 import { createAStudio } from "../../../api/studioAPI";
 import { userHooks } from "../../../hooks/userHooks";
 
-export const RenderButtonCheck = () => {
+export const RenderButtonCheck: FC = () => {
   const navigate = useNavigate();
   const { data } = userHooks();
   const formData = new FormData();
+  // const [readImage] = useImagesStudio();
 
   // const [form2] = useFormSteps2();
   // const [form3] = useFormSteps3();
 
   const location = useLocation();
-  const [formStep, setFormStep] = useFormSteps();
+  // const [formStep, setFormStep] = useFormSteps();
 
   const [uploadStudioData, setUploadStudioData] = useState(() => {
     const storedData = localStorage.getItem("uploadStudioData");
@@ -63,7 +64,7 @@ export const RenderButtonCheck = () => {
             }`,
           }}
           onClick={() => {
-            setFormStep(uploadStudioData);
+            // setFormStep(uploadStudioData);
           }}
         >
           Next
@@ -118,7 +119,9 @@ export const RenderButtonCheck = () => {
           let step2 = JSON.parse(localStorage.getItem("formSteps2")!);
           let step3 = JSON.parse(localStorage.getItem("formSteps3")!);
 
-          formData.append("avatar", step2.studioImages);
+          // formData.append("avatar", step2.studioImages);
+          // all
+
           formData.append("studioName", step2.studioName);
           formData.append("studioCategory", step1.selectedStudioCategory);
           formData.append("studioAddress", step1.studioAddress);

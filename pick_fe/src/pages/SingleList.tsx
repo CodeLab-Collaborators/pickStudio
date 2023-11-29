@@ -43,6 +43,7 @@ const SingleList = () => {
           place={singleStudio?.studioAddress}
         />
         <ProductImage />
+
         <div className="w-full relative h-[fit-content] mt-4 flex gap-6">
           <div className="flex flex-col ">
             <Ad />

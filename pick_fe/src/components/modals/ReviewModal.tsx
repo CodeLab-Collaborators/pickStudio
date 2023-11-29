@@ -12,8 +12,6 @@ const ReviewModal: FC<ReviewModalProps> = ({ onClose }) => {
   const [form1]: any = useFormSteps1();
   const [form2]: any = useFormSteps2();
 
-  console.log("images::: ", form2.studioImages[0]);
-
   const studioFeatures = [
     "Specialized equipment",
     "Production and editing facilities",
@@ -50,8 +48,12 @@ const ReviewModal: FC<ReviewModalProps> = ({ onClose }) => {
             {/* left */}
             <div className="h-[450px] max-md:h-[350px] sticky top-24 max-md:static max-md:top-0  shadow-md rounded-lg  overflow-hidden ">
               <img
-                src={form2.studioImages[0]}
-                // src={mm}
+                // src={
+                //   form2.studioImages[0]
+                //     ? form2.studioImages[0]
+                //     : "https://i.stack.imgur.com/l60Hf.png"
+                // }
+                src={"https://i.stack.imgur.com/l60Hf.png"}
                 alt=""
                 className=" w-full object-cover "
               />
