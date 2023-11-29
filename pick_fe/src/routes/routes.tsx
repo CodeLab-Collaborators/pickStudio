@@ -41,6 +41,9 @@ const FinishListing = lazy(
 const ReviewListing = lazy(
   () => import("../pages/studio/uploadStudio/ReviewListing")
 );
+const UploadProductImage = lazy(
+  () => import("../pages/studio/uploadStudio/StudioPictures")
+);
 
 export const appRoutes = createBrowserRouter([
   {
@@ -226,6 +229,14 @@ export const appRoutes = createBrowserRouter([
         element: (
           <Suspense fallback={<div>Loading...</div>}>
             <FinishListing />
+          </Suspense>
+        ),
+      },
+      {
+        path: "upload-studio-images",
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <UploadProductImage />
           </Suspense>
         ),
       },

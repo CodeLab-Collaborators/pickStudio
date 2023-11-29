@@ -86,6 +86,9 @@ const StudioPicturesUpload = () => {
     setFormStep2(dataForm);
   };
 
+ 
+
+
   return (
     <div className="">
       <h1 className="mt-7 font-semibold text-2xl max-md:text-lg">
@@ -96,9 +99,11 @@ const StudioPicturesUpload = () => {
         later.
       </p>
 
-      <div className="flex items-center justify-center w-full mt-4">
-        <label
+      <div className="flex items-center justify-center  w-full mt-4">
+        {/* only show upload if there are no pictures uploaded */}
+    {uploadedPictures.length === 0 &&     <label
           htmlFor="dropzone-file"
+       
           className="flex flex-col items-center justify-center w-full h-64 max-md:h-48 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
         >
           <div className="flex flex-col items-center justify-center pt-5 pb-6">
@@ -126,7 +131,7 @@ const StudioPicturesUpload = () => {
             className="hidden"
             aria-labelledby="file-upload-label"
           />
-        </label>
+        </label>}
       </div>
 
       <div>
@@ -152,6 +157,40 @@ const StudioPicturesUpload = () => {
                 </button>
               </div>
             ))}
+
+            {/* upload more pictures */}
+            {uploadedPictures.length > 0 && (
+         <label
+         htmlFor="dropzone-file"
+      
+         className="flex flex-col items-center justify-center w-full h-64 max-md:h-48 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+       >
+         <div className="flex flex-col items-center justify-center pt-5 pb-6">
+           <p className="text-5xl text-gray-300">
+             <AiOutlineCloudUpload />
+           </p>
+           <p
+             className="mb-2 text-sm text-gray-500 dark:text-gray-400 font-semibold "
+             aria-hidden="true"
+           >
+             Click to upload more photos
+           </p>
+        
+         </div>
+
+         <input
+           id="dropzone-file"
+           type="file"
+           accept="image/*"
+           multiple
+           key={fileInputKey}
+           onChange={handleFileChange}
+           className="hidden"
+           aria-labelledby="file-upload-label"
+         />
+       </label>
+           
+        )}
         </div>
         {/* {uploadedPictures.length === 0 && <p>No pictures uploaded yet.</p>} */}
       </div>
