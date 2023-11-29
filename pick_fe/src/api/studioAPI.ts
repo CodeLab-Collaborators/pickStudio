@@ -44,17 +44,23 @@ export const getSingleStudio = async (accountID: string) => {
 export const addStudioImages = async (
   accountID: string,
   studioID: string,
-  data: any
+  formData: any
 ) => {
   try {
     const config: any = {
       "Content-Type": "multipart/form-data",
     };
+
     return await axios
       .post(
-        `https://pick-be.onrender.com/api/v1/add-studio-image/65637974594fcb0c59187cb2/65637fd2594fcb0c59187cf9`,
-        data,
-        config
+        `https://pick-be.onrender.com/api/v1/add-studio-image/${accountID}/${studioID}`,
+
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
       )
       .then((res: any | {}) => {
         return res.data.data;

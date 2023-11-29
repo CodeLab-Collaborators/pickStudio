@@ -5,18 +5,18 @@ import { singleStudioHooks } from "../../../hooks/studioHooks";
 import { useParams } from "react-router-dom";
 import { addStudioImages } from "../../../api/studioAPI";
 import { userHooks } from "../../../hooks/userHooks";
+import { ScaleLoader } from "react-spinners";
 
 const ProductImage = () => {
   const { productID } = useParams();
   const { data } = userHooks();
+
   const [showGallery, setShowGallery] = useState<boolean>(false);
+  const [load, setLoad] = useState<boolean>(false);
   const [imagesData, setImagesData]: any = useState<Array<any>>([]);
   const { singleStudio } = singleStudioHooks(productID!);
-
-  const formData = new FormData();
-
   let [upload, setUpload] = useState(false);
-  let [uploadImage, setUploadImage]: any = useState([]);
+  const [selectedFiles, setSelectedFiles]: any = useState(null);
 
   const toggleGallery = () => {
     setShowGallery(!showGallery);
@@ -24,27 +24,36 @@ const ProductImage = () => {
 
   const dummyImage = singleStudio?.studioImages;
 
-  const uploadImages = async (e: any) => {
-    let file = e.target.files;
-    setImagesData(Object.entries(file));
-    let image: any = [];
+  const uploadImages = (e: any) => {
+    setSelectedFiles(e.target.files);
+    console.log("reading");
 
-    console.log(file);
-
-    for (let i = 0; i < file.length; i++) {
-      setUploadImage([...uploadImage, file[i]]);
-
-      image.push(file[i]);
-
-      console.log(i);
-      if (file.length) {
-        setUpload(true);
-      }
-    }
-    console.log(image);
-    formData.append("avatar", image);
+    setUpload(true);
+    setLoad(true);
   };
 
+  const handleUpload = () => {
+    const formData = new FormData();
+
+    for (let i = 0; i < selectedFiles.length; i++) {
+      formData.append("avatar", selectedFiles[i]);
+    }
+
+    addStudioImages(data._id, productID!, formData).then((res) => {
+      console.log(res);
+      setLoad(false);
+    });
+  };
+
+  useEffect(() => {
+    if (upload) {
+      handleUpload();
+      setUpload(false);
+    }
+  }, [upload]);
+
+  let numb = Math.floor(Math.random() * (dummyImage?.length - 1) + 1);
+  console.log(numb);
   return (
     <div className="w-full hidden relative md:grid h-[500px] rounded-3xl grid-cols-4 grid-rows-2 gap-2">
       <div className=" rounded-tl-2xl rounded-bl-2xl col-span-2 row-span-2">
@@ -62,7 +71,9 @@ const ProductImage = () => {
         <img
           src={
             dummyImage?.length > 0
-              ? dummyImage[1]
+              ? dummyImage[
+                  Math.floor(Math.random() * (dummyImage?.length - 1) + 1)
+                ]
               : "https://i.stack.imgur.com/l60Hf.png"
           }
           className="w-full  h-full object-cover cursor-pointer object-top"
@@ -73,7 +84,9 @@ const ProductImage = () => {
         <img
           src={
             dummyImage?.length > 0
-              ? dummyImage[2]
+              ? dummyImage[
+                  Math.floor(Math.random() * (dummyImage?.length - 1) + 1)
+                ]
               : "https://i.stack.imgur.com/l60Hf.png"
           }
           onClick={toggleGallery}
@@ -84,7 +97,9 @@ const ProductImage = () => {
         <img
           src={
             dummyImage?.length > 0
-              ? dummyImage[0]
+              ? dummyImage[
+                  Math.floor(Math.random() * (dummyImage?.length - 1) + 1)
+                ]
               : "https://i.stack.imgur.com/l60Hf.png"
           }
           onClick={toggleGallery}
@@ -95,7 +110,9 @@ const ProductImage = () => {
         <img
           src={
             dummyImage?.length > 0
-              ? dummyImage[1]
+              ? dummyImage[
+                  Math.floor(Math.random() * (dummyImage?.length - 1) + 1)
+                ]
               : "https://i.stack.imgur.com/l60Hf.png"
           }
           onClick={toggleGallery}
@@ -103,28 +120,18 @@ const ProductImage = () => {
         />
       </div>
 
-      {upload ? (
-        <div className="absolute bottom-3 right-5  ">
-          {/* <input
-            className="hidden"
-            type="file"
-            multiple
-            id="images"
-            onChange={uploadImages}
-          /> */}
-          <label
-            htmlFor="images"
+      {load ? (
+        <div className="absolute bottom-[0.45rem] right-5  ">
+          <button
             style={{ backgroundColor: "#fff", color: "black" }}
-            className="py-[6px] text-sm border border-[#000000c0] rounded-md px-2 font-[400] "
+            className="py-[6px] text-sm border border-[#000000c0] rounded-md px-12 font-[400] "
             onClick={() => {
-              addStudioImages(data._id, productID!, formData).then((res) => {
-                setUpload(false);
-                console.log("done", res);
-              });
+              setLoad(true);
+              handleUpload();
             }}
           >
-            upload Images
-          </label>
+            {load && <ScaleLoader color="#8E0629" width={5} height={10} />}
+          </button>
         </div>
       ) : (
         <div className="absolute bottom-3 right-5  ">
