@@ -62,6 +62,14 @@ export const appRoutes = createBrowserRouter([
           </Suspense>
         ),
       },
+      {
+        path: "category",
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <>cat</>
+          </Suspense>
+        ),
+      },
     ],
   },
   {
