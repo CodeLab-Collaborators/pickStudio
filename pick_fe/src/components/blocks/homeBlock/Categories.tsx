@@ -26,21 +26,6 @@ const Categories = () => {
     >
       <div className="w-[90%] m-[auto] h-full flex gap-10 items-center  overflow-y-scroll no-scrollbar">
         <CategoryProps />
-        <CategoryProps />
-        <CategoryProps />
-        <CategoryProps />
-        <CategoryProps />
-        <CategoryProps />
-        <CategoryProps />
-        <CategoryProps />
-        <CategoryProps />
-        <CategoryProps />
-        <CategoryProps />
-        <CategoryProps />
-        <CategoryProps />
-        <CategoryProps />
-        <CategoryProps />
-        <CategoryProps />
       </div>
     </div>
   );

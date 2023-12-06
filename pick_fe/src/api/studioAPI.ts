@@ -29,6 +29,18 @@ export const getAllStudio = async () => {
   }
 };
 
+export const searchStudio = async (data: string) => {
+  try {
+    return await axios
+      .post(`${URL}/view-studio-category`, { studioCategory: data })
+      .then((res: any | {}) => {
+        return res.data.data;
+      });
+  } catch (error) {
+    return error;
+  }
+};
+
 export const getSingleStudio = async (accountID: string) => {
   try {
     return await axios
@@ -40,7 +52,7 @@ export const getSingleStudio = async (accountID: string) => {
     return error;
   }
 };
-// add-studio-image/:accountID/
+
 export const addStudioImages = async (
   accountID: string,
   studioID: string,

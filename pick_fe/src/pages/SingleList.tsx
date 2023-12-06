@@ -44,7 +44,7 @@ const SingleList = () => {
         />
         <ProductImage />
 
-        <div className="w-full relative h-[fit-content] mt-4 flex gap-6">
+        <div className="w-full relative h-[fit-content] mt-4 flex gap-6 ">
           <div className="flex flex-col ">
             <Ad />
             <ListDetails
@@ -56,7 +56,8 @@ const SingleList = () => {
             />
             <Offers />
           </div>
-          <div className="flex-1 hidden h-[fit-content] mt-8 sticky top-24 md:flex">
+          {/* flex-1 hidden h-[fit-content] mt-8 sticky top-24 md:flex */}
+          <div className="flex-1 hidden md:flex sticky mt-8 top-24 h-[fit-content] ">
             <BookSpace />
           </div>
         </div>

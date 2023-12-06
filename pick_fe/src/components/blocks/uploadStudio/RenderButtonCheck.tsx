@@ -134,9 +134,6 @@ export const RenderButtonCheck: FC = () => {
           let step2 = JSON.parse(localStorage.getItem("formSteps2")!);
           let step3 = JSON.parse(localStorage.getItem("formSteps3")!);
 
-          // formData.append("avatar", step2.studioImages);
-          // all
-
           formData.append("studioName", step2.studioName);
           formData.append("studioCategory", step1.selectedStudioCategory);
           formData.append("studioAddress", step1.studioAddress);
@@ -147,21 +144,14 @@ export const RenderButtonCheck: FC = () => {
           formData.append("includeDiscount", step3.includeDiscount);
           formData.append("discountPercent", step3.discountPercent);
 
-          createAStudio(data._id, formData).then(() => {
+          createAStudio(data._id, formData).then((res) => {
             localStorage.removeItem("formSteps1");
             localStorage.removeItem("formSteps2");
             localStorage.removeItem("formSteps3");
-            navigate("/");
+            localStorage.removeItem("step4");
+
+            navigate(`/products/${res._id}`);
           });
-
-          // console.log("confirm: ", step2.studioImages[0] instanceof File);
-
-          // fetch(step2.studioImages[0])
-          //   .then((res) => res.blob())
-          //   .then((myBlob) => {
-          //     console.log("reading BOB", myBlob);
-          //     // logs: Blob { size: 1024, type: "image/jpeg" }
-          //   });
         }}
       >
         Publish Now

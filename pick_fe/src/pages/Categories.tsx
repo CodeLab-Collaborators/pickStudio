@@ -27,11 +27,6 @@ const Categories: FC = () => {
     img4,
     img2,
   ];
-  // var options = {
-  //   method: "GET",
-  //   url: "https://pick-be.onrender.com/api/v1/sign-in/success",
-  //   headers: { "content-type": "application/json" },
-  // };
 
   useEffect(() => {
     getSigninAccount().then((res) => {

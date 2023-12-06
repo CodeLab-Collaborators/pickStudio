@@ -53,6 +53,7 @@ const ListDetails: FC<listDetails> = ({ guests, bedrooms, beds, baths }) => {
           <p className="font-semibold">{singleStudio?.studioName}</p>
         </Link>
       </div>
+
       <div className="border-b-[1px] border-b-slate-300 py-7 flex flex-col gap-6">
         <Itemize
           icon={<FaTags />}

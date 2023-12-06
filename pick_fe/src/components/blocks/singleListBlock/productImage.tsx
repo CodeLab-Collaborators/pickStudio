@@ -1,4 +1,3 @@
-import { GlobalButton } from "../..";
 import { useEffect, useState } from "react";
 import { GalleryModal } from "../../modals";
 import { singleStudioHooks } from "../../../hooks/studioHooks";
@@ -13,7 +12,6 @@ const ProductImage = () => {
 
   const [showGallery, setShowGallery] = useState<boolean>(false);
   const [load, setLoad] = useState<boolean>(false);
-  const [imagesData, setImagesData]: any = useState<Array<any>>([]);
   const { singleStudio } = singleStudioHooks(productID!);
   let [upload, setUpload] = useState(false);
   const [selectedFiles, setSelectedFiles]: any = useState(null);

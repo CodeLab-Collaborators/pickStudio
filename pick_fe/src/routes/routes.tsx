@@ -150,7 +150,7 @@ export const appRoutes = createBrowserRouter([
       },
 
       {
-        path: "category",
+        path: "category/:studio",
         element: (
           <Suspense fallback={<div>Loading...</div>}>
             <Category />
