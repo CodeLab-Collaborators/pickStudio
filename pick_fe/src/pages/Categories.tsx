@@ -9,6 +9,9 @@ import profile from "../assets/jpg/profile.jpeg";
 import { getSigninAccount } from "../api/authAPI";
 import { useEffect } from "react";
 import { FcMusic } from "react-icons/fc";
+import { searchStudioHooks } from "../hooks/studioHooks";
+import { useParams } from "react-router-dom";
+import moment from "moment";
 
 const Categories: FC = () => {
   document.title = "Category - Pickastudio";
@@ -33,6 +36,8 @@ const Categories: FC = () => {
       console.log("reading: ", res);
     });
   }, []);
+  const { studio } = useParams();
+  const { viewSearchStudio, isLoading } = searchStudioHooks(studio!);
 
   return (
     <div>
@@ -41,26 +46,42 @@ const Categories: FC = () => {
         <h2 className="text-3xl font-bold">
           <FcMusic />
         </h2>
-        <h2 className="text-3xl font-bold">Category title</h2>
+        <h4 className="text-[20px] font-bold">Studio for {studio} Category </h4>
       </div>
 
-      <div className="w-full mt-6 m-auto grid gap-6 place-items-center grid-cols-5 max-xl:grid-cols-4 max-lg:grid-cols-2 max-sm:grid-cols-1 max-sm:w-full">
-        {dummyImage.map(() => (
-          //  <div>
-          <ProductProps
-            cover={dummyImage}
-            authorCover={profile}
-            authorName="Eloy"
-            place="Landmark Event Center"
-            rating={4.84}
-            amount={33}
-            date="Jul 29 - Aug 3"
-            route="/products"
-            userRoute="/user"
-            wishlistFunc={() => {}}
-          />
-          //  </div>
-        ))}
+      <div>
+        {isLoading ? (
+          <div>Loading...</div>
+        ) : (
+          <div className="w-full mt-6 m-auto grid gap-6 place-items-center grid-cols-5 max-xl:grid-cols-4 max-lg:grid-cols-2 max-sm:grid-cols-1 max-sm:w-full">
+            <div>
+              {viewSearchStudio.length > 0 ? (
+                <div>
+                  {viewSearchStudio?.map((props: any) => (
+                    //  <div>
+                    <ProductProps
+                      props={props}
+                      key={props._id}
+                      cover={dummyImage}
+                      authorCover={profile}
+                      authorName="Eloy"
+                      place={props?.studioName}
+                      rating={props.studioRate}
+                      amount={props.studioPrice.toLocaleString()}
+                      date={moment(props?.createdAt).format("LLL")}
+                      route="/products"
+                      userRoute="/user"
+                      wishlistFunc={() => {}}
+                    />
+                    //  </div>
+                  ))}
+                </div>
+              ) : (
+                <>No Data yet</>
+              )}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
