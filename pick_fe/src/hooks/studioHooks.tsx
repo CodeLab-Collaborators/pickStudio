@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import { getAllStudio, getSingleStudio } from "../api/studioAPI";
+import { getAllStudio, getSingleStudio, searchStudio } from "../api/studioAPI";
 
 export const studioHooks = () => {
   const { data: allStudio, isLoading } = useSWR(
@@ -16,4 +16,14 @@ export const singleStudioHooks = (accountID: string) => {
   );
 
   return { singleStudio };
+};
+
+export const searchStudioHooks = (data: string) => {
+  const { data: viewSearchStudio, isLoading } = useSWR(
+    `view-search-studio/`,
+    () => searchStudio(data),
+    { refreshInterval: 1000 }
+  );
+
+  return { viewSearchStudio, isLoading };
 };
