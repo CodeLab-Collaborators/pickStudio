@@ -154,7 +154,7 @@ const BookSpace = () => {
           )}
           {/* <div>guest</div> */}
         </div>
-        <Link to="/seller">
+        <Link to={`book-studio`}>
           <GlobalButton
             style={{ background: "var(--gradient)" }}
             className="w-full h-12 font-[500] rounded-lg text-white border-none focus:outline-none"

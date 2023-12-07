@@ -68,7 +68,7 @@ const SingleList = () => {
             <BookSpace />
           </div>
         </div>
-
+        <div>Booked</div>
         <div id="reviews" className="py-20 px-16 max-md:px-0 max-lg:px-5">
           <Reviews />
         </div>
