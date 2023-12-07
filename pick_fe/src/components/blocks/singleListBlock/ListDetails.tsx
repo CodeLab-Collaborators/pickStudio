@@ -73,9 +73,15 @@ const ListDetails: FC<listDetails> = ({ guests, bedrooms, beds, baths }) => {
       </div>
       <div className="border-b-[1px] border-b-slate-300 py-7 gap-4 flex flex-col">
         <div className="overflow-ellipsis">
-          {singleStudio?.studioDescription
-            ? singleStudio?.studioDescription
-            : "no despcription yet"}
+          {singleStudio?.studioDescription ? (
+            <div
+              dangerouslySetInnerHTML={{
+                __html: `${singleStudio?.studioDescription}`,
+              }}
+            />
+          ) : (
+            "no despcription yet"
+          )}
         </div>
         <div className="underline font-[600] cursor-pointer">
           Show more <span className="">{">"}</span>

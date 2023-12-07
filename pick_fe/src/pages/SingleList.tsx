@@ -15,6 +15,7 @@ import {
 import { singleStudioHooks } from "../hooks/studioHooks";
 import { useParams } from "react-router-dom";
 import { studioReviewHooks } from "../hooks/reviewHooks";
+import { Link, animateScroll as scroll } from "react-scroll";
 
 const SingleList = () => {
   const { productID } = useParams();
@@ -26,15 +27,17 @@ const SingleList = () => {
 
   return (
     <div className="w-full flex-col flex items-center pt-3 ">
-      <div className="flex overflow-x-scroll no-scrollbar">
-        {dummyImage.map((el: any) => (
-          <img
-            // key={id}
-            src={el}
-            className="w-full h-[300px] md:hidden object-top bg-black"
-          />
-        ))}
-      </div>
+      <Link to="photos" spy={true} smooth={true}>
+        <div className="flex overflow-x-scroll no-scrollbar">
+          {dummyImage.map((el: any) => (
+            <img
+              // key={id}
+              src={el}
+              className="w-full h-[300px] md:hidden object-top bg-black"
+            />
+          ))}
+        </div>
+      </Link>
       <div className="w-11/12 pt-5 md:w-full ">
         <Title
           name={singleStudio?.studioName}

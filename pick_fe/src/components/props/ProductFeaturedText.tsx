@@ -26,7 +26,9 @@ const ProductFeaturedText: FC<textData> = ({
       </div>
       <div className="gap-1 text-sm flex items-center mt-1">
         <span className="cursor-pointer font-normal">From: </span>
-        <p className="font-medium tracking-wider">₦{amount}/Hour</p>
+        <p className="font-medium tracking-wider">₦{amount}/hour</p>
+        &middot;
+        <p className="font-medium tracking-wider">₦{amount}/day</p>
       </div>
     </div>
   );

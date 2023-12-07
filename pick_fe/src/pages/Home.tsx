@@ -32,7 +32,9 @@ const Home = () => {
         <ProductProps
           props={props}
           key={`${i}`}
-          cover={dummyImage}
+          cover={
+            props.studioImages.length > 0 ? props.studioImages : dummyImage
+          }
           authorCover={profile}
           authorName={props.studioName}
           place={props.studioName}
