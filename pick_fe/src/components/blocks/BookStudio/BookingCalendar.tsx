@@ -3,9 +3,12 @@ import React from 'react';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
+import "./calendar.css"
 
-const BookingCalendar: React.FC = (props: any) => {
+const BookingCalendar: React.FC = () => {
  const localizer = momentLocalizer(moment);
+
+
 
  const events = [
     {
@@ -23,15 +26,14 @@ const BookingCalendar: React.FC = (props: any) => {
  ];
 
  return (
-    <div>
+    <div className="my-calendar-container">
       <Calendar
         localizer={localizer}
         events={events}
         startAccessor="start"
         endAccessor="end"
         style={{ height: 500 }}
-        popup
-        popupOffset={1}
+        views={['month']}
       />
     </div>
  );
