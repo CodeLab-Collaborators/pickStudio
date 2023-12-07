@@ -26,11 +26,11 @@ const ListDetails: FC<listDetails> = ({ guests, bedrooms, beds, baths }) => {
   return (
     <div className="flex flex-col md:w-[50vw]">
       <div className="border-b-[1px] border-b-slate-300 py-7  flex gap-8 flex-col ">
-        <div className="w-[80%] text-2xl font-semibold">
-          <div className="flex">
-            Entire studio space hosted by{" "}
-            <p className="ml-1 font-bold text-[30px]">
-              "{singleUser?.firstName} {singleUser?.lastName}"
+        <div className="w-[80%] text-2xl font-[500]">
+          <div>
+            Entire studio space hosted by
+            <p className=" font-bold  pt-1  w-full">
+              {singleUser?.firstName} {singleUser?.lastName}
             </p>
           </div>
           <div className="text-[17px] font-normal mt-1">
