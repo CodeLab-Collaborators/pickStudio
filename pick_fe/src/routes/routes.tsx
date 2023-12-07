@@ -97,6 +97,27 @@ export const appRoutes = createBrowserRouter([
         ),
       },
       {
+
+        path:"wishlists",
+        element:  <Suspense fallback={<div>Loading...</div>}>
+       <>wishlists</>
+      </Suspense>
+      },
+      {
+        path: "inbox",
+        element:  <Suspense fallback={<div>Loading...</div>}>
+        <>Inbox</>
+       </Suspense>
+
+      },
+      {
+        path: "Bookings",
+        element: <Suspense fallback={<div>Loading...</div>}>
+        <>Bookings</>
+       </Suspense>
+
+      },
+      {
         path: ":token/sign-in",
         element: (
           <Suspense fallback={<div>Loading...</div>}>
