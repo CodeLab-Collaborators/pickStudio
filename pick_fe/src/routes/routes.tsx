@@ -44,6 +44,9 @@ const ReviewListing = lazy(
 const UploadProductImage = lazy(
   () => import("../pages/studio/uploadStudio/StudioPictures")
 );
+const BookStudio = lazy(
+  () => import("../pages/BookStudio")
+);
 
 export const appRoutes = createBrowserRouter([
   {
@@ -117,6 +120,7 @@ export const appRoutes = createBrowserRouter([
        </Suspense>
 
       },
+ 
       {
         path: ":token/sign-in",
         element: (
@@ -181,6 +185,13 @@ export const appRoutes = createBrowserRouter([
     ],
   },
   {
+    path: "book-studio/:productID",
+    element: <Suspense fallback={<div>Loading...</div>}>
+    <BookStudio/>
+   </Suspense>
+
+  },
+  {
     path: "products/:productID",
     element: <ProductLayout />,
     children: [
@@ -191,6 +202,13 @@ export const appRoutes = createBrowserRouter([
             <SingleList />
           </Suspense>
         ),
+      },
+      {
+        path: "book-studio",
+        element: <Suspense fallback={<div>Loading...</div>}>
+        <BookStudio/>
+       </Suspense>
+
       },
     ],
   },

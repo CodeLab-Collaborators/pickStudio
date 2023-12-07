@@ -24,6 +24,8 @@ const SingleList = () => {
   const { singleStudio } = singleStudioHooks(productID!);
   const { studioReview } = studioReviewHooks(productID!);
 
+  console.log("this is single studio", singleStudio)
+
   return (
     <div className="w-full flex-col flex items-center pt-3 ">
       <div className="flex overflow-x-scroll no-scrollbar">

@@ -22,7 +22,7 @@ const BookSpace = () => {
         </div>
       </div>
       <div className="flex flex-col gap-3">
-        <Link to="/seller">
+        <Link to={`/book-studio/${productID}`}>
           <GlobalButton
             style={{ background: "var(--gradient)" }}
             className="w-full h-12 font-[500] rounded-lg  text-white border-none focus:outline-none"
