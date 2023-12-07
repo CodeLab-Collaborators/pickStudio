@@ -1,0 +1,25 @@
+/* MyCalendar.css */
+
+/* Example styles */
+.my-calendar-container {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 10px;
+  }
+  
+  .my-calendar-header {
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .my-calendar-event {
+    background-color: #428bca;
+    color: #fff;
+    border: 1px solid #357ebd;
+  }
+  
+  .my-calendar-event:hover {
+    background-color: #3071a9;
+  }
+  
