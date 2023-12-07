@@ -25,21 +25,20 @@ const SingleList = () => {
   const { singleStudio } = singleStudioHooks(productID!);
   const { studioReview } = studioReviewHooks(productID!);
 
-  console.log("this is single studio", singleStudio)
+  console.log("this is single studio", singleStudio);
 
   return (
-    <div className="w-full flex-col flex items-center pt-3 ">
-      <Link to="photos" spy={true} smooth={true}>
-        <div className="flex overflow-x-scroll no-scrollbar">
-          {dummyImage.map((el: any) => (
-            <img
-              // key={id}
-              src={el}
-              className="w-full h-[300px] md:hidden object-top bg-black"
-            />
-          ))}
-        </div>
-      </Link>
+    <div id="photos" className="w-full flex-col flex items-center pt-3 ">
+      <div className="flex overflow-x-scroll no-scrollbar">
+        {dummyImage.map((el: any) => (
+          <img
+            // key={id}
+            src={el}
+            className="w-full h-[300px] md:hidden object-top bg-black"
+          />
+        ))}
+      </div>
+
       <div className="w-11/12 pt-5 md:w-full ">
         <Title
           name={singleStudio?.studioName}
@@ -49,7 +48,10 @@ const SingleList = () => {
         />
         <ProductImage />
 
-        <div className="w-full relative h-[fit-content] mt-4 flex gap-6 ">
+        <div
+          id="features"
+          className="w-full relative h-[fit-content] mt-4 flex gap-6 "
+        >
           <div className="flex flex-col ">
             <Ad />
             <ListDetails
@@ -66,7 +68,8 @@ const SingleList = () => {
             <BookSpace />
           </div>
         </div>
-        <div className="py-20 px-16 max-md:px-0 max-lg:px-5">
+
+        <div id="reviews" className="py-20 px-16 max-md:px-0 max-lg:px-5">
           <Reviews />
         </div>
         <div>

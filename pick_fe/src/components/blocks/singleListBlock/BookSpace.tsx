@@ -18,8 +18,8 @@ const BookSpace = () => {
   const [dateRange, setDateRange] = useState([null, null]);
   const [startDate, endDate] = dateRange;
 
-  const [startDateTime, setStartDateTime] = useState();
-  const [endDateTime, setEndDateTime] = useState();
+  const [startDateTime, setStartDateTime] = useState(0);
+  const [endDateTime, setEndDateTime] = useState(0);
 
   return (
     <div className="w-full h-[fit-content] p-6 rounded-lg border-[1px] shadow-md shadow-slate-200 border-slate-300 flex flex-col gap-6">
@@ -152,7 +152,7 @@ const BookSpace = () => {
               </div>
             </div>
           )}
-          <div>guest</div>
+          {/* <div>guest</div> */}
         </div>
         <Link to="/seller">
           <GlobalButton
