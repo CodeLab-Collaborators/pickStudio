@@ -1,0 +1,5 @@
+export {default as Header} from "./Header"
+export {default as UserPurchase} from "./UserPurchase"
+export {default as StickyPrice} from "./StickyPrice"
+export {default as MobilePriceDetails} from "./MobilePriceDetails"
+export {default as Payment} from "./Payment"

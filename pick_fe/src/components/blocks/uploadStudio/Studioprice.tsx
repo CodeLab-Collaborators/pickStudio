@@ -79,7 +79,7 @@ const StudioPrice = () => {
           Now, Set Your Price
         </h1>
         <p className="max-md:hidden text-[#222222e8] text-lg font-normal mt-2 leading-[1.75rem]">
-          This is the price <strong>per hour</strong>
+          This is the price <strong>Daily</strong>
         </p>
         <div className="flex flex-col items-center gap-1 w-full justify-center">
           <div className="flex justify-center text-[128px] max-md:text-[90px] items-center">

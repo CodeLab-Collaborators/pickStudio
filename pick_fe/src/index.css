@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 :root {
-  font-family: "Jost", sans-serif;
   line-height: 20px;
   font-weight: 400;
   color-scheme: light dark;
