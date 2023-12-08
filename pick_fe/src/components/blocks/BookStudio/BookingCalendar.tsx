@@ -47,36 +47,15 @@ const BookingCalendar: React.FC = () => {
     ]);
   }
 
-  console.log(moment(state?.dateInDateTimeStart));
-  const events = [
-    {
-      id: 0,
-      title: "Booked",
-      start: moment().add(1, "days").startOf("day").toDate(),
-      end: moment().add(1, "days").endOf("day").toDate(),
-    },
-    {
-      id: 1,
-      title: "Booked",
-      start: moment().add(3, "days").startOf("day").toDate(),
-      end: moment().add(3, "days").endOf("day").toDate(),
-    },
-  ];
-
-  console.log("checking: ", makeEvent);
-  console.log("checking state: ", state);
-
-  const filteredEvents = events.map((props) => {
+  const filteredEvents = makeEvent.map((props) => {
     return props;
   });
 
-  console.log("filtered: ", filteredEvents);
-
   return (
-    <div className="my-calendar-container">
+    <div className="my-calendar-container text-[12px] font-sans ">
       <Calendar
         localizer={localizer}
-        events={filteredEvents}
+        events={filteredEvents.flat()}
         style={{ height: 500 }}
         views={["month", "agenda"]}
       />
