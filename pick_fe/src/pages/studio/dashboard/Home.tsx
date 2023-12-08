@@ -1,4 +1,5 @@
 
+import { ReservationTab } from '../../../components'
 import { WelcomeBlock } from '../../../components/blocks'
 
 const Home = () => {
@@ -7,6 +8,7 @@ const Home = () => {
   return (
     <div>
         <WelcomeBlock/>
+        <ReservationTab/>
     </div>
   )
 }
