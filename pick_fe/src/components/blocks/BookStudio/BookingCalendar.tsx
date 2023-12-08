@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import { Calendar, momentLocalizer } from "react-big-calendar";
@@ -7,21 +7,47 @@ import "./calendar.css";
 import { studioHistoryHooks } from "../../../hooks/studioHooks";
 import { useParams } from "react-router";
 import { useBooked } from "../../../global/globalState";
+import { userHooks } from "../../../hooks/userHooks";
 
 const BookingCalendar: React.FC = () => {
-  const localizer = momentLocalizer(moment);
-  const { productID } = useParams();
   const [state]: any = useBooked();
-  const { viewHistoryStudio } = studioHistoryHooks(productID!);
+  const localizer = momentLocalizer(moment);
+  const { data } = userHooks();
+  const { productID } = useParams();
 
-  console.log();
+  const { viewHistoryStudio }: any = studioHistoryHooks(productID!);
 
   const makeEvent: Array<{}> = [];
 
-  makeEvent.push({
-    days: state?.days,
-    hours: state?.hourly,
-  });
+  if (viewHistoryStudio?.history !== undefined) {
+    makeEvent.push([
+      ...viewHistoryStudio?.history,
+      {
+        bookingSession: !!state?.days ? state?.days : state?.hourly,
+        bookingRoute: !!state.days ? "days" : "hourly",
+        accountID: data?._id,
+
+        studioID: productID,
+        cost: `₦${state.cost}`,
+
+        title: `Booked by ${data?.firstName}`,
+
+        start: !!state?.days
+          ? moment(state?.dateInDayStart)
+          : moment(state?.dateInDateTimeStart),
+
+        end: !!state?.days
+          ? moment(state?.dateInDayEnd)
+          : moment(state?.dateInDateTimeEnd),
+
+        bookingDate: `${
+          !!state?.days ? state?.dateInDayStart : state?.dateInDateTimeStart
+        } - ${!!state?.days ? state?.dateInDayEnd : state?.dateInDateTimeEnd}`,
+      },
+    ]);
+  }
+
+  console.log(moment(state?.dateInDateTimeStart));
   const events = [
     {
       id: 0,
@@ -37,11 +63,20 @@ const BookingCalendar: React.FC = () => {
     },
   ];
 
+  console.log("checking: ", makeEvent);
+  console.log("checking state: ", state);
+
+  const filteredEvents = events.map((props) => {
+    return props;
+  });
+
+  console.log("filtered: ", filteredEvents);
+
   return (
     <div className="my-calendar-container">
       <Calendar
         localizer={localizer}
-        events={events}
+        events={filteredEvents}
         style={{ height: 500 }}
         views={["month", "agenda"]}
       />

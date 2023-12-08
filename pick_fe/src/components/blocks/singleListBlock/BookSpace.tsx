@@ -20,8 +20,8 @@ const BookSpace = () => {
   const [dateRange, setDateRange] = useState([null, null]);
   const [startDate, endDate] = dateRange;
 
-  const [startDateTime, setStartDateTime] = useState(0);
-  const [endDateTime, setEndDateTime] = useState(0);
+  const [startDateTime, setStartDateTime] = useState(new Date());
+  const [endDateTime, setEndDateTime] = useState(new Date());
 
   return (
     <div className="w-full h-[fit-content] p-6 rounded-lg border-[1px] shadow-md shadow-slate-200 border-slate-300 flex flex-col gap-6">
@@ -171,6 +171,27 @@ const BookSpace = () => {
                   (new Date(endDate!).getTime() -
                     new Date(startDate!).getTime()) /
                   (1000 * 3600 * 24),
+
+                cost: `${
+                  daily
+                    ? (
+                        ((new Date(endDate!).getTime() -
+                          new Date(startDate!).getTime()) /
+                          (1000 * 3600 * 24)) *
+                        singleStudio?.studioPrice
+                      ).toLocaleString()
+                    : (
+                        ((new Date(endDateTime!).getTime() -
+                          new Date(startDateTime!).getTime()) /
+                          (1000 * 3600)) *
+                        singleStudio?.studioPrice
+                      ).toLocaleString()
+                }`,
+                dateInDayStart: moment(startDate!).format("L"),
+                dateInDayEnd: moment(endDate!).format("L"),
+
+                dateInDateTimeStart: moment(startDateTime).format("lll"),
+                dateInDateTimeEnd: moment(endDateTime).format("lll"),
               });
             }}
           >
@@ -191,26 +212,34 @@ const BookSpace = () => {
           </GlobalButton>
         </Link>
         <div className="text-center text-slate-800">
-          You won't be charged yet however, You are booking this space for{" "}
+          You won't be charged yet however, <br />
+          You are booking this space for{" "}
           {daily ? (
-            <strong className="font-bold">
-              {(new Date(endDate!).getTime() - new Date(startDate!).getTime()) /
-                (1000 * 3600 * 24)}{" "}
-              day
-            </strong>
+            <div>
+              {
+                <strong className="font-bold">
+                  {(new Date(endDate!).getTime() -
+                    new Date(startDate!).getTime()) /
+                    (1000 * 3600 * 24)}{" "}
+                  day
+                </strong>
+              }
+            </div>
           ) : (
-            <strong className="font-bold">
-              {(new Date(endDateTime!).getTime() -
-                new Date(startDateTime!).getTime()) /
-                (1000 * 3600)}{" "}
-              hour
-            </strong>
+            <div>
+              <strong className="font-bold">
+                {(new Date(endDateTime!).getTime() -
+                  new Date(startDateTime!).getTime()) /
+                  (1000 * 3600)}{" "}
+                hour
+              </strong>
+            </div>
           )}
         </div>
       </div>
       <div className="pt-5 border-t-[1px] font-[600] border-t-slate-200 flex justify-between ">
         <div>Total before taxes</div>
-        <div>₦{singleStudio?.studioPrice.toLocaleString()} </div>
+        <div>₦{singleStudio?.studioPrice?.toLocaleString()} </div>
       </div>{" "}
       <hr />
       {/* tip */}

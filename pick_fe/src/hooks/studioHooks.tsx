@@ -31,9 +31,9 @@ export const searchStudioHooks = (data: string) => {
 
 export const studioHistoryHooks = (studioID: string) => {
   const { data: viewHistoryStudio, isLoading } = useSWR(
-    `view-studio-bookings/`,
-    () => createStudioHistory(studioID),
-    { refreshInterval: 1000 }
+    `view-studio-bookings/${studioID}`,
+    () => createStudioHistory(studioID)
+    // { refreshInterval: 1000 }
   );
 
   return { viewHistoryStudio, isLoading };
