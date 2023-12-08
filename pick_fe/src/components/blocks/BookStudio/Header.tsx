@@ -8,7 +8,6 @@ const Header = () => {
   const navigate = useNavigate();
   const { productID } = useParams();
   const { singleStudio } = singleStudioHooks(productID!);
-  
 
   return (
     <div className="w-full flex bg-white flex-col gap-[40px] p-6">
@@ -25,12 +24,15 @@ const Header = () => {
       </div>
       <div className="h-[100px] md:hidden flex gap-4 items-start">
         <div className="h-full w-[130px] rounded-md">
-          <img className="w-full h-full object-top rounded-md" src={singleStudio?.studioImages[0]} />
+          <img
+            className="w-full h-full object-top rounded-md"
+            src={singleStudio?.studioImages[0]}
+          />
         </div>
         <div className="h-full flex flex-col justify-between">
           <div className="">
             <div className="text-xs text-slate-500">
-            {singleStudio?.studioCategory}
+              {singleStudio?.studioCategory}
             </div>
             <div className="text-sm text-slate-700">
               🈂 {singleStudio?.studioName}
@@ -38,7 +40,7 @@ const Header = () => {
           </div>
           <div className="text-xs flex gap-1">
             <span className="flex items-center gap-1  font-[600]">
-            <AiFillStar /> {singleStudio?.studioReview.length}.00
+              <AiFillStar /> {singleStudio?.studioReview.length}.00
             </span>{" "}
             reviews
           </div>

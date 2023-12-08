@@ -1,5 +1,6 @@
 import useSWR from "swr";
 import { getAllStudio, getSingleStudio, searchStudio } from "../api/studioAPI";
+import { createStudioHistory } from "../api/bookingsAPI";
 
 export const studioHooks = () => {
   const { data: allStudio, isLoading } = useSWR(
@@ -26,4 +27,14 @@ export const searchStudioHooks = (data: string) => {
   );
 
   return { viewSearchStudio, isLoading };
+};
+
+export const studioHistoryHooks = (studioID: string) => {
+  const { data: viewHistoryStudio, isLoading } = useSWR(
+    `view-studio-bookings/`,
+    () => createStudioHistory(studioID),
+    { refreshInterval: 1000 }
+  );
+
+  return { viewHistoryStudio, isLoading };
 };

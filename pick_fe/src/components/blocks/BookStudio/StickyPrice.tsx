@@ -2,8 +2,15 @@ import { AiFillStar } from "react-icons/ai";
 import dom from "../../../assets/jpg/Menstylica.jpeg";
 import { useParams } from "react-router-dom";
 import { singleStudioHooks } from "../../../hooks/studioHooks";
+import { useBooked } from "../../../global/globalState";
+
+interface iDays {
+  days: number | null;
+  hourly: number | null;
+}
 
 const StickyPrice = () => {
+  const [booked]: any = useBooked();
   const { productID } = useParams();
   const { singleStudio } = singleStudioHooks(productID!);
 
@@ -28,7 +35,7 @@ const StickyPrice = () => {
           </div>
           <div className="text-xs flex gap-1">
             <span className="flex items-center gap-1  font-[600]">
-              <AiFillStar /> {singleStudio?.studioReview.length}.00
+              <AiFillStar /> {singleStudio?.studioReview?.length}.00
             </span>{" "}
             reviews
           </div>
@@ -38,9 +45,17 @@ const StickyPrice = () => {
         <div className="text-xl font-[600]">Price details</div>
         <div className="flex mt-5 flex-col gap-2">
           <div className="flex font-light justify-between">
-            <div>{singleStudio?.studioPrice} x 5 days</div>
             <div>
-              ₦{(parseInt(singleStudio?.studioPrice) * 5).toLocaleString()}
+              {singleStudio?.studioPrice} x{" "}
+              {booked?.days ? booked?.days : booked?.hourly}{" "}
+              {!!parseInt(booked?.days)! ? "days" : "hours"}
+            </div>
+            <div>
+              ₦
+              {(
+                parseInt(singleStudio?.studioPrice) *
+                (booked?.days ? booked?.days : booked?.hourly)
+              ).toLocaleString()}
             </div>
           </div>
           <div className="flex font-light justify-between">
@@ -53,7 +68,14 @@ const StickyPrice = () => {
         <div>
           Total <span className="underline">(NGN)</span>
         </div>
-        <div>₦{(singleStudio?.studioPrice * 5 + 500).toLocaleString()}</div>
+        <div>
+          ₦
+          {(
+            singleStudio?.studioPrice *
+              (booked?.days ? booked?.days : booked?.hourly) +
+            500
+          ).toLocaleString()}
+        </div>
       </div>
     </div>
   );

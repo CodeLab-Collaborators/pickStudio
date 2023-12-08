@@ -10,7 +10,10 @@ const enc = atomWithStorage("enc", "");
 const formSteps1 = atomWithStorage("formSteps1", {} || null);
 const formSteps2 = atomWithStorage("formSteps2", {} || null);
 const formSteps3 = atomWithStorage("formSteps3", {} || null);
+
 const imagesForStudio = atomWithStorage("imagesForStudio", {} || null);
+
+const booked = atomWithStorage("booked", {} || null);
 
 export const useUser = () => {
   return useAtom(signUser);
@@ -46,4 +49,8 @@ export const useFormSteps2 = () => {
 
 export const useFormSteps3 = () => {
   return useAtom(formSteps3);
+};
+
+export const useBooked = () => {
+  return useAtom(booked);
 };

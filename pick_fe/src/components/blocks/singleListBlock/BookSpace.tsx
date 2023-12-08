@@ -7,13 +7,15 @@ import { useEffect, useState } from "react";
 
 import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
+import { useBooked } from "../../../global/globalState";
 
 const BookSpace = () => {
+  const [booked, setBooked] = useBooked();
   const { productID } = useParams();
   const { singleStudio } = singleStudioHooks(productID!);
 
   const [toggle, setToggle] = useState<boolean>(false);
-  const [daily, setDaily] = useState<boolean>(false);
+  const [daily, setDaily] = useState<boolean>(true);
 
   const [dateRange, setDateRange] = useState([null, null]);
   const [startDate, endDate] = dateRange;
@@ -158,6 +160,19 @@ const BookSpace = () => {
           <GlobalButton
             style={{ background: "var(--gradient)" }}
             className="w-full h-12 font-[500] rounded-lg text-white border-none focus:outline-none"
+            onClick={() => {
+              console.log("Awesomely clicked");
+              setBooked({
+                hourly:
+                  (new Date(endDateTime!).getTime() -
+                    new Date(startDateTime!).getTime()) /
+                  (1000 * 3600),
+                days:
+                  (new Date(endDate!).getTime() -
+                    new Date(startDate!).getTime()) /
+                  (1000 * 3600 * 24),
+              });
+            }}
           >
             Book Space at this cost: ₦
             {daily
