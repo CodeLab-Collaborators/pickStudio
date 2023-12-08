@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import AllBookings from '../modals/AllBookings';
 
 const ReservationTab:React.FC = () => {
-  const [activeTab, setActiveTab] = useState('pending');
+  const [activeTab, setActiveTab] = useState<string>('pending');
+  const [showBookings, setShowBookings] = useState<boolean>(false)
 
   const handleTabClick = (tab:any) => {
     setActiveTab(tab);
@@ -19,7 +21,7 @@ const ReservationTab:React.FC = () => {
     <div className='w-full py-3'>
       <div className='flex justify-between items-center'>
         <h2 className='text-[1.625rem] font-medium'>Your bookings</h2>
-        <button className='max-md:hidden font-semibold underline '>All bookings (0)</button>
+        <button onClick={()=>setShowBookings(!showBookings)} className='max-md:hidden font-semibold underline '>All bookings (0)</button>
       </div>
 
       {/* Tab */}
@@ -44,8 +46,11 @@ const ReservationTab:React.FC = () => {
       {activeTab === 'past' && <PastBookings />}
       {activeTab === 'reviews' && <Reviews />}
 
-      <button className='md:hidden  mt-8 font-semibold underline '>All bookings (0)</button>
+      <button onClick={()=>setShowBookings(!showBookings)} className='md:hidden  mt-8 font-semibold underline '>All bookings (0)</button>
+      {showBookings && <AllBookings onClose={()=>setShowBookings(!showBookings)}/>}
     </div>
+
+
   );
 };
 
