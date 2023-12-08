@@ -24,7 +24,6 @@ const ProductImage = () => {
 
   const uploadImages = (e: any) => {
     setSelectedFiles(e.target.files);
-    console.log("reading");
 
     setUpload(true);
     setLoad(true);
@@ -38,7 +37,6 @@ const ProductImage = () => {
     }
 
     addStudioImages(data._id, productID!, formData).then((res) => {
-      console.log(res);
       setLoad(false);
     });
   };
@@ -51,7 +49,7 @@ const ProductImage = () => {
   }, [upload]);
 
   let numb = Math.floor(Math.random() * (dummyImage?.length - 1) + 1);
-  console.log(numb);
+
   return (
     <div className="w-full hidden relative md:grid h-[500px] rounded-3xl grid-cols-4 grid-rows-2 gap-2">
       <div className=" rounded-tl-2xl rounded-bl-2xl col-span-2 row-span-2">
@@ -117,36 +115,39 @@ const ProductImage = () => {
           className="w-full cursor-pointer rounded-br-2xl h-full object-cover object-top"
         />
       </div>
-
-      {load ? (
-        <div className="absolute bottom-[0.45rem] right-5  ">
-          <button
-            style={{ backgroundColor: "#fff", color: "black" }}
-            className="py-[6px] text-sm border border-[#000000c0] rounded-md px-12 font-[400] "
-            onClick={() => {
-              setLoad(true);
-              handleUpload();
-            }}
-          >
-            {load && <ScaleLoader color="#8E0629" width={5} height={10} />}
-          </button>
-        </div>
-      ) : (
-        <div className="absolute bottom-3 right-5  ">
-          <input
-            className="hidden"
-            type="file"
-            multiple
-            id="images"
-            onChange={uploadImages}
-          />
-          <label
-            htmlFor="images"
-            style={{ backgroundColor: "#fff", color: "black" }}
-            className="py-[6px] text-sm border border-[#000000c0] rounded-md px-2 font-[400] "
-          >
-            Add More Images
-          </label>
+      {data?._id === singleStudio?.accountHolderID && (
+        <div>
+          {load ? (
+            <div className="absolute bottom-[0.45rem] right-5  ">
+              <button
+                style={{ backgroundColor: "#fff", color: "black" }}
+                className="py-[6px] text-sm border border-[#000000c0] rounded-md px-12 font-[400] "
+                onClick={() => {
+                  setLoad(true);
+                  handleUpload();
+                }}
+              >
+                {load && <ScaleLoader color="#8E0629" width={5} height={10} />}
+              </button>
+            </div>
+          ) : (
+            <div className="absolute bottom-3 right-5  ">
+              <input
+                className="hidden"
+                type="file"
+                multiple
+                id="images"
+                onChange={uploadImages}
+              />
+              <label
+                htmlFor="images"
+                style={{ backgroundColor: "#fff", color: "black" }}
+                className="py-[6px] text-sm border border-[#000000c0] rounded-md px-2 font-[400] "
+              >
+                Add More Images
+              </label>
+            </div>
+          )}
         </div>
       )}
 
