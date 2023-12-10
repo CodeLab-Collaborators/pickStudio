@@ -9,7 +9,6 @@ interface iError {
 }
 
 const ErrorFile: FC<iError> = ({ error, resetErrorBoundary }) => {
-  // const navigate = useNavigate();
   return (
     <div className="w-full justify-center flex items-center h-screen">
       <section className="page_404 w-full">
@@ -37,13 +36,16 @@ const ErrorFile: FC<iError> = ({ error, resetErrorBoundary }) => {
                 <div className="mt-10" />
                 <div className="flex justify-center cursor-pointer">
                   <div
-                    className=" w-200px border rounded-md text-white bg-purple-500 p-4 mt-10 cursor-pointer"
+                    className=" w-200px border rounded-md text-white p-4 mt-10 cursor-pointer"
+                    style={{
+                      background: "var(--gradient)",
+                    }}
                     onClick={() => {
                       // navigate(-1);
                       window.location.reload();
                     }}
                   >
-                    reload page
+                    back online? reload page
                   </div>
                 </div>
               </div>

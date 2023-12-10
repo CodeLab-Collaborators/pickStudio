@@ -39,7 +39,7 @@ const Home = () => {
           authorName={props.studioName}
           place={props.studioName}
           rating={props.studioRate}
-          amount={props.studioPrice}
+          amount={props.studioPrice.toLocaleString()}
           date={`${moment(props.createdAt).fromNow()}`}
           route={`/products/${props._id}`}
           userRoute={`/user/${props.accountHolderID}`}
