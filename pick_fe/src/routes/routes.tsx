@@ -11,6 +11,14 @@ import DoorDashFavorite from "../components/props/Loader";
 
 // import PrivateRoute from "./privateRoute";
 
+import { ErrorBoundary } from "react-error-boundary";
+import ComponentErrorFallBack from "../pages/error/ComponentErrorFallBack";
+import ErrorIndex from "../pages/error/errorPage/errorIndex";
+import BoundaryError from "../pages/error/BoundaryError/BoundaryError";
+import ErrorBoundaryComp from "../pages/error/Boundary/ErrorBoundaryComp";
+import ErrorFile from "../pages/error/ErrorII/ErrorFile";
+// import errorIndex from "../pages/error/errorPage/errorIndex";
+
 const PersonalInfoScreen = lazy(
   () => import("../pages/settings/PersonalInfoScreen")
 );
@@ -44,17 +52,17 @@ const ReviewListing = lazy(
 const UploadProductImage = lazy(
   () => import("../pages/studio/uploadStudio/StudioPictures")
 );
-const BookStudio = lazy(
-  () => import("../pages/BookStudio")
-);
+const BookStudio = lazy(() => import("../pages/BookStudio"));
 
 export const appRoutes = createBrowserRouter([
   {
     path: "/",
     element: (
-      <Suspense fallback={<div>Loading...</div>}>
-        <HomeLayout />
-      </Suspense>
+      <ErrorBoundary fallbackRender={ErrorFile}>
+        <Suspense fallback={<div>Loading...</div>}>
+          <HomeLayout />
+        </Suspense>
+      </ErrorBoundary>
     ),
     children: [
       {
@@ -70,7 +78,9 @@ export const appRoutes = createBrowserRouter([
             }
           >
             {/* <PrivateRoute> */}
+
             <Home />
+
             {/* </PrivateRoute> */}
           </Suspense>
         ),
@@ -100,27 +110,30 @@ export const appRoutes = createBrowserRouter([
         ),
       },
       {
-
-        path:"wishlists",
-        element:  <Suspense fallback={<div>Loading...</div>}>
-       <>wishlists</>
-      </Suspense>
+        path: "wishlists",
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <>wishlists</>
+          </Suspense>
+        ),
       },
       {
         path: "inbox",
-        element:  <Suspense fallback={<div>Loading...</div>}>
-        <>Inbox</>
-       </Suspense>
-
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <>Inbox</>
+          </Suspense>
+        ),
       },
       {
         path: "Bookings",
-        element: <Suspense fallback={<div>Loading...</div>}>
-        <>Bookings</>
-       </Suspense>
-
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <>Bookings</>
+          </Suspense>
+        ),
       },
- 
+
       {
         path: ":token/sign-in",
         element: (
@@ -186,14 +199,21 @@ export const appRoutes = createBrowserRouter([
   },
   {
     path: "book-studio/:productID",
-    element: <Suspense fallback={<div>Loading...</div>}>
-    <BookStudio/>
-   </Suspense>
-
+    element: (
+      <ErrorBoundary fallbackRender={ErrorFile}>
+        <Suspense fallback={<div>Loading...</div>}>
+          <BookStudio />
+        </Suspense>
+      </ErrorBoundary>
+    ),
   },
   {
     path: "products/:productID",
-    element: <ProductLayout />,
+    element: (
+      <ErrorBoundary fallbackRender={ErrorFile}>
+        <ProductLayout />
+      </ErrorBoundary>
+    ),
     children: [
       {
         index: true,
@@ -205,19 +225,22 @@ export const appRoutes = createBrowserRouter([
       },
       {
         path: "book-studio",
-        element: <Suspense fallback={<div>Loading...</div>}>
-        <BookStudio/>
-       </Suspense>
-
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <BookStudio />
+          </Suspense>
+        ),
       },
     ],
   },
   {
     path: "/studio",
     element: (
-      <Suspense fallback={<div>Loading...</div>}>
-        <StudioLayout />
-      </Suspense>
+      <ErrorBoundary fallbackRender={ErrorFile}>
+        <Suspense fallback={<div>Loading...</div>}>
+          <StudioLayout />
+        </Suspense>
+      </ErrorBoundary>
     ),
     children: [
       {
@@ -234,9 +257,11 @@ export const appRoutes = createBrowserRouter([
   {
     path: "/upload-studio",
     element: (
-      <Suspense fallback={<div>Loading...</div>}>
-        <UploadStudioLayout />
-      </Suspense>
+      <ErrorBoundary fallbackRender={ErrorFile}>
+        <Suspense fallback={<div>Loading...</div>}>
+          <UploadStudioLayout />
+        </Suspense>
+      </ErrorBoundary>
     ),
     children: [
       {
@@ -290,8 +315,21 @@ export const appRoutes = createBrowserRouter([
     ],
   },
 
+  // {
+  //   path: "*",
+  //   element: <ErrorFile />,
+  // },
+
+  // {
+  //   path: "*",
+  //   element: <ErrorBoundaryComp />,
+  // },
+  // {
+  //   path: "*",
+  //   element: <BoundaryError />,
+  // },
   {
     path: "*",
-    element: <>page not found</>,
+    element: <ErrorIndex />,
   },
 ]);

@@ -23,7 +23,7 @@ const uploadStudioFooter = () => {
             back
           </button>
         </div>
-        <div className="max-md:w-full">{RenderButtonCheck()}</div>
+        {/* <div className="max-md:w-full">{RenderButtonCheck()}</div> */}
       </div>
     </div>
   );
