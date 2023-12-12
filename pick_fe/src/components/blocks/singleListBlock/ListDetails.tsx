@@ -57,19 +57,11 @@ const ListDetails: FC<listDetails> = ({ guests, bedrooms, beds, baths }) => {
       <div className="border-b-[1px] border-b-slate-300 py-7 flex flex-col gap-6">
         <Itemize
           icon={<FaTags />}
-          title="Free wifi"
-          content=" A common area with wifi that’s well-suited for working."
-        />
-        <Itemize
-          icon={<FaTags />}
-          title="Dedicated parking space"
-          content="You can check in with the doorman."
-        />
-        <Itemize
-          icon={<FaTags />}
-          title="Free cancellation for 48 hours."
+          title={singleStudio?.studioCategory}
           content=""
         />
+      
+      
       </div>
       <div className="border-b-[1px] border-b-slate-300 py-7 gap-4 flex flex-col">
         <div className="overflow-ellipsis">
