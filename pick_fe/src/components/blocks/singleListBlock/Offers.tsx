@@ -4,15 +4,15 @@ import { GlobalButton } from "../..";
 import { singleStudioHooks } from "../../../hooks/studioHooks";
 import { useParams } from "react-router-dom";
 
-const offerTexts = [
-  "Garden view",
-  "Resort view",
-  "Beach access",
-  "Kitchen",
-  "Wifi - 28 Mbps",
-  "Carbon monoxide alarm",
-  "Smoke alarm",
-];
+// const offerTexts = [
+//   "Garden view",
+//   "Resort view",
+//   "Beach access",
+//   "Kitchen",
+//   "Wifi - 28 Mbps",
+//   "Carbon monoxide alarm",
+//   "Smoke alarm",
+// ];
 
 
 const Offers = () => {
@@ -32,7 +32,7 @@ const Offers = () => {
         style={{ color: "black" }}
         className="border-black mt-4 font-[600] w-full py-3 rounded-md border-[1px]"
       >
-        Show all {offerTexts.length} amenities
+        Show all {singleStudio?.studioFeatures.length} features
       </GlobalButton>
     </div>
   );
