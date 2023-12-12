@@ -28,12 +28,13 @@ const Offers = () => {
           <SingleOffer key={index} icon={<AiFillStar />} text={text} />
         ))}
       </div>
-      <GlobalButton
-        style={{ color: "black" }}
-        className="border-black mt-4 font-[600] w-full py-3 rounded-md border-[1px]"
-      >
+      {singleStudio?.studioFeatures.length > 7 && (
+        <GlobalButton
+          style={{ color: "black" }}
+          className="border-black mt-4 font-[600] w-full py-3 rounded-md border-[1px]"
+        >
         Show all {singleStudio?.studioFeatures.length} features
-      </GlobalButton>
+      </GlobalButton> )}
     </div>
   );
 };
