@@ -5,7 +5,7 @@ const ReservationTab:React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>('pending');
   const [showBookings, setShowBookings] = useState<boolean>(false)
 
-  const handleTabClick = (tab:any) => {
+  const handleTabClick = (tab:string) => {
     setActiveTab(tab);
   };
 
