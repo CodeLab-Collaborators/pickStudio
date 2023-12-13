@@ -1,17 +1,26 @@
 import { AiFillStar } from "react-icons/ai";
 import { SingleOffer } from ".";
 import { GlobalButton } from "../..";
+import { singleStudioHooks } from "../../../hooks/studioHooks";
+import { useSingleUser } from "../../../hooks/userHooks";
+import { useParams } from "react-router-dom";
 
 const Offers = () => {
+  const { productID } = useParams();
+
+  const { singleStudio } = singleStudioHooks(productID!);
+  const { singleUser } = useSingleUser(singleStudio?.accountHolderID!);
   return (
     <div className="border-b-[1px] flex flex-col gap-5 border-b-slate-300 py-9">
       <div className="text-2xl font-[600]">What this place offers</div>
       <div className="flex font-normal flex-col gap-4">
-        <SingleOffer icon={<AiFillStar />} text="Garder view" />
-        <SingleOffer icon={<AiFillStar />} text="Resort view" />
-        <SingleOffer icon={<AiFillStar />} text="Beach access" />
-        <SingleOffer icon={<AiFillStar />} text="Kitchen" />
-        <SingleOffer icon={<AiFillStar />} text="Wifi - 28 Mbps" />
+        {singleStudio?.studioFeatures[0]
+          ?.split(",")
+          ?.map((props: any, index: number) => (
+            <div key={index}>
+              <SingleOffer icon={<AiFillStar />} text={props} />
+            </div>
+          ))}
         <SingleOffer
           icon={<AiFillStar />}
           text="Carbon monoxide alarm"

@@ -36,6 +36,7 @@ const ListDetails: FC<listDetails> = ({ guests, bedrooms, beds, baths }) => {
           <div className="text-[17px] font-normal mt-1">
             {guests} guests . {bedrooms} bedrooms . {beds} beds . {baths} baths
           </div>
+          <div className="text-[12px]">{/* <div>studio features:</div> */}</div>
         </div>
         <Link to="/user" className="flex text-black items-center gap-3">
           <div className="w-12 h-12 rounded-[50%]">

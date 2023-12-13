@@ -59,6 +59,7 @@ const SingleList = () => {
               beds={6}
               baths={2}
             />
+
             <Offers />
           </div>
           {/* flex-1 hidden h-[fit-content] mt-8 sticky top-24 md:flex */}
