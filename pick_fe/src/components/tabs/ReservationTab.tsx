@@ -5,7 +5,7 @@ const ReservationTab:React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>('pending');
   const [showBookings, setShowBookings] = useState<boolean>(false)
 
-  const handleTabClick = (tab:any) => {
+  const handleTabClick = (tab:string) => {
     setActiveTab(tab);
   };
 
@@ -25,11 +25,11 @@ const ReservationTab:React.FC = () => {
       </div>
 
       {/* Tab */}
-      <div className='flex space-x-4  pt-5 pb-4 overflow-x-scroll no-scrollbar ease-in duration-200 transition-all'>
+      <div className='flex gap-x-4  pt-5 pb-4 overflow-x-scroll no-scrollbar ease-in duration-200 transition-all'>
         {tabs.map((tab) => (
           <button
             key={tab.id}
-            className={`text-[15.3px] hover:border-black  border py-2 px-4 rounded-full font-medium ${
+            className={`text-[15.3px] max-md:text-sm hover:border-black  border py-2 px-4 whitespace-nowrap rounded-full font-medium ${
               activeTab === tab.id ? ' border-2 border-black bg-slate-100' : 'text-gray-600'
             }`}
             onClick={() => handleTabClick(tab.id)}

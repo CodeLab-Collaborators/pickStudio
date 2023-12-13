@@ -28,12 +28,14 @@ const Offers = () => {
         />
         <SingleOffer icon={<AiFillStar />} text="Smoke alarm" slashed />
       </div>
-      <GlobalButton
-        style={{ color: "black" }}
-        className="border-black mt-4 font-[600] w-full py-3 rounded-md border-[1px]"
-      >
-        Show all 38 amenities
-      </GlobalButton>
+      {singleStudio?.studioFeatures.length > 7 && (
+        <GlobalButton
+          style={{ color: "black" }}
+          className="border-black mt-4 font-[600] w-full py-3 rounded-md border-[1px]"
+        >
+          Show all {singleStudio?.studioFeatures.length} features
+        </GlobalButton>
+      )}
     </div>
   );
 };

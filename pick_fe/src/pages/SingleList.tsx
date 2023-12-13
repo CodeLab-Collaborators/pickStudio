@@ -19,11 +19,14 @@ import { Link, animateScroll as scroll } from "react-scroll";
 
 const SingleList = () => {
   const { productID } = useParams();
-  document.title = "page name - Pickastudio";
   const dummyImage = [img1, img3, img4, img2];
-
+  
   const { singleStudio } = singleStudioHooks(productID!);
   const { studioReview } = studioReviewHooks(productID!);
+  
+  document.title = `${singleStudio?.studioName} - Pickastudio`;
+
+  console.log("this is single studio", singleStudio)
 
   return (
     <div id="photos" className="w-full flex-col flex items-center pt-3 ">
@@ -53,7 +56,7 @@ const SingleList = () => {
           <div className="flex flex-col ">
             <Ad />
             <ListDetails
-              host="BeCordial"
+              host={singleStudio?.studioName}
               guests={7}
               bedrooms={3}
               beds={6}
