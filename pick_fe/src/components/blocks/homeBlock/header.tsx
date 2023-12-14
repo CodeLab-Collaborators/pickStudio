@@ -10,7 +10,7 @@ type headerData = {
 const Header: FunctionComponent<headerData> = ({ width, position }) => {
   return (
     <div
-      className={`w-full ${position}   h-[10vh] border-b border-[#0000000e]`}
+      className={`w-full ${position} h-[10vh] border-b border-[#0000000e]`}
     >
       <div
         className={`${width} h-full  m-auto flex items-center justify-between`}
