@@ -12,7 +12,10 @@ const ErrorIndex = () => {
             Oops! Page cannot Be Found
             <div className="mt-2" />
           </h2>
-          <p>
+          <p
+            className="text-[#AA0707]"
+            // style={{ color: "var(--primary)" }}
+          >
             Sorry but the page you are looking for does not exist, have been
             removed. name changed or is temporarily unavailable
           </p>
