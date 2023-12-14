@@ -12,8 +12,10 @@ const Homelayout = () => {
   const { data } = userHooks();
 
   return (
-    <div className="bg-white min-h-screen h-full">
-      <Header width="w-[90%]" position="sticky" />
+    <div className="bg-white  min-h-screen h-full">
+       <div className="sticky top-0 left-0 z-[1] bg-white">
+
+      <Header width="w-[90%]" position="" />
       {location.pathname.includes("register") ||
       location.pathname.includes("login") ||
       location.pathname.includes("verification") ||
@@ -21,6 +23,7 @@ const Homelayout = () => {
       location.pathname.includes("setting") ? null : (
         <Categories />
       )}
+       </div>
 
       {/* mobile navigation */}
 

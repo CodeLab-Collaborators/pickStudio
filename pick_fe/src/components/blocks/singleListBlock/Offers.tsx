@@ -12,7 +12,7 @@ const Offers = () => {
   const { singleUser } = useSingleUser(singleStudio?.accountHolderID!);
   return (
     <div className="border-b-[1px] flex flex-col gap-5 border-b-slate-300 py-9">
-      <div className="text-2xl font-[600]">What this place offers</div>
+      <div className="text-2xl font-[600]">What this studio offers</div>
       <div className="flex font-normal flex-col gap-4">
         {singleStudio?.studioFeatures[0]
           ?.split(",")

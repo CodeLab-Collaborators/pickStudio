@@ -1,10 +1,5 @@
 import { FC } from "react";
 import { ProductProps } from "../components";
-
-import img1 from "../assets/jpg/Menstylica.jpeg";
-import img2 from "../assets/jpg/suit.jpeg";
-import img3 from "../assets/jpg/SHOES.jpeg";
-import img4 from "../assets/jpg/INSTASHOP.jpeg";
 import profile from "../assets/jpg/profile.jpeg";
 import { getSigninAccount } from "../api/authAPI";
 import { useEffect } from "react";
@@ -14,22 +9,9 @@ import { useParams } from "react-router-dom";
 import moment from "moment";
 
 const Categories: FC = () => {
-  document.title = "Category - Pickastudio";
 
-  const dummyImage = [
-    img1,
-    img3,
-    img4,
-    img2,
-    img1,
-    img3,
-    img4,
-    img2,
-    img1,
-    img3,
-    img4,
-    img2,
-  ];
+
+ 
 
   useEffect(() => {
     getSigninAccount().then((res) => {
@@ -38,6 +20,8 @@ const Categories: FC = () => {
   }, []);
   const { studio } = useParams();
   const { viewSearchStudio, isLoading } = searchStudioHooks(studio!);
+
+  document.title = `${studio} - Pickastudio`;
 
   return (
     <div>

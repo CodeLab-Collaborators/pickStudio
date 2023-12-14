@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { LuListMusic } from "react-icons/lu";
+import   {PiSwimmingPool} from "react-icons/pi";
 
 const CategoryProps = () => {
   const studioCategories = [
@@ -13,23 +13,31 @@ const CategoryProps = () => {
     "Fashion",
     "Radio",
     "Virtual Production",
+    "Photography",
+    "Dance",
+    "Visual Arts",
+    "Cooking",
+    "Fashion",
+    "Radio",
+    "Virtual Production",
   ];
   return (
-    <div className="w-[90%] m-[auto] h-full flex gap-10 items-center  overflow-y-scroll no-scrollbar">
-      {studioCategories.map((props: any) => (
-        <Link to={`/category/${props}`} key={props}>
-          <div className="flex font-normal text-sm flex-col items-center gap-3 text-gray-500 hover:text-gray-900 ease-in transition-all">
-            {/* icon */}
-            <div className="text-2xl">
-              <LuListMusic />
-            </div>
-            <span className="capitalize whitespace-nowrap font-medium">
-              {props}
-            </span>
-          </div>
-        </Link>
-      ))}
+
+<>
+{studioCategories.map((props:any)=>(
+  <Link to={`/category/${props}`} key={props}>
+
+  <div className="text-[13px] font-semibold h-[80px] text-gray-500 hover:text-black flex items-center cursor-pointer ">
+  <div className="flex flex-col justify-center gap-1 h-[50px]">
+    <div className="text-[22px] flex justify-center"> <PiSwimmingPool /></div>
+    <div style={{ whiteSpace: "nowrap" }} className="text-center">
+      {props}
     </div>
+  </div>
+  </div>
+  </Link>
+))}
+</>
   );
 };
 
