@@ -35,6 +35,7 @@ const Verification = lazy(() => import("../pages/auth/Verification"));
 const Profile = lazy(() => import("../pages/Profile"));
 const Category = lazy(() => import("../pages/Categories"));
 const StudioHome = lazy(() => import("../pages/studio/dashboard/Home"));
+const StudioListing = lazy(() => import("../pages/studio/dashboard/studioListing"));
 const Overview = lazy(() => import("../pages/studio/uploadStudio/Overview"));
 const Setting = lazy(() => import("../pages/settings/Setting"));
 const AboutStudio = lazy(
@@ -251,6 +252,12 @@ export const appRoutes = createBrowserRouter([
           </Suspense>
         ),
       },
+      {
+        path:"listings",
+        element:  <Suspense fallback={<div>Loading...</div>}>
+        < StudioListing/>
+      </Suspense>
+      }
     ],
   },
 

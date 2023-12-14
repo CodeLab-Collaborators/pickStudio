@@ -1,5 +1,6 @@
 import { FunctionComponent } from "react";
 import { AuthBar, Logo, Search } from "../..";
+import Filter from "./filter";
 
 type headerData = {
   width: string;
@@ -9,7 +10,7 @@ type headerData = {
 const Header: FunctionComponent<headerData> = ({ width, position }) => {
   return (
     <div
-      className={`w-full ${position} top-0 bg-white z-30  h-[10vh] border-b border-[#0000000e]`}
+      className={`w-full ${position}   h-[10vh] border-b border-[#0000000e]`}
     >
       <div
         className={`${width} h-full  m-auto flex items-center justify-between`}
@@ -20,6 +21,10 @@ const Header: FunctionComponent<headerData> = ({ width, position }) => {
         </div>
         {/* search */}
         <Search />
+
+        <div className="hidden h-full max-[740px]:flex flex-1 ml-4 items-center">
+            <Filter />
+          </div>
 
         {/* auth */}
         <div>

@@ -1,5 +1,5 @@
 import { useState, FC } from "react";
-import { AiTwotoneHeart } from "react-icons/ai";
+import { PiHeartDuotone } from "react-icons/pi";
 import {
   MdOutlineKeyboardArrowRight,
   MdOutlineKeyboardArrowLeft,
@@ -44,12 +44,12 @@ const ImageSLide: FC<imageData> = ({
       {/* wishlist */}
 
       <div
-        className="absolute cursor-pointer text-[#000000ad] shadow-md hover:text-[var(--primary)] text-2xl top-3 right-3 transition-all ease-in duration-75"
+        className="absolute cursor-pointer text-white shadow-md hover:text-[var(--primary)] text-2xl top-3 right-3 transition-all ease-in duration-75"
         onClick={() => {
           wishlistFunc;
         }}
       >
-        <AiTwotoneHeart />
+        <PiHeartDuotone />
       </div>
 
       {/* image slide */}
