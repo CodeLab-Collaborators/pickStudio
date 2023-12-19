@@ -20,7 +20,7 @@ const Categories = () => {
   };
 
   const scroll = () => {
-    if (window.scrollY >= 20) {
+    if (window.scrollY >= 15) {
       setShadow(true);
     } else {
       setShadow(false);
