@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import {
   HomeLayout,
+  InboxLayout,
   ProductLayout,
   StudioLayout,
   UploadStudioLayout,
@@ -17,6 +18,7 @@ import ErrorIndex from "../pages/error/errorPage/errorIndex";
 import BoundaryError from "../pages/error/BoundaryError/BoundaryError";
 import ErrorBoundaryComp from "../pages/error/Boundary/ErrorBoundaryComp";
 import ErrorFile from "../pages/error/ErrorII/ErrorFile";
+import Inbox from "../components/blocks/BookStudio/Inbox";
 // import errorIndex from "../pages/error/errorPage/errorIndex";
 
 const PersonalInfoScreen = lazy(
@@ -261,6 +263,27 @@ export const appRoutes = createBrowserRouter([
     ],
   },
 
+  {
+    path: "/inbox",
+    element: (
+      <ErrorBoundary fallbackRender={ErrorFile}>
+        <Suspense fallback={<div>Loading...</div>}>
+          <InboxLayout />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    children:[
+      {
+        index: true,
+        element: <Inbox/>
+      },
+      {
+        path: ":id",
+        element: <Inbox/>
+      },
+    ]
+
+  },
   {
     path: "/upload-studio",
     element: (
