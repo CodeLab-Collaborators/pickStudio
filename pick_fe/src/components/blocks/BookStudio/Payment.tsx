@@ -2,7 +2,7 @@ import React from 'react'
 
 const Payment = () => {
   return (
-    <div className='py-3'>Payment</div>
+    <div className='pt-5 pb-11'>Payment</div>
   )
 }
 

@@ -11,7 +11,7 @@ const SignedOutMobileNav:FC = () => {
         { icon: <IoIosSearch />, label: "Explore" },
         { icon: <LuHeart />, label: "Wishlists" },
 
-        { icon: <LuUserCircle />, label: "Login" },
+        { icon: <LuUserCircle />, label: "login" },
       ]; 
 
 

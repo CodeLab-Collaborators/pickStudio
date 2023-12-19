@@ -10,7 +10,7 @@ const Header = () => {
   const { singleStudio } = singleStudioHooks(productID!);
 
   return (
-    <div className="w-full flex bg-white flex-col gap-[40px] p-6">
+    <div className="w-full flex mt-8 bg-white flex-col gap-[40px] p-6">
       <div className="w-full flex items-center gap-36 md:gap-4 text-base md:text-xl font-[600]">
         <div
           className="cursor-pointer"
@@ -35,7 +35,7 @@ const Header = () => {
               {singleStudio?.studioCategory}
             </div>
             <div className="text-sm text-slate-700">
-              🈂 {singleStudio?.studioName}
+               {singleStudio?.studioName}
             </div>
           </div>
           <div className="text-xs flex gap-1">

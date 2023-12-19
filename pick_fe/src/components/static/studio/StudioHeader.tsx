@@ -11,7 +11,7 @@ const StudioHeader = () => {
       { title: "Home", path: "/studio" },
       { title: "Calendar", path: "javascript:void(0)" },
       { title: "Listings", path: "listings" },
-      { title: "Inbox", path: "javascript:void(0)" }
+      { title: "Inbox", path: "/inbox" }
   ]
 
 
