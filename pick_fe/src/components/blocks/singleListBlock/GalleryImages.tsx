@@ -1,45 +1,127 @@
-import { useState } from "react";
-import { Gallery } from "react-grid-gallery";
-import Lightbox from "yet-another-react-lightbox";
+import { useEffect, useState } from "react";
+// import { Gallery } from "react-grid-gallery";
+// import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
-import { images } from "./images";
+import { MdArrowBackIosNew,MdArrowForwardIos  } from "react-icons/md";
 import { useParams } from "react-router-dom";
 import { singleStudioHooks } from "../../../hooks/studioHooks";
+
 
 const GalleryImages = () => {
   const { productID } = useParams();
   const { singleStudio } = singleStudioHooks(productID!);
 
-  console.log("best ", singleStudio);
-  const [index, setIndex] = useState(-1);
 
-  const handleClick = (index: number) => setIndex(index);
-  const rand = (min: number, max: number) => {
-    return Math.floor(Math.random() * (max - min)) + min;
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+
+
+  const handleImageClick = (index:any) => {
+    setSelectedImageIndex(index);
   };
 
-  const slides = singleStudio?.studioImages.map((props: any) => ({
-    src: props,
-    width: rand(320, 113),
-    height: rand(320, 113),
-  }));
+  const handleLightboxClose = () => {
+    setSelectedImageIndex(null);
+  };
+
+  const handleNextClick = () => {
+    setSelectedImageIndex((prevIndex: number | null) =>
+    prevIndex === singleStudio?.studioImages.length - 1 ? 0 : prevIndex! + 1
+    );
+  };
+
+  const handlePrevClick = () => {
+    setSelectedImageIndex((prevIndex:number | null ) =>
+      prevIndex === 0 ? singleStudio?.studioImages.length - 1 : prevIndex! - 1
+    );
+  };
+
+  
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        handleLightboxClose();
+      } else if (event.key === 'ArrowRight') {
+        handleNextClick();
+      } else if (event.key === 'ArrowLeft') {
+        handlePrevClick();
+      }
+    };
+
+    // Add event listeners when the lightbox is open
+    if (selectedImageIndex !== null) {
+      window.addEventListener('keydown', handleKeyDown);
+    }
+
+    // Remove event listeners when the component unmounts or when the lightbox is closed
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [selectedImageIndex]); // Dependency to ensure proper cleanup
+
 
   return (
-    <div>
-      <Gallery
-        images={slides}
-        onClick={handleClick}
-        enableImageSelection={false}
-        // tileViewportStyle={{ objectFit: "contain" }}
-        thumbnailStyle={{ objectFit: "cover" }}
-        tagStyle={{ objectFit: "cover" }}
-      />
-      <Lightbox
-        slides={slides}
-        open={index >= 0}
-        index={index}
-        close={() => setIndex(-1)}
-      />
+
+    <div className="container mx-auto my-8 p-2">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      {singleStudio?.studioImages.map((imageUrl: string, index: number) => (
+        <img
+          key={index}
+          src={imageUrl}
+          alt={`Photo ${index + 1}`}
+          className="w-full h-64 object-cover object-top cursor-pointer"
+          onClick={() => handleImageClick(index)}
+        />
+      ))}
+      </div>
+      {selectedImageIndex !== null && (
+        <div
+      
+          className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-[#000000]"
+        >
+          <div className="max-w-3xl w-full p-4 max-md:p-0  ">
+          {/* close button */}
+            <button
+              className="text-gray-100 text-4xl  font-normal cursor-pointer absolute top-0 right-0 p-4"
+              onClick={
+                handleLightboxClose
+              }
+            >
+              &times;
+            </button>
+
+            {/* prev button */}
+            <div className="flex justify-between">
+              <button
+                className="text-gray-100 text-3xl cursor-pointer absolute top-1/2 left-5 max-md:left-3 "
+              
+                onClick={
+                  handlePrevClick
+               }
+              >
+                <MdArrowBackIosNew />
+              </button>
+
+              {/* next button */}
+              <button
+                className="text-gray-100 text-3xl cursor-pointer absolute top-1/2 right-5 max-md:right-3"
+                
+                onClick={
+                  handleNextClick}
+              >
+                <MdArrowForwardIos />
+              </button>
+            </div>
+            <div className="px-14" >
+              <img
+                src={singleStudio?.studioImages[selectedImageIndex] ?? ''}
+                alt={`Selected Photo ${selectedImageIndex + 1}`}
+                className="w-full h-fit"
+              />
+            </div>
+          </div>
+        </div>
+      )}
+      
     </div>
   );
 };
