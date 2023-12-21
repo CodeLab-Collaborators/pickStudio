@@ -1,7 +1,4 @@
-import img1 from "../assets/jpg/Menstylica.jpeg";
-import img2 from "../assets/jpg/suit.jpeg";
-import img3 from "../assets/jpg/SHOES.jpeg";
-import img4 from "../assets/jpg/INSTASHOP.jpeg";
+
 import {
   Ad,
   BookSpace,
@@ -15,27 +12,34 @@ import {
 import { singleStudioHooks } from "../hooks/studioHooks";
 import { useParams } from "react-router-dom";
 import { studioReviewHooks } from "../hooks/reviewHooks";
-import { Link, animateScroll as scroll } from "react-scroll";
+import { useState } from "react";
+import { GalleryModal } from "../components/modals";
+// import { Link, animateScroll as scroll } from "react-scroll";
 
 const SingleList = () => {
   const { productID } = useParams();
-  const dummyImage = [img1, img3, img4, img2];
+  const [showGallery, setShowGallery] = useState<boolean>(false);
   
   const { singleStudio } = singleStudioHooks(productID!);
   const { studioReview } = studioReviewHooks(productID!);
   
   document.title = `${singleStudio?.studioName} - Pickastudio`;
 
-  console.log("this is single studio", singleStudio)
+  // console.log("this is single studio", singleStudio?.studioImages)
+
+  const toggleGallery = () => {
+    setShowGallery(!showGallery);
+  };
 
   return (
     <div id="photos" className="w-full flex-col flex items-center pt-3 ">
       <div className="flex overflow-x-scroll no-scrollbar">
-        {dummyImage.map((el: any) => (
+        {singleStudio?.studioImages.map((el: any) => (
           <img
             // key={id}
             src={el}
-            className="w-full h-[300px] md:hidden object-top bg-black"
+            className=" h-[310px] md:hidden object-top bg-black cursor-pointer"
+            onClick={toggleGallery}
           />
         ))}
       </div>
@@ -78,6 +82,7 @@ const SingleList = () => {
           <Thingstoknow />
         </div>
       </div>
+      {showGallery ? <GalleryModal onClose={toggleGallery} /> : null}
     </div>
   );
 };

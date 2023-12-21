@@ -24,7 +24,7 @@ const GalleryModal = ({ onClose }: { onClose: () => void }) => {
         </div>
 
         {/* gallery */}
-        <div className="px-8  w-full h-full overflow-y-scroll ">
+        <div className="px-8 pb-20  w-full h-full overflow-y-scroll ">
           <GalleryImages />
         </div>
       </div>
