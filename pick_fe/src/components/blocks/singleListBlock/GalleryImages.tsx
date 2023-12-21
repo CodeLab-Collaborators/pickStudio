@@ -65,14 +65,14 @@ const GalleryImages = () => {
 
   return (
 
-    <div className="container mx-auto my-8 p-2">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <div className="container mx-auto my-8 p-2  ">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
       {singleStudio?.studioImages.map((imageUrl: string, index: number) => (
         <img
           key={index}
           src={imageUrl}
           alt={`Photo ${index + 1}`}
-          className="w-full h-64 object-cover object-top cursor-pointer"
+          className="w-full h-64 object-cover object-top cursor-pointer rounded-sm"
           onClick={() => handleImageClick(index)}
         />
       ))}
@@ -96,7 +96,7 @@ const GalleryImages = () => {
             {/* prev button */}
             <div className="flex justify-between">
               <button
-                className="text-gray-100 text-3xl cursor-pointer absolute top-1/2 left-5 max-md:left-3 "
+                className="text-gray-100 max-md:shadow-lg text-3xl cursor-pointer absolute top-1/2 left-5 max-md:left-3 "
               
                 onClick={
                   handlePrevClick
@@ -107,7 +107,7 @@ const GalleryImages = () => {
 
               {/* next button */}
               <button
-                className="text-gray-100 text-3xl cursor-pointer absolute top-1/2 right-5 max-md:right-3"
+                className="text-gray-100 max-md:shadow-lg text-3xl cursor-pointer absolute top-1/2 right-5 max-md:right-3"
                 
                 onClick={
                   handleNextClick}
@@ -115,12 +115,12 @@ const GalleryImages = () => {
                 <MdArrowForwardIos />
               </button>
             </div>
-            <div className="px-14" >
+            <div className="" >
               <img
                 src={singleStudio?.studioImages[selectedImageIndex] ?? ''}
                 alt={`Selected Photo ${selectedImageIndex + 1}`}
                
-                className={`w-full h-fit   ${
+                className={`w-full h-full   ${
                   slideDirection === 'left' ? 'slideInRight' : ''
                 } ${slideDirection === 'right' ? 'slideInLeft' : ''}`}
                 onAnimationEnd={() => setSlideDirection(null)}
