@@ -5,6 +5,7 @@ import "yet-another-react-lightbox/styles.css";
 import { MdArrowBackIosNew,MdArrowForwardIos  } from "react-icons/md";
 import { useParams } from "react-router-dom";
 import { singleStudioHooks } from "../../../hooks/studioHooks";
+import "./style.css"
 
 
 const GalleryImages = () => {
@@ -13,10 +14,11 @@ const GalleryImages = () => {
 
 
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
-
+  const [slideDirection, setSlideDirection] = useState<'left' | 'right' | null>(null);
 
   const handleImageClick = (index:any) => {
     setSelectedImageIndex(index);
+    setSlideDirection(null)
   };
 
   const handleLightboxClose = () => {
@@ -27,12 +29,14 @@ const GalleryImages = () => {
     setSelectedImageIndex((prevIndex: number | null) =>
     prevIndex === singleStudio?.studioImages.length - 1 ? 0 : prevIndex! + 1
     );
+    setSlideDirection("right")
   };
 
   const handlePrevClick = () => {
     setSelectedImageIndex((prevIndex:number | null ) =>
       prevIndex === 0 ? singleStudio?.studioImages.length - 1 : prevIndex! - 1
     );
+    setSlideDirection("left")
   };
 
   
@@ -115,7 +119,11 @@ const GalleryImages = () => {
               <img
                 src={singleStudio?.studioImages[selectedImageIndex] ?? ''}
                 alt={`Selected Photo ${selectedImageIndex + 1}`}
-                className="w-full h-fit"
+               
+                className={`w-full h-fit   ${
+                  slideDirection === 'left' ? 'slideInRight' : ''
+                } ${slideDirection === 'right' ? 'slideInLeft' : ''}`}
+                onAnimationEnd={() => setSlideDirection(null)}
               />
             </div>
           </div>

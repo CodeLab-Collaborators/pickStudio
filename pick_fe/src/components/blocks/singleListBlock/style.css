@@ -1,0 +1,31 @@
+/* Add these styles to your CSS */
+.slideInRight {
+    animation: slideInRightAnimation 0.6s ease-in-out;
+  }
+  
+  .slideInLeft {
+    animation: slideInLeftAnimation 0.6s ease-in-out;
+  }
+  
+  @keyframes slideInRightAnimation {
+    0% {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes slideInLeftAnimation {
+    0% {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
