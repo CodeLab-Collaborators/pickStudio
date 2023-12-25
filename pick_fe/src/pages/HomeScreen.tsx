@@ -166,11 +166,11 @@ const HomeScreen = () => {
         <Component />
         <Component />
         <Component />
+        {/* <Component />
         <Component />
         <Component />
         <Component />
-        <Component />
-        <Component />
+        <Component /> */}
       </div>
     </div>
   );

@@ -28,7 +28,7 @@ const ErrorFile: FC<iError> = ({ error, resetErrorBoundary }) => {
                   </h3>
 
                   <p>
-                    {error.message.split("?")[1].split(" ")[0] === ".map" &&
+                    {error?.message?.split("?")[1]?.split(" ")[0] === ".map" &&
                       "cannot read displayed data because of internet, lost"}
                     !
                   </p>

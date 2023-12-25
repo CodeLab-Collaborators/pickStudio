@@ -34,13 +34,15 @@ const UserPurchase: React.FC = () => {
         >
           {/* Edit date */}
         </div>
+        <div className="mt-5" />
       </div>
       <div className="flex items-center justify-between">
         <div className="flex flex-col gap-2">
           <div className="font-[600] text-black">Guests</div>
+
           <div>1 guest</div>
         </div>
-        <div className="underline font-[600]">Edit</div>
+        {/* <div className="underline font-[600]">Edit</div> */}
       </div>
 
       {show && <BookingCalendar />}

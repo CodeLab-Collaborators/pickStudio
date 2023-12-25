@@ -27,7 +27,7 @@ const Home = () => {
 
   return (
     <div className="w-full m-auto grid gap-6 place-items-center grid-cols-5 max-xl:grid-cols-4 max-lg:grid-cols-2 max-sm:grid-cols-1 max-sm:w-full">
-      {isLoading && Array.from({ length: 5 }, () => <DoorDashFavorite />)}
+      {isLoading && Array.from({ length: 8 }, () => <DoorDashFavorite />)}
       {allStudio?.map((props: any, i: number) => (
         <ProductProps
           props={props}
