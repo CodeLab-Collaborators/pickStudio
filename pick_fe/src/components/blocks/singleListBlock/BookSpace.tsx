@@ -24,7 +24,7 @@ const BookSpace = () => {
   const [endDateTime, setEndDateTime] = useState(new Date());
 
   return (
-    <div className="w-full h-[fit-content] p-6 rounded-lg border-[1px] shadow-md shadow-slate-200 border-slate-300 flex flex-col gap-6">
+    <div className="w-full h-[fit-content] p-14 rounded-lg border-[1px] shadow-md  shadow-slate-200 border-slate-200 flex flex-col gap-6">
       <div className="flex flex-col gap-2">
         <div className="flex">
           <div className="font-[600] text-lg">
@@ -161,7 +161,7 @@ const BookSpace = () => {
             style={{ background: "var(--gradient)" }}
             className="w-full h-12 font-[500] rounded-lg text-white border-none focus:outline-none"
             onClick={() => {
-              console.log("Awesomely clicked");
+              // console.log("Awesomely clicked");
               setBooked({
                 hourly:
                   (new Date(endDateTime!).getTime() -

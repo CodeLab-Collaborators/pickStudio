@@ -23,6 +23,9 @@ const ListDetails: FC<listDetails> = ({ guests, bedrooms, beds, baths }) => {
   const { singleStudio } = singleStudioHooks(productID!);
   const { singleUser } = useSingleUser(singleStudio?.accountHolderID!);
 
+  console.log("this is single studio", singleStudio)
+
+
   return (
     <div className="flex flex-col md:w-[50vw]">
       <div className="border-b-[1px] border-b-slate-300 py-7  flex gap-8 flex-col ">
@@ -38,7 +41,7 @@ const ListDetails: FC<listDetails> = ({ guests, bedrooms, beds, baths }) => {
           </div>
           <div className="text-[12px]">{/* <div>studio features:</div> */}</div>
         </div>
-        <Link to="/user" className="flex text-black items-center gap-3">
+        <Link to={`/user/${singleStudio?.accountHolderID}`} className="flex text-black items-center gap-3">
           <div className="w-12 h-12 rounded-[50%]">
             {singleUser?.avatar ? (
               <img className="w-full h-full rounded-[50%]" src={img1} />
