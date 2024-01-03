@@ -12,3 +12,4 @@ export { default as GalleryImages } from "./GalleryImages";
 export { default as Reviews } from "./Reviews";
 export { default as Reviewers } from "./reviewers";
 export { default as Thingstoknow } from "./Thingstoknow";
+export { default as GoogleMapBlock } from "./GoogleMapBlock";
