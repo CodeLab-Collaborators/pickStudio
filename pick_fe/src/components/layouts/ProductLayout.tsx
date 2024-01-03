@@ -17,7 +17,7 @@ const ProductLayout = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [showHeader]);
 
   return (
     <div className="h-full bg-white">
