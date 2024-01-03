@@ -2,6 +2,7 @@
 import {
   Ad,
   BookSpace,
+  GoogleMapBlock,
   ListDetails,
   Offers,
   ProductImage,
@@ -78,7 +79,11 @@ const SingleList = () => {
         <div id="reviews" className="py-20 px-16 max-md:px-0 max-lg:px-5">
           <Reviews />
         </div>
-        <div>
+        {/* map */}
+        <div className="py-8 border-t">
+          <GoogleMapBlock/>
+        </div>
+        <div >
           <Thingstoknow />
         </div>
       </div>
