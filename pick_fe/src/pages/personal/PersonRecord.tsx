@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FaListCheck, FaPeopleGroup } from "react-icons/fa6";
 import HelpComp from "./HelpComp";
 import pix from "../../assets/1.jpg";
+import { MdContactSupport } from "react-icons/md";
 const PersonRecord = () => {
   const [toggled, setToggled] = useState(false);
 
@@ -87,9 +88,9 @@ const PersonRecord = () => {
           icon={<FaPeopleGroup />}
         />
         <HelpComp
-          title="Join your local Host Club"
-          sub="Connect, collaborate, and share with other Hosts and community members."
-          icon={<FaPeopleGroup />}
+          title="Contact specialized support"
+          sub="As a new Host, you get one-tap access to a specially trained support team.onnect, collaborate, and share with other Hosts and community members."
+          icon={<MdContactSupport />}
         />
       </div>
 
