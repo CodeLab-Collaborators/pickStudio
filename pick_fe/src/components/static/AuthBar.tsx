@@ -11,9 +11,15 @@ const AuthBar = () => {
   const mainUser = JSON.parse(localStorage.getItem("mainUser")!);
 
   const { data } = userHooks();
+
+  // console.log(data._id);
+
   return (
     <div className="flex items-center gap-2 max-md:hidden text-sm tracking-wide">
-      <Link to="/upload-studio" className="text-black hover:text-black">
+      <Link
+        to={`/personal/${data?._id}`}
+        className="text-black hover:text-black"
+      >
         <p className="px-4 font-medium  py-3 ease-in transition-all cursor-pointer hover:bg-[#F7F7F7] rounded-full">
           Upload your studio
         </p>
