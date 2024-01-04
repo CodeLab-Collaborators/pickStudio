@@ -356,9 +356,11 @@ export const appRoutes = createBrowserRouter([
   {
     path: "/personal/:id",
     element: (
-      <Suspense fallback={<div>Loading...</div>}>
-        <PersonalLayout />
-      </Suspense>
+      <ErrorBoundary fallbackRender={ErrorFile}>
+        <Suspense fallback={<div>Loading...</div>}>
+          <PersonalLayout />
+        </Suspense>
+      </ErrorBoundary>
     ),
     children: [{ index: true, element: <PersonalStart /> }],
   },
