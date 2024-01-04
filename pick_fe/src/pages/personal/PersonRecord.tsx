@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { FaListCheck } from "react-icons/fa6";
-
+import { FaListCheck, FaPeopleGroup } from "react-icons/fa6";
+import HelpComp from "./HelpComp";
+import pix from "../../assets/1.jpg";
 const PersonRecord = () => {
   const [toggled, setToggled] = useState(false);
 
@@ -76,6 +77,38 @@ const PersonRecord = () => {
         <br />
         <br />
         <br />
+      </div>
+      <div className="mt-10 mb-5 text-[20px] font-bold">We can Help Out</div>
+
+      <div className=" grid  grid-cols-1 md:grid-cols-2 gap-2">
+        <HelpComp
+          title="Join your local Host Club"
+          sub="Connect, collaborate, and share with other Hosts and community members."
+          icon={<FaPeopleGroup />}
+        />
+        <HelpComp
+          title="Join your local Host Club"
+          sub="Connect, collaborate, and share with other Hosts and community members."
+          icon={<FaPeopleGroup />}
+        />
+      </div>
+
+      <div className="mt-10 mb-5 text-[20px] font-bold">
+        Tips to improve your Business with us!
+      </div>
+
+      <div className="w-full flex overflow-x-scroll snap-x gap-4 border rounded-md p-2">
+        {Array.from({ length: 5 }).map((props: any, i: number) => (
+          <div className="border rounded-md">
+            <img
+              src={pix}
+              className="min-w-[300px] object-cover border h-[250px] overflow-hidden rounded-t-md"
+            />
+            <div className="p-3 font-medium">
+              How to make your listing stand out
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
