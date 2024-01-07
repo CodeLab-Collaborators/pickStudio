@@ -27,7 +27,7 @@ const Payment = () => {
           initializePayment(onSuccess, onClose);
         }}
       >
-        Make Payment Now agaian
+        Payment Now
       </GlobalButton>
     </div>
   );
