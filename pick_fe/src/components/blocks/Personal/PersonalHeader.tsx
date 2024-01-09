@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import logo from "../../../assets/logo.png";
 
 import { MdOutlineNotifications } from "react-icons/md";
@@ -8,7 +9,9 @@ const PersonalHeader = () => {
     <div className="h-[97px] flex w-full justify-center items-center border-b">
       <div className="w-[90%] flex h-full justify-between items-center">
         <div>
-          <img src={logo} className="h-14" />
+          <Link to="/">
+            <img src={logo} className="h-14" />
+          </Link>
         </div>
         <div className="flex items-center gap-4">
           <div className="w-10 h-10 rounded-full border flex justify-center items-center p-1 bg-white relative">
