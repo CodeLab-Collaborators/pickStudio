@@ -58,7 +58,7 @@ const Setting: FC = () => {
       <div className="my-6 flex flex-wrap ">
         {pathData.map((props: any, i: number) => (
           <Link to={`${props.url}`} key={i} className="text-black">
-            <div className="w-[300px] border rounded-md p-3  m-2 min-h-[150px] text-black shadow-md flex flex-col hover:shadow-lg">
+            <div className="w-[300px] border rounded-md p-5  m-2 min-h-[150px] text-black shadow-md flex flex-col hover:shadow-lg">
               <div className="flex-1">{props.icon}</div>
               <div className="font-[400] mb-1">{props.title}</div>
               <div className="text-[12px] leading-4 font-[300]">
