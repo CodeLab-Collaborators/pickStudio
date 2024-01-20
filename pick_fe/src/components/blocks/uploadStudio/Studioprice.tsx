@@ -115,7 +115,7 @@ const StudioPrice = () => {
           </label>
         </div>
 
-        {includeDiscount && (
+        {!includeDiscount && (
           <div className="mt-2 flex justify-center items-center flex-col">
             <label className="block text-gray-700 font-semibold">
               Discount Percent:
