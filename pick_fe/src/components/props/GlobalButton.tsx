@@ -8,7 +8,7 @@ const GlobalButton: React.FC<GlobalButtonProps> = ({
 }) => {
   // default Tailwind CSS classes for the button
   const defaultClasses =
-    " w-full text-white rounded-md py-3 px-5 text-base font-medium ease-in transition-all hover:bg-[#00000011]";
+    " w-full text-white rounded-md py-3 px-6 text-base font-medium ease-in transition-all hover:bg-[#00000011]";
 
   // Combine the default classes with the provided className
   const buttonClasses = className

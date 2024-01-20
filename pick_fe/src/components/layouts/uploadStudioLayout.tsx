@@ -3,7 +3,7 @@ import { UploadStudioFooter, UploadStudioHeader } from "../blocks/uploadStudio";
 
 const UploadStudioLayout = () => {
   return (
-    <div className="bg-white w-full h-screen grid grid-rows-[.13fr,1fr,.1fr] gap-3">
+    <div className="bg-white w-full h-screen grid grid-rows-[.15fr,1fr,.12fr] gap-3">
       <UploadStudioHeader />
       <Outlet />
       <UploadStudioFooter />

@@ -40,8 +40,8 @@ export const RenderButtonCheck: FC = () => {
       // start page
       <NavLink to="about-your-studio">
         <GlobalButton
-          style={{ background: "var(--gradient)" }}
-          className="font-semibold "
+          style={{ background: "var(--gradient)"}}
+          className="font-semibold"
         >
           Get started
         </GlobalButton>
