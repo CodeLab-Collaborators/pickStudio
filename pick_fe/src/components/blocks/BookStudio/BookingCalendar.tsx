@@ -17,6 +17,8 @@ const BookingCalendar: React.FC = () => {
 
   const { viewHistoryStudio }: any = studioHistoryHooks(productID!);
 
+  console.log("studio history: ", viewHistoryStudio);
+
   const makeEvent: Array<{}> = [];
 
   if (viewHistoryStudio?.history !== undefined) {
@@ -51,11 +53,24 @@ const BookingCalendar: React.FC = () => {
     return props;
   });
 
+  const bookedAppointment = viewHistoryStudio?.history.map((el: any) => {
+    return {
+      start: el?.calendarDate.split("-")[0],
+      end: el?.calendarDate.split("-")[0],
+      cost: el?.cost,
+      title: `Booked by ${data?.firstName}`,
+      // end: el?.calendarDate()?.split("-")[1],
+    };
+  });
+
+  console.log("read it: ");
+
   return (
     <div className="my-calendar-container text-[12px] font-sans ">
       <Calendar
         localizer={localizer}
-        events={filteredEvents.flat()}
+        events={bookedAppointment}
+        // events={filteredEvents.flat()}
         style={{ height: 500 }}
         views={["month", "agenda"]}
       />
