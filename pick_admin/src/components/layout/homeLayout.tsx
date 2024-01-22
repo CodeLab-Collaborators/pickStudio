@@ -9,7 +9,7 @@ const HomeLayout:React.FC = () => {
         <Sidebar/>
        <div className='w-full'>
         <Header/>
-        <div className='px-5 h-[500vh] py-8'>
+        <div className='px-5 h-[500vh] py-8 max-lg:py-5'>
 
        <Outlet/>
         </div>
