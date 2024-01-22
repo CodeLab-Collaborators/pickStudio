@@ -7,8 +7,8 @@ import { userHooks } from "../../hooks/userHooks";
 const PersonalStart = () => {
   const {data} = userHooks()
 
-  console.log("this is data", data)
-  console.log("this is data", data.firstName)
+  // console.log("this is data", data)
+  // console.log("this is data", data.firstName)
   return (
     <div className="w-full justify-center flex">
       <div className="w-[90%] mt-[70px]">
