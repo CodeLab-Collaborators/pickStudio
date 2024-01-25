@@ -51,6 +51,7 @@ const StudioCategory: FC = () => {
             key={category}
             onClick={() => {
               handleCategorySelect(category);
+              window.location.reload();
             }}
             style={{
               margin: "5px",

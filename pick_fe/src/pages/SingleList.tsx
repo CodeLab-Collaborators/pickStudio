@@ -1,4 +1,3 @@
-
 import {
   Ad,
   BookSpace,
@@ -15,18 +14,18 @@ import { useParams } from "react-router-dom";
 import { studioReviewHooks } from "../hooks/reviewHooks";
 import { useState } from "react";
 import { GalleryModal } from "../components/modals";
+import { userHooks } from "../hooks/userHooks";
 // import { Link, animateScroll as scroll } from "react-scroll";
 
 const SingleList = () => {
   const { productID } = useParams();
   const [showGallery, setShowGallery] = useState<boolean>(false);
-  
+  const { data } = userHooks();
+
   const { singleStudio } = singleStudioHooks(productID!);
   const { studioReview } = studioReviewHooks(productID!);
-  
-  document.title = `${singleStudio?.studioName} - Pickastudio`;
 
-  // console.log("this is single studio", singleStudio?.studioReview)
+  document.title = `${singleStudio?.studioName} - Pickastudio`;
 
   const toggleGallery = () => {
     setShowGallery(!showGallery);
@@ -72,20 +71,30 @@ const SingleList = () => {
           </div>
           {/* flex-1 hidden h-[fit-content] mt-8 sticky top-24 md:flex */}
           <div className="flex-1 hidden md:flex sticky mt-8 top-32 h-[fit-content] ">
-            <BookSpace />
+            {singleStudio?.accountHolderID !== data?._id && <BookSpace />}
           </div>
         </div>
-        <div>Booked</div>
+        {/* <div>Booked</div> */}
         <div id="reviews" className="py-20 px-16 max-md:px-0 max-lg:px-5">
           {/* reviews */}
-          {singleStudio?.studioReview.length < 1 ? <div className="flex flex-col items-center"><p>No reviews yet</p> <strong className="cursor-pointer text-[var(--primary)]">Leave a review?</strong></div> : <><Reviews /></>}
-         
+          {singleStudio?.studioReview.length < 1 ? (
+            <div className="flex flex-col items-center">
+              <p>No reviews yet</p>{" "}
+              <strong className="cursor-pointer text-[var(--primary)]">
+                Leave a review?
+              </strong>
+            </div>
+          ) : (
+            <>
+              <Reviews />
+            </>
+          )}
         </div>
         {/* map */}
         <div className="py-8 border-t">
-          <GoogleMapBlock/>
+          <GoogleMapBlock />
         </div>
-        <div >
+        <div>
           <Thingstoknow />
         </div>
       </div>

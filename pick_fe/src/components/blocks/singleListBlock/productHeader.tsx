@@ -1,10 +1,11 @@
 import { Link } from "react-scroll";
-import {NavLink} from "react-router-dom"
+import { NavLink, useParams } from "react-router-dom";
 import { GlobalButton } from "../..";
 import { useEffect, useState } from "react";
+import { singleStudioHooks } from "../../../hooks/studioHooks";
+import { userHooks } from "../../../hooks/userHooks";
 
 const ProductHeader = () => {
-
   const [showButton, setShowButton] = useState(false);
 
   useEffect(() => {
@@ -19,6 +20,10 @@ const ProductHeader = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [showButton]);
+
+  const { productID } = useParams();
+  const { singleStudio }: any = singleStudioHooks(productID!);
+  const { data }: any = userHooks();
 
   return (
     <div className="w-full fadeIn border-b z-50 ease-in transition-all fixed top-0 max-md:bottom-0 max-md:border-t bg-white  h-[10vh] max-md:h-[8vh] ">
@@ -63,10 +68,20 @@ const ProductHeader = () => {
         </nav>
 
         <div>
-{showButton  &&         <NavLink to={`book-studio`}>
-<GlobalButton
-            style={{ background: "var(--gradient)" }}
-            className="w-full h-12 font-[500] rounded-lg text-white border-none focus:outline-none">Book studio</GlobalButton>  </NavLink>}
+          {showButton && (
+            <div>
+              {singleStudio?.accountHolderID === data?._id && (
+                <NavLink to={`book-studio`}>
+                  <GlobalButton
+                    style={{ background: "var(--gradient)" }}
+                    className="w-full h-12 font-[500] rounded-lg text-white border-none focus:outline-none"
+                  >
+                    Book studio
+                  </GlobalButton>{" "}
+                </NavLink>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>

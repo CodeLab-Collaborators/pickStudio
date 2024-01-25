@@ -40,7 +40,7 @@ export const RenderButtonCheck: FC = () => {
       // start page
       <NavLink to="about-your-studio">
         <GlobalButton
-          style={{ background: "var(--gradient)"}}
+          style={{ background: "var(--gradient)" }}
           className="font-semibold"
         >
           Get started
@@ -144,7 +144,9 @@ export const RenderButtonCheck: FC = () => {
           formData.append("includeDiscount", step3.includeDiscount);
           formData.append("discountPercent", step3.discountPercent);
 
-          createAStudio(data._id, formData).then((res) => {
+          console.log(data._id);
+
+          createAStudio(data?._id, formData).then((res) => {
             localStorage.removeItem("formSteps1");
             localStorage.removeItem("formSteps2");
             localStorage.removeItem("formSteps3");

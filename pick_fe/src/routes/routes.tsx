@@ -357,7 +357,7 @@ export const appRoutes = createBrowserRouter([
     path: "/personal/:id",
     element: (
       <ErrorBoundary fallbackRender={ErrorFile}>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div>showing loading...</div>}>
           <PersonalLayout />
         </Suspense>
       </ErrorBoundary>
