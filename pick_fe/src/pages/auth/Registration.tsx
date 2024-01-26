@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEmailValue } from "../../global/globalState";
+import { ScaleLoader } from "react-spinners";
 
 const Registration = () => {
   const navigation = useNavigate();
@@ -21,6 +22,7 @@ const Registration = () => {
 
   const [mail, setMail] = useEmailValue();
   const [toggle, setToggle] = useState<boolean>(false);
+  const [show, setShow] = useState<boolean>(false);
 
   const togglePassword = () => {
     setShowPassword(!showPassword);
@@ -29,7 +31,7 @@ const Registration = () => {
   const { handleSubmit } = useForm();
 
   const onHandleSubmit = handleSubmit(() => {
-    setToggle(true);
+    setShow(true);
     const data = { firstName, lastName, email, password, confirm };
     if (password === confirm) {
       createAccount(data).then((res: any) => {
@@ -37,14 +39,33 @@ const Registration = () => {
         if (res.status === 201) {
           navigation("/verification");
         } else {
-          toast("can't create an account, because Email has been taken!");
-          setToggle(false);
+          toast(
+            "can't create an account, because Email has already been taken!"
+          );
+          setShow(false);
         }
       });
     } else {
       toast("password and confirm password, must match");
     }
   });
+
+  //   .then((res: any) => {
+  //   console.log(res);
+  //   if (res.status === 201) {
+  //     console.log("success: ", res);
+  //     setUser(res.data);
+  //     toast("welcome");
+  //     setShow(false);
+  //     if (user) {
+  //       navigate("/");
+  //     }
+  //   } else {
+  //     console.log("failed: ", res);
+  //     setShow(false);
+  //     toast(`${res.response.data.message}`);
+  //   }
+  // })
 
   return (
     <div className="min-h-[80vh] flex items-center justify-center">
@@ -145,7 +166,11 @@ const Registration = () => {
                 style={{ background: "var(--gradient)" }}
                 // onClick={handleRegister}
               >
-                Register
+                {show ? (
+                  <ScaleLoader color="#fff" width={5} height={12} />
+                ) : (
+                  "Register"
+                )}
               </GlobalButton>
             </div>
           </form>

@@ -29,12 +29,21 @@ const Login = () => {
     setShow(true);
     signinAccount(data)
       .then((res: any) => {
-        setUser(res.data);
-        toast("welcome");
-        setShow(false);
+        console.log(res);
+        if (res.status === 201) {
+          setUser(res.data);
+          toast("welcome");
+          setShow(false);
+
+          navigate("/");
+        } else {
+          console.log("failed: ", res);
+          setShow(false);
+          toast(`${res.response.data.message}`);
+        }
       })
       .then(() => {
-        navigate("/");
+        // navigate("/");
       });
   });
   return (

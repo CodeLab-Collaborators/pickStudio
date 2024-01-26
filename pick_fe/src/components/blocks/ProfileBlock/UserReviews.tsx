@@ -2,17 +2,24 @@ import { FC } from "react";
 import pic from "../../../assets/jpg/suit.jpeg";
 import { useSingleUser } from "../../../hooks/userHooks";
 import moment from "moment";
+import { useParams } from "react-router-dom";
 
 interface iProps {
   props?: any;
 }
 
 const UserReviews: FC<iProps> = ({ props }) => {
-  const { singleUser } = useSingleUser(props?.accountID);
+  const { userID } = useParams();
+  const { singleUser } = useSingleUser(userID!);
+
   return (
     <div>
       <div className="w-[full]  h-[fit-content] border-[1px] border-[lightgrey] rounded-xl p-[20px] flex flex-col gap-14">
-        <div className="text-[14px] md:text-[18px]">{props?.review}</div>
+        <div className="text-[12px] md:text-[14px]  ">
+          {props?.review
+            ? props?.review
+            : "be happy to recommend places to visit as well as restaurants and points of interest."}
+        </div>
         <div className="flex gap-2">
           <div className=" w-[50px] h-[50px] object-cover">
             {singleUser?.avatar ? (

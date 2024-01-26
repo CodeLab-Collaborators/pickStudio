@@ -3,12 +3,14 @@ import { GlobalButton } from "../../components";
 import { useEmailValue } from "../../global/globalState";
 import { verifyAccount } from "../../api/authAPI";
 import { useNavigate } from "react-router-dom";
+import { ScaleLoader } from "react-spinners";
 
 const Verification: React.FC = () => {
   const [mail] = useEmailValue();
   document.title = "Verify your account - Pickastudio";
 
   const navigate = useNavigate();
+  const [toggle, setToggle] = useState<boolean>(false);
 
   const fieldsRef = useRef<HTMLDivElement>(null);
   const [verificationCode, setVerificationCode] = useState<any>({
@@ -59,7 +61,9 @@ const Verification: React.FC = () => {
     const code = Object.values(verificationCode).join("");
     // Implement the logic to handle the verification code submission
 
+    setToggle(true);
     verifyAccount(code).then(() => {
+      setToggle(false);
       navigate("/login");
     });
   };
@@ -122,7 +126,11 @@ const Verification: React.FC = () => {
                   : false
               }
             >
-              Verify
+              {toggle ? (
+                <ScaleLoader color="#fff" width={5} height={12} />
+              ) : (
+                "Verify"
+              )}
             </GlobalButton>
           </form>
         </div>

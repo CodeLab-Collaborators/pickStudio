@@ -20,7 +20,7 @@ const AuthBar = () => {
           className="text-black hover:text-black"
         >
           <p className="px-4 font-medium  py-3 ease-in transition-all cursor-pointer hover:bg-[#F7F7F7] rounded-full">
-            Upload your studio
+            Switch Mode
           </p>
         </Link>
       )}

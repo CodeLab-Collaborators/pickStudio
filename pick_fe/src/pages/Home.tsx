@@ -26,7 +26,7 @@ const Home = () => {
   const { allStudio, isLoading } = studioHooks();
 
   return (
-    <div className="w-full m-auto grid gap-6 place-items-center grid-cols-5 max-xl:grid-cols-4 max-lg:grid-cols-2 max-sm:grid-cols-1 max-sm:w-full">
+    <div className="w-full m-auto grid gap-6 place-items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {isLoading && Array.from({ length: 8 }, () => <DoorDashFavorite />)}
       {allStudio?.map((props: any, i: number) => (
         <ProductProps
@@ -51,3 +51,5 @@ const Home = () => {
 };
 
 export default Home;
+
+// grid-cols-5 max-xl:grid-cols-4 max-lg:grid-cols-2 max-sm:grid-cols-1 max-sm:w-full

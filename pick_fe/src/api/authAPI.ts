@@ -1,10 +1,13 @@
 import axios from "axios";
 
+// const URL: string = "http://localhost:3300/api/v1";
 const URL: string = "https://pick-be.onrender.com/api/v1";
 
 const URLSocialDetail: string =
   "https://pick-be.onrender.com/api/v1/sign-in/success";
-const URLSocial: string = "https://pick-be.onrender.com/api/v1/auth/google";
+
+const URLSocial: string = "http://localhost:3300/api/v1/auth/google";
+// const URLSocial: string = "https://pick-be.onrender.com/api/v1/auth/google";
 
 export const signWithGoogle = async () => {
   window.open(URLSocial, "_self");
@@ -12,11 +15,9 @@ export const signWithGoogle = async () => {
 
 export const createAccount = async (data: any) => {
   try {
-    return await axios
-      .post(`${URL}/register-user`, { email: data })
-      .then((res) => {
-        return res;
-      });
+    return await axios.post(`${URL}/create-user`, data).then((res) => {
+      return res;
+    });
   } catch (error) {
     return error;
   }

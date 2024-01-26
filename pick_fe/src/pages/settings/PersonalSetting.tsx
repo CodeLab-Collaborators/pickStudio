@@ -3,9 +3,10 @@ import { LiaGreaterThanSolid } from "react-icons/lia";
 import { FaUnlockKeyhole } from "react-icons/fa6";
 import { MdVisibility } from "react-icons/md";
 import { MdHealthAndSafety } from "react-icons/md";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 const PersonalSetting: FC = () => {
+  const navigate = useNavigate();
   document.title =
     "(Studio name) person account profile setting  - Pickastudio";
   let name: any = location.pathname;
@@ -42,6 +43,15 @@ const PersonalSetting: FC = () => {
         Account <LiaGreaterThanSolid size={13} className="mx-4 " />{" "}
         <div className="capitalize">
           {name.split("/")[2].replaceAll("-", " ")}
+        </div>{" "}
+        <LiaGreaterThanSolid size={13} className="mx-4 " />{" "}
+        <div
+          className="capitalize underline cursor-pointer"
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
+          Go Back
         </div>
       </div>
       <div className="mt-5 font-[500] text-[30px] mb-10 capitalize">

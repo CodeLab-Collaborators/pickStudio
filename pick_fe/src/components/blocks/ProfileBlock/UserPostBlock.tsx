@@ -1,16 +1,16 @@
-import { GlobalButton, ProductProps } from "../..";
-
+import { GlobalButton } from "../..";
 import AboutUser from "./AboutUser";
-import UserReviews from "./UserReviews";
-import img1 from "../../../assets/jpg/Menstylica.jpeg";
-
-import img2 from "../../../assets/jpg/suit.jpeg";
-import img3 from "../../../assets/jpg/SHOES.jpeg";
-import img4 from "../../../assets/jpg/INSTASHOP.jpeg";
-import profile from "../../../assets/jpg/profile.jpeg";
+import pix from "../../../assets/logo.png";
+import { useParams } from "react-router-dom";
+import { useSingleUser } from "../../../hooks/userHooks";
+import { singleStudioHooks } from "../../../hooks/studioHooks";
+import moment from "moment";
+import { UserReviews } from ".";
 
 const UserPostBlock = () => {
-  const dummyImage = [img1, img3, img4, img2];
+  const { userID } = useParams();
+  const { singleUser } = useSingleUser(userID!);
+  const { singleStudio } = singleStudioHooks(singleUser?.studio[0]);
 
   return (
     <div className="w-[70%] h-full  flex flex-col gap-5 max-lg:w-full ">
@@ -19,13 +19,13 @@ const UserPostBlock = () => {
       <hr />
       <div className=" flex flex-col gap-4">
         <h1 className="text-3xl font-bold max-md:text-2xl">
-          What people are saying about Isaac Etor
+          What people are saying about me
         </h1>
         {/* user reviews */}
         <div className="w-full grid grid-cols-2 gap-5 max-md:grid-cols-1 py-2">
+          <UserReviews />
+          <UserReviews />
           {/* <UserReviews /> */}
-          {/* <UserReviews />
-          <UserReviews /> */}
         </div>
 
         {/* show more reviews button */}
@@ -42,23 +42,50 @@ const UserPostBlock = () => {
 
       {/* user posts */}
       <div className=" flex flex-col gap-4">
-        <h1 className="text-3xl font-bold max-md:text-2xl capitalize">
-          Isaac Etor posts
+        <h1 className="text-3xl font-bold max-md:text-2xl capitalize mt-8 ">
+          My Top Performing Studio
         </h1>
         {/* user posts */}
         <div className="grid gap-5 grid-cols-2 max-md:grid-cols-1">
-          <ProductProps
-            cover={dummyImage}
-            authorCover={profile}
-            authorName="Eloy"
-            place="Sao Paulo, Brazil"
-            rating={4.84}
-            amount={33}
-            date="Jul 29 - Aug 3"
-            route="/products"
-            userRoute="/user"
-            wishlistFunc={() => {}}
-          />
+          <div className="border rounded-md w-[300px] h-[420px] mt-6 overflow-hidden relative ">
+            <img
+              className="w-full h-[280px] object-cover bg-pink-50 "
+              src={
+                singleStudio?.studioImages?.lenght > 0
+                  ? singleStudio?.studioImages
+                  : pix
+              }
+            />
+            <div
+              className="flex justify-center items-center rounded-full border w-14 h-14 absolute top-[50%] left-2 text-[20px] text-white "
+              style={{ background: "var(--gradient)" }}
+            >
+              {singleUser?.firstName.charAt(0)}
+            </div>
+
+            <div className="mt-4 px-3">
+              <p className="flex justify-between">
+                <p className="font-medium text-[20px]">
+                  {singleStudio?.studioName}
+                </p>{" "}
+                <span className="font-bold gap-1 flex items-center">
+                  ⭐<p>{singleStudio?.studioRate}</p>
+                </span>
+              </p>
+              <p className="text-[13px] mt-2">
+                created at: <br />
+                <span className="font-medium leading-tight">
+                  {moment(singleStudio?.createdAt).format("llll")}
+                </span>
+              </p>
+              <p className="mt-1 text-[14px]">
+                Times Booked:{" "}
+                <span className="font-bold">
+                  {singleStudio?.history?.length}
+                </span>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

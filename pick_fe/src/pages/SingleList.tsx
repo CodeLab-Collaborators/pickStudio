@@ -57,6 +57,7 @@ const SingleList = () => {
           id="features"
           className="w-full relative h-[fit-content] mt-4 flex gap-6 "
         >
+          {" "}
           <div className="flex flex-col ">
             <Ad />
             <ListDetails
@@ -98,6 +99,7 @@ const SingleList = () => {
           <Thingstoknow />
         </div>
       </div>
+
       {showGallery ? <GalleryModal onClose={toggleGallery} /> : null}
     </div>
   );

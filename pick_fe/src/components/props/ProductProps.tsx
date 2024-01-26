@@ -30,16 +30,16 @@ const ProductProps: FC<cardData> = ({
         wishlistFunc={wishlistFunc}
       />
       {/* product Text */}
-      <Link to={route}>
-        <ProductFeaturedText
-          props={props}
-          authorName={authorName}
-          place={place}
-          rating={rating}
-          amount={amount}
-          date={date}
-        />
-      </Link>
+      {/* <Link to={route}> */}
+      <ProductFeaturedText
+        props={props}
+        authorName={authorName}
+        place={place}
+        rating={rating}
+        amount={amount}
+        date={date}
+      />
+      {/* </Link> */}
     </div>
   );
 };
