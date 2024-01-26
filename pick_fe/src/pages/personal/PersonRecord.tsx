@@ -3,6 +3,8 @@ import { FaListCheck, FaPeopleGroup } from "react-icons/fa6";
 import HelpComp from "./HelpComp";
 import pix from "../../assets/1.jpg";
 import { MdContactSupport } from "react-icons/md";
+import { useReadArticles } from "../../hooks/reviewHooks";
+import { Link } from "react-router-dom";
 const PersonRecord = () => {
   const [toggled, setToggled] = useState(false);
 
@@ -15,6 +17,8 @@ const PersonRecord = () => {
   ];
 
   const [state, setState] = useState<Array<any>>(word);
+
+  const { articles } = useReadArticles();
 
   const changeState = (i: number) => {
     if (!document.startViewTransition) {
@@ -99,16 +103,18 @@ const PersonRecord = () => {
       </div>
 
       <div className="w-full flex overflow-x-scroll snap-x gap-4 border rounded-md p-2">
-        {Array.from({ length: 5 }).map((props: any, i: number) => (
-          <div className="border rounded-md">
+        {articles?.map((props: any, i: number) => (
+          <Link
+            to={`/article/${props?._id}`}
+            className="border rounded-md"
+            key={props._id}
+          >
             <img
-              src={pix}
+              src={props?.articleImage}
               className="min-w-[300px] object-cover border h-[250px] overflow-hidden rounded-t-md"
             />
-            <div className="p-3 font-medium">
-              How to make your listing stand out
-            </div>
-          </div>
+            <div className="p-3 font-medium">{props?.articleTitle}</div>
+          </Link>
         ))}
       </div>
     </div>

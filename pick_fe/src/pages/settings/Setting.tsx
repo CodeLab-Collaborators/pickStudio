@@ -44,7 +44,7 @@ const Setting: FC = () => {
             </strong>
             , {data?.email} &middot;{" "}
             <Link
-              to="/user"
+              to={`/user/${data?._id}`}
               className="underline text-black font-[400] hover:text-black "
             >
               <span>go back to Profile</span>

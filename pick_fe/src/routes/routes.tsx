@@ -31,6 +31,7 @@ const ProfressionInfoScreen = lazy(
 );
 
 const Home = lazy(() => import("../pages/Home"));
+const ReadArticles = lazy(() => import("../pages/personal/ReadArticles"));
 const SingleList = lazy(() => import("../pages/SingleList"));
 const PersonalSetting = lazy(() => import("../pages/settings/PersonalSetting"));
 const Registration = lazy(() => import("../pages/auth/Registration"));
@@ -363,6 +364,17 @@ export const appRoutes = createBrowserRouter([
       </ErrorBoundary>
     ),
     children: [{ index: true, element: <PersonalStart /> }],
+  },
+  {
+    path: "/article/:articleID",
+    element: (
+      <ErrorBoundary fallbackRender={ErrorFile}>
+        <Suspense fallback={<div>showing loading...</div>}>
+          <PersonalLayout />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    children: [{ index: true, element: <ReadArticles /> }],
   },
 
   // {
