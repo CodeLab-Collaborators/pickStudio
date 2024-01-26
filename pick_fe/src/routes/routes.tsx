@@ -20,6 +20,7 @@ import BoundaryError from "../pages/error/BoundaryError/BoundaryError";
 import ErrorBoundaryComp from "../pages/error/Boundary/ErrorBoundaryComp";
 import ErrorFile from "../pages/error/ErrorII/ErrorFile";
 import Inbox from "../components/blocks/BookStudio/Inbox";
+import LoadingScreen from "../components/static/LoadingScreen";
 
 // import errorIndex from "../pages/error/errorPage/errorIndex";
 
@@ -70,7 +71,7 @@ export const appRoutes = createBrowserRouter([
     path: "/",
     element: (
       <ErrorBoundary fallbackRender={ErrorFile}>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<LoadingScreen />}>
           <HomeLayout />
         </Suspense>
       </ErrorBoundary>
@@ -99,7 +100,7 @@ export const appRoutes = createBrowserRouter([
       {
         path: "register",
         element: (
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<LoadingScreen />}>
             <Registration />
           </Suspense>
         ),
@@ -107,7 +108,7 @@ export const appRoutes = createBrowserRouter([
       {
         path: "login",
         element: (
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<LoadingScreen />}>
             <Login />
           </Suspense>
         ),
@@ -115,7 +116,7 @@ export const appRoutes = createBrowserRouter([
       {
         path: "verification",
         element: (
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<LoadingScreen />}>
             <Verification />
           </Suspense>
         ),
@@ -123,7 +124,7 @@ export const appRoutes = createBrowserRouter([
       {
         path: "wishlists",
         element: (
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<LoadingScreen />}>
             <>wishlists</>
           </Suspense>
         ),
@@ -131,7 +132,7 @@ export const appRoutes = createBrowserRouter([
       {
         path: "inbox",
         element: (
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<LoadingScreen />}>
             <>Inbox</>
           </Suspense>
         ),
@@ -139,7 +140,7 @@ export const appRoutes = createBrowserRouter([
       {
         path: "Bookings",
         element: (
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<LoadingScreen />}>
             <>Bookings</>
           </Suspense>
         ),
@@ -148,7 +149,7 @@ export const appRoutes = createBrowserRouter([
       {
         path: ":token/sign-in",
         element: (
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<LoadingScreen />}>
             <Verification />
           </Suspense>
         ),
@@ -156,7 +157,7 @@ export const appRoutes = createBrowserRouter([
       {
         path: "user/:userID",
         element: (
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<LoadingScreen />}>
             <Profile />
           </Suspense>
         ),
@@ -164,7 +165,7 @@ export const appRoutes = createBrowserRouter([
       {
         path: "setting",
         element: (
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<LoadingScreen />}>
             <Setting />
           </Suspense>
         ),
@@ -172,7 +173,7 @@ export const appRoutes = createBrowserRouter([
       {
         path: "personal-setting",
         element: (
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<LoadingScreen />}>
             <PersonalSetting />
           </Suspense>
         ),
@@ -181,7 +182,7 @@ export const appRoutes = createBrowserRouter([
             index: true,
             path: "my-personal-info",
             element: (
-              <Suspense fallback={<div>Loading...</div>}>
+              <Suspense fallback={<LoadingScreen />}>
                 <PersonalInfoScreen />
               </Suspense>
             ),
@@ -190,7 +191,7 @@ export const appRoutes = createBrowserRouter([
             index: true,
             path: "my-prefessional-info",
             element: (
-              <Suspense fallback={<div>Loading...</div>}>
+              <Suspense fallback={<LoadingScreen />}>
                 <ProfressionInfoScreen />
               </Suspense>
             ),
@@ -201,7 +202,7 @@ export const appRoutes = createBrowserRouter([
       {
         path: "category/:studio",
         element: (
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<LoadingScreen />}>
             <Category />
           </Suspense>
         ),
@@ -212,7 +213,7 @@ export const appRoutes = createBrowserRouter([
     path: "book-studio/:productID",
     element: (
       <ErrorBoundary fallbackRender={ErrorFile}>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<LoadingScreen />}>
           <BookStudio />
         </Suspense>
       </ErrorBoundary>
@@ -229,7 +230,7 @@ export const appRoutes = createBrowserRouter([
       {
         index: true,
         element: (
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<LoadingScreen />}>
             <SingleList />
           </Suspense>
         ),
@@ -237,7 +238,7 @@ export const appRoutes = createBrowserRouter([
       {
         path: "book-studio",
         element: (
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<LoadingScreen />}>
             <BookStudio />
           </Suspense>
         ),
@@ -248,7 +249,7 @@ export const appRoutes = createBrowserRouter([
     path: "/studio",
     element: (
       <ErrorBoundary fallbackRender={ErrorFile}>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<LoadingScreen />}>
           <StudioLayout />
         </Suspense>
       </ErrorBoundary>
@@ -257,7 +258,7 @@ export const appRoutes = createBrowserRouter([
       {
         index: true,
         element: (
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<LoadingScreen />}>
             <StudioHome />
           </Suspense>
         ),
@@ -265,7 +266,7 @@ export const appRoutes = createBrowserRouter([
       {
         path: "listings",
         element: (
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<LoadingScreen />}>
             <StudioListing />
           </Suspense>
         ),
@@ -277,7 +278,7 @@ export const appRoutes = createBrowserRouter([
     path: "/inbox",
     element: (
       <ErrorBoundary fallbackRender={ErrorFile}>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<LoadingScreen />}>
           <InboxLayout />
         </Suspense>
       </ErrorBoundary>
@@ -297,7 +298,7 @@ export const appRoutes = createBrowserRouter([
     path: "/upload-studio",
     element: (
       <ErrorBoundary fallbackRender={ErrorFile}>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<LoadingScreen />}>
           <UploadStudioLayout />
         </Suspense>
       </ErrorBoundary>
@@ -306,7 +307,7 @@ export const appRoutes = createBrowserRouter([
       {
         index: true,
         element: (
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<LoadingScreen />}>
             <Overview />
           </Suspense>
         ),
@@ -314,7 +315,7 @@ export const appRoutes = createBrowserRouter([
       {
         path: "about-your-studio",
         element: (
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<LoadingScreen />}>
             <AboutStudio />
           </Suspense>
         ),
@@ -322,7 +323,7 @@ export const appRoutes = createBrowserRouter([
       {
         path: "studio-details",
         element: (
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<LoadingScreen />}>
             <StudioDetails />
           </Suspense>
         ),
@@ -330,7 +331,7 @@ export const appRoutes = createBrowserRouter([
       {
         path: "finish-listing",
         element: (
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<LoadingScreen />}>
             <FinishListing />
           </Suspense>
         ),
@@ -338,7 +339,7 @@ export const appRoutes = createBrowserRouter([
       {
         path: "upload-studio-images",
         element: (
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<LoadingScreen />}>
             <UploadProductImage />
           </Suspense>
         ),
@@ -346,7 +347,7 @@ export const appRoutes = createBrowserRouter([
       {
         path: "review-listing",
         element: (
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<LoadingScreen />}>
             <ReviewListing />
           </Suspense>
         ),
@@ -358,7 +359,7 @@ export const appRoutes = createBrowserRouter([
     path: "/personal/:id",
     element: (
       <ErrorBoundary fallbackRender={ErrorFile}>
-        <Suspense fallback={<div>showing loading...</div>}>
+        <Suspense fallback={<LoadingScreen />}>
           <PersonalLayout />
         </Suspense>
       </ErrorBoundary>
@@ -369,7 +370,7 @@ export const appRoutes = createBrowserRouter([
     path: "/article/:articleID",
     element: (
       <ErrorBoundary fallbackRender={ErrorFile}>
-        <Suspense fallback={<div>showing loading...</div>}>
+        <Suspense fallback={<LoadingScreen />}>
           <PersonalLayout />
         </Suspense>
       </ErrorBoundary>

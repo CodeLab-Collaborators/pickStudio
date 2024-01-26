@@ -16,6 +16,18 @@ export const createStudioHistory = async (studioID: string) => {
   }
 };
 
+export const viewUserStudioHistory = async (userID: string) => {
+  try {
+    return await axios
+      .get(`${URL}/view-user-booking/${userID}/`)
+      .then((res: any | {}) => {
+        return res.data.data;
+      });
+  } catch (error) {
+    return error;
+  }
+};
+
 export const bookAStudio = async (
   userID: string,
   studioID: string,

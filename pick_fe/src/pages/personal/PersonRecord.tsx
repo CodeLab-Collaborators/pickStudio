@@ -4,16 +4,25 @@ import HelpComp from "./HelpComp";
 import pix from "../../assets/1.jpg";
 import { MdContactSupport } from "react-icons/md";
 import { useReadArticles } from "../../hooks/reviewHooks";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useUser } from "../../global/globalState";
+import { useSingleUser, useUserHistory } from "../../hooks/userHooks";
+import ReadingClients from "./ViewMyClient";
+import { singleStudioHooks, userStudioHooks } from "../../hooks/studioHooks";
 const PersonRecord = () => {
   const [toggled, setToggled] = useState(false);
+  const { id } = useParams();
+  const { history } = useUserHistory(id!);
+  const { userStudio } = userStudioHooks(id!);
+
+  console.log("result: ", userStudio, id);
 
   let word = [
-    { work: "Check out (0)", state: true },
-    { work: "Currently hosting (0)", state: false },
-    { work: "Arriving soon (0)", state: false },
-    { work: "Upcoming (0)", state: false },
-    { work: "Pending review (0)", state: false },
+    { work: "My Clients", state: true, data: "working" },
+    { work: "Booking History", state: false, data: "working 1" },
+    { work: "All my Studios", state: false, data: "working 2" },
+    { work: "Financial Records", state: false, data: "working 3" },
+    // { work: "Pending review (0)", state: false, data: "working 4" },
   ];
 
   const [state, setState] = useState<Array<any>>(word);
@@ -72,11 +81,80 @@ const PersonRecord = () => {
         ))}
       </div>
 
-      <div className="flex  flex-col justify-center items-center mt-10 border bg-[#ececec] rounded-md p-4 min-h-[200px] pt-10">
-        <FaListCheck />
-        <div>No record yet</div>
+      <div className="mt-10 border bg-[#fcfafa] rounded-md p-4 min-h-[200px] pt-10 ">
         <div className="mt-4 font-medium text-[14px] capitalize">
-          {state?.find((el: any) => el.state === true)?.work}
+          {state?.find((el: any) => el.state === true)?.work ===
+          "My Clients" ? (
+            <div>
+              {history?.history?.length > 0 ? (
+                <div className="flex ">
+                  {history?.history?.map((props: any) => (
+                    <div className="w-full h-[200px]">
+                      {" "}
+                      <ReadingClients props={props} />
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="flex flex-col items-center">
+                  <FaListCheck />
+                  <div>No record yet</div>
+                  <br />
+                  No Clients{" "}
+                </div>
+              )}
+            </div>
+          ) : state?.find((el: any) => el.state === true)?.work ===
+            "Booking History" ? (
+            <div>
+              <div className="flex flex-col items-center">
+                <FaListCheck />
+                <div>No record yet</div>
+                <br />
+                Booking History{" "}
+              </div>
+            </div>
+          ) : state?.find((el: any) => el.state === true)?.work ===
+            "All my Studios" ? (
+            <div>
+              {userStudio?.studio?.length > 0 ? (
+                <div className="grid grid-cols-2 gap-2 ">
+                  {" "}
+                  {userStudio?.studio?.map((props: any) => (
+                    <div className="w-full h-[300px] border rounded-md overflow-hidden">
+                      <img
+                        className="w-full h-[80%] object-cover "
+                        src={props?.avatar ? props?.avatar : pix}
+                      />
+
+                      <p className="mt-2 pl-2">{props?.studioName}</p>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="flex flex-col items-center">
+                  <FaListCheck />
+                  <div>No record yet</div>
+                  <br />
+                  All My Studios{" "}
+                </div>
+              )}
+            </div>
+          ) : state?.find((el: any) => el.state === true)?.work ===
+            "Financial Records" ? (
+            <div>
+              <div className="flex flex-col items-center">
+                <FaListCheck />
+                <div>No record yet</div>
+                <br />
+                Records{" "}
+              </div>
+            </div>
+          ) : // :
+          // state?.find((el: any) => el.state === true)?.work ===
+          //   "Pending review (0)" ?
+          //   <div>Okay </div>
+          null}
         </div>
 
         <br />
@@ -122,3 +200,5 @@ const PersonRecord = () => {
 };
 
 export default PersonRecord;
+
+// flex w-full flex-col justify-center items-center

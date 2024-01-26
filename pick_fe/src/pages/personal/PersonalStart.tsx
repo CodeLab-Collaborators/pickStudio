@@ -3,6 +3,7 @@ import PersonRecord from "./PersonRecord";
 import { Link } from "react-router-dom";
 import Transition from "../../utils/transition";
 import { userHooks } from "../../hooks/userHooks";
+import LoadingScreen from "../../components/static/LoadingScreen";
 
 const PersonalStart = () => {
   const { data } = userHooks();

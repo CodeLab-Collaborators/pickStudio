@@ -1,5 +1,10 @@
 import useSWR from "swr";
-import { getAllStudio, getSingleStudio, searchStudio } from "../api/studioAPI";
+import {
+  getAllStudio,
+  getSingleStudio,
+  getUserStudios,
+  searchStudio,
+} from "../api/studioAPI";
 import { createStudioHistory } from "../api/bookingsAPI";
 
 export const studioHooks = () => {
@@ -13,7 +18,9 @@ export const studioHooks = () => {
 
 export const singleStudioHooks = (accountID: string) => {
   const { data: singleStudio } = useSWR(`view-single-studio/${accountID}`, () =>
-    getSingleStudio(accountID)
+    getSingleStudio(accountID).then((res) => {
+      return res.data;
+    })
   );
 
   return { singleStudio };
@@ -37,4 +44,17 @@ export const studioHistoryHooks = (studioID: string) => {
   );
 
   return { viewHistoryStudio, isLoading };
+};
+
+export const userStudioHooks = (userID: string) => {
+  const { data: userStudio } = useSWR(
+    `view-user-studio/${userID}`,
+    () =>
+      getUserStudios(userID).then((res) => {
+        return res;
+      })
+    // { refreshInterval: 1000 }
+  );
+
+  return { userStudio };
 };

@@ -2,6 +2,7 @@ import useSWR from "swr";
 import { getOneUser } from "../api/userAPI";
 import { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
+import { viewUserStudioHistory } from "../api/bookingsAPI";
 
 export const userHooks = () => {
   const [state, setState] = useState<string>("");
@@ -25,4 +26,12 @@ export const useSingleUser = (userID: string) => {
   );
 
   return { singleUser };
+};
+
+export const useUserHistory = (userID: string) => {
+  const { data: history } = useSWR(`view-user-history/${userID}`, () =>
+    viewUserStudioHistory(userID)
+  );
+
+  return { history };
 };

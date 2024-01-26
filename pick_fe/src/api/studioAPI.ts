@@ -1,7 +1,7 @@
 import axios from "axios";
 
-// const URL: string = "https://pick-be.onrender.com/api/v1";
-const URL: string = "http://localhost:3300/api/v1";
+const URL: string = "https://pick-be.onrender.com/api/v1";
+// const URL: string = "http://localhost:3300/api/v1";
 
 // /create-studio/:accountID
 
@@ -46,6 +46,18 @@ export const getSingleStudio = async (accountID: string) => {
   try {
     return await axios
       .get(`${URL}/view-studio/${accountID}/`)
+      .then((res: any | {}) => {
+        return res.data.data;
+      });
+  } catch (error) {
+    return error;
+  }
+};
+
+export const getUserStudios = async (accountID: string) => {
+  try {
+    return await axios
+      .get(`${URL}/view-user-studio/${accountID}/`)
       .then((res: any | {}) => {
         return res.data.data;
       });
