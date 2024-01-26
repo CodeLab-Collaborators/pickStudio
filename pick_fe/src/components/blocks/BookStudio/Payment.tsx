@@ -3,10 +3,11 @@ import { usePaystackPayment } from "react-paystack";
 import { bookAStudio, createStudioHistory } from "../../../api/bookingsAPI";
 import { userHooks } from "../../../hooks/userHooks";
 import { singleStudioHooks } from "../../../hooks/studioHooks";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useBooked } from "../../../global/globalState";
 
 const Payment = () => {
+  const navigate = useNavigate();
   const { data } = userHooks();
   const { productID } = useParams();
   const { singleStudio } = singleStudioHooks(productID!);
@@ -14,20 +15,20 @@ const Payment = () => {
 
   const [bookingData, setBookingData]: any = useBooked();
 
+  let cost =
+    bookingData?.days !== 0
+      ? (parseInt(bookingData?.cost?.replace(",", "")) + 500) * 100
+      : (parseInt(bookingData?.cost?.replace(",", "")) + 500) * 100;
+
   const config = {
     reference: new Date().getTime().toString(),
     email: data?.email,
-    amountbookingData:
-      bookingData?.days !== 0
-        ? (parseInt(bookingData?.cost?.replace(",", "")) + 500) * 100
-        : (parseInt(bookingData?.cost?.replace(",", "")) + 500) * 100,
+    amount: cost,
 
-    publicKey: "pk_test_f747091150685438ae86d5a98b5df3c60275f367",
+    publicKey: "pk_test_5a0581a5d3a5e4eff176456546f8e4b3f32d2d01",
   };
 
   const onSuccess = () => {
-    console.log("success");
-
     bookAStudio(
       data?._id,
       singleStudio?._id,
@@ -37,24 +38,31 @@ const Payment = () => {
           bookingData?.days !== 0 ? bookingData?.days : bookingData?.hourly,
         calendarDate: `${bookingData?.dateInDateTimeStart} - ${bookingData?.dateInDateTimeEnd} `,
       }
-    ).then(() => {
-      setBookingData({});
-    });
+    )
+      .then(() => {
+        setBookingData({});
+      })
+      .then(() => {
+        navigate("/");
+      });
   };
 
-  const onClose = () => {
-    console.log("closed");
-  };
+  const onClose = () => {};
 
-  const initializePayment: any = usePaystackPayment(config);
+  let initializePayment: any = usePaystackPayment(config);
+
+  let start = async () => {
+    return await initializePayment(onSuccess, onClose);
+  };
 
   return (
     <div className="pt-5 pb-11">
       <GlobalButton
         style={{ background: "var(--gradient)" }}
         onClick={() => {
-          // initializePayment(onSuccess, onClose);
-          onSuccess();
+          start().then(async (res: any) => {
+            onSuccess();
+          });
         }}
       >
         Payment Now...

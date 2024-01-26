@@ -14,7 +14,6 @@ const SocialLogin = () => {
           className="text-black"
           onClick={() => {
             signWithGoogle();
-            console.log("Start");
           }}
         >
           Continue with Google

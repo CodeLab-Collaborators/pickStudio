@@ -46,16 +46,21 @@ const StickyPrice = () => {
         <div className="flex mt-5 flex-col gap-2">
           <div className="flex font-light justify-between">
             <div>
-              {singleStudio?.studioPrice} x{" "}
-              {booked?.days ? booked?.days : booked?.hourly}{" "}
+              {booked?.days !== 0
+                ? singleStudio?.studioPrice
+                : singleStudio?.studioPriceDaily}{" "}
+              x {booked?.days !== 0 ? booked?.days : booked?.hourly}{" "}
               {!!parseInt(booked?.days)! ? "days" : "hours"}
             </div>
             <div>
               ₦
               {(
-                parseInt(singleStudio?.studioPrice) *
-                (booked?.days ? booked?.days : booked?.hourly)
-              ).toLocaleString()}
+                parseInt(
+                  booked?.days !== 0
+                    ? singleStudio?.studioPrice
+                    : singleStudio?.studioPriceDaily
+                ) * (booked?.days !== 0 ? booked?.days : booked?.hourly)
+              )?.toLocaleString()}
             </div>
           </div>
           <div className="flex font-light justify-between">
@@ -70,11 +75,12 @@ const StickyPrice = () => {
         </div>
         <div>
           ₦
-          {(
-            singleStudio?.studioPrice *
-              (booked?.days ? booked?.days : booked?.hourly) +
-            500
-          ).toLocaleString()}
+          {(booked?.days !== 0
+            ? singleStudio?.studioPrice
+            : singleStudio?.studioPriceDaily *
+                (booked?.days ? booked?.days : booked?.hourly) +
+              500
+          )?.toLocaleString()}
         </div>
       </div>
     </div>

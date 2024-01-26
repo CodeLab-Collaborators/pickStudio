@@ -10,11 +10,11 @@ import { singleStudioHooks } from "../../../hooks/studioHooks";
 import { useSingleUser } from "../../../hooks/userHooks";
 
 export type listDetails = {
-  host: string;
+  host?: string;
   guests: number;
-  bedrooms: number;
-  beds: number;
-  baths: number;
+  bedrooms?: number;
+  beds?: number;
+  baths?: number;
 };
 
 const ListDetails: FC<listDetails> = ({ guests, bedrooms, beds, baths }) => {
@@ -23,25 +23,26 @@ const ListDetails: FC<listDetails> = ({ guests, bedrooms, beds, baths }) => {
   const { singleStudio } = singleStudioHooks(productID!);
   const { singleUser } = useSingleUser(singleStudio?.accountHolderID!);
 
-  console.log("this is single studio", singleStudio)
-
-
   return (
     <div className="flex flex-col md:w-[50vw]">
       <div className="border-b-[1px] border-b-slate-300 py-7  flex gap-8 flex-col ">
         <div className="w-[80%] text-2xl font-[500]">
           <div>
             Entire studio space hosted by
-            <p className=" font-bold  pt-1  w-full">
+            <p className=" font-bold pt-1  w-full">
               {singleUser?.firstName} {singleUser?.lastName}
             </p>
           </div>
-          <div className="text-[17px] font-normal mt-1">
-            {guests} guests . {bedrooms} bedrooms . {beds} beds . {baths} baths
+          <div className="text-[15px] font-medium mt-1 leading-tight">
+            {guests} Guests Allowed/Book . {bedrooms} Steady Power . {beds} Good
+            Room-Space
           </div>
           <div className="text-[12px]">{/* <div>studio features:</div> */}</div>
         </div>
-        <Link to={`/user/${singleStudio?.accountHolderID}`} className="flex text-black items-center gap-3">
+        <Link
+          to={`/user/${singleStudio?.accountHolderID}`}
+          className="flex text-black items-center gap-3"
+        >
           <div className="w-12 h-12 rounded-[50%]">
             {singleUser?.avatar ? (
               <img className="w-full h-full rounded-[50%]" src={img1} />
@@ -64,8 +65,6 @@ const ListDetails: FC<listDetails> = ({ guests, bedrooms, beds, baths }) => {
           title={singleStudio?.studioCategory}
           content=""
         />
-      
-      
       </div>
       <div className="border-b-[1px] border-b-slate-300 py-7 gap-4 flex flex-col">
         <div className="overflow-ellipsis">

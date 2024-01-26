@@ -28,12 +28,18 @@ const BookSpace = () => {
       <div className="flex flex-col gap-2">
         <div className="flex">
           <div className="font-[600] text-lg">
-            ₦{singleStudio?.studioPrice.toLocaleString()}{" "}
-            <span className="text-base font-thin">/hour</span>
+            {singleStudio?.studioPriceDaily ? (
+              <p>
+                ₦{singleStudio?.studioPriceDaily?.toLocaleString()}{" "}
+                <span className="text-base font-thin">/hour</span>
+              </p>
+            ) : (
+              <p className="text-[12px] text-red-500 ">No Hourly service</p>
+            )}
           </div>
           <div className="mx-2" />
           <div className="font-[600] text-lg">
-            ₦{singleStudio?.studioPrice.toLocaleString()}{" "}
+            ₦{singleStudio?.studioPrice?.toLocaleString()}{" "}
             <span className="text-base font-thin">/day</span>
           </div>
         </div>
@@ -56,17 +62,19 @@ const BookSpace = () => {
         >
           Full day Booking
         </div>
-        <div
-          className={`px-2 py-3 text-white font-medium rounded-md ml-1 flex-1 text-center  ${
-            daily ? "" : "-translate-y-2"
-          } duration-500 transition-all hover:cursor-pointer `}
-          style={{ background: "var(--gradient)" }}
-          onClick={() => {
-            setDaily(false);
-          }}
-        >
-          Hourly Booking
-        </div>
+        {singleStudio?.studioPriceDaily && (
+          <div
+            className={`px-2 py-3 text-white font-medium rounded-md ml-1 flex-1 text-center  ${
+              daily ? "" : "-translate-y-2"
+            } duration-500 transition-all hover:cursor-pointer `}
+            style={{ background: "var(--gradient)" }}
+            onClick={() => {
+              setDaily(false);
+            }}
+          >
+            Hourly Booking
+          </div>
+        )}
       </div>
       {daily ? (
         <div className="font-[500]">You are on Full day Booking mode</div>
@@ -87,7 +95,6 @@ const BookSpace = () => {
                     className={`text-[12px] font-medium  p-2 `}
                     placeholder={`${moment(startDate!).format("L")}`}
                     onClick={() => {
-                      console.log("await");
                       setDateRange([null, null]);
                     }}
                   />
@@ -161,7 +168,6 @@ const BookSpace = () => {
             style={{ background: "var(--gradient)" }}
             className="w-full h-12 font-[500] rounded-lg text-white border-none focus:outline-none"
             onClick={() => {
-              // console.log("Awesomely clicked");
               setBooked({
                 hourly:
                   (new Date(endDateTime!).getTime() -
@@ -179,13 +185,13 @@ const BookSpace = () => {
                           new Date(startDate!).getTime()) /
                           (1000 * 3600 * 24)) *
                         singleStudio?.studioPrice
-                      ).toLocaleString()
+                      )?.toLocaleString()
                     : (
                         ((new Date(endDateTime!).getTime() -
                           new Date(startDateTime!).getTime()) /
                           (1000 * 3600)) *
-                        singleStudio?.studioPrice
-                      ).toLocaleString()
+                        singleStudio?.studioPriceDaily
+                      )?.toLocaleString()
                 }`,
                 dateInDayStart: moment(startDate!).format("L"),
                 dateInDayEnd: moment(endDate!).format("L"),
@@ -202,13 +208,13 @@ const BookSpace = () => {
                     new Date(startDate!).getTime()) /
                     (1000 * 3600 * 24)) *
                   singleStudio?.studioPrice
-                ).toLocaleString()
+                )?.toLocaleString()
               : (
                   ((new Date(endDateTime!).getTime() -
                     new Date(startDateTime!).getTime()) /
                     (1000 * 3600)) *
-                  singleStudio?.studioPrice
-                ).toLocaleString()}
+                  singleStudio?.studioPriceDaily
+                )?.toLocaleString()}
           </GlobalButton>
         </Link>
         <div className="text-center text-slate-800">
@@ -238,9 +244,20 @@ const BookSpace = () => {
         </div>
       </div>
       <div className="pt-5 border-t-[1px] font-[600] border-t-slate-200 flex justify-between ">
-        <div>Total before taxes</div>
-        <div>₦{singleStudio?.studioPrice?.toLocaleString()} </div>
-      </div>{" "}
+        <div>Total before taxes</div>₦
+        {daily
+          ? (
+              ((new Date(endDate!).getTime() - new Date(startDate!).getTime()) /
+                (1000 * 3600 * 24)) *
+              singleStudio?.studioPrice
+            )?.toLocaleString()
+          : (
+              ((new Date(endDateTime!).getTime() -
+                new Date(startDateTime!).getTime()) /
+                (1000 * 3600)) *
+              singleStudio?.studioPriceDaily
+            )?.toLocaleString()}
+      </div>
       <hr />
       {/* tip */}
       <div className="">

@@ -114,9 +114,7 @@ export const RenderButtonCheck: FC = () => {
 
           style={{ background: "var(--gradient)" }}
           className="font-semibold "
-          onClick={() => {
-            // console.log(uploadStudioData);
-          }}
+          onClick={() => {}}
         >
           Review Listing
         </GlobalButton>
@@ -140,11 +138,10 @@ export const RenderButtonCheck: FC = () => {
           formData.append("studioDescription", step2.studioDescription);
           formData.append("studioFeatures", step2.studioFeatures);
           formData.append("studioPrice", step3.studioPrice);
+          formData.append("studioPriceDaily", step3.studioPriceHourly);
           formData.append("numberOfGuess", step1.numberOfGuests);
           formData.append("includeDiscount", step3.includeDiscount);
           formData.append("discountPercent", step3.discountPercent);
-
-          console.log(data._id);
 
           createAStudio(data?._id, formData).then((res) => {
             localStorage.removeItem("formSteps1");

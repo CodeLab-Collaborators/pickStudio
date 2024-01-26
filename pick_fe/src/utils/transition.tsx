@@ -18,7 +18,6 @@ const Transition: FC<PropsWithChildren<iProps>> = (props: any, { to }) => {
     }
   };
 
-  console.log("reading this: ", to);
   return (
     <div>
       <button onClick={nav}>{children}</button>

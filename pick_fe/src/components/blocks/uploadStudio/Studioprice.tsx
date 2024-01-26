@@ -3,6 +3,7 @@ import { useFormSteps3 } from "../../../global/globalState";
 
 const StudioPrice = () => {
   const [formStep3, setFormStep3]: any = useFormSteps3();
+
   const [includeDiscount, setIncludeDiscount] = useState(
     formStep3.includeDiscount
   );
@@ -10,6 +11,10 @@ const StudioPrice = () => {
     formStep3.discountPercent
   );
   const [studioPrice, setStudioPrice] = useState<string>(formStep3.studioPrice);
+
+  const [studioPriceHourly, setStudioPriceHourly] = useState<string>(
+    formStep3.studioPriceHourly
+  ); //
   const [uploadStudioData, setUploadStudioData] = useState<any>({});
 
   useEffect(() => {
@@ -27,15 +32,12 @@ const StudioPrice = () => {
       JSON.stringify({
         ...uploadStudioData,
         studioPrice,
+        studioPriceHourly,
         includeDiscount,
         discountPercent,
       })
     );
-  }, [studioPrice, includeDiscount, discountPercent]);
-
-  useEffect(() => {
-    // console.log();
-  }, []);
+  }, [studioPrice, studioPriceHourly, includeDiscount, discountPercent]);
 
   const handleCheckboxChange = () => {
     setIncludeDiscount(!includeDiscount);
@@ -67,19 +69,35 @@ const StudioPrice = () => {
     let reviewData = {
       ...formStep3,
       studioPrice: event.target.value,
+      studioPriceHourly,
       includeDiscount,
       discountPercent,
     };
     setFormStep3(reviewData);
   };
+
+  const handleStudioPriceChangeHourly = (event: any) => {
+    setStudioPriceHourly(event.target.value);
+
+    let reviewData = {
+      ...formStep3,
+      studioPrice,
+      studioPriceHourly: event.target.value,
+      includeDiscount,
+      discountPercent,
+    };
+    setFormStep3(reviewData);
+  };
+
   return (
     <div>
       <div>
         <h1 className="font-semibold text-3xl max-md:text-lg">
           Now, Set Your Price
         </h1>
-        <p className="max-md:hidden text-[#222222e8] text-lg font-normal mt-2 leading-[1.75rem]">
-          This is the price <strong>Daily</strong>
+
+        <p className=" text-[#222222e8] text-lg font-normal mt-2 leading-[1.75rem]">
+          This is the price for <strong>Daily</strong>
         </p>
         <div className="flex flex-col items-center gap-1 w-full justify-center">
           <div className="flex justify-center text-[128px] max-md:text-[90px] items-center">
@@ -91,6 +109,25 @@ const StudioPrice = () => {
               max="100"
               value={formStep3.studioPrice}
               onChange={handleStudioPriceChange}
+              className="w-[60%] outline-none font-bold bg-white p-2 rounded-md mt-1 placeholder:font-bold placeholder:text-gray-700"
+              placeholder="20000"
+            />
+          </div>
+        </div>
+
+        <p className=" text-[#222222e8] text-lg font-normal mt-2 leading-[1.75rem]">
+          This is the price for <strong>Hourly</strong>
+        </p>
+        <div className="flex flex-col items-center gap-1 w-full justify-center">
+          <div className="flex justify-center text-[128px] max-md:text-[90px] items-center">
+            <p className="font-bold">₦</p>
+            <input
+              type="text"
+              inputMode="numeric"
+              min="0"
+              max="100"
+              value={formStep3.studioPriceHourly}
+              onChange={handleStudioPriceChangeHourly}
               className="w-[60%] outline-none font-bold bg-white p-2 rounded-md mt-1 placeholder:font-bold placeholder:text-gray-700"
               placeholder="20000"
             />

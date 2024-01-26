@@ -29,7 +29,7 @@ export const getSigninAccount = async () => {
       return res.data;
     });
   } catch (error: any) {
-    console.log(error.message);
+    return error.message;
   }
 };
 

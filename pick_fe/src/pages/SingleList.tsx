@@ -24,7 +24,6 @@ const SingleList = () => {
 
   const { singleStudio } = singleStudioHooks(productID!);
   const { studioReview } = studioReviewHooks(productID!);
-
   document.title = `${singleStudio?.studioName} - Pickastudio`;
 
   const toggleGallery = () => {
@@ -62,10 +61,10 @@ const SingleList = () => {
             <Ad />
             <ListDetails
               host={singleStudio?.studioName}
-              guests={7}
-              bedrooms={3}
-              beds={6}
-              baths={2}
+              guests={singleStudio?.numberOfGuess}
+              // bedrooms={3}
+              // beds={6}
+              // baths={2}
             />
 
             <Offers />

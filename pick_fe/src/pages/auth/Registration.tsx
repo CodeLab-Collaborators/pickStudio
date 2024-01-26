@@ -50,23 +50,6 @@ const Registration = () => {
     }
   });
 
-  //   .then((res: any) => {
-  //   console.log(res);
-  //   if (res.status === 201) {
-  //     console.log("success: ", res);
-  //     setUser(res.data);
-  //     toast("welcome");
-  //     setShow(false);
-  //     if (user) {
-  //       navigate("/");
-  //     }
-  //   } else {
-  //     console.log("failed: ", res);
-  //     setShow(false);
-  //     toast(`${res.response.data.message}`);
-  //   }
-  // })
-
   return (
     <div className="min-h-[80vh] flex items-center justify-center">
       {<ToastContainer />}

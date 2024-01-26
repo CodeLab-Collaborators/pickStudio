@@ -29,7 +29,6 @@ const Login = () => {
     setShow(true);
     signinAccount(data)
       .then((res: any) => {
-        console.log(res);
         if (res.status === 201) {
           setUser(res.data);
           toast("welcome");
@@ -37,7 +36,6 @@ const Login = () => {
 
           navigate("/");
         } else {
-          console.log("failed: ", res);
           setShow(false);
           toast(`${res.response.data.message}`);
         }

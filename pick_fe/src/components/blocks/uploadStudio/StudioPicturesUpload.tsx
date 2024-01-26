@@ -79,8 +79,6 @@ const StudioPicturesUpload = () => {
       "storedImageData",
       JSON.stringify({ ...storedImageData!, myFiles })
     );
-
-    console.log("completed", files, storedImageData);
   };
 
   // ...storedImageData,

@@ -18,8 +18,6 @@ const StudioLocation: FC = () => {
   //   const updatedAddress = e.target.value;
   //   setStudioAddress(updatedAddress);
 
-  //   console.log("Submitting studio address:", studioAddress);
-
   //   // Retrieve existing data from localStorage
   //   const existingData =
   //     JSON.parse(localStorage.getItem("uploadStudioData")!) || {};

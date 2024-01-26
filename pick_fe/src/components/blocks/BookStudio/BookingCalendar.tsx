@@ -17,8 +17,6 @@ const BookingCalendar: React.FC = () => {
 
   const { viewHistoryStudio }: any = studioHistoryHooks(productID!);
 
-  console.log("studio history: ", viewHistoryStudio);
-
   const makeEvent: Array<{}> = [];
 
   if (viewHistoryStudio?.history !== undefined) {
@@ -62,8 +60,6 @@ const BookingCalendar: React.FC = () => {
       // end: el?.calendarDate()?.split("-")[1],
     };
   });
-
-  console.log("read it: ");
 
   return (
     <div className="my-calendar-container text-[12px] font-sans ">

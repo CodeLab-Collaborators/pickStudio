@@ -9,14 +9,8 @@ import { useParams } from "react-router-dom";
 import moment from "moment";
 
 const Categories: FC = () => {
-
-
- 
-
   useEffect(() => {
-    getSigninAccount().then((res) => {
-      console.log("reading: ", res);
-    });
+    getSigninAccount().then((res) => {});
   }, []);
   const { studio } = useParams();
   const { viewSearchStudio, isLoading } = searchStudioHooks(studio!);

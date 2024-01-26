@@ -19,7 +19,7 @@ export const studioHooks = () => {
 export const singleStudioHooks = (accountID: string) => {
   const { data: singleStudio } = useSWR(`view-single-studio/${accountID}`, () =>
     getSingleStudio(accountID).then((res) => {
-      return res.data;
+      return res;
     })
   );
 

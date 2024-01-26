@@ -298,7 +298,7 @@ export const appRoutes = createBrowserRouter([
     path: "/upload-studio",
     element: (
       <ErrorBoundary fallbackRender={ErrorFile}>
-        <Suspense fallback={<LoadingScreen />}>
+        <Suspense fallback={<div>loading...</div>}>
           <UploadStudioLayout />
         </Suspense>
       </ErrorBoundary>

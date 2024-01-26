@@ -9,13 +9,12 @@ import { useUser } from "../../global/globalState";
 import { useSingleUser, useUserHistory } from "../../hooks/userHooks";
 import ReadingClients from "./ViewMyClient";
 import { singleStudioHooks, userStudioHooks } from "../../hooks/studioHooks";
+import PersonalFinancials from "./PersonalFinancials";
 const PersonRecord = () => {
   const [toggled, setToggled] = useState(false);
   const { id } = useParams();
   const { history } = useUserHistory(id!);
   const { userStudio } = userStudioHooks(id!);
-
-  console.log("result: ", userStudio, id);
 
   let word = [
     { work: "My Clients", state: true, data: "working" },
@@ -143,18 +142,20 @@ const PersonRecord = () => {
           ) : state?.find((el: any) => el.state === true)?.work ===
             "Financial Records" ? (
             <div>
-              <div className="flex flex-col items-center">
-                <FaListCheck />
-                <div>No record yet</div>
-                <br />
-                Records{" "}
-              </div>
+              {history?.history?.length > 0 ? (
+                <div className="flex ">
+                  <PersonalFinancials props={history?.history} />
+                </div>
+              ) : (
+                <div className="flex flex-col items-center">
+                  <FaListCheck />
+                  <div>No record yet</div>
+                  <br />
+                  No Financial Record yet{" "}
+                </div>
+              )}
             </div>
-          ) : // :
-          // state?.find((el: any) => el.state === true)?.work ===
-          //   "Pending review (0)" ?
-          //   <div>Okay </div>
-          null}
+          ) : null}
         </div>
 
         <br />
