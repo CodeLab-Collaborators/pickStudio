@@ -1,5 +1,6 @@
 import { AiOutlineSearch, AiOutlineMenu } from "react-icons/ai";
 import pix from "../../assets/pix.jpg";
+import { AuthDropDown } from ".";
 
 const Header = () => {
   return (
@@ -39,6 +40,7 @@ const Header = () => {
           </div>
         </div>
       </div>
+      <div className="absolute right-20 top-40 z-50"></div>
     </div>
   );
 };

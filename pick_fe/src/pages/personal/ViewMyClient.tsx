@@ -28,33 +28,38 @@ const ReadingClients: FC<iProps> = ({ props }) => {
 
       <div className=" w-[1050px] overflow-hidden">
         <div>
-          <div>
-            <div
-              key={props}
-              className={`w-full flex items-center gap-2 text-[12px] font-medium  h-16 px-4 my-2  overflow-hidden`}
-            >
-              <div className="w-[100px] border-r ">
-                {moment(props?.createdAt).format("ll")}
-              </div>
-              {/* name */}
-              <div className="w-[150px] flex justify-center border-r">
-                <ViewingClientScreen props={props?.accountID} image />
-              </div>
+          {props.map((props: any) => (
+            <div>
+              <div
+                key={props}
+                className={`w-full flex items-center gap-2 text-[12px] font-medium  h-16 px-4 my-2  overflow-hidden`}
+              >
+                <div className="w-[100px] border-r ">
+                  {moment(props?.createdAt).format("ll")}
+                </div>
+                {/* name */}
+                <div className="w-[150px] flex justify-center border-r">
+                  <ViewingClientScreen props={props?.accountID} image />
+                </div>
 
-              <div className="w-[200px] border-r">
-                <ViewingClientScreen props={props?.accountID} name />
-              </div>
+                <div className="w-[200px] border-r">
+                  <ViewingClientScreen props={props?.accountID} name />
+                </div>
 
-              <div className="w-[200px] border-r font-bold text-[16px]">
-                {<ViewingClientScreen studioProps={props?.studioID} studio />}
-              </div>
+                <div className="w-[200px] border-r font-bold text-[16px]">
+                  {<ViewingClientScreen studioProps={props?.studioID} studio />}
+                </div>
 
-              <div className="w-[180px] border-r">
-                ₦{(props?.cost * parseInt(props?.bookedDate)).toLocaleString()}
+                <div className="w-[180px] border-r">
+                  ₦
+                  {(props?.cost * parseInt(props?.bookedDate)).toLocaleString()}
+                </div>
+                <div className="w-[130px] border-r">
+                  {props?.bookedDate} Days
+                </div>
               </div>
-              <div className="w-[130px] border-r">{props?.bookedDate} Days</div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>

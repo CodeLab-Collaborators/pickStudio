@@ -209,6 +209,7 @@ export const appRoutes = createBrowserRouter([
       },
     ],
   },
+
   {
     path: "book-studio/:productID",
     element: (
@@ -219,6 +220,7 @@ export const appRoutes = createBrowserRouter([
       </ErrorBoundary>
     ),
   },
+
   {
     path: "products/:productID",
     element: (
@@ -245,6 +247,7 @@ export const appRoutes = createBrowserRouter([
       },
     ],
   },
+
   {
     path: "/studio",
     element: (
@@ -294,6 +297,7 @@ export const appRoutes = createBrowserRouter([
       },
     ],
   },
+
   {
     path: "/upload-studio",
     element: (
@@ -366,6 +370,7 @@ export const appRoutes = createBrowserRouter([
     ),
     children: [{ index: true, element: <PersonalStart /> }],
   },
+
   {
     path: "/article/:articleID",
     element: (

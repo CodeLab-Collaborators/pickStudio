@@ -1,13 +1,13 @@
 import { Outlet } from "react-router-dom";
 import { Footer, StudioHeader } from "..";
-import { useLocation } from "react-router-dom";
+import AppScrollToTop from "../../routes/AppScrollToTop";
 
 const StudioLayout = () => {
-  const location = useLocation();
   const path = "studio/listings";
 
   return (
     <div className="bg-white  min-h-screen h-full">
+      <AppScrollToTop />
       <StudioHeader />
       <div
         className={`${

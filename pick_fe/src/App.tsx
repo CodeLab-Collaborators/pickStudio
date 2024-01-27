@@ -1,6 +1,7 @@
-import { RouterProvider } from "react-router-dom";
+import { RouterProvider, useLocation } from "react-router-dom";
 import { appRoutes } from "./routes/routes";
 import { RecoilRoot } from "recoil";
+import { useEffect } from "react";
 
 const App = () => {
   return (

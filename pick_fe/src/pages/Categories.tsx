@@ -54,6 +54,7 @@ const Categories: FC = () => {
                   place={props?.studioName}
                   rating={props.studioRate}
                   amount={props.studioPrice.toLocaleString()}
+                  amountHourly={props.studioPriceDaily.toLocaleString()}
                   date={moment(props?.createdAt).format("LLL")}
                   route="/products"
                   userRoute="/user"

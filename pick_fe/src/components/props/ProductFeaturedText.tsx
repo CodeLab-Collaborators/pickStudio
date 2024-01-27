@@ -7,6 +7,7 @@ const ProductFeaturedText: FC<textData> = ({
   place,
   rating,
   amount,
+  amountHourly,
   date,
   props,
 }) => {
@@ -25,8 +26,14 @@ const ProductFeaturedText: FC<textData> = ({
         Posted by: {singleUser?.firstName} {singleUser?.lastName} <br /> {date}
       </div>
       <div className="gap-1 text-sm flex items-center mt-1">
-        <span className="cursor-pointer font-normal">From: </span>
-        <p className="font-medium tracking-wider">₦{amount}/hour</p>
+        <span className="cursor-pointer font-normal"></span>
+        <p className="font-medium tracking-wider">
+          {amountHourly ? (
+            <div>₦{amountHourly}/hour</div>
+          ) : (
+            <p className="text-[12px]">No Hourly service</p>
+          )}
+        </p>
         &middot;
         <p className="font-medium tracking-wider">₦{amount}/day</p>
       </div>

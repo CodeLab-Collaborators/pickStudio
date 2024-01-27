@@ -5,11 +5,11 @@ import pix from "../../assets/1.jpg";
 import { MdContactSupport } from "react-icons/md";
 import { useReadArticles } from "../../hooks/reviewHooks";
 import { Link, useParams } from "react-router-dom";
-import { useUser } from "../../global/globalState";
-import { useSingleUser, useUserHistory } from "../../hooks/userHooks";
+import { useUserHistory } from "../../hooks/userHooks";
 import ReadingClients from "./ViewMyClient";
-import { singleStudioHooks, userStudioHooks } from "../../hooks/studioHooks";
+import { userStudioHooks } from "../../hooks/studioHooks";
 import PersonalFinancials from "./PersonalFinancials";
+
 const PersonRecord = () => {
   const [toggled, setToggled] = useState(false);
   const { id } = useParams();
@@ -86,13 +86,8 @@ const PersonRecord = () => {
           "My Clients" ? (
             <div>
               {history?.history?.length > 0 ? (
-                <div className="flex ">
-                  {history?.history?.map((props: any) => (
-                    <div className="w-full h-[200px]">
-                      {" "}
-                      <ReadingClients props={props} />
-                    </div>
-                  ))}
+                <div className=" ">
+                  <ReadingClients props={history?.history} />
                 </div>
               ) : (
                 <div className="flex flex-col items-center">

@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ScaleLoader } from "react-spinners";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useUser } from "../../global/globalState";
 
 const Login = () => {
@@ -52,6 +52,15 @@ const Login = () => {
         <div className="w-full py-4 border-b ">
           <p className="text-center font-semibold text-lg w-full">
             Log in to your account
+            <p>
+              <Link
+                to="/register"
+                className="text-[16px] "
+                style={{ color: "var(--secondary)" }}
+              >
+                or create one here
+              </Link>
+            </p>
           </p>
         </div>
         <div className="w-full h-full  p-6 ">

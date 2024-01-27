@@ -7,12 +7,14 @@ import { useEffect, useState } from "react";
 
 import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
-import { useBooked } from "../../../global/globalState";
+import { useBooked, useUser } from "../../../global/globalState";
+import { userHooks } from "../../../hooks/userHooks";
 
 const BookSpace = () => {
   const [booked, setBooked] = useBooked();
   const { productID } = useParams();
   const { singleStudio } = singleStudioHooks(productID!);
+  const { data } = userHooks();
 
   const [toggle, setToggle] = useState<boolean>(false);
   const [daily, setDaily] = useState<boolean>(true);
@@ -141,14 +143,6 @@ const BookSpace = () => {
               </div>
               <div className="flex flex-col border p-2  flex-1">
                 <span className="text-[12px] font-medium  ">Booked Out</span>
-                {/* <input
-                  className="text-[12px] font-medium p-2"
-                  placeholder={`${
-                    endDate
-                      ? `${moment(endDate!).format("L")}`
-                      : `no entered time yet`
-                  }`}
-                /> */}
 
                 <DatePicker
                   className="text-[12px] font-medium  p-2"
@@ -161,62 +155,74 @@ const BookSpace = () => {
               </div>
             </div>
           )}
-          {/* <div>guest</div> */}
         </div>
-        <Link to={`book-studio`}>
-          <GlobalButton
-            style={{ background: "var(--gradient)" }}
-            className="w-full h-12 font-[500] rounded-lg text-white border-none focus:outline-none"
-            onClick={() => {
-              setBooked({
-                hourly:
-                  (new Date(endDateTime!).getTime() -
-                    new Date(startDateTime!).getTime()) /
-                  (1000 * 3600),
-                days:
-                  (new Date(endDate!).getTime() -
-                    new Date(startDate!).getTime()) /
-                  (1000 * 3600 * 24),
 
-                cost: `${
-                  daily
-                    ? (
-                        ((new Date(endDate!).getTime() -
-                          new Date(startDate!).getTime()) /
-                          (1000 * 3600 * 24)) *
-                        singleStudio?.studioPrice
-                      )?.toLocaleString()
-                    : (
-                        ((new Date(endDateTime!).getTime() -
-                          new Date(startDateTime!).getTime()) /
-                          (1000 * 3600)) *
-                        singleStudio?.studioPriceDaily
-                      )?.toLocaleString()
-                }`,
-                dateInDayStart: moment(startDate!).format("L"),
-                dateInDayEnd: moment(endDate!).format("L"),
+        {data !== undefined ? (
+          <Link to={`book-studio`}>
+            <GlobalButton
+              style={{ background: "var(--gradient)" }}
+              className="w-full h-12 font-[500] rounded-lg text-white border-none focus:outline-none"
+              onClick={() => {
+                setBooked({
+                  hourly:
+                    (new Date(endDateTime!).getTime() -
+                      new Date(startDateTime!).getTime()) /
+                    (1000 * 3600),
+                  days:
+                    (new Date(endDate!).getTime() -
+                      new Date(startDate!).getTime()) /
+                    (1000 * 3600 * 24),
 
-                dateInDateTimeStart: moment(startDateTime).format("lll"),
-                dateInDateTimeEnd: moment(endDateTime).format("lll"),
-              });
-            }}
-          >
-            Book Space at this cost: ₦
-            {daily
-              ? (
-                  ((new Date(endDate!).getTime() -
-                    new Date(startDate!).getTime()) /
-                    (1000 * 3600 * 24)) *
-                  singleStudio?.studioPrice
-                )?.toLocaleString()
-              : (
-                  ((new Date(endDateTime!).getTime() -
-                    new Date(startDateTime!).getTime()) /
-                    (1000 * 3600)) *
-                  singleStudio?.studioPriceDaily
-                )?.toLocaleString()}
-          </GlobalButton>
-        </Link>
+                  cost: `${
+                    daily
+                      ? (
+                          ((new Date(endDate!).getTime() -
+                            new Date(startDate!).getTime()) /
+                            (1000 * 3600 * 24)) *
+                          singleStudio?.studioPrice
+                        )?.toLocaleString()
+                      : (
+                          ((new Date(endDateTime!).getTime() -
+                            new Date(startDateTime!).getTime()) /
+                            (1000 * 3600)) *
+                          singleStudio?.studioPriceDaily
+                        )?.toLocaleString()
+                  }`,
+                  dateInDayStart: moment(startDate!).format("L"),
+                  dateInDayEnd: moment(endDate!).format("L"),
+
+                  dateInDateTimeStart: moment(startDateTime).format("lll"),
+                  dateInDateTimeEnd: moment(endDateTime).format("lll"),
+                });
+              }}
+            >
+              Book Space at this cost: ₦
+              {daily
+                ? (
+                    ((new Date(endDate!).getTime() -
+                      new Date(startDate!).getTime()) /
+                      (1000 * 3600 * 24)) *
+                    singleStudio?.studioPrice
+                  )?.toLocaleString()
+                : (
+                    ((new Date(endDateTime!).getTime() -
+                      new Date(startDateTime!).getTime()) /
+                      (1000 * 3600)) *
+                    singleStudio?.studioPriceDaily
+                  )?.toLocaleString()}
+            </GlobalButton>
+          </Link>
+        ) : (
+          <Link to="/login">
+            <GlobalButton
+              style={{ background: "var(--gradient)" }}
+              className="w-full h-12 font-[500] rounded-lg text-white border-none focus:outline-none"
+            >
+              Login to Book This Space
+            </GlobalButton>
+          </Link>
+        )}
+
         <div className="text-center text-slate-800">
           You won't be charged yet however, <br />
           You are booking this space for{" "}

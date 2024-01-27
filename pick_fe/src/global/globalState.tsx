@@ -1,10 +1,10 @@
-import { useAtom } from "jotai";
+import { atom, useAtom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
 
 const signUser = atomWithStorage("mainUser", "" || null);
 const signUserData = atomWithStorage("signUserData", {} || null);
 const myEmail = atomWithStorage("myEmail", "");
-const myToggle = atomWithStorage("myEmail", false);
+const myToggle = atom(false);
 const enc = atomWithStorage("enc", "");
 
 const formSteps1 = atomWithStorage("formSteps1", {} || null);

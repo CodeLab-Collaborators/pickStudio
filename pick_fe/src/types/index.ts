@@ -36,6 +36,7 @@ export type textData = {
   place: string;
   rating: number;
   amount: number;
+  amountHourly: number;
   date: string;
   props?: any;
 };
@@ -57,6 +58,7 @@ export type cardData = {
   place: string;
   rating: number;
   amount: number;
+  amountHourly: number;
   date: string;
   route: string;
   userRoute: string;

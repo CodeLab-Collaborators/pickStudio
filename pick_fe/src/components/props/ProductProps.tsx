@@ -10,6 +10,7 @@ const ProductProps: FC<cardData> = ({
   authorName,
   rating,
   amount,
+  amountHourly,
   date,
   place,
   route,
@@ -37,6 +38,7 @@ const ProductProps: FC<cardData> = ({
         place={place}
         rating={rating}
         amount={amount}
+        amountHourly={amountHourly}
         date={date}
       />
       {/* </Link> */}

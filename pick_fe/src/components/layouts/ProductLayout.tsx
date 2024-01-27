@@ -2,6 +2,7 @@ import { Header, ProductHeader } from "../blocks";
 import { useState, useEffect } from "react";
 import { Footer } from "..";
 import { Outlet } from "react-router-dom";
+import AppScrollToTop from "../../routes/AppScrollToTop";
 
 const ProductLayout = () => {
   const [showHeader, setShowHeader] = useState(false);
@@ -21,6 +22,7 @@ const ProductLayout = () => {
 
   return (
     <div className="h-full bg-white">
+      <AppScrollToTop />
       <Header width="w-[90%]" position="static" />
       <div className="h-full ease-in transition-all">
         {showHeader && <ProductHeader />}

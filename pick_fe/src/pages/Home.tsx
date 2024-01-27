@@ -7,6 +7,8 @@ import profile from "../assets/jpg/profile.jpeg";
 import { studioHooks } from "../hooks/studioHooks";
 import moment from "moment";
 import DoorDashFavorite from "../components/props/Loader";
+import { useLocation } from "react-router-dom";
+
 const Home = () => {
   const dummyImage = [
     img1,
@@ -40,6 +42,7 @@ const Home = () => {
           place={props.studioName}
           rating={props.studioRate}
           amount={props.studioPrice.toLocaleString()}
+          amountHourly={props?.studioPriceDaily?.toLocaleString()}
           date={`${moment(props.createdAt).fromNow()}`}
           route={`/products/${props._id}`}
           userRoute={`/user/${props.accountHolderID}`}

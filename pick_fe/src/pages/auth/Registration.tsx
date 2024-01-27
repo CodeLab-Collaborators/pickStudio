@@ -3,7 +3,7 @@ import GlobalInput from "../../components/props/GlobalInput";
 import { GlobalButton, SocialLogin } from "../../components";
 import { useForm } from "react-hook-form";
 import { createAccount } from "../../api/authAPI";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEmailValue } from "../../global/globalState";
@@ -58,6 +58,15 @@ const Registration = () => {
         <div className="w-full py-4 border-b ">
           <p className="text-center font-semibold text-lg w-full">
             Let's get you set up
+            <p>
+              <Link
+                to="/register"
+                className="text-[16px] "
+                style={{ color: "var(--secondary)" }}
+              >
+                or login here
+              </Link>
+            </p>
           </p>
         </div>
         <div className="w-full h-full  p-6 ">
