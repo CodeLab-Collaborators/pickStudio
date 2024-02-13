@@ -1,1 +1,0 @@
-export {default as ReservationTab} from "./ReservationTab"

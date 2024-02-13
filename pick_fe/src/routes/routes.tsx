@@ -21,6 +21,8 @@ import ErrorBoundaryComp from "../pages/error/Boundary/ErrorBoundaryComp";
 import ErrorFile from "../pages/error/ErrorII/ErrorFile";
 import Inbox from "../components/blocks/BookStudio/Inbox";
 import LoadingScreen from "../components/static/LoadingScreen";
+import Successful from "../pages/payment/Successful";
+import Failed from "../pages/payment/Failled";
 
 // import errorIndex from "../pages/error/errorPage/errorIndex";
 
@@ -396,6 +398,24 @@ export const appRoutes = createBrowserRouter([
   //   path: "*",
   //   element: <BoundaryError />,
   // },
+  {
+    path: "payment/successful",
+    element: (
+      <Suspense fallback={<LoadingScreen />}>
+        <Successful />
+      </Suspense>
+    ),
+  },
+  {
+    path: "payment/failed",
+    element: (
+      <Suspense fallback={<LoadingScreen />}>
+        <Failed />
+      </Suspense>
+    ),
+  },
+
+
   {
     path: "*",
     element: <ErrorIndex />,
