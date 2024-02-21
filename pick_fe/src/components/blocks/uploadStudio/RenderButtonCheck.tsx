@@ -74,7 +74,7 @@ export const RenderButtonCheck: FC = () => {
   } else if (location.pathname.includes("studio-details")) {
     return (
       // studio details
-      <NavLink to="upload-studio-images">
+      <NavLink to="finish-listing">
         <GlobalButton
           style={{ background: "var(--gradient)" }}
           className="font-semibold z-100 "
