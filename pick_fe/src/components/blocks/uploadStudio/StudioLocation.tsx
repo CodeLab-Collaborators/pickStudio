@@ -12,26 +12,6 @@ const StudioLocation: FC = () => {
 
   const [studioAddress, setStudioAddress] = useState(getStoredData);
 
-  // const [studioAddress, setStudioAddress] = useState(formStep1.studioAddress);
-
-  // const handleAddressChange = (e: any) => {
-  //   const updatedAddress = e.target.value;
-  //   setStudioAddress(updatedAddress);
-
-  //   // Retrieve existing data from localStorage
-  //   const existingData =
-  //     JSON.parse(localStorage.getItem("uploadStudioData")!) || {};
-
-  //   // Update the studio address with the new value
-  //   const updatedData = {
-  //     ...existingData,
-  //     studioAddress: studioAddress,
-  //   };
-
-  //   // Save the updated data in localStorage
-  //   localStorage.setItem("uploadStudioData", JSON.stringify(updatedData));
-  // };
-
   return (
     <div>
       <h1 className="mt-7 font-semibold text-2xl max-md:text-lg">

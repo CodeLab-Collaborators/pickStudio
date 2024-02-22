@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useFormSteps3 } from "../../../global/globalState";
+import { padStart } from "lodash";
 
 const StudioPrice = () => {
   const [formStep3, setFormStep3]: any = useFormSteps3();
@@ -97,7 +98,12 @@ const StudioPrice = () => {
         </h1>
 
         <p className=" text-[#222222e8] text-lg font-normal mt-2 leading-[1.75rem]">
-          This is the price for <strong>Daily</strong>
+          This is the price for{" "}
+          <strong>
+            Daily:{" "}
+            {formStep3.studioPrice &&
+              `₦${parseInt(formStep3.studioPrice).toLocaleString()}`}
+          </strong>
         </p>
         <div className="flex flex-col items-center gap-1 w-full justify-center">
           <div className="flex justify-center text-[128px] max-md:text-[90px] items-center">
@@ -116,11 +122,16 @@ const StudioPrice = () => {
         </div>
 
         <p className=" text-[#222222e8] text-lg font-normal mt-2 leading-[1.75rem]">
-          This is the price for <strong>Hourly</strong>
+          This is the price for{" "}
+          <strong>
+            Hourly:
+            {formStep3.studioPriceHourly &&
+              ` ₦${parseInt(formStep3.studioPriceHourly).toLocaleString()}`}
+          </strong>
         </p>
         <div className="flex flex-col items-center gap-1 w-full justify-center">
           <div className="flex justify-center text-[128px] max-md:text-[90px] items-center">
-            <p className="font-bold">₦</p>
+            <p className="font-bold"></p>
             <input
               type="text"
               inputMode="numeric"

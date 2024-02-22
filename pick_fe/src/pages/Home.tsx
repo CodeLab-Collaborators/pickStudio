@@ -1,8 +1,9 @@
 import { ProductProps } from "../components";
-import img1 from "../assets/jpg/Menstylica.jpeg";
-import img2 from "../assets/jpg/suit.jpeg";
-import img3 from "../assets/jpg/SHOES.jpeg";
-import img4 from "../assets/jpg/INSTASHOP.jpeg";
+import img1 from "../assets/studio/1.jpg";
+import img2 from "../assets/studio/2.jpg";
+import img3 from "../assets/studio/4.jpg";
+import img4 from "../assets/studio/5.jpg";
+
 import profile from "../assets/jpg/profile.jpeg";
 import { studioHooks } from "../hooks/studioHooks";
 import moment from "moment";
@@ -24,6 +25,9 @@ const Home = () => {
     img4,
     img2,
   ];
+  console.log();
+
+  // console.log(Math.floor(Math.random() * dummyImage.length));
 
   const { allStudio, isLoading } = studioHooks();
 
@@ -54,5 +58,3 @@ const Home = () => {
 };
 
 export default Home;
-
-// grid-cols-5 max-xl:grid-cols-4 max-lg:grid-cols-2 max-sm:grid-cols-1 max-sm:w-full

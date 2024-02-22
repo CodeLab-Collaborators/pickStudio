@@ -91,11 +91,8 @@ export const appRoutes = createBrowserRouter([
               </div>
             }
           >
-            {/* <PrivateRoute> */}
-
+            {" "}
             <Home />
-
-            {/* </PrivateRoute> */}
           </Suspense>
         ),
       },
@@ -414,7 +411,6 @@ export const appRoutes = createBrowserRouter([
       </Suspense>
     ),
   },
-
 
   {
     path: "*",

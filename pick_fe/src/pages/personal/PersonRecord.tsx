@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaListCheck, FaPeopleGroup } from "react-icons/fa6";
 import HelpComp from "./HelpComp";
-import pix from "../../assets/1.jpg";
+import pix from "../../assets/studio/1.jpg";
 import { MdContactSupport } from "react-icons/md";
 import { useReadArticles } from "../../hooks/reviewHooks";
 import { Link, useParams } from "react-router-dom";
@@ -118,7 +118,11 @@ const PersonRecord = () => {
                     <div className="w-full h-[300px] border rounded-md overflow-hidden">
                       <img
                         className="w-full h-[80%] object-cover "
-                        src={props?.avatar ? props?.avatar : pix}
+                        src={
+                          props?.studioImages.length > 0
+                            ? props?.studioImages[0]
+                            : pix
+                        }
                       />
 
                       <p className="mt-2 pl-2">{props?.studioName}</p>

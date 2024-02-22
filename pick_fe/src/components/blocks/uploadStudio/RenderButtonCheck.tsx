@@ -1,7 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { GlobalButton } from "../..";
-// import { useFormSteps, useImagesStudio } from "../../../global/globalState";
 import { createAStudio } from "../../../api/studioAPI";
 import { userHooks } from "../../../hooks/userHooks";
 
@@ -9,13 +8,8 @@ export const RenderButtonCheck: FC = () => {
   const navigate = useNavigate();
   const { data } = userHooks();
   const formData = new FormData();
-  // const [readImage] = useImagesStudio();
-
-  // const [form2] = useFormSteps2();
-  // const [form3] = useFormSteps3();
 
   const location = useLocation();
-  // const [formStep, setFormStep] = useFormSteps();
 
   const [uploadStudioData, setUploadStudioData] = useState(() => {
     const storedData = localStorage.getItem("uploadStudioData");
@@ -50,11 +44,11 @@ export const RenderButtonCheck: FC = () => {
   } else if (location.pathname.includes("about-your-studio")) {
     return (
       // about studio page
-      <NavLink to={!firstStepButtonDisabled ? "" : "studio-details"}>
+      <NavLink to={firstStepButtonDisabled ? "" : "studio-details"}>
         <GlobalButton
-          disabled={!firstStepButtonDisabled}
+          // disabled={!firstStepButtonDisabled}
           className={`${
-            !firstStepButtonDisabled
+            firstStepButtonDisabled
               ? "opacity-50 cursor-not-allowed"
               : "bg-red-600  transition-all ease-in"
           }`}
@@ -140,8 +134,14 @@ export const RenderButtonCheck: FC = () => {
           formData.append("studioPrice", step3.studioPrice);
           formData.append("studioPriceDaily", step3.studioPriceHourly);
           formData.append("numberOfGuess", step1.numberOfGuests);
-          formData.append("includeDiscount", step3.includeDiscount);
-          formData.append("discountPercent", step3.discountPercent);
+          formData.append(
+            "includeDiscount",
+            `${step3.includeDiscount ? step3.includeDiscount : false}`
+          );
+          formData.append(
+            "discountPercent",
+            `${step3.discountPercent ? step3.discountPercent : "0"}`
+          );
 
           createAStudio(data?._id, formData).then((res) => {
             localStorage.removeItem("formSteps1");
