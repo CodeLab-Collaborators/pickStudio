@@ -76,7 +76,9 @@ const StickyPrice = () => {
         <div>
           ₦
           {(booked?.days !== 0
-            ? singleStudio?.studioPrice
+            ? singleStudio?.studioPrice *
+                (booked?.days ? booked?.days : booked?.hourly) +
+              500
             : singleStudio?.studioPriceDaily *
                 (booked?.days ? booked?.days : booked?.hourly) +
               500

@@ -4,6 +4,7 @@ import { useEmailValue } from "../../global/globalState";
 import { verifyAccount } from "../../api/authAPI";
 import { useNavigate } from "react-router-dom";
 import { ScaleLoader } from "react-spinners";
+import { PinInput } from "react-input-pin-code";
 
 const Verification: React.FC = () => {
   const [mail] = useEmailValue();
@@ -11,6 +12,7 @@ const Verification: React.FC = () => {
 
   const navigate = useNavigate();
   const [toggle, setToggle] = useState<boolean>(false);
+  const [values, setValues] = React.useState(["", "", "", "", "", ""]);
 
   const fieldsRef = useRef<HTMLDivElement>(null);
   const [verificationCode, setVerificationCode] = useState<any>({
@@ -62,7 +64,7 @@ const Verification: React.FC = () => {
     // Implement the logic to handle the verification code submission
 
     setToggle(true);
-    verifyAccount(code).then(() => {
+    verifyAccount(values.join("")).then(() => {
       setToggle(false);
       navigate("/login");
     });
@@ -86,45 +88,24 @@ const Verification: React.FC = () => {
 
           {/* form */}
           <form>
-            <div
-              ref={fieldsRef}
-              className="w-full justify-center my-6 flex items-center gap-x-2"
+            <PinInput
+              type="text"
+              autoTab={true}
+              values={values}
+              onChange={(value, index, values) => setValues(values)}
+            />
+            <p
+              id="helper-text-explanation"
+              className="mt-2 text-sm text-gray-500 dark:text-gray-400"
             >
-              {[0, 1, 2, 3, 4, 5].map((index) => (
-                <input
-                  key={index}
-                  type="text"
-                  min={1}
-                  placeholder="0"
-                  value={verificationCode[`code${index + 1}`]}
-                  className="w-12 h-12 rounded-lg bg-white border focus:border-[var(--primary)] outline-none text-center text-2xl"
-                  onChange={(e) =>
-                    handleChange(
-                      e,
-                      `code${index + 1}` as keyof typeof verificationCode
-                    )
-                  }
-                  onKeyUp={inputFocus}
-                  required
-                />
-              ))}
-            </div>
+              Please enter the 6 digit code we sent to your via email.
+            </p>
+
             <GlobalButton
               style={{ background: "var(--gradient)" }}
-              //   style={{ background: `${{verificationCode.code1 === "" || verificationCode.code2 === "" || verificationCode.code3 === "" || verificationCode.code4 === "" || verificationCode.code5 === "" || verificationCode.code6 === "" ? "var(--gradient)" : ""} }`}}
               onClick={handleSubmit}
               type="submit"
               className="mt-4  focus:outline-none"
-              disabled={
-                verificationCode.code1 === "" ||
-                verificationCode.code2 === "" ||
-                verificationCode.code3 === "" ||
-                verificationCode.code4 === "" ||
-                verificationCode.code5 === "" ||
-                verificationCode.code6 === ""
-                  ? true
-                  : false
-              }
             >
               {toggle ? (
                 <ScaleLoader color="#fff" width={5} height={12} />

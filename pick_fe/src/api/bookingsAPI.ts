@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const URL: string = "https://pick-be.onrender.com/api/v1";
+const Test_URL: string = "http://localhost:3300/api/v1";
 
 // /create-studio/:accountID
 
@@ -35,10 +36,31 @@ export const bookAStudio = async (
 ) => {
   try {
     return await axios
-      .post(
-        `https://pick-be.onrender.com/api/v1/create-booking/${userID}/${studioID}`,
-        data
-      )
+      .post(`${Test_URL}/create-booking/${userID}/${studioID}`, data)
+      .then((res: any | {}) => {
+        return res.data.data;
+      });
+  } catch (error) {
+    return error;
+  }
+};
+
+export const makePaymentForStudio = async (data: {}) => {
+  try {
+    return await axios
+      .post(`${Test_URL}/make-payment`, data)
+      .then((res: any | {}) => {
+        return res.data.data;
+      });
+  } catch (error) {
+    return error;
+  }
+};
+
+export const verifyPaymentForStudio = async (trxref: string) => {
+  try {
+    return await axios
+      .get(`${Test_URL}/verify/${trxref}`)
       .then((res: any | {}) => {
         return res.data.data;
       });

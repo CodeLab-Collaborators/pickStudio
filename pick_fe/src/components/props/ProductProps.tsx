@@ -21,27 +21,26 @@ const ProductProps: FC<cardData> = ({
   return (
     <div className="flex flex-col gap-1 w-full  my-6 ">
       {/*product picture */}
+      <Link to={route}>
+        <ImageSlide
+          props={props}
+          cover={cover}
+          authorCover={authorCover}
+          userRoute={userRoute}
+          wishlistFunc={wishlistFunc}
+        />
+        {/* product Text */}
 
-      <ImageSlide
-        props={props}
-        cover={cover}
-        authorCover={authorCover}
-        route={route}
-        userRoute={userRoute}
-        wishlistFunc={wishlistFunc}
-      />
-      {/* product Text */}
-      {/* <Link to={route}> */}
-      <ProductFeaturedText
-        props={props}
-        authorName={authorName}
-        place={place}
-        rating={rating}
-        amount={amount}
-        amountHourly={amountHourly}
-        date={date}
-      />
-      {/* </Link> */}
+        <ProductFeaturedText
+          props={props}
+          authorName={authorName}
+          place={place}
+          rating={rating}
+          amount={amount}
+          amountHourly={amountHourly}
+          date={date}
+        />
+      </Link>
     </div>
   );
 };

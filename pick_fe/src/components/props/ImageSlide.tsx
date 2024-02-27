@@ -42,7 +42,7 @@ const ImageSLide: FC<imageData> = ({
       className="relative w-full h-[285px] rounded-2xl"
     >
       {/* wishlist */}
-
+      {/* <Link to={userRoute}> */}
       <div
         className="absolute cursor-pointer text-white shadow-md hover:text-[var(--primary)] text-2xl top-3 right-3 transition-all ease-in duration-75"
         onClick={() => {
@@ -53,12 +53,12 @@ const ImageSLide: FC<imageData> = ({
       </div>
 
       {/* image slide */}
-      <Link to={route}>
-        <img
-          className="w-full h-full rounded-2xl object-cover object-top transition-all ease-in duration-500 max-sm:rounded-none"
-          src={cover[currentImageIndex]}
-        />
-      </Link>
+      {/* <Link to={route}> */}
+      <img
+        className="w-full h-full rounded-2xl object-cover object-top transition-all ease-in duration-500 max-sm:rounded-none"
+        src={cover[currentImageIndex]}
+      />
+
       <div
         className={`w-full ${
           show ? "block" : "hidden"
@@ -79,25 +79,25 @@ const ImageSLide: FC<imageData> = ({
           <MdOutlineKeyboardArrowRight />
         </button>
       </div>
-
+      {/* </Link> */}
       {/* link to individual author page */}
-      <Link to={userRoute}>
-        <div className="absolute w-14 h-14 bottom-3 left-3">
-          {singleUser?.avatar ? (
-            <img
-              className="w-full h-full object-cover object-top shadow-2xl rounded-full  "
-              src={singleUser?.avatar}
-            />
-          ) : (
-            <div
-              className="w-full h-full object-cover object-top shadow-2xl rounded-full flex justify-center items-center text-white text-[20px]  "
-              style={{ background: "var(--gradient)" }}
-            >
-              {singleUser?.firstName?.charAt(0)}
-            </div>
-          )}
-        </div>
-      </Link>
+
+      <div className="absolute w-14 h-14 bottom-3 left-3">
+        {singleUser?.avatar ? (
+          <img
+            className="w-full h-full object-cover object-top shadow-2xl rounded-full  "
+            src={singleUser?.avatar}
+          />
+        ) : (
+          <div
+            className="w-full h-full object-cover object-top shadow-2xl rounded-full flex justify-center items-center text-white text-[20px]  "
+            style={{ background: "var(--gradient)" }}
+          >
+            {singleUser?.firstName?.charAt(0)}
+          </div>
+        )}
+      </div>
+      {/* </Link> */}
     </div>
   );
 };

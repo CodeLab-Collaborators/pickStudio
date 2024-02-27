@@ -115,7 +115,7 @@ const StudioPrice = () => {
               max="100"
               value={formStep3.studioPrice}
               onChange={handleStudioPriceChange}
-              className="w-[60%] outline-none font-bold bg-white p-2 rounded-md mt-1 placeholder:font-bold placeholder:text-gray-700"
+              className="w-[60%] outline-none font-bold bg-white p-2 rounded-md mt-1 placeholder:font-bold placeholder:text-gray-200"
               placeholder="20000"
             />
           </div>
@@ -131,7 +131,7 @@ const StudioPrice = () => {
         </p>
         <div className="flex flex-col items-center gap-1 w-full justify-center">
           <div className="flex justify-center text-[128px] max-md:text-[90px] items-center">
-            <p className="font-bold"></p>
+            <p className="font-bold">₦</p>
             <input
               type="text"
               inputMode="numeric"
@@ -139,14 +139,14 @@ const StudioPrice = () => {
               max="100"
               value={formStep3.studioPriceHourly}
               onChange={handleStudioPriceChangeHourly}
-              className="w-[60%] outline-none font-bold bg-white p-2 rounded-md mt-1 placeholder:font-bold placeholder:text-gray-700"
+              className="w-[60%] outline-none font-bold bg-white p-2 rounded-md mt-1 placeholder:font-bold placeholder:text-gray-200"
               placeholder="20000"
             />
           </div>
         </div>
       </div>
 
-      <div className="mt-4">
+      {/* <div className="mt-4">
         <div className="flex items-center ps-4 border border-gray-200 rounded ">
           <input
             id="bordered-checkbox"
@@ -183,7 +183,7 @@ const StudioPrice = () => {
             </div>
           </div>
         )}
-      </div>
+      </div> */}
     </div>
   );
 };

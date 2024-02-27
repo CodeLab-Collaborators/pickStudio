@@ -44,7 +44,7 @@ export type textData = {
 export type imageData = {
   cover: any;
   authorCover: any;
-  route: any;
+  route?: any;
   userRoute: string;
   wishlistFunc: any;
   props?: any;

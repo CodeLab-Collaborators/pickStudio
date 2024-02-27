@@ -7,13 +7,13 @@ import { MdAnimation } from "react-icons/md";
 const CategoryProps = () => {
   const studioCategories = [
     { name: "Film Production", icon: <IoIosFilm /> },
-    { name: "Music Recording", icon: <FaMusic /> },
-    { name: "Game Development", icon: <FaGamepad /> },
+    { name: "Music Studio", icon: <FaMusic /> },
+    // { name: "Game Development", icon: <FaGamepad /> },
     { name: "Photography Studio", icon: <FaPhotoVideo /> },
     { name: "Dance Studio", icon: <MdAnimation /> },
     { name: "Cooking Studio", icon: <PiCookingPot /> },
-    { name: "Fashion Studio", icon: <PiShirtFolded /> },
-    { name: "Podcast Studio", icon: <FaPodcast /> },
+    // { name: "Fashion Studio", icon: <PiShirtFolded /> },
+    { name: "Podcast/Radio Studio", icon: <FaPodcast /> },
   ];
   return (
     <>
