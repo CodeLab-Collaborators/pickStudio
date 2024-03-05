@@ -7,7 +7,6 @@ const PrivateRoute: FC<PropsWithChildren> = ({ children }) => {
   const [user] = useUser();
   const [userData, setUserData] = useSignUserData();
 
-  console.log(userData);
   const getToken = JSON.parse(localStorage.getItem("mainUser")!);
   useEffect(() => {
     if (user) {
@@ -16,9 +15,7 @@ const PrivateRoute: FC<PropsWithChildren> = ({ children }) => {
     }
   }, []);
 
-  return (
-    <div>{getToken !== null ? <>{children}</> : <Navigate to="/login" />}</div>
-  );
+  return <div>{getToken !== null ? <>{children}</> : <Navigate to="/" />}</div>;
 };
 
 export default PrivateRoute;

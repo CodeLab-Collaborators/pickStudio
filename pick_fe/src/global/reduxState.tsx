@@ -4,6 +4,7 @@ const initialState = {
   images: [],
   user: "" || null,
   studioID: {} || null,
+  toggleCategory: false,
 };
 
 const reduxState = createSlice({
@@ -29,10 +30,20 @@ const reduxState = createSlice({
     removeStudioID: (state) => {
       state.studioID = null;
     },
+
+    changeCategoryToggle: (state, { payload }) => {
+      state.toggleCategory = payload;
+    },
   },
 });
 
-export const { addImages, logOutUser, loginUser, addStudioID, removeStudioID } =
-  reduxState.actions;
+export const {
+  addImages,
+  logOutUser,
+  changeCategoryToggle,
+  loginUser,
+  addStudioID,
+  removeStudioID,
+} = reduxState.actions;
 
 export default reduxState.reducer;

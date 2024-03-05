@@ -4,11 +4,12 @@ import { GlobalButton } from "../..";
 import { singleStudioHooks } from "../../../hooks/studioHooks";
 import DatePicker from "react-datepicker";
 import { useEffect, useState } from "react";
-
+import { ImNotification } from "react-icons/im";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
 import { useBooked, useUser } from "../../../global/globalState";
 import { userHooks } from "../../../hooks/userHooks";
+import { MdCastForEducation } from "react-icons/md";
 
 const BookSpace = () => {
   const [booked, setBooked] = useBooked();
@@ -216,8 +217,9 @@ const BookSpace = () => {
           <Link to="/login">
             <GlobalButton
               style={{ background: "var(--gradient)" }}
-              className="w-full h-12 font-[500] rounded-lg text-white border-none focus:outline-none"
+              className="w-full flex justify-center items-center h-12 font-[500] rounded-lg text-white border-none focus:outline-none"
             >
+              <ImNotification className="mr-2 text-[20px]" />
               Login to Book This Space
             </GlobalButton>
           </Link>

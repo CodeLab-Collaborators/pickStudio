@@ -15,7 +15,7 @@ const Search = () => {
       }}
       className="rounded-full  relative max-md:w-full bg-white shadow-md hover:shadow-lg ease-in transition-all cursor-pointer flex items-center justify-between py-1 pr-2 pl-4 border-[1px] border-gray-200"
     >
-     <div className="text-[14px] m-[5px] font-normal flex items-center max-[740px]:hidden">
+      <div className="text-[14px] m-[5px] font-normal flex items-center max-[740px]:hidden">
         <div className="px-3 cursor-pointer">Anywhere</div>
         <div className="px-3 cursor-pointer border-x-[1px]">
           <div className="max-[1023px]:hidden">Any week</div>
@@ -46,7 +46,6 @@ const Search = () => {
       <>{showSearch ? <SearchModal /> : null}</>
     </div>
   );
-
 };
 
 export default Search;

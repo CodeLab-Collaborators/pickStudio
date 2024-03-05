@@ -23,6 +23,9 @@ import Inbox from "../components/blocks/BookStudio/Inbox";
 import LoadingScreen from "../components/static/LoadingScreen";
 import Successful from "../pages/payment/Successful";
 import Failed from "../pages/payment/Failled";
+import WishList from "../pages/WishList";
+import PrivateRoute from "./privateRoute";
+import MainLoader from "../components/props/MainLoader";
 
 // import errorIndex from "../pages/error/errorPage/errorIndex";
 
@@ -82,15 +85,7 @@ export const appRoutes = createBrowserRouter([
       {
         index: true,
         element: (
-          <Suspense
-            fallback={
-              <div className="flex">
-                {Array.from({ length: 5 }, () => (
-                  <DoorDashFavorite />
-                ))}
-              </div>
-            }
-          >
+          <Suspense fallback={<MainLoader />}>
             {" "}
             <Home />
           </Suspense>
@@ -124,7 +119,7 @@ export const appRoutes = createBrowserRouter([
         path: "wishlists",
         element: (
           <Suspense fallback={<LoadingScreen />}>
-            <>wishlists</>
+            <WishList />
           </Suspense>
         ),
       },

@@ -9,9 +9,7 @@ type headerData = {
 
 const Header: FunctionComponent<headerData> = ({ width, position }) => {
   return (
-    <div
-      className={`w-full ${position} h-[10vh] border-b border-[#0000000e]`}
-    >
+    <div className={`w-full ${position} h-[10vh] border-b border-[#0000000e]`}>
       <div
         className={`${width} h-full  m-auto flex items-center justify-between`}
       >
@@ -23,8 +21,8 @@ const Header: FunctionComponent<headerData> = ({ width, position }) => {
         <Search />
 
         <div className="hidden h-full max-[740px]:flex flex-1 ml-4 items-center">
-            <Filter />
-          </div>
+          <Filter />
+        </div>
 
         {/* auth */}
         <div>

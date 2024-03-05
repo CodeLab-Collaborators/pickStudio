@@ -62,7 +62,7 @@ export type cardData = {
   date: string;
   route: string;
   userRoute: string;
-  wishlistFunc: React.MouseEventHandler<HTMLDivElement> | undefined;
+  wishlistFunc?: React.MouseEventHandler<HTMLDivElement> | undefined;
 };
 
 export type titleData = {

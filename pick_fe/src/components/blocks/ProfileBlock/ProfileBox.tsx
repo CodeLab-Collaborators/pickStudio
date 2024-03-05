@@ -18,7 +18,7 @@ const ProfileBox = () => {
               className="w-[100%] h-[100%]  text-white flex justify-center items-center text-[70px] object-cover object-top rounded-full "
               style={{ background: "var(--gradient)" }}
             >
-              {data?.firstName.charAt(0)}
+              {data?.firstName?.charAt(0)}
             </div>
           )}
 

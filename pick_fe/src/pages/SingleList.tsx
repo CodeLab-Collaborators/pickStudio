@@ -10,7 +10,7 @@ import {
   Title,
 } from "../components/blocks";
 import { singleStudioHooks } from "../hooks/studioHooks";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { studioReviewHooks } from "../hooks/reviewHooks";
 import { useState } from "react";
 import { GalleryModal } from "../components/modals";
@@ -58,7 +58,7 @@ const SingleList = () => {
         >
           {" "}
           <div className="flex flex-col ">
-            <Ad />
+            <Ad props={singleStudio} />
             <ListDetails
               host={singleStudio?.studioName}
               guests={singleStudio?.numberOfGuess}
@@ -74,6 +74,18 @@ const SingleList = () => {
             {singleStudio?.accountHolderID !== data?._id && <BookSpace />}
           </div>
         </div>
+
+        {data ? (
+          <div className=" md:hidden">
+            {singleStudio?.accountHolderID !== data?._id && <BookSpace />}
+          </div>
+        ) : (
+          <Link to="/login">
+            <div className="w-full flex justify-center items-center text-[18px] mt-10 font-medium text-[var(--primary)] ">
+              Log in to book this space
+            </div>
+          </Link>
+        )}
         {/* <div>Booked</div> */}
         <div id="reviews" className="py-20 px-16 max-md:px-0 max-lg:px-5">
           {/* reviews */}

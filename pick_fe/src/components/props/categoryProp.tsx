@@ -3,8 +3,14 @@ import { PiSwimmingPool, PiCookingPot, PiShirtFolded } from "react-icons/pi";
 import { IoIosFilm } from "react-icons/io";
 import { FaGamepad, FaMusic, FaPhotoVideo, FaPodcast } from "react-icons/fa";
 import { MdAnimation } from "react-icons/md";
+import { useDispatch, useSelector } from "react-redux";
+import { changeCategoryToggle } from "../../global/reduxState";
+import { useEffect } from "react";
 
 const CategoryProps = () => {
+  const toggle = useSelector((state: any) => state.toggleCategory);
+  const dispatch = useDispatch();
+
   const studioCategories = [
     { name: "Film Production", icon: <IoIosFilm /> },
     { name: "Music Studio", icon: <FaMusic /> },
@@ -15,10 +21,30 @@ const CategoryProps = () => {
     // { name: "Fashion Studio", icon: <PiShirtFolded /> },
     { name: "Podcast/Radio Studio", icon: <FaPodcast /> },
   ];
+
   return (
     <>
       {studioCategories.map((props: any) => (
-        <Link to={`/category/${props.name}`} key={props}>
+        <Link
+          to={`/category/${
+            props.name === "Podcast/Radio Studio"
+              ? "Podcast or Radio Studio"
+              : props.name
+          }`}
+          key={props}
+          onClick={() => {
+            dispatch(changeCategoryToggle(true));
+
+            console.log("Change category toggle", toggle);
+            const timer = setTimeout(() => {
+              console.log("Change category toggle after 1sec: ");
+
+              dispatch(changeCategoryToggle(false));
+
+              clearTimeout(timer);
+            }, 2000);
+          }}
+        >
           <div className="text-[13px] font-semibold h-[80px] text-gray-500 hover:text-black flex items-center cursor-pointer ">
             <div className="flex flex-col justify-center gap-1 h-[50px]">
               <div className="text-[22px] flex justify-center">

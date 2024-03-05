@@ -5,8 +5,11 @@ import {
   MdOutlineKeyboardArrowLeft,
 } from "react-icons/md";
 import { imageData } from "../../types";
-import { Link } from "react-router-dom";
-import { useSingleUser } from "../../hooks/userHooks";
+import { Link, useLocation } from "react-router-dom";
+import { useSingleUser, userHooks } from "../../hooks/userHooks";
+import { MdDelete } from "react-icons/md";
+import { createBookMark, removeBookMark } from "../../api/bookMarkAPI";
+import { data } from "../layouts/InboxLayout";
 
 const ImageSLide: FC<imageData> = ({
   cover,
@@ -15,6 +18,9 @@ const ImageSLide: FC<imageData> = ({
   wishlistFunc,
   props,
 }) => {
+  const { pathname } = useLocation();
+  const { data } = userHooks();
+
   const { singleUser } = useSingleUser(props?.accountHolderID);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [show, setShow] = useState(false);
@@ -43,13 +49,29 @@ const ImageSLide: FC<imageData> = ({
     >
       {/* wishlist */}
       {/* <Link to={userRoute}> */}
+      <div className={`${pathname === "/wishlists" ? "" : "hidden"}`}>
+        <div
+          className="absolute cursor-pointer text-white shadow-md text-2xl top-3 left-3 transition-all ease-in duration-75 "
+          onClick={() => {
+            removeBookMark(data?._id, props?._id);
+          }}
+        >
+          <MdDelete
+            className={`${pathname === "/wishlists" ? "opacity-70" : ""}`}
+          />
+        </div>
+      </div>
       <div
-        className="absolute cursor-pointer text-white shadow-md hover:text-[var(--primary)] text-2xl top-3 right-3 transition-all ease-in duration-75"
+        className="absolute cursor-pointer text-white shadow-md hover:text-[var(--primary)] text-2xl top-3 right-3 transition-all ease-in duration-75 z-40"
         onClick={() => {
-          wishlistFunc;
+          if (data) {
+            createBookMark(data?._id, props?._id);
+          }
         }}
       >
-        <PiHeartDuotone />
+        <PiHeartDuotone
+          className={`${pathname === "/wishlists" ? "text-red-600" : ""}`}
+        />
       </div>
 
       {/* image slide */}
