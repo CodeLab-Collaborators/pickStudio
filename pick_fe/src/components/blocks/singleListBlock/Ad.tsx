@@ -9,7 +9,6 @@ interface iProps {
 const Ad: FC<iProps> = ({ props }) => {
   const { singleStudio } = singleStudioHooks(props?._id);
 
-  console.log(singleStudio);
   return (
     <div className="border-y-[1px] md:hidden border-y-slate-300 py-7 flex justify-between">
       <div className="w-[80%] text-base font-[500]">
