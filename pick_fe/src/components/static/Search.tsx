@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { BiSearch } from "react-icons/bi";
 import { SearchModal } from "../modals";
 import "../modals/style.css";
 import { IoSearch } from "react-icons/io5";

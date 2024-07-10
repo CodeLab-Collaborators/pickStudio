@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { TbAdjustmentsHorizontal } from "react-icons/tb";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { userHooks } from "../../../hooks/userHooks";
 import { IoMdSwitch } from "react-icons/io";
 
 const Filter: React.FC = () => {
   const { data } = userHooks();
-  const [toggle, setToggle] = useState<boolean>(false);
 
   return (
     <>

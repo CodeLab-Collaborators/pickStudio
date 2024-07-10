@@ -13,7 +13,7 @@ const Homelayout = () => {
   return (
     <div className="bg-white  min-h-screen h-full">
       <AppScrollToTop />
-      <div className="sticky top-0 left-0 z-[1] bg-white overflow-x-hidden">
+      <div className="sticky top-0 left-0 z-50 bg-white overflow-x-hidden">
         <Header width="w-[90%]" position="" />
         {location.pathname.includes("register") ||
         location.pathname.includes("login") ||

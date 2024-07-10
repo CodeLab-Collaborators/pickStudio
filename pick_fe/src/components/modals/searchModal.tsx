@@ -9,9 +9,9 @@ import img4 from "../../assets/studio/5.jpg";
 import moment from "moment";
 
 import profile from "../../assets/jpg/profile.jpeg";
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 
-const searchModal = () => {
+const SearchModal: FC = () => {
   const { allStudio, isLoading } = studioHooks();
   const dummyImage = [
     img1,
@@ -36,7 +36,9 @@ const searchModal = () => {
         return el.studioName.includes(search);
       })
     );
-  }, [studioData]);
+  }, [search]);
+
+  const myData = Array.from({ length: 10 });
 
   return (
     <div className="relative flex flex-col">
@@ -99,35 +101,45 @@ const searchModal = () => {
           </div>
         </div>
 
-        <div className="absolute top-50 m-5">
-          <div className="w-full m-auto grid gap-6 place-items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 bg-white p-4 rounded-lg">
-            {studioData?.map((props: any, i: number) => (
-              // <div>
-              <ProductProps
-                props={props}
-                key={`${i}`}
-                cover={
-                  props.studioImages.length > 0
-                    ? props.studioImages
-                    : dummyImage
-                }
-                authorCover={profile}
-                authorName={props.studioName}
-                place={props.studioName}
-                rating={props.studioRate}
-                amount={props.studioPrice.toLocaleString()}
-                amountHourly={props?.studioPriceDaily?.toLocaleString()}
-                date={`${moment(props.createdAt).fromNow()}`}
-                route={`/products/${props._id}`}
-                userRoute={`/user/${props.accountHolderID}`}
-              />
-              // </div>
-            ))}
-          </div>
+        <div className="absolute top-50 m-5  ">
+          {search === "" ? (
+            <div className="w-[calc(100vw-70px)] m-auto flex items-center justify-center gap-6 p bg-white p-4 rounded-lg ">
+              <p className="text-center font-semibold italic text-[#8c0707] ">
+                Type a key word to Make <br /> a search for a studio
+              </p>
+            </div>
+          ) : (
+            <div className="w-full m-auto grid gap-6 place-items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 bg-white p-4 rounded-lg overflow-y-scroll ">
+              {/* {studioData?.map((props: any, i: number) => (
+                // <div>
+                <ProductProps
+                  props={props}
+                  key={`${i}`}
+                  cover={
+                    props.studioImages.length > 0
+                      ? props.studioImages
+                      : dummyImage
+                  }
+                  authorCover={profile}
+                  authorName={props.studioName}
+                  place={props.studioName}
+                  rating={props.studioRate}
+                  amount={props.studioPrice.toLocaleString()}
+                  amountHourly={props?.studioPriceDaily?.toLocaleString()}
+                  date={`${moment(props.createdAt).fromNow()}`}
+                  route={`/products/${props._id}`}
+                  userRoute={`/user/${props.accountHolderID}`}
+                />
+                // </div>
+              ))} */}
+
+              {/* start */}
+            </div>
+          )}
         </div>
       </div>
     </div>
   );
 };
 
-export default searchModal;
+export default SearchModal;

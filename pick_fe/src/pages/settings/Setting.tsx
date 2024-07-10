@@ -25,9 +25,9 @@ const Setting: FC = () => {
     },
     {
       icon: <RiPagesLine size={35} />,
-      title: "Studio Info",
+      title: "Account Details",
       detail: " Provide studio details and how we can reach you.",
-      url: "/#",
+      url: "/personal-setting/my-account-details",
       size: 35,
     },
   ];
@@ -59,7 +59,7 @@ const Setting: FC = () => {
         className="my-6 text-blue-950 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2 transition-all duration-300 lg:[&>*:nth-child(3)]:col-span-2 xl:[&>*:nth-child(3)]:col-span-1
       "
       >
-        {pathData.map((props: any, i: number) => (
+        {pathData.map((props, i: number) => (
           <Link to={`${props.url}`} key={i} className="text-[#421515]">
             <div className="min-w-[300px] border rounded-md p-3 min-h-[200px] text-blue-950 shadow-md flex flex-col hover:shadow-lg">
               <div className="flex-1 text-[#8C0707]">{props.icon}</div>

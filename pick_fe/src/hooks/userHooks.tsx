@@ -1,5 +1,10 @@
 import useSWR from "swr";
-import { getOneUser } from "../api/userAPI";
+import {
+  getOneUser,
+  updateBankAccount,
+  updateBankAccountName,
+  updateBankName,
+} from "../api/userAPI";
 import { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 import { viewUserStudioHistory } from "../api/bookingsAPI";
@@ -34,4 +39,29 @@ export const useUserHistory = (userID: string) => {
   );
 
   return { history };
+};
+
+export const useUserAccountName = (userID: string, data: string) => {
+  const { data: accountName } = useSWR(`update-account-name/${userID}`, () =>
+    updateBankAccountName(userID, data)
+  );
+
+  return { accountName };
+};
+
+export const useUserAccountNumber = (userID: string, data: string) => {
+  const { data: accountNumber } = useSWR(
+    `update-account-number/${userID}`,
+    () => updateBankAccount(userID, data)
+  );
+
+  return { accountNumber };
+};
+
+export const useUserBankName = (userID: string, data: any) => {
+  const { data: bankName } = useSWR(`update-bank-name/${userID}`, () =>
+    updateBankName(userID, data)
+  );
+
+  return { bankName };
 };

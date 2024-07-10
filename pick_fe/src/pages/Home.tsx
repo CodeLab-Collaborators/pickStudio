@@ -7,9 +7,7 @@ import img4 from "../assets/studio/5.jpg";
 import profile from "../assets/jpg/profile.jpeg";
 import { studioHooks } from "../hooks/studioHooks";
 import moment from "moment";
-import DoorDashFavorite from "../components/props/Loader";
-import { useLocation } from "react-router-dom";
-import { createBookMark } from "../api/bookMarkAPI";
+
 import { userHooks } from "../hooks/userHooks";
 import MainLoader from "../components/props/MainLoader";
 

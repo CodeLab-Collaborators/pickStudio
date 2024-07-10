@@ -42,7 +42,7 @@ const PersonalSetting: FC = () => {
       <div className="flex items-center">
         Account <LiaGreaterThanSolid size={13} className="mx-4 " />{" "}
         <div className="capitalize">
-          {name.split("/")[2].replaceAll("-", " ")}
+          {name.split("/")[2]?.replaceAll("-", " ")}
         </div>{" "}
         <LiaGreaterThanSolid size={13} className="mx-4 " />{" "}
         <div
@@ -55,7 +55,7 @@ const PersonalSetting: FC = () => {
         </div>
       </div>
       <div className="mt-5 font-[500] text-[30px] mb-10 capitalize">
-        {name.split("/")[2].replaceAll("-", " ")}
+        {name.split("/")[2]?.replaceAll("-", " ")}
       </div>
 
       <div className="w-full sm:grid sm:grid-cols-6 min-h-[65vh]  ">
@@ -67,7 +67,7 @@ const PersonalSetting: FC = () => {
             gridColumn: "5/7",
           }}
         >
-          {pathData.map((props: any, i: number) => (
+          {pathData.map((props, i: number) => (
             <div className="m-2 " key={i}>
               <div className="relative mb-8">
                 <div className="mt-4 absolute top-[-10px] left-1 text-[#8A062E] z-[2px] opacity-20 ">

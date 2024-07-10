@@ -8,23 +8,16 @@ import {
   StudioLayout,
   UploadStudioLayout,
 } from "../components";
-import DoorDashFavorite from "../components/props/Loader";
-// import PrivateRoute from "./privateRoute";
-
-// import PrivateRoute from "./privateRoute";
 
 import { ErrorBoundary } from "react-error-boundary";
-import ComponentErrorFallBack from "../pages/error/ComponentErrorFallBack";
+
 import ErrorIndex from "../pages/error/errorPage/errorIndex";
-import BoundaryError from "../pages/error/BoundaryError/BoundaryError";
-import ErrorBoundaryComp from "../pages/error/Boundary/ErrorBoundaryComp";
 import ErrorFile from "../pages/error/ErrorII/ErrorFile";
 import Inbox from "../components/blocks/BookStudio/Inbox";
 import LoadingScreen from "../components/static/LoadingScreen";
 import Successful from "../pages/payment/Successful";
 import Failed from "../pages/payment/Failled";
 import WishList from "../pages/WishList";
-import PrivateRoute from "./privateRoute";
 import MainLoader from "../components/props/MainLoader";
 
 // import errorIndex from "../pages/error/errorPage/errorIndex";
@@ -34,6 +27,10 @@ const PersonalInfoScreen = lazy(
 );
 const ProfressionInfoScreen = lazy(
   () => import("../pages/settings/PrefessionalInfoScreen")
+);
+
+const AccountDetailScreen = lazy(
+  () => import("../pages/settings/AccountDetails")
 );
 
 const Home = lazy(() => import("../pages/Home"));
@@ -178,6 +175,15 @@ export const appRoutes = createBrowserRouter([
             element: (
               <Suspense fallback={<LoadingScreen />}>
                 <PersonalInfoScreen />
+              </Suspense>
+            ),
+          },
+          {
+            index: true,
+            path: "my-account-details",
+            element: (
+              <Suspense fallback={<LoadingScreen />}>
+                <AccountDetailScreen />
               </Suspense>
             ),
           },
