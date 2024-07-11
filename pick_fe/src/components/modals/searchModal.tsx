@@ -110,7 +110,7 @@ const SearchModal: FC = () => {
             </div>
           ) : (
             <div className="w-full m-auto grid gap-6 place-items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 bg-white p-4 rounded-lg overflow-y-scroll ">
-              {/* {studioData?.map((props: any, i: number) => (
+              {studioData?.map((props: any, i: number) => (
                 // <div>
                 <ProductProps
                   props={props}
@@ -131,7 +131,7 @@ const SearchModal: FC = () => {
                   userRoute={`/user/${props.accountHolderID}`}
                 />
                 // </div>
-              ))} */}
+              ))}
 
               {/* start */}
             </div>

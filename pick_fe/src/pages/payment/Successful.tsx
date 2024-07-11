@@ -20,6 +20,8 @@ const Successful: React.FC = () => {
     bookingData?.days !== 0 ? bookingData?.days : bookingData?.hourly
   );
 
+  console.log(ID);
+
   useEffect(() => {
     verifyPaymentForStudio(ID).then((res) => {
       if (res.status === true) {
