@@ -9,6 +9,8 @@ interface iError {
 }
 
 const ErrorFile: FC<iError> = ({ error, resetErrorBoundary }) => {
+  console.log(error?.message?.split("?")[1]?.split(" ")[0]);
+
   return (
     <div className="w-full justify-center flex items-center h-screen">
       <section className="page_404 w-full">

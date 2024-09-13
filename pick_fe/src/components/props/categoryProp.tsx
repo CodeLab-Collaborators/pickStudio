@@ -35,10 +35,7 @@ const CategoryProps = () => {
           onClick={() => {
             dispatch(changeCategoryToggle(true));
 
-            console.log("Change category toggle", toggle);
             const timer = setTimeout(() => {
-              console.log("Change category toggle after 1sec: ");
-
               dispatch(changeCategoryToggle(false));
 
               clearTimeout(timer);

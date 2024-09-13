@@ -12,6 +12,7 @@ import { changeCategoryToggle } from "../global/reduxState";
 import { TbTimeDuration15 } from "react-icons/tb";
 import LoadingScreen from "../components/static/LoadingScreen";
 import { FaCheckDouble } from "react-icons/fa";
+import { mutate } from "swr";
 
 const Categories: FC = () => {
   const dispatch = useDispatch();
@@ -32,13 +33,15 @@ const Categories: FC = () => {
       setStudioStateData(viewSearchStudio);
 
       clearTimeout(timer);
-    }, 10);
+    }, 0);
 
     const timer1 = setTimeout(() => {
       dispatch(changeCategoryToggle(false));
       clearTimeout(timer1);
-    }, 1100);
-  }, [viewSearchStudio.length]);
+    }, 0);
+
+    mutate(`view-search-studio/${studio}`);
+  }, [viewSearchStudio?.length]);
 
   return (
     <div>
@@ -57,7 +60,7 @@ const Categories: FC = () => {
           </div>
         ) : (
           <div className="flex">
-            {studioStateData.length > 0 ? (
+            {studioStateData?.length > 0 ? (
               <div className="w-full mt-6 m-auto grid gap-6 place-items-center grid-cols-5 max-xl:grid-cols-4 max-lg:grid-cols-2 max-sm:grid-cols-1 max-sm:w-full">
                 {studioStateData?.map((props: any) => (
                   <div key={props?._id}>
@@ -71,7 +74,7 @@ const Categories: FC = () => {
                       amount={props?.studioPrice?.toLocaleString()}
                       amountHourly={props?.studioPriceDaily?.toLocaleString()}
                       date={moment(props?.createdAt).format("LLL")}
-                      route="/products"
+                      route={`/products/${props?._id}`}
                       userRoute="/user"
                       wishlistFunc={() => {}}
                     />

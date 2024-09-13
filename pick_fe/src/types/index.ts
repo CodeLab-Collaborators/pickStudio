@@ -48,6 +48,7 @@ export type imageData = {
   userRoute: string;
   wishlistFunc: any;
   props?: any;
+  currentImageIndex?: number;
 };
 
 export type cardData = {

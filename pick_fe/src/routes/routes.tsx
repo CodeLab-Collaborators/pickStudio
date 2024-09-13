@@ -72,7 +72,7 @@ export const appRoutes = createBrowserRouter([
   {
     path: "/",
     element: (
-      <ErrorBoundary fallbackRender={ErrorFile}>
+      <ErrorBoundary fallbackRender={ErrorFile} onReset={() => {}}>
         <Suspense fallback={<LoadingScreen />}>
           <HomeLayout />
         </Suspense>

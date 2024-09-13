@@ -51,7 +51,7 @@ const UserReviews: FC<iProps> = ({ props }) => {
                 </div>
                 <MdDelete
                   className="text-red-700 text-[20px] cursor-pointer"
-                  onClicke={() => {
+                  onClick={() => {
                     deleteReeviews(userID!, props, el._pd);
                   }}
                 />

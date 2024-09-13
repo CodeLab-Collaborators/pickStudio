@@ -28,9 +28,9 @@ export const singleStudioHooks = (accountID: string) => {
 
 export const searchStudioHooks = (data: string) => {
   const { data: viewSearchStudio, isLoading } = useSWR(
-    `view-search-studio/`,
-    () => searchStudio(data),
-    { refreshInterval: 1000 }
+    `view-search-studio/${data}`,
+    () => searchStudio(data)
+    // { refreshInterval: 1000 }
   );
 
   return { viewSearchStudio, isLoading };
