@@ -36,7 +36,7 @@ export const bookAStudio = async (
 ) => {
   try {
     return await axios
-      .post(`${Test_URL}/create-booking/${userID}/${studioID}`, data)
+      .post(`${URL}/create-booking/${userID}/${studioID}`, data)
       .then((res: any | {}) => {
         return res.data.data;
       });
@@ -48,7 +48,7 @@ export const bookAStudio = async (
 export const makePaymentForStudio = async (data: {}) => {
   try {
     return await axios
-      .post(`${Test_URL}/make-payment`, data)
+      .post(`${URL}/make-payment`, data)
       .then((res: any | {}) => {
         return res.data.data;
       });
@@ -59,11 +59,9 @@ export const makePaymentForStudio = async (data: {}) => {
 
 export const verifyPaymentForStudio = async (trxref: string) => {
   try {
-    return await axios
-      .get(`${Test_URL}/verify/${trxref}`)
-      .then((res: any | {}) => {
-        return res.data.data;
-      });
+    return await axios.get(`${URL}/verify/${trxref}`).then((res: any | {}) => {
+      return res.data.data;
+    });
   } catch (error) {
     return error;
   }

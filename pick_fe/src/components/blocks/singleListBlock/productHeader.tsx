@@ -70,7 +70,7 @@ const ProductHeader = () => {
         <div>
           {showButton && (
             <div>
-              {singleStudio?.accountHolderID === data?._id && (
+              {/* {singleStudio?.accountHolderID !== data?._id && (
                 <NavLink to={`book-studio`}>
                   <GlobalButton
                     style={{ background: "var(--gradient)" }}
@@ -79,7 +79,7 @@ const ProductHeader = () => {
                     Book studio
                   </GlobalButton>{" "}
                 </NavLink>
-              )}
+              )} */}
             </div>
           )}
         </div>
